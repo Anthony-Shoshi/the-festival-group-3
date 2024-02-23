@@ -17,8 +17,8 @@ class Router
     public function route($uri)
     {
         $uri = $this->stripParameters($uri);
-
-        $explodedUri = explode("/", $uri);
+        $uriNoLeading = ltrim($uri, '/');
+        $explodedUri = explode("/", $uriNoLeading);
 
         if (!isset($explodedUri[0]) || empty($explodedUri[0])) {
             $explodedUri[0] = "home";
@@ -39,7 +39,8 @@ class Router
             $controllerObj = new $controllerName();
             $controllerObj->$methodName();
         } catch (Error $e) {
-            http_response_code(500);
+            echo "Internal server error. Please try again later." . $e->getMessage();
+//            http_response_code(500);
         }
     }
 }
