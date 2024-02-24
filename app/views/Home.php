@@ -1,7 +1,5 @@
 <?php
-
-echo "Welcome to the home page " . $_SESSION['username'];
-
+include __DIR__ .'/header.php';
 ?>
 
 <p> This is the home page</p>

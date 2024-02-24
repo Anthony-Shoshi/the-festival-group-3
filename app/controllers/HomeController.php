@@ -6,8 +6,7 @@ class HomeController
 {
     public function index()
     {
-        echo "Hello world Anthony!";
-
+        require '../views/Home.php';
     }
     public function create()
     {
