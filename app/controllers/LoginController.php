@@ -1,12 +1,15 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Models\User;
 use App\services\UserService;
 
 require_once __DIR__ . '/../models/User.php';
 require_once __DIR__ . '/../services/UserService.php';
 
-class LoginController{
+class LoginController
+{
     private UserService $loginService;
     public function __construct()
     {
@@ -17,21 +20,24 @@ class LoginController{
         session_start();
         session_unset();
         session_destroy();
-        require_once __DIR__ . '/../views/Home.php';
+        header("location: /");
         exit();
     }
-    public function login(){
-//        session_start();
-        if(isset($_POST['login-button']) && isset($_POST['username']) && isset($_POST['password'])){
+    public function login()
+    {        
+        if (isset($_POST['login-button']) && isset($_POST['username']) && isset($_POST['password'])) {
             $username = htmlspecialchars($_POST['username']);
             $password = htmlspecialchars($_POST['password']);
             $user = $this->loginService->authenticateUser($username, $password);
-            if($user){
+            if ($user) {
+                session_start();
                 $_SESSION['user'] = $user;
                 $_SESSION['username'] = $user['name'];
-                require __DIR__ . '/../views/Home.php';
+                $_SESSION['role'] = $user['role'];
+                $_SESSION['profile_picture'] = $user['profile_picture'];
+                header("location: /");
                 exit();
-            }else{
+            } else {
                 echo "Invalid username or password";
             }
             require_once __DIR__ . '/../views/login.php';
@@ -39,5 +45,4 @@ class LoginController{
             require_once __DIR__ . '/../views/login.php';
         }
     }
-
 }
