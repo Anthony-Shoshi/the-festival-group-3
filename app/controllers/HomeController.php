@@ -4,9 +4,17 @@ namespace App\Controllers;
 
 class HomeController
 {
+    public function __construct() {
+        session_start();
+    }
+
     public function index()
     {
-        require '../views/Home.php';
+        if (isset($_SESSION['role']) && $_SESSION['role'] == "Admin") {
+            require __DIR__ . '/../views/backend/home.php';
+        } else {
+            require __DIR__ . '/../views/Home.php';
+        }
     }
     public function create()
     {
