@@ -1,12 +1,18 @@
 <?php
-class Role implements jsonSerializable{
+namespace App\Models;
+use InvalidArgumentException;
+use ReflectionClass;
+
+class Role{
     const Customer = 'Customer';
     const Admin = 'Admin';
     const Employee = 'Employee';
-
-    public function jsonSerialize(){
-        return get_object_vars($this);
+    private string $value;
+    private function __construct(string $value)
+    {
+        $this->value = $value;
     }
+
     public static function Customer():self
     {
         return new self(self::Customer);
@@ -19,7 +25,7 @@ class Role implements jsonSerializable{
     {
         return new self(self::Employee);
     }
-    public static function getRole(self $value):string
+    public static function getLabel(self $value):string
     {
         return match($value-> value){
             self::Customer => 'Customer',
