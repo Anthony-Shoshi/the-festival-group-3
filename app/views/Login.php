@@ -38,7 +38,7 @@
             </form>
             <br>
             <p><?php echo isset($loginError) ? htmlspecialchars($loginError) : ""; ?></p>
-            <form class="register-form" action="/login/createNewUser" method="POST">
+            <form class="register-form" action="/login/signup" method="POST">
                 <div>
                     <button class="register-btn btn btn-lg btn-warning btn-login text-uppercase fw-bold mb-2"
                             name="registerSubmit" type="submit">Don't have an account? Sign Up

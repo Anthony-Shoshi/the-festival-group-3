@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Role;
 use App\Repositories\Repository;
 use App\Models\User;
 use Exception;
@@ -58,6 +59,51 @@ class UserRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
+
+    public function registerUser($newUser): bool
+    {
+        try {
+            $sql = "INSERT INTO users (name, email, password, role, profile_picture) 
+                VALUES (:name, :email, :password, :role, :profile_picture)";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindValue(':name', $newUser['name']);
+            $stmt->bindValue(':email', $newUser['email']);
+            $stmt->bindValue(':password', $newUser['password']);
+            $stmt->bindValue(':role',Role::getLabel($newUser['role']) );
+            $stmt->bindValue(':profile_picture', $newUser['profile_picture']);
+            $stmt->execute();
+            return true;
+        }catch (PDOException $e){
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    private function checkUserExistence($stmt): bool
+    {
+        try {
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                return true;
+            }
+            return false;
+        } catch (PDOException $e) {
+            echo $e;
+            exit();
+        }
+    }
+
+    public function checkUserExistenceByEmail($email)
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT user_id From users WHERE email= :email");
+            $stmt->bindValue(':email', $email);
+            if ($this->checkUserExistence($stmt)) {
+                $stmt->execute();
+                $result = $stmt->fetch();
+                return $result[0];
+            }
+        } catch (PDOException $e) {
+            echo $e;
 
     public function storeUser(User $user)
     {
@@ -118,6 +164,7 @@ class UserRepository extends Repository
             return true;
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
+
         }
     }
 }

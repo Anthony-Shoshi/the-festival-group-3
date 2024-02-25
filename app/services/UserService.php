@@ -23,6 +23,56 @@ class UserService
         }
         return null;
     }
+    public function hashPassword($password): string
+    {
+        return password_hash($password, PASSWORD_BCRYPT);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function handleUserImage($image): string
+    {
+        $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+        $imageName = uniqid() . '.' . $ext;
+        $upload_dir = __DIR__ . '/../public/images/';
+        if (!move_uploaded_file($image['tmp_name'], $upload_dir . $imageName)) {
+            throw new Exception("Failed to move uploaded file.");
+        }
+        return $imageName;
+    }
+
+    public function registerUser($newUser): bool
+    {
+        $plainPassword = $newUser['password'];
+        $newUser['password'] = $this->hashPassword($plainPassword);
+        $image = $newUser['profile_picture'];
+        if(!empty($image['name'])){
+            $newUser['profile_picture'] = $this->handleUserImage($image);
+        }
+        return $this->userRepository->registerUser($newUser);
+    }
+    public function checkIfUserExists($email)
+    {
+        return $this->userRepository->checkUserExistenceByEmail($email);
+    }
+    public function captchaVerification(&$systemMessage)
+    {
+        $secret = "6LcaqH4pAAAAAIRxLN3RBK8YokHaweiW72FObc4I";
+        $response = $_POST['g-recaptcha-response'];
+        $remoteip = $_SERVER['REMOTE_ADDR'];
+        $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip";
+        $data = file_get_contents($url);
+        $row = json_decode($data);
+        if ($row->success== "true") {
+            return true;
+        } else {
+            $systemMessage = "you are a robot";
+            return false;
+        }
+    }
+}
+
 
     public function getAllUsers()
     {
