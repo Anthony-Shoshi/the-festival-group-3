@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Role;
 use App\Repositories\Repository;
 use App\Models\User;
-use mysql_xdevapi\Exception;
+use Exception;
 use PDO;
 use PDOException;
 
@@ -18,12 +18,7 @@ class UserRepository extends Repository
         try {
             $stmt = $this->connection->prepare("SELECT * FROM users");
             $stmt->execute();
-            $users = array();
-
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($results as $user) {
-                $users[] = $this->createUser($user);
-            }
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $users;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -64,6 +59,7 @@ class UserRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
 
     public function registerUser($newUser): bool
     {
@@ -108,6 +104,67 @@ class UserRepository extends Repository
             }
         } catch (PDOException $e) {
             echo $e;
+
+    public function storeUser(User $user)
+    {
+        try {
+            $stmt = $this->connection->prepare("INSERT INTO users (name, email, password, role, profile_picture) VALUES (:name, :email, :password, :role, :profile_picture)");
+            $stmt->execute([
+                ':name' => $user->getname(),
+                ':email' => $user->getemail(),
+                ':password' => $user->getpassword(),
+                ':role' => $user->getrole(),
+                ':profile_picture' => $user->getprofilepicture(),
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
+    public function getUserById($userId)
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM users WHERE user_id = :userid");
+            $stmt->bindParam(':userid', $userId);
+            $stmt->execute();
+            $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($stmt->rowCount() > 0) {
+                return $userRow;
+            }
+            return null;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
+    public function updateUser($user)
+    {
+        try {
+            $stmt = $this->connection->prepare("UPDATE users SET name = :name, email = :email, role = :role, profile_picture = :profile_picture WHERE user_id = :userid");
+            $stmt->execute([
+                ':userid' => $user['user_id'],
+                ':name' => $user['name'],
+                ':email' => $user['email'],
+                ':role' => $user['role'],
+                ':profile_picture' => $user['profile_picture'],                
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
+    public function deleteUser($userId)
+    {
+        try {
+            $stmt = $this->connection->prepare("DELETE FROM users WHERE user_id = :userid");
+            $stmt->bindParam(':userid', $userId);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+
         }
     }
 }

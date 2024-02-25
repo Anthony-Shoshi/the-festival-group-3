@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use DateTime;
-use Role;
 
 class User
 {
@@ -11,7 +10,7 @@ class User
     public string $name;
     public string $profilepicture;
     public string $email;
-    public Role $role;
+    public string $role;
     public string $password;
     public DateTime $registration_date;
 
@@ -33,7 +32,7 @@ class User
     }
     public function getprofilepicture():string
     {
-        return $this->profile_picture;
+        return $this->profilepicture;
     }
     public function setprofilepicture(string $profilepicture):void
     {
@@ -47,11 +46,11 @@ class User
     {
         $this->email = $email;
     }
-    public function getrole():Role
+    public function getrole():string
     {
         return $this->role;
     }
-    public function setrole(Role $role):void
+    public function setrole(string $role):void
     {
         $this->role = $role;
     }
