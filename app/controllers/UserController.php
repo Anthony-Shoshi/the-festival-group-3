@@ -19,7 +19,6 @@ class UserController
         session_start();
         $this->userService = new UserService();
     }
-}
 
     public function index()
     {
