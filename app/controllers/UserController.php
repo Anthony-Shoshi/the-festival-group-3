@@ -19,7 +19,6 @@ class UserController
         session_start();
         $this->userService = new UserService();
     }
-}
 
     public function index()
     {
@@ -162,18 +161,18 @@ class UserController
     // }
 
     public function delete()
-    {
-        $userId = $_GET['id'];
-        if (isset($userId) && $userId > 0) {
-            $user = $this->userService->getUserById($userId);
-            $this->userService->deleteUser($userId);
-            header("Location: /user");
-            exit();
-        } else {
-            header("Location: /error?message=something went wrong with this user data!");
-            exit();
-        }
+{
+    $userId = $_GET['id'];
+    if (isset($userId) && $userId > 0) {
+        $user = $this->userService->getUserById($userId);
+        $this->userService->deleteUser($userId);
+        header("Location: /user");
+        exit();
+    } else {
+        header("Location: /error?message=something went wrong with this user data!");
+        exit();
     }
+}
 
     //    public function login(){
     ////        session_start();

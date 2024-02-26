@@ -71,7 +71,6 @@ class UserService
             return false;
         }
     }
-}
 
 
     public function getAllUsers()
