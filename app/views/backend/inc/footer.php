@@ -3,7 +3,7 @@
 <!-- Footer -->
 <footer class="footer">
     <div class="container-fluid">
-        &copy; 2024 Your Company. All rights reserved.
+        &copy; <?= date('Y') ?> The Festival | All rights reserved.
     </div>
 </footer>
 
