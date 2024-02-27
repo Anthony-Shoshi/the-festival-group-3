@@ -1,56 +1,57 @@
 <?php
+
 namespace App\Models;
+
 use InvalidArgumentException;
+use JsonSerializable;
 use ReflectionClass;
 
-class Role{
+class Role implements jsonSerializable
+{
     const Customer = 'Customer';
-    const Admin = 'Admin';
     const Employee = 'Employee';
-    private string $value;
-    private function __construct(string $value)
+    const Administrator = 'Administrator';
+
+    private $value;
+    public function __construct($value)
     {
         $this->value = $value;
     }
-
-    public static function Customer():self
-
+    public static function Administrator(): self
     {
-        return new self(self::Customer);
+        return new self(self::Administrator);
     }
-
-    public static function Admin(): self
-    {
-        return new self(self::Admin);
-    }
-
     public static function Employee(): self
     {
         return new self(self::Employee);
     }
-
-    public static function getLabel(self $value):string
-
-
+    public static function Customer(): self
     {
-        return match ($value) {
-            self::Customer => 'Customer',
-            self::Admin => 'Admin',
+        return new self(self::Customer);
+    }
+    public static function getLabel(self $value): string
+    {
+        return match ($value->value) {
+            self::Administrator => 'Administrator',
             self::Employee => 'Employee',
-            default => throw new InvalidArgumentException("Invalid Role : $value ")
+            self::Customer => 'Customer',
+            default => throw new InvalidArgumentException("Invalid status value: $value"),
         };
     }
-
-    public function fromString(string $value): self
+    public static function fromString(string $value): self
     {
         return match ($value) {
-            'Customer' => self::Customer(),
-            'Admin' => self::Admin(),
-            'Employee' => self::Employee(),
-            default => throw new InvalidArgumentException("Invalid Role : $value ")
+            self::Administrator => self::Administrator(),
+            self::Employee => self::Employee(),
+            self::Customer => self::Customer(),
+            default => throw new InvalidArgumentException("Invalid status value: $value"),
         };
     }
 
+    public function jsonSerialize(): mixed
+    {
+        return $this->value;
+    }
     public static function getEnumValues(): array
     {
         $reflectionClass = new ReflectionClass(__CLASS__);
