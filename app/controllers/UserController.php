@@ -15,8 +15,7 @@ class UserController
     private UserService $userService;
 
     public function __construct()
-    {
-        session_start();
+    {        
         $this->userService = new UserService();
     }
 
@@ -138,28 +137,6 @@ class UserController
         }
     }
 
-
-    // public function update()
-    // {
-    //     try {
-    //         $userData = [
-    //             'user_id' => $_POST['user_id'],
-    //             'name' => $_POST['name'],
-    //             'email' => $_POST['email'],
-    //             'role' => $_POST['role'],
-    //         ];
-
-    //         $this->userService->updateUser($userData);
-
-    //         header("Location: /user");
-    //         exit();
-    //     } catch (Exception $e) {
-    //         // Redirect to error page with error message
-    //         header("Location: /error?message=" . urlencode($e->getMessage()));
-    //         exit();
-    //     }
-    // }
-
     public function delete()
     {
         $userId = $_GET['id'];
@@ -173,24 +150,4 @@ class UserController
             exit();
         }
     }
-
-    //    public function login(){
-    ////        session_start();
-    //        if(isset($_POST['login-button']) && isset($_POST['username']) && isset($_POST['password'])){
-    //            $username = htmlspecialchars($_POST['username']);
-    //            $password = htmlspecialchars($_POST['password']);
-    //            $user = $this->loginService->authenticateUser($username, $password);
-    //            if($user){
-    //                $_SESSION['user'] = $user;
-    //                $_SESSION['username'] = $user['name'];
-    //                require __DIR__ . '/../views/Home.php';
-    //                exit();
-    //            }else{
-    //                echo "Invalid username or password";
-    //            }
-    //            require_once __DIR__ . '/../views/login.php';
-    //        } else {
-    //            require_once __DIR__ . '/../views/login.php';
-    //        }
-    //    }
 }

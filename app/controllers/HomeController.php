@@ -4,10 +4,6 @@ namespace App\Controllers;
 
 class HomeController
 {
-    public function __construct() {
-        session_start();
-    }
-
     public function index()
     {
         if (isset($_SESSION['role']) && $_SESSION['role'] == "Admin") {
