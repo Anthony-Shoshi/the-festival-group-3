@@ -7,7 +7,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <img src="<?= $_SESSION['profile_picture']; ?>" alt="Profile Image" class="rounded-circle me-2" style="width: 32px; height: 32px;">
+<!--                    <img src="--><?php //= $_SESSION['profile_picture']; ?><!--" alt="Profile Image" class="rounded-circle me-2" style="width: 32px; height: 32px;">-->
+                    <?php if (empty($_SESSION['profile_picture'])) : ?>
+                        <img src="/backend/img/default.jpg" class="rounded-circle me-2" style="width: 32px; height: 32px;" alt="Default Profile Picture">
+                    <?php else : ?>
+                        <img src="<?= $_SESSION['profile_picture'] ?>" class="rounded-circle me-2" style="width: 32px; height: 32px;" alt="Profile Picture">
+                    <?php endif; ?>
                 </li>
                 <li class="nav-item">
                     <span class="nav-link">Welcome, <?= $_SESSION['username']; ?></span>

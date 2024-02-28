@@ -106,7 +106,6 @@ class UserRepository extends Repository
             echo $e;
         }
     }
-
     public function storeUser(User $user)
     {
         try {

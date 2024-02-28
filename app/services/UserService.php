@@ -31,15 +31,20 @@ class UserService
     /**
      * @throws Exception
      */
-    public function handleUserImage($image): string
+    public function handleUserImage($image)
     {
-        $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
-        $imageName = uniqid() . '.' . $ext;
-        $upload_dir = __DIR__ . '/../public/images/';
-        if (!move_uploaded_file($image['tmp_name'], $upload_dir . $imageName)) {
-            throw new Exception("Failed to move uploaded file.");
+        try {
+            $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+            $newImageName = uniqid() . '.' . $ext;
+            $upload_dir = __DIR__ . '/../public/images/';
+            if (!move_uploaded_file($image['tmp_name'], $upload_dir . $newImageName)) {
+                throw new Exception("Failed to move uploaded file.");
+            }
+            return $newImageName;
+
+        } catch (Exception $exception) {
+            echo $exception->getMessage();
         }
-        return $imageName;
     }
 
     public function registerUser($newUser): bool
@@ -71,8 +76,6 @@ class UserService
             return false;
         }
     }
-
-
     public function getAllUsers()
     {
         try {
