@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Repositories\UserRepository;
 use Exception;
 use PDO;
-
 class UserService
 {
     private UserRepository $userRepository;
@@ -84,7 +83,7 @@ class UserService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
-    
+
     public function storeUser(User $user)
     {
         try {
@@ -102,7 +101,14 @@ class UserService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
-
+    public function getUserByEmail($email)
+    {
+        try {
+            return $this->userRepository->getUserByEmail($email);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
     public function updateUser($user)
     {
         try {
@@ -116,6 +122,14 @@ class UserService
     {
         try {
             return $this->userRepository->deleteUser($userId);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function resetPassword($user)
+    {
+        try {
+            return $this->userRepository->resetPassword($user);
         } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());
         }

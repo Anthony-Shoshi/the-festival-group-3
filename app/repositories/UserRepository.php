@@ -70,14 +70,15 @@ class UserRepository extends Repository
             $stmt->bindValue(':name', $newUser['name']);
             $stmt->bindValue(':email', $newUser['email']);
             $stmt->bindValue(':password', $newUser['password']);
-            $stmt->bindValue(':role',Role::getLabel($newUser['role']) );
+            $stmt->bindValue(':role', Role::getLabel($newUser['role']));
             $stmt->bindValue(':profile_picture', $newUser['profile_picture']);
             $stmt->execute();
             return true;
-        }catch (PDOException $e){
+        } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
     private function checkUserExistence($stmt): bool
     {
         try {
@@ -106,6 +107,7 @@ class UserRepository extends Repository
             echo $e;
         }
     }
+
     public function storeUser(User $user)
     {
         try {
@@ -148,7 +150,7 @@ class UserRepository extends Repository
                 ':name' => $user['name'],
                 ':email' => $user['email'],
                 ':role' => $user['role'],
-                ':profile_picture' => $user['profile_picture'],                
+                ':profile_picture' => $user['profile_picture'],
             ]);
             return true;
         } catch (PDOException $e) {
@@ -168,4 +170,38 @@ class UserRepository extends Repository
 
         }
     }
+
+    public function getUserByEmail($email)
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM users WHERE email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($stmt->rowCount() > 0) {
+                return $userRow;
+            }
+            return null;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
+    public function resetPassword($user)
+    {
+        try {
+            $hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
+
+            $stmt = $this->connection->prepare("UPDATE users SET password = :password WHERE email = :email");
+            $stmt->execute([
+                ':email' => $user['email'],
+                ':password' => $hashed_password,
+            ]);
+
+            return true;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
 }
