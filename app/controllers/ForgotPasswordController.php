@@ -1,5 +1,5 @@
 <?php
-class ResetPasswordController
+class ForgotPasswordController
 {
     private UserService $userService;
 
@@ -10,7 +10,7 @@ class ResetPasswordController
 
     public function resetPassword()
     {
-        if (isset($_POST['email'])) {
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'])) {
             $email = $_POST['email'];
             $user = $this->userService->getUserByEmail($email);
             if ($user) {
@@ -20,8 +20,7 @@ class ResetPasswordController
                 $_SESSION['password_reset_token'] = $token;
                 $_SESSION['email'] = $email;
 
-                // Construct the password reset link
-                $reset_link = "<a href='http://localhost/setNewPassword'>Reset Password</a>";
+                $reset_link = "http://localhost/setNewPassword?token=$token";
 
                 $this->sendResetPasswordEmail($email, $reset_link);
 
@@ -35,6 +34,8 @@ class ResetPasswordController
             require_once __DIR__ . '/../views/ResetPassword.php';
         }
     }
+
+
     private function sendResetPasswordEmail($email, $reset_link): void
     {
         $user = $this->userService->getUserByEmail($email);
@@ -50,8 +51,8 @@ class ResetPasswordController
             $mail->SMTPAuth   = true;
             $mail->Username   = 'thefestival918@gmail.com';
             $mail->Password   = 'FesDival918';
-            $mail->SMTPSecure = 'tls';
-            $mail->Port       = 587;
+            $mail->SMTPSecure = 'tls';  //maybe ssl
+            $mail->Port       = 465;
 
             // Recipients
             $mail->setFrom('your@example.com', 'Your Name');
@@ -67,7 +68,6 @@ class ResetPasswordController
         }
     }
     public function setNewPassword(){
-    
-    }
 
+    }
 }
