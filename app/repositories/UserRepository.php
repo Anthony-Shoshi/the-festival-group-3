@@ -60,7 +60,6 @@ class UserRepository extends Repository
         }
     }
 
-
     public function registerUser($newUser): bool
     {
         try {
@@ -78,6 +77,7 @@ class UserRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
     private function checkUserExistence($stmt): bool
     {
         try {
@@ -106,6 +106,7 @@ class UserRepository extends Repository
             echo $e;
         }
     }
+    
     public function storeUser(User $user)
     {
         try {
