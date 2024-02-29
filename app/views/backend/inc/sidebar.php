@@ -11,4 +11,10 @@
             <li class="menu-item text-white menu-hover" data-url="/user"><i class="fas fa-users text-white"></i> Users</li>
         </a>
     </ul>
+    <h5 class="sidebar-heading">Page Management</h5>
+    <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/page">
+            <li class="menu-item text-white menu-hover" data-url="/page"><i class="fas fa-pager text-white"></i> Pages</li>
+        </a>
+    </ul>
 </div>

@@ -60,7 +60,6 @@ class UserRepository extends Repository
         }
     }
 
-
     public function registerUser($newUser): bool
     {
         try {
@@ -167,7 +166,6 @@ class UserRepository extends Repository
             return true;
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
-
         }
     }
 
@@ -203,5 +201,4 @@ class UserRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
-
 }
