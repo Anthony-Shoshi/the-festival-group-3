@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jomhuria&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom, #742dd7, #fff);
+    background-attachment: fixed;
+}
+
+.navbar {
+    font-family: "Baloo Bhaijaan 2", sans-serif;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+#nav-bar {
+    z-index: 9999;
+    position: absolute;
+    width: 100%;
+}
+
+.navbar-brand img {
+    height: 10vw;
+    max-height: 70px;
+}
+
+#section-1 {
+    position: relative;
+}
+
+.festival-image img {
+    width: 100%;
+    display: block;
+}
+.festival-image h1 {
+    position: absolute;
+    top: 60%;
+    left: 0.8em;
+    font-family: "Jomhuria", serif;
+    color: white;
+    font-size: 10vw;
+}
+
+.section {
+    margin-top: 5vw;
+    text-align: center;
+    background-color: #780b1e;
+    color: white;
+    padding: 1em;
+    font-family: "Jomhuria", serif;
+}
+
+.section h2 {
+    font-size: 6vw;
+}
+.img-p {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+.img-p img {
+    width: 40vw;
+}
+
+.img-p {
+    text-align: left;
+    font-size: 3vw;
+}
+
+.p-button button {
+    background-color: #ff7a68;
+    padding: 5px 30px;
+    border-radius: 0.5em;
+    border: 0;
+    color: white;
+}
+
+.p-button button:hover {
+    background-color: #ff7a68;
+}
