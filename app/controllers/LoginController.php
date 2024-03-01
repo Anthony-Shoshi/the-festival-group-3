@@ -57,39 +57,21 @@ class LoginController
         $email = htmlspecialchars($_POST['email']);
         $password = htmlspecialchars($_POST['password']);
         $role = Role::Customer();
-
-        if (isset($_FILES['profile_picture'])) {
-            $file = $_FILES['profile_picture'];
-            $fileName = $file['name'];
-            $fileTmpName = $file['tmp_name'];
-            $fileError = $file['error'];
-
-            if ($fileError === UPLOAD_ERR_OK) {
-                $newFileName = uniqid('', true) . '_' . $fileName;
-                $uploadPath = __DIR__ . '/../public/backend/img/' . $newFileName;
-                move_uploaded_file($fileTmpName, $uploadPath);
-
-                $imageUrl = '/backend/img/' . $newFileName;
-            } else {
-                throw new Exception('Error uploading file: ' . $fileError);
-            }
-        } else {
-            $imageUrl = '/backend/img/default.jpg';
-        }
+        $picture = $_FILES['profile_picture'];
 
         if (!empty($name) && !empty($email) && !empty($password)) {
             $newUser = array(
                 'name' => $name,
                 'email' => $email,
                 'password' => $password,
-                'profile_picture' => $imageUrl,
+                'profile_picture' => $picture,
                 'role' => $role
             );
             $success = $this->loginService->registerUser($newUser);
             if ($success) {
                 $_SESSION['username'] = $name;
                 $_SESSION['role'] = $role;
-                $_SESSION['profile_picture'] = $imageUrl;
+                $_SESSION['profile_picture'] = $picture;
                 header("location: /");
                 exit();
             } else {
