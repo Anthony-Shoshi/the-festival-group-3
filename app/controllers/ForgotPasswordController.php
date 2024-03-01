@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Controllers;
-use App\services\UserService;
+
+use App\Services\UserService;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -9,14 +10,13 @@ require_once __DIR__ . '/../vendor/PHPMailer-master/src/PHPMailer.php';
 require_once __DIR__ . '/../vendor/PHPMailer-master/src/Exception.php';
 require_once __DIR__ . '/../vendor/PHPMailer-master/src/SMTP.php';
 
-
 class ForgotPasswordController
 {
     private UserService $forgotPasswordService;
 
     public function __construct()
     {
-        $this->forgotPasswordService = new userService();
+        $this->forgotPasswordService = new UserService();
     }
 
     public function resetPassword()
@@ -24,10 +24,9 @@ class ForgotPasswordController
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'])) {
             $email = $_POST['email'];
             $user = $this->forgotPasswordService->getUserByEmail($email);
+
             if ($user) {
-                // Generate a unique token for password reset link
                 $token = bin2hex(random_bytes(32));
-                // Save the token with the user's email in a temporary storage
                 $_SESSION['password_reset_token'] = $token;
                 $_SESSION['email'] = $email;
 
@@ -36,8 +35,6 @@ class ForgotPasswordController
                 $this->sendResetPasswordEmail($email, $reset_link);
 
                 require_once __DIR__ . '/../views/reset-password-sent.php';
-
-
                 exit();
             } else {
                 $error = "Invalid email address";
@@ -50,7 +47,7 @@ class ForgotPasswordController
 
     private function sendResetPasswordEmail($email, $reset_link): void
     {
-        $user = $this->forgotPasswordService    ->getUserByEmail($email);
+        $user = $this->forgotPasswordService->getUserByEmail($email);
         $name = $user['name'];
 
         // Instantiate PHPMailer
@@ -62,8 +59,8 @@ class ForgotPasswordController
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
             $mail->Username   = 'thefestival918@gmail.com';
-            $mail->Password   = 'nvop yclv yukc dzww';
-            $mail->SMTPSecure = 'ssl';  //maybe tls and 587
+            $mail->Password   = 'nvopyclvyukcdzww'; // Use the correct password here
+            $mail->SMTPSecure = 'ssl';
             $mail->Port       = 465;
 
             // Recipients
@@ -82,6 +79,18 @@ class ForgotPasswordController
 
     public function setNewPassword()
     {
-        // Logic for setting new password
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['token']) && isset($_SESSION['password_reset_token']) && isset($_SESSION['email']) && $_GET['token'] === $_SESSION['password_reset_token']) {
+            $userService = new UserService();
+
+            // Assuming resetPassword method expects email and password
+            $userService->resetPassword($_SESSION['email'], $_POST['password']);
+
+            header("Location: /login");
+            exit();
+        } else {
+            // Handle invalid token or session expired
+            // Redirect or show error message
+        }
+        require_once __DIR__ . '/../views/set-new-password.php';
     }
 }

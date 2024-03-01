@@ -126,12 +126,13 @@ class UserService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
-    public function resetPassword($user)
+    public function resetPassword($user, $token)
     {
         try {
-            return $this->userRepository->resetPassword($user);
+            return $this->userRepository->resetPassword($user, $token);
         } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
 }

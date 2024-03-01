@@ -176,24 +176,36 @@ class UserRepository extends Repository
             $stmt->bindParam(':email', $email);
             $stmt->execute();
             $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
             if ($stmt->rowCount() > 0) {
+               // var_dump($userRow); die("here");
                 return $userRow;
+
             }
+
             return null;
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
 
-    public function resetPassword($user)
+    public function resetPassword($user, $token)
     {
-        try {
-            $hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
+        die($user['password']);
 
+
+        // Check if the token matches the one stored in the session
+        if ($token !== $_SESSION['password_reset_token']) {
+            throw new Exception("Invalid token.");
+        }
+        try {
+            // Hash the new password
+            $hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
+            // Update the password in the database
             $stmt = $this->connection->prepare("UPDATE users SET password = :password WHERE email = :email");
             $stmt->execute([
                 ':email' => $user['email'],
-                ':password' => $hashed_password,
+                ':password' => $hashed_password, // Store hashed password in the database
             ]);
 
             return true;
@@ -201,4 +213,6 @@ class UserRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
+
 }
