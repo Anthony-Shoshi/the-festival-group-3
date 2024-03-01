@@ -24,12 +24,12 @@ class PageRepository extends Repository
         }
     }
 
-    public function update(Page $page): bool
+    public function update(Page $page, $page_id): bool
     {
         try {
             $stmt = $this->connection->prepare("UPDATE pages SET title = :title, content = :content WHERE page_id = :page_id");
             $stmt->execute([
-                ':page_id' => $page->getPageId(),
+                ':page_id' => $page_id,
                 ':title' => $page->getTitle(),
                 ':content' => $page->getContent()
             ]);

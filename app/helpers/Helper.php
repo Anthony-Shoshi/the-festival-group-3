@@ -19,4 +19,11 @@ class Helper
 
         return $text . '-' . time();
     }
+
+    public static function niceVarDump($data) {
+        echo "<pre>";
+        var_dump($data);
+        echo "</pre>";
+        exit;
+    }
 }

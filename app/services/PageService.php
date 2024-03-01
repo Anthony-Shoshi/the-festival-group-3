@@ -24,10 +24,10 @@ class PageService
         }
     }
 
-    public function updatePage(Page $page): bool
+    public function updatePage(Page $page, $page_id): bool
     {
         try {
-            return $this->pageRepository->update($page);
+            return $this->pageRepository->update($page, $page_id);
         } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
