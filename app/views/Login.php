@@ -50,13 +50,9 @@
 
                 <a href="/login/signup" class="register-btn btn btn-lg btn-warning btn-login text-uppercase fw-bold mb-2">Don't have an account? Sign Up
                 </a>
-
-                <form class="register-form" action="/ForgotPassword/resetPassword" method="POST">
-                    <div>
-                        <button class="register-btn btn btn-lg btn-danger btn-login text-uppercase fw-bold mb-2" name="registerSubmit" type="submit">Forgot Password?
-                        </button>
-                    </div>
-                </form>
+                
+                <a href="/ForgotPassword/resetPassword" class="register-btn btn btn-lg btn-danger btn-login text-uppercase fw-bold mb-2">Forgot Password?
+                </a>
             </div>
         </div>
     </div>

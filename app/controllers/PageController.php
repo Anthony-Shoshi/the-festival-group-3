@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Helpers\Helper;
 use App\Models\Page;
 use App\Services\PageService;
 use Exception;
@@ -15,13 +16,22 @@ class PageController
         $this->pageService = new PageService();
     }
 
+    public function index()
+    {
+        try {
+            $pages = $this->pageService->getAllPages();
+            require_once __DIR__ . '/../views/backend/pages/index.php';
+        } catch (Exception $e) {
+            header("Location: /error?message=" . urlencode($e->getMessage()));
+            exit();
+        }
+    }
+
     public function create()
     {
         try {
-            // Assuming there's a view file to display the form for creating a new page
             require_once __DIR__ . '/../views/backend/pages/create.php';
         } catch (Exception $e) {
-            // Handle error appropriately, e.g., redirect to error page
             header("Location: /error?message=" . urlencode($e->getMessage()));
             exit();
         }
@@ -30,66 +40,60 @@ class PageController
     public function store()
     {
         try {
-            $page = new Page($_POST['title'], $_POST['content'], $_POST['slug']);
+            $slug = Helper::makeSlug($_POST['title']);
+            $page = new Page($_POST['title'], $_POST['content'], $slug);
             $this->pageService->createPage($page);
-            // Redirect to the index page or any other page as needed
-            header("Location: /pages");
+            $_SESSION['isError'] = 0;
+            $_SESSION['flash_message'] = "Page created successfully!";
+            header("Location: /page");
             exit();
         } catch (Exception $e) {
-            // Handle error appropriately, e.g., redirect to error page
             header("Location: /error?message=" . urlencode($e->getMessage()));
             exit();
         }
     }
 
-    public function edit(int $page_id)
+    public function edit()
     {
         try {
+            $page_id = $_GET['id'];
             $page = $this->pageService->getPageById($page_id);
-            // Assuming there's a view file to display the form for editing the page
             require_once __DIR__ . '/../views/backend/pages/edit.php';
         } catch (Exception $e) {
-            // Handle error appropriately, e.g., redirect to error page
             header("Location: /error?message=" . urlencode($e->getMessage()));
             exit();
         }
     }
 
-    public function update(int $page_id)
+    public function update()
     {
         try {
-            $page = new Page($_POST['title'], $_POST['content'], $_POST['slug'], $page_id);
+            $page_id = $_POST['page_id'];
+            $page = new Page($_POST['title'], $_POST['content'], $page_id);
+
+            // var_dump($page);
+            // exit;
+
             $this->pageService->updatePage($page);
-            // Redirect to the index page or any other page as needed
-            header("Location: /pages");
+            $_SESSION['isError'] = 0;
+            $_SESSION['flash_message'] = "Page updated successfully!";
+            header("Location: /page");
             exit();
         } catch (Exception $e) {
-            // Handle error appropriately, e.g., redirect to error page
             header("Location: /error?message=" . urlencode($e->getMessage()));
             exit();
         }
     }
 
-    public function delete(int $page_id)
+    public function delete()
     {
         try {
+            $page_id = $_GET['id'];
             $this->pageService->deletePage($page_id);
-            // Redirect to the index page or any other page as needed
-            header("Location: /pages");
+            $_SESSION['isError'] = 1;
+            $_SESSION['flash_message'] = "Page deleted successfully!";
+            header("Location: /page");
             exit();
-        } catch (Exception $e) {
-            // Handle error appropriately, e.g., redirect to error page
-            header("Location: /error?message=" . urlencode($e->getMessage()));
-            exit();
-        }
-    }
-
-    public function index()
-    {
-        try {
-            $pages = $this->pageService->getAllPages();
-            // Assuming there's a view file to display all pages
-            require_once __DIR__ . '/../views/backend/pages/index.php';
         } catch (Exception $e) {
             // Handle error appropriately, e.g., redirect to error page
             header("Location: /error?message=" . urlencode($e->getMessage()));

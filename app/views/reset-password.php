@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Password</title>
-    <style>    <?php include __DIR__ . '/../public/backend/css/style.css'; ?>
-    </style>
+    <link rel="stylesheet" href="/frontend/css/style.css">
 </head>
 <body>
 <div class="container">

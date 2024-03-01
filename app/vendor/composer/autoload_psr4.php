@@ -10,6 +10,7 @@ return array(
     'App\\Services\\' => array($baseDir . '/services'),
     'App\\Repositories\\' => array($baseDir . '/repositories'),
     'App\\Models\\' => array($baseDir . '/models'),
+    'App\\Helpers\\' => array($baseDir . '/helpers'),
     'App\\Controllers\\' => array($baseDir . '/controllers'),
     'App\\' => array($baseDir . '/'),
 );
