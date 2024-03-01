@@ -10,17 +10,19 @@
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/backend/css/style.css">
+    <!-- include summernote css/js -->    
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Navigation -->
     <?php
-        include __DIR__ . '/navbar.php';
+    include __DIR__ . '/navbar.php';
     ?>
 
     <!-- Sidebar -->
     <?php
-        include __DIR__ . '/sidebar.php';
+    include __DIR__ . '/sidebar.php';
     ?>
 
     <!-- Main content area -->

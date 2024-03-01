@@ -136,7 +136,7 @@ class LoginController
             header("Location: /login/signup");
             exit();
         } else {
-            require_once __DIR__ . '/../views/Signup.php';
+            require_once __DIR__ . '/../views/signup.php';
         }
     }
 }
