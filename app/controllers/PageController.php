@@ -69,12 +69,9 @@ class PageController
     {
         try {
             $page_id = $_POST['page_id'];
-            $page = new Page($_POST['title'], $_POST['content'], $page_id);
+            $page = new Page($_POST['title'], $_POST['content']);
 
-            // var_dump($page);
-            // exit;
-
-            $this->pageService->updatePage($page);
+            $this->pageService->updatePage($page, $page_id);
             $_SESSION['isError'] = 0;
             $_SESSION['flash_message'] = "Page updated successfully!";
             header("Location: /page");
