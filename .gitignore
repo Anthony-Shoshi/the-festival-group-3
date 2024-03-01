@@ -1,0 +1,12 @@
+# images
+app/public/backend/img
+app/public/frontend/img
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.ipr
+*.iws
+/.idea/
+/.idea/*
+.DS_Store
