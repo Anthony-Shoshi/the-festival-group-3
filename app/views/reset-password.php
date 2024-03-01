@@ -13,6 +13,9 @@
         <input type="email" name="email" placeholder="Enter your email address" required>
         <input type="submit" value="Reset Password">
     </form>
+    <?php if (!empty($error)) : ?>
+        <div class="error-message"><?php echo $error; ?></div>
+    <?php endif; ?>
 </div>
 </body>
 </html>
