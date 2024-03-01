@@ -1,11 +1,15 @@
 <?php
+
+namespace App\Controllers;
+use App\Services\UserService;
+
 class ForgotPasswordController
 {
     private UserService $userService;
 
-    public function __construct(UserService $userService)
+    public function __construct()
     {
-        $this->userService = $userService;
+        $this->userService = new UserService();
     }
 
     public function resetPassword()
@@ -31,43 +35,44 @@ class ForgotPasswordController
                 exit();
             }
         } else {
-            require_once __DIR__ . '/../views/ResetPassword.php';
+            require_once __DIR__ . '/../views/reset-password.php';
         }
     }
 
 
-    private function sendResetPasswordEmail($email, $reset_link): void
-    {
-        $user = $this->userService->getUserByEmail($email);
-        $name = $user['name'];
+    // private function sendResetPasswordEmail($email, $reset_link): void
+    // {
+    //     $user = $this->userService->getUserByEmail($email);
+    //     $name = $user['name'];
 
-        // Instantiate PHPMailer
-        $mail = new PHPMailer(true);
+    //     // Instantiate PHPMailer
+    //     $mail = new PHPMailer(true);
 
-        try {
-            // Server settings
-            $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';
-            $mail->SMTPAuth   = true;
-            $mail->Username   = 'thefestival918@gmail.com';
-            $mail->Password   = 'FesDival918';
-            $mail->SMTPSecure = 'tls';  //maybe ssl
-            $mail->Port       = 465;
+    //     try {
+    //         // Server settings
+    //         $mail->isSMTP();
+    //         $mail->Host       = 'smtp.gmail.com';
+    //         $mail->SMTPAuth   = true;
+    //         $mail->Username   = 'thefestival918@gmail.com';
+    //         $mail->Password   = 'FesDival918';
+    //         $mail->SMTPSecure = 'tls';  //maybe ssl
+    //         $mail->Port       = 465;
 
-            // Recipients
-            $mail->setFrom('your@example.com', 'Your Name');
-            $mail->addAddress($email, $name);
+    //         // Recipients
+    //         $mail->setFrom('your@example.com', 'Your Name');
+    //         $mail->addAddress($email, $name);
 
-            $mail->isHTML(true);
-            $mail->Subject = 'Password Reset Request';
-            $mail->Body    = "Dear $name,<br><br>Click the following link to reset your password: <a href='$reset_link'>$reset_link</a>";
+    //         $mail->isHTML(true);
+    //         $mail->Subject = 'Password Reset Request';
+    //         $mail->Body    = "Dear $name,<br><br>Click the following link to reset your password: <a href='$reset_link'>$reset_link</a>";
 
-            $mail->send();
-        } catch (Exception $e) {
-            throw new Exception("Error: " . $mail->ErrorInfo);
-        }
-    }
-    public function setNewPassword(){
+    //         $mail->send();
+    //     } catch (Exception $e) {
+    //         throw new Exception("Error: " . $mail->ErrorInfo);
+    //     }
+    // }
 
-    }
+    // public function setNewPassword(){
+
+    // }
 }

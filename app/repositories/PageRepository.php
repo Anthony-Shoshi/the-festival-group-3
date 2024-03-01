@@ -27,12 +27,11 @@ class PageRepository extends Repository
     public function update(Page $page): bool
     {
         try {
-            $stmt = $this->connection->prepare("UPDATE pages SET title = :title, content = :content, slug = :slug WHERE page_id = :page_id");
+            $stmt = $this->connection->prepare("UPDATE pages SET title = :title, content = :content WHERE page_id = :page_id");
             $stmt->execute([
                 ':page_id' => $page->getPageId(),
                 ':title' => $page->getTitle(),
-                ':content' => $page->getContent(),
-                ':slug' => $page->getSlug()
+                ':content' => $page->getContent()
             ]);
             return true;
         } catch (PDOException $e) {
@@ -71,19 +70,15 @@ class PageRepository extends Repository
         }
     }
 
-    public function getById(int $page_id): ?Page
+    public function getById(int $page_id)
     {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM pages WHERE page_id = :page_id");
-            $stmt->execute([':page_id' => $page_id]);
-            $pageData = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($pageData) {
-                return new Page(
-                    $pageData['title'],
-                    $pageData['content'],
-                    $pageData['slug'],
-                    $pageData['page_id']
-                );
+            $stmt->bindParam(':page_id', $page_id);
+            $stmt->execute();
+            $pageRow = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($stmt->rowCount() > 0) {
+                return $pageRow;
             }
             return null;
         } catch (PDOException $e) {
@@ -91,20 +86,12 @@ class PageRepository extends Repository
         }
     }
 
-    public function getAll(): array
+    public function getAll()
     {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM pages");
             $stmt->execute();
-            $pages = [];
-            while ($pageData = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $pages[] = new Page(
-                    $pageData['title'],
-                    $pageData['content'],
-                    $pageData['slug'],
-                    $pageData['page_id']
-                );
-            }
+            $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $pages;
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());

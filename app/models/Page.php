@@ -9,7 +9,7 @@ class Page
     private string $content;
     private string $slug;
 
-    public function __construct(string $title, string $content, string $slug, ?int $page_id = null)
+    public function __construct(string $title, string $content, ?string $slug, ?int $page_id = null)
     {
         $this->title = $title;
         $this->content = $content;

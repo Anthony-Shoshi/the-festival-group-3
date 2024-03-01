@@ -51,7 +51,7 @@ class PageService
         }
     }
 
-    public function getPageById(int $page_id): ?Page
+    public function getPageById(int $page_id)
     {
         try {
             return $this->pageRepository->getById($page_id);
@@ -60,7 +60,7 @@ class PageService
         }
     }
 
-    public function getAllPages(): array
+    public function getAllPages()
     {
         try {
             return $this->pageRepository->getAll();
