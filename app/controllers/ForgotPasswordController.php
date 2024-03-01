@@ -5,7 +5,6 @@ use App\services\UserService;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php';
 require_once __DIR__ . '/../vendor/PHPMailer-master/src/PHPMailer.php';
 require_once __DIR__ . '/../vendor/PHPMailer-master/src/Exception.php';
 require_once __DIR__ . '/../vendor/PHPMailer-master/src/SMTP.php';
@@ -36,7 +35,9 @@ class ForgotPasswordController
 
                 $this->sendResetPasswordEmail($email, $reset_link);
 
-                header("Location: /password-reset-sent");
+                require_once __DIR__ . '/../views/reset-password-sent.php';
+
+
                 exit();
             } else {
                 $error = "Invalid email address";
@@ -61,7 +62,7 @@ class ForgotPasswordController
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
             $mail->Username   = 'thefestival918@gmail.com';
-            $mail->Password   = 'FesDival918';
+            $mail->Password   = 'nvop yclv yukc dzww';
             $mail->SMTPSecure = 'ssl';  //maybe tls and 587
             $mail->Port       = 465;
 
@@ -74,7 +75,6 @@ class ForgotPasswordController
             $mail->Body    = "Dear $name,<br><br>Click the following link to reset your password: <a href='$reset_link'>$reset_link</a>";
 
             $mail->send();
-            echo 'Message has been sent';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
