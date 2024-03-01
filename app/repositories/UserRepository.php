@@ -189,30 +189,21 @@ class UserRepository extends Repository
         }
     }
 
-    public function resetPassword($user, $token)
+    public function resetPassword($email, $password)
     {
-        die($user['password']);
-
-
-        // Check if the token matches the one stored in the session
-        if ($token !== $_SESSION['password_reset_token']) {
-            throw new Exception("Invalid token.");
-        }
         try {
-            // Hash the new password
-            $hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
-            // Update the password in the database
             $stmt = $this->connection->prepare("UPDATE users SET password = :password WHERE email = :email");
             $stmt->execute([
-                ':email' => $user['email'],
-                ':password' => $hashed_password, // Store hashed password in the database
+                ':email' => $email,
+                ':password' => $password,
             ]);
+            unset($_SESSION['password_reset_token']);
+            unset($_SESSION['email']);
 
             return true;
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
-
 
 }

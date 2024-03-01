@@ -45,7 +45,7 @@ class LoginController
                 $_SESSION['flash_message'] = "Invalid username or password";
                 header("location: /login/login");
                 exit();
-            }            
+            }
         } else {
             require_once __DIR__ . '/../views/login.php';
         }

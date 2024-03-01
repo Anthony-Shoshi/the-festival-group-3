@@ -126,13 +126,21 @@ class UserService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
-    public function resetPassword($user, $token)
+    public function resetPassword($email, $password, $token)
     {
+        if ($token !== $_SESSION['password_reset_token']) {
+            throw new Exception("Invalid token.");
+        }
         try {
-            return $this->userRepository->resetPassword($user, $token);
-        } catch (Exception $e) {
+            $result = $this->userRepository->resetPassword($email, $password); // Remove $token parameter
+            unset($_SESSION['password_reset_token']);
+            unset($_SESSION['email']);
+
+            return true;
+        } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
 
 }
