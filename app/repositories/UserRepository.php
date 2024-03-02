@@ -177,10 +177,8 @@ class UserRepository extends Repository
             $stmt->execute();
             $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($stmt->rowCount() > 0) {
-               // var_dump($userRow); die("here");
-                return $userRow;
-
+            if ($userRow !== false) {
+                return $userRow; // Return the user details array
             }
 
             return null;
@@ -188,6 +186,8 @@ class UserRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
+
 
     public function resetPassword($email, $password)
     {

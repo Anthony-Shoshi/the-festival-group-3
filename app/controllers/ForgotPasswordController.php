@@ -23,27 +23,26 @@ class ForgotPasswordController
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'])) {
             $email = $_POST['email'];
-            $user = $this->forgotPasswordService->getUserByEmail($email);
+            $userExists = $this->forgotPasswordService->getUserByEmail($email);
 
-            if ($user !== false) {
+            if ($userExists) {
                 $token = bin2hex(random_bytes(32));
                 $_SESSION['password_reset_token'] = $token;
                 $_SESSION['email'] = $email;
 
                 $reset_link = "http://localhost/ForgotPassword/setNewPassword?token=$token";
                 $this->sendResetPasswordEmail($email, $reset_link);
-
+            } else {
                 require_once __DIR__ . '/../views/reset-password-sent.php';
                 exit();
-            } else {
-                $error = "Invalid email address";
             }
+            require_once __DIR__ . '/../views/reset-password-sent.php';
+            exit();
         }
         require_once __DIR__ . '/../views/reset-password.php';
     }
 
-
-    private function sendResetPasswordEmail($email, $reset_link): void
+    private function sendResetPasswordEmail($email, $reset_link): bool
     {
         $user = $this->forgotPasswordService->getUserByEmail($email);
         $name = $user['name'];
@@ -69,8 +68,11 @@ class ForgotPasswordController
             $mail->Body = "Dear $name,<br><br>Click the following link to reset your password: <a href='$reset_link'>$reset_link</a>";
 
             $mail->send();
+
+            return true;    
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            return false;
         }
     }
 
