@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Set New Password</title>
     <style>
-        <?php include __DIR__ . '/../public/frontend/css/style.css'; ?>
+        <?php include __DIR__ . '/../../public/frontend/css/style.css'; ?>
     </style>
 </head>
 <body class="password-body">
@@ -18,8 +18,12 @@
         <input type="password" id="password" name="password" required><br>
         <label for="confirmPassword">Confirm Password:</label>
         <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+        <span id="passwordMismatchMessage" class="password-mismatch-message"></span>
 
-        <button type="submit">Submit</button>
+        <div class="button-container">
+            <button type="submit">Submit</button>
+        </div>
+
     </form>
 </div>
 </body>
@@ -28,10 +32,13 @@
     document.getElementById('resetPasswordForm').addEventListener('submit', function(event) {
         var password = document.getElementById('password').value;
         var confirmPassword = document.getElementById('confirmPassword').value;
+        var passwordMismatchMessage = document.getElementById('passwordMismatchMessage');
 
         if (password !== confirmPassword) {
-            alert('Passwords do not match');
+            passwordMismatchMessage.textContent = 'Error: Passwords do not match';
             event.preventDefault();
+        } else {
+            passwordMismatchMessage.textContent = '';
         }
     });
 </script>

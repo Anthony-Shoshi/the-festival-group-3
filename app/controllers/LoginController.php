@@ -47,7 +47,7 @@ class LoginController
                 exit();
             }
         } else {
-            require_once __DIR__ . '/../views/login.php';
+            require_once __DIR__ . '/../views/auth/login.php';
         }
     }
 
@@ -80,7 +80,7 @@ class LoginController
                 exit();
             }
         }
-        require __DIR__ . '/../views/signup.php';
+        require __DIR__ . '/../views/auth/signup.php';
     }
 
     private function registerUser(): void
@@ -118,7 +118,7 @@ class LoginController
             header("Location: /login/signup");
             exit();
         } else {
-            require_once __DIR__ . '/../views/signup.php';
+            require_once __DIR__ . '/../views/auth/signup.php';
         }
     }
 }

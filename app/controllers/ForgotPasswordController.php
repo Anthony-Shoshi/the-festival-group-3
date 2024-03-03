@@ -39,7 +39,7 @@ class ForgotPasswordController
             require_once __DIR__ . '/../views/reset-password-sent.php';
             exit();
         }
-        require_once __DIR__ . '/../views/reset-password.php';
+        require_once __DIR__ . '/../views/auth/reset-password.php';
     }
 
     private function sendResetPasswordEmail($email, $reset_link): bool
@@ -94,6 +94,6 @@ class ForgotPasswordController
                 exit();
             }
         }
-        require_once __DIR__ . '/../views/set-new-password.php';
+        require_once __DIR__ . '/../views/auth/set-new-password.php';
     }
 }
