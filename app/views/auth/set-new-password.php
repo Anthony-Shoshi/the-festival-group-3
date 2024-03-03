@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Set New Password</title>
+    <link rel="icon" type="image/x-icon" href="/backend/img/fav.png">
     <style>
         <?php include __DIR__ . '/../../public/frontend/css/style.css'; ?>
     </style>
