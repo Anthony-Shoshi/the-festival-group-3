@@ -53,6 +53,8 @@ class UserService
         $image = $newUser['profile_picture'];
         if(!empty($image['name'])){
             $newUser['profile_picture'] = $this->handleUserImage($image);
+        }else{
+            $newUser['profile_picture'] = DEFAULT_PROFILE_PICTURE;
         }
         return $this->userRepository->registerUser($newUser);
     }
@@ -62,7 +64,7 @@ class UserService
     }
     public function captchaVerification(&$systemMessage)
     {
-        $secret = "6LcaqH4pAAAAAIRxLN3RBK8YokHaweiW72FObc4I";
+        $secret = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe";
         $response = $_POST['g-recaptcha-response'];
         $remoteip = $_SERVER['REMOTE_ADDR'];
         $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip";

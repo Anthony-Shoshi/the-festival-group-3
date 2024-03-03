@@ -7,9 +7,9 @@ class Page
     private ?int $page_id;
     private string $title;
     private string $content;
-    private string $slug;
+    private ?string $slug;
 
-    public function __construct(string $title, string $content, ?string $slug, ?int $page_id = null)
+    public function __construct(string $title, string $content, ?string $slug = null, ?int $page_id = null)
     {
         $this->title = $title;
         $this->content = $content;
@@ -32,7 +32,7 @@ class Page
         return $this->content;
     }
 
-    public function getSlug(): string
+    public function getSlug(): ?string
     {
         return $this->slug;
     }
