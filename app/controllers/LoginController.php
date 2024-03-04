@@ -45,9 +45,9 @@ class LoginController
                 $_SESSION['flash_message'] = "Invalid username or password";
                 header("location: /login/login");
                 exit();
-            }            
+            }
         } else {
-            require_once __DIR__ . '/../views/login.php';
+            require_once __DIR__ . '/../views/frontend/auth/login.php';
         }
     }
 
@@ -80,13 +80,21 @@ class LoginController
                 exit();
             }
         }
-        require __DIR__ . '/../views/signup.php';
+        require __DIR__ . '/../views/frontend/auth/signup.php';
     }
 
     private function registerUser(): void
     {
-        if ($this->loginService->checkIfUserExists(htmlspecialchars($_POST['email']))) {
+        if (!$this->loginService->isValidEmail(htmlspecialchars($_POST['email']))) {
+            $_SESSION['flash_message'] = "Invalid email";
+            header("Location: /login/signup");
+            exit();
+        } else if ($this->loginService->checkIfUserExists(htmlspecialchars($_POST['email']))) {
             $_SESSION['flash_message'] = "User already exists";
+            header("Location: /login/signup");
+            exit();
+        } elseif (!$this->loginService->isStrongPassword(htmlspecialchars($_POST['password']))) {
+            $_SESSION['flash_message'] = "Password is weak. It should contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character.";
             header("Location: /login/signup");
             exit();
         } elseif ($_POST['password'] != $_POST['confirm_password']) {
@@ -109,16 +117,18 @@ class LoginController
             } else if (empty($_POST['password'])) {
                 $_SESSION['flash_message'] = "Password is required";
             } else {
-                //                if($this->loginService->captchaVerification($errormessage)) {
-                $this->registerUser();
-                //                else{
-                //                    $errormessage = "Captcha verification failed";
-                //                }
+                if ($this->loginService->captchaVerification($errormessage)) {
+                    $this->registerUser();
+                }
+                else{
+                        $errormessage = "Captcha verification failed";
+                    }
+                }
+                header("Location: /login/signup");
+                exit();
             }
-            header("Location: /login/signup");
-            exit();
-        } else {
-            require_once __DIR__ . '/../views/signup.php';
+        else {
+                require_once __DIR__ . '/../views/frontend/auth/signup.php';
+            }
         }
     }
-}
