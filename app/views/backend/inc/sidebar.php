@@ -17,4 +17,10 @@
             <li class="menu-item text-white menu-hover" data-url="/page"><i class="fas fa-pager text-white"></i> Pages</li>
         </a>
     </ul>
+    <h5 class="sidebar-heading">History Management</h5>
+    <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/history">
+            <li class="menu-item text-white menu-hover" data-url="/history"><i class="fas fa-history text-white"></i> History</li>
+        </a>
+    </ul>
 </div>
