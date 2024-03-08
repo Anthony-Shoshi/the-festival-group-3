@@ -37,4 +37,12 @@ class ArtistService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function storeArtist(Artist $artist)
+    {
+        try {
+            return $this->artistRepository->storeArtist($artist);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }

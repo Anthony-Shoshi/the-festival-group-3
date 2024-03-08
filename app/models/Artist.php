@@ -4,7 +4,7 @@ namespace App\Models;
 class Artist
 {
 
-    public int $artist_id;
+    public ?int $artist_id;
     public string $artist_name;
     public string $age;
     public string $nationality;
@@ -12,7 +12,7 @@ class Artist
     public string $about;
     public string $image_url;
 
-    public function __construct(int $artist_id, string $artist_name, string $age, string $nationality, string $genre, string $about, string $image_url)
+    public function __construct(?int $artist_id, string $artist_name, string $age, string $nationality, string $genre, string $about, string $image_url)
     {
         $this->artist_id = $artist_id;
         $this->artist_name = $artist_name;

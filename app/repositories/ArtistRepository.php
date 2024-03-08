@@ -55,4 +55,22 @@ class ArtistRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function storeArtist(Artist $artist)
+    {
+        try {
+            $stmt = $this->connection->prepare("INSERT INTO artists (artist_name, age, nationality, genre, about, image_url) VALUES (:artist_name, :age, :nationality, :genre, :about, :image_url)");
+            $stmt->execute([
+                ':artist_name' => $artist->getArtist_name(),
+                ':age' => $artist->getAge(),
+                ':nationality' => $artist->getNationality(),
+                ':genre' => $artist->getGenre(),
+                ':about' => $artist->getAbout(),
+                ':image_url' => $artist->getImage_url(),
+
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }

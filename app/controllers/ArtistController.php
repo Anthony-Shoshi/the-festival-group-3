@@ -27,17 +27,59 @@ class ArtistController
     }
     public function create()
     {
-        require 'app/views/backend/artists/create.php';
-    }
+        try {
+            require_once __DIR__ . '/../views/backend/artists/create.php';
+        } catch (Exception $e) {
+            header("Location: /error?message=" . urlencode($e->getMessage()));
+            exit();
+        }    }
 
     public function store()
     {
-        $artist = new Artist();
-        $artist->name = $_POST['name'];
-        $artist->description = $_POST['description'];
-        $artist->save();
-        header('Location: /admin/artists');
+        try {
+            $imageUrl = null;
+
+            if (isset($_FILES['image_url']) && $_FILES['image_url']['error'] === UPLOAD_ERR_OK) {
+                $file = $_FILES['image_url'];
+                $fileName = $file['name'];
+                $newFileName = uniqid('', true) . '_' . $fileName;
+                $uploadFile = __DIR__ . '/../public/images/' . $newFileName;
+
+                $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
+                $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+
+                if (!in_array($imageFileType, $allowedExtensions)) {
+                    throw new Exception('Invalid file format. Please upload a valid image file.');
+                }
+
+                if (!move_uploaded_file($file['tmp_name'], $uploadFile)) {
+                    throw new Exception('Failed to upload image.');
+                }
+
+                $imageUrl = $newFileName;
+            }
+
+            // Create a new Artist object with appropriate arguments
+            $artist = new Artist(
+                null, // Pass null for artist_id as it's auto-incremented
+                $_POST['name'],
+                $_POST['age'],
+                $_POST['nationality'],
+                $_POST['genre'],
+                $_POST['about'],
+                $imageUrl
+            );
+
+            $this->artistService->storeArtist($artist);
+
+            header("Location: /artist");
+            exit();
+        } catch (Exception $e) {
+            header("Location: /error?message=" . urlencode($e->getMessage()));
+            exit();
+        }
     }
+
 
     public function edit()
     {
@@ -55,9 +97,7 @@ class ArtistController
     {
         try {
             $artist_id = $_POST['artist_id'];
-            $image_url = null;
 
-            // Check if a new image is uploaded
             if (isset($_FILES['image_url']) && $_FILES['image_url']['error'] === UPLOAD_ERR_OK) {
                 // Process image upload
                 $newFileName = uniqid('', true) . '_' . $_FILES['image_url']['name'];
@@ -79,7 +119,6 @@ class ArtistController
                 $image_url = $artist['image_url'];
             }
 
-            // Create a new Artist object
             $artist = new Artist(
                 (int)$_POST['artist_id'],
                 $_POST['name'],
