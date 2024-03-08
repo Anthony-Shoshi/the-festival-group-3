@@ -176,29 +176,34 @@ class UserRepository extends Repository
             $stmt->bindParam(':email', $email);
             $stmt->execute();
             $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($stmt->rowCount() > 0) {
-                return $userRow;
+
+            if ($userRow !== false) {
+                return $userRow; // Return the user details array
             }
+
             return null;
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
 
-    public function resetPassword($user)
+
+
+    public function resetPassword($email, $password)
     {
         try {
-            $hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
-
             $stmt = $this->connection->prepare("UPDATE users SET password = :password WHERE email = :email");
             $stmt->execute([
-                ':email' => $user['email'],
-                ':password' => $hashed_password,
+                ':email' => $email,
+                ':password' => $password,
             ]);
+            unset($_SESSION['password_reset_token']);
+            unset($_SESSION['email']);
 
             return true;
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
 }

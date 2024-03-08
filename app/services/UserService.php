@@ -138,14 +138,24 @@ class UserService
         }
     }
 
-    public function resetPassword($user)
+
+    public function resetPassword($email, $password, $token)
+
     {
+        if ($token !== $_SESSION['password_reset_token']) {
+            throw new Exception("Invalid token.");
+        }
         try {
-            return $this->userRepository->resetPassword($user);
-        } catch (Exception $e) {
+            $result = $this->userRepository->resetPassword($email, $password); // Remove $token parameter
+            unset($_SESSION['password_reset_token']);
+            unset($_SESSION['email']);
+
+            return true;
+        } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
 
     public function isValidEmail($email): bool
     {
@@ -158,4 +168,5 @@ class UserService
         $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/';
         return preg_match($pattern, $password);
     }
+
 }

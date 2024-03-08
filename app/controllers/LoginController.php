@@ -80,7 +80,7 @@ class LoginController
                 exit();
             }
         }
-        require __DIR__ . '/../views/frontend/auth/signup.php';
+        require __DIR__ . '/../views/auth/signup.php';
     }
 
     private function registerUser(): void
@@ -119,16 +119,16 @@ class LoginController
             } else {
                 if ($this->loginService->captchaVerification($errormessage)) {
                     $this->registerUser();
+                } else {
+                    $errormessage = "Captcha verification failed";
                 }
-                else{
-                        $errormessage = "Captcha verification failed";
-                    }
-                }
-                header("Location: /login/signup");
-                exit();
             }
-        else {
-                require_once __DIR__ . '/../views/frontend/auth/signup.php';
-            }
+            header("Location: /login/signup");
+            exit();
+        } else {
+            require_once __DIR__ . '/../views/frontend/auth/signup.php';
         }
+        header("Location: /login/signup");
+        exit();
     }
+}
