@@ -1,2 +1,4 @@
 <?php
-const DEFAULT_PROFILE_PICTURE = 'download-5.jpeg';
+namespace App\Utils;
+
+define('DEFAULT_PROFILE_PICTURE', 'download-5.jpeg');
