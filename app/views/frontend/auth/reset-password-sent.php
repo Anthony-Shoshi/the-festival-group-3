@@ -6,7 +6,7 @@
     <title>Email Sent</title>
     <link rel="icon" type="image/x-icon" href="/backend/img/fav.png">
     <style>
-        <?php include __DIR__ . '/../public/frontend/css/style.css'; ?>
+        <?php include __DIR__ . '/../../../public/frontend/css/style.css'; ?>
 
     </style>
 </head>

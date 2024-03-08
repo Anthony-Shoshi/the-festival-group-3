@@ -34,13 +34,13 @@ class ForgotPasswordController
                 $mailConfig = require_once __DIR__ . '/../config/mail.php';
                 $this->sendResetPasswordEmail($email, $reset_link, $mailConfig);
             } else {
-                require_once __DIR__ . '/../views/reset-password-sent.php';
+                require_once __DIR__ . '/../views/frontend/auth/reset-password-sent.php';
                 exit();
             }
-            require_once __DIR__ . '/../views/reset-password-sent.php';
+            require_once __DIR__ . '/../views/frontend/auth/reset-password-sent.php';
             exit();
         }
-        require_once __DIR__ . '/../views/auth/reset-password.php';
+        require_once __DIR__ . '/../views/frontend/auth/reset-password.php';
     }
 
     private function sendResetPasswordEmail($email, $reset_link, $mailConfig): bool
@@ -95,6 +95,7 @@ class ForgotPasswordController
                 exit();
             }
         }
-        require_once __DIR__ . '/../views/auth/set-new-password.php';
+        require_once __DIR__ . '/../views/frontend/auth/set-new-password.php';
+
     }
 }
