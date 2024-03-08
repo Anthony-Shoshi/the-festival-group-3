@@ -15,9 +15,10 @@
     <h1>Reset Password</h1>
     <form action="#" method="post">
         <input type="email" name="email" placeholder="Enter your email address" required>
-        <input type="submit" value="Reset Password">
+        <input type="submit" value="Send Email">
+        <a href="/login/login" class="back-to-login-pass">Back to Login Page</a>
+
     </form>
 </div>
 </body>
 </html>
-
