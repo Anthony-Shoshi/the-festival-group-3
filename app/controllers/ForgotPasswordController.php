@@ -33,13 +33,13 @@ class ForgotPasswordController
                 $reset_link = "http://localhost/ForgotPassword/setNewPassword?token=$token";
                 $this->sendResetPasswordEmail($email, $reset_link);
             } else {
-                require_once __DIR__ . '/../views/reset-password-sent.php';
+                require_once __DIR__ . '/../views/frontend/auth/reset-password-sent.php';
                 exit();
             }
-            require_once __DIR__ . '/../views/reset-password-sent.php';
+            require_once __DIR__ . '/../views/frontend/auth/reset-password-sent.php';
             exit();
         }
-        require_once __DIR__ . '/../views/auth/reset-password.php';
+        require_once __DIR__ . '/../views/frontend/auth/reset-password.php';
     }
 
     private function sendResetPasswordEmail($email, $reset_link): bool
@@ -94,6 +94,6 @@ class ForgotPasswordController
                 exit();
             }
         }
-        require_once __DIR__ . '/../views/auth/set-new-password.php';
+        require_once __DIR__ . '/../views/frontend/auth/set-new-password.php';
     }
 }
