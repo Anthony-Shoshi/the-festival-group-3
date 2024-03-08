@@ -59,6 +59,7 @@ class ArtistController
 
             // Check if a new image is uploaded
             if (isset($_FILES['image_url']) && $_FILES['image_url']['error'] === UPLOAD_ERR_OK) {
+                // Process image upload
                 $newFileName = uniqid('', true) . '_' . $_FILES['image_url']['name'];
                 $uploadFile = __DIR__ . '/../public/images/' . $newFileName;
 
@@ -73,10 +74,14 @@ class ArtistController
                 }
 
                 $image_url = $newFileName;
+            } else {
+                $artist = $this->artistService->getArtistsById($artist_id);
+                $image_url = $artist['image_url'];
             }
 
             // Create a new Artist object
-            $artist = new Artist( // Modify this line to use the correct namespace
+            $artist = new Artist(
+                (int)$_POST['artist_id'],
                 $_POST['name'],
                 $_POST['age'],
                 $_POST['nationality'],
@@ -85,8 +90,7 @@ class ArtistController
                 $image_url
             );
 
-            // Update the artist
-            $this->artistService->updateArtist($artist, $artist_id); // Modify this line to use the correct method
+            $this->artistService->updateArtist($artist, $artist_id);
 
             $_SESSION['isError'] = 0;
             $_SESSION['flash_message'] = "Artist updated successfully!";
@@ -97,6 +101,5 @@ class ArtistController
             exit();
         }
     }
-
 
 }

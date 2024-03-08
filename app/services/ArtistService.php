@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Models\Page;
+use App\Models\Artist;
 use App\Repositories\ArtistRepository;
 use Exception;
 class ArtistService
