@@ -5,7 +5,7 @@ include __DIR__ . '/../inc/header.php';
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
             <h1>Venue List</h1>
-            <a href="/venue/create" class="btn btn-success">Add Venues</a>
+            <a href="/venue/create" class="btn btn-success">Add Venue</a>
         </div>
         <div class="table-responsive mt-4">
             <table class="table table-striped table-hover">
@@ -22,7 +22,7 @@ include __DIR__ . '/../inc/header.php';
                 <?php foreach ($venues as $venue) : ?>
                     <tr>
                         <td><?= $venue['venue_id'] ?></td>
-                        <td><img src="<?= '/images/' .  $venue['venue_image'] ?>" alt="<?= $venue['artist_name'] ?>" style="width: 100px;"></td>
+                        <td><img src="<?= '/images/' .  $venue['venue_image'] ?>" alt="<?= $venue['venue_name'] ?>" style="width: 100px;"></td>
                             <td><?= $venue['venue_name'] ?></td>
                         <td><?= $venue['venue_location'] ?></td>
                         <td><?= $venue['capacity'] ?></td>

@@ -7,6 +7,7 @@ use Exception;
 
 class VenueService {
 
+    private VenueRepository $venueRepository;
     public function __construct()
     {
         $this->venueRepository = new VenueRepository();

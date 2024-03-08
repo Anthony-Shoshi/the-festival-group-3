@@ -12,10 +12,10 @@ class VenueRepository extends Repository{
     public function getAll()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM dance_venues)");
+            $stmt = $this->connection->prepare("SELECT * FROM dance_venues");
             $stmt->execute();
-            $artists = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $artists;
+            $venues = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $venues;
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
