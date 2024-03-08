@@ -140,5 +140,18 @@ class ArtistController
             exit();
         }
     }
+    public function delete()
+    {
+        $artistId = $_GET['id'];
+        if (isset($artistId) && $artistId > 0) {
+            $artist = $this->artistService->getArtistsById($artistId);
+            $this->artistService->deleteArtist($artistId);
+            header("Location: /artist");
+            exit();
+        } else {
+            header("Location: /error?message=something went wrong with this user data!");
+            exit();
+        }
+    }
 
 }

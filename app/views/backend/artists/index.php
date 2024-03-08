@@ -45,7 +45,7 @@ include __DIR__ . '/../inc/header.php';
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <a href="/user/delete?id=<?= $artist['artist_id'] ?>" class="btn btn-danger">Delete</a>
+                                            <a href="/artist/delete?id=<?= $artist['artist_id'] ?>" class="btn btn-danger">Delete</a>
                                         </div>
                                     </div>
                                 </div>

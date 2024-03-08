@@ -72,5 +72,17 @@ class ArtistRepository extends Repository
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
+
+    }
+    public function deleteArtist($artist_id)
+    {
+        try {
+            $stmt = $this->connection->prepare("DELETE FROM artists WHERE artist_id = :artist_id");
+            $stmt->bindParam(':artist_id', $artist_id);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
     }
 }

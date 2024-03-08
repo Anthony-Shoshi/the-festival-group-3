@@ -45,4 +45,12 @@ class ArtistService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function deleteArtist($artist_id)
+    {
+        try {
+            return $this->artistRepository->deleteArtist($artist_id);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }
