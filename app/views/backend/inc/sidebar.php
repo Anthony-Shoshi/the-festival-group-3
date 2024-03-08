@@ -17,4 +17,10 @@
             <li class="menu-item text-white menu-hover" data-url="/page"><i class="fas fa-pager text-white"></i> Pages</li>
         </a>
     </ul>
+    <h5 class="sidebar-heading">Artist Management</h5>
+    <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/artist">
+            <li class="menu-item text-white menu-hover" data-url="/artist"> <i class="fas fa-compact-disc text-white"></i></i> Artists</li>
+        </a>
+    </ul>
 </div>

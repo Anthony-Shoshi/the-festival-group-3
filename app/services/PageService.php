@@ -24,6 +24,7 @@ class PageService
         }
     }
 
+
     public function updatePage(Page $page, $page_id): bool
     {
         try {
