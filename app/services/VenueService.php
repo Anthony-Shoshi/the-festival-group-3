@@ -1,0 +1,31 @@
+<?php
+namespace App\Services;
+
+use App\Models\Venue;
+use App\Repositories\VenueRepository;
+use Exception;
+
+class VenueService {
+
+    private VenueRepository $venueRepository;
+    public function __construct()
+    {
+        $this->venueRepository = new VenueRepository();
+    }
+    public function getAllVenues()
+    {
+        try {
+            return $this->venueRepository->getAll();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getVenuesById(int $venue_id)
+    {
+        try {
+            return $this->venueRepository->getVenuesById($venue_id);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+}

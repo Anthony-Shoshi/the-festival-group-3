@@ -23,4 +23,10 @@
             <li class="menu-item text-white menu-hover" data-url="/artist"> <i class="fas fa-compact-disc text-white"></i></i> Artists</li>
         </a>
     </ul>
+    <h5 class="sidebar-heading">Venue Management</h5>
+    <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/venue">
+            <li class="menu-item text-white menu-hover" data-url="/venue"> <i class="fas fa-building text-white"></i></i> Venues</li>
+        </a>
+    </ul>
 </div>
