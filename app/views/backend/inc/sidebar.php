@@ -17,16 +17,21 @@
             <li class="menu-item text-white menu-hover" data-url="/page"><i class="fas fa-pager text-white"></i> Pages</li>
         </a>
     </ul>
-    <h5 class="sidebar-heading">Artist Management</h5>
+    <h5 class="sidebar-heading">Dance Management</h5>
+    <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/dancecrud">
+            <li class="menu-item text-white menu-hover" data-url="/dancecrud"> <i class="fas fa-music text-white"></i></i> Dance Event</li>
+        </a>
+    </ul>
     <ul class="sidebar-menu">
         <a class="text-decoration-none" href="/artist">
             <li class="menu-item text-white menu-hover" data-url="/artist"> <i class="fas fa-compact-disc text-white"></i></i> Artists</li>
         </a>
     </ul>
-    <h5 class="sidebar-heading">Venue Management</h5>
     <ul class="sidebar-menu">
         <a class="text-decoration-none" href="/venue">
             <li class="menu-item text-white menu-hover" data-url="/venue"> <i class="fas fa-building text-white"></i></i> Venues</li>
         </a>
     </ul>
+
 </div>

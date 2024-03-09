@@ -8,4 +8,8 @@ B
 D
 app/public/index.php,d/f/df187f96b153386aefda0ec4775d5524cf695467
 D
-app/views/index.html,c/c/ccff3d7628a78e56a3e3c947b9698f10f80f2cf8
+app/views/index.html,c\c\ccff3d7628a78e56a3e3c947b9698f10f80f2cf8
+Q
+!app/views/backend/inc/sidebar.php,3\b\3ba110aa957d1e5c61303a9a5b9332e30932aba0
+Q
+!app/views/frontend/auth/login.php,b\6\b6b239b3f38671bbcbbf81915bdaeffd297729ce
