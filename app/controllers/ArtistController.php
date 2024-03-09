@@ -59,9 +59,8 @@ class ArtistController
                 $imageUrl = $newFileName;
             }
 
-            // Create a new Artist object with appropriate arguments
             $artist = new Artist(
-                null, // Pass null for artist_id as it's auto-incremented
+                null,
                 $_POST['name'],
                 $_POST['age'],
                 $_POST['nationality'],

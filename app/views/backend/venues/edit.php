@@ -10,7 +10,7 @@
                        required>
             </div>
             <div class="mb-3">
-                <label for="location" class="form-label">Age</label>
+                <label for="location" class="form-label">Location</label>
                 <input type="text" class="form-control" id="location" name="location" value="<?= $venue['venue_location'] ?>"
                        required>
             </div>
@@ -24,7 +24,7 @@
                 <input type="file" class="form-control" id="venue_image" name="venue_image">
                 <img src="<?= '/images/' . $venue['venue_image'] ?>" class="mt-2" width="100" height="100" alt="Venue Image">
             </div>
-            <input type="hidden" name="artist_id" value="<?= $venue['venue_id'] ?>">
+            <input type="hidden" name="venue_id" value="<?= $venue['venue_id'] ?>">
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>

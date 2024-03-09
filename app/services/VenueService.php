@@ -28,4 +28,20 @@ class VenueService {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function updateVenue(Venue $venue, $venue_id): bool
+    {
+        try {
+            return $this->venueRepository->update($venue, $venue_id);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function storeVenue(Venue $venue)
+    {
+        try {
+            return $this->venueRepository->storeVenue($venue);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }

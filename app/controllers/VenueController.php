@@ -7,7 +7,8 @@ use App\Models\Venue;
 use App\Services\VenueService;
 use Exception;
 
-class VenueController{
+class VenueController
+{
 
     private VenueService $venueService;
 
@@ -15,6 +16,7 @@ class VenueController{
     {
         $this->venueService = new VenueService();
     }
+
     public function index()
     {
         try {
@@ -25,6 +27,7 @@ class VenueController{
             exit();
         }
     }
+
     public function create()
     {
         try {
@@ -32,13 +35,12 @@ class VenueController{
         } catch (Exception $e) {
             header("Location: /error?message=" . urlencode($e->getMessage()));
             exit();
-        }    }
+        }
+    }
 
     public function store()
     {
         try {
-            $imageUrl = null;
-
             if (isset($_FILES['image_url']) && $_FILES['image_url']['error'] === UPLOAD_ERR_OK) {
                 $file = $_FILES['image_url'];
                 $fileName = $file['name'];
@@ -68,6 +70,7 @@ class VenueController{
             exit();
         }
     }
+
     public function edit()
     {
         try {
@@ -79,4 +82,58 @@ class VenueController{
             exit();
         }
     }
+
+    public function update()
+    {
+        try {
+            $venue_id = $_POST['venue_id'];
+
+            $venue = $this->venueService->getVenuesById($venue_id);
+
+            if (!$venue) {
+                throw new Exception('Venue not found.');
+            }
+
+            $image_url = $venue['venue_image'];
+
+            if (isset($_FILES['venue_image']) && $_FILES['venue_image']['error'] === UPLOAD_ERR_OK) {
+                // Process image upload
+                $newFileName = uniqid('', true) . '_' . $_FILES['venue_image']['name'];
+                $uploadFile = __DIR__ . '/../public/images/' . $newFileName;
+
+                $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
+                $allowedExtensions = ['jpg', 'jpeg', 'png'];
+                if (!in_array($imageFileType, $allowedExtensions)) {
+                    throw new Exception('Invalid file format. Please upload a valid image file.');
+                }
+
+                if (!move_uploaded_file($_FILES['venue_image']['tmp_name'], $uploadFile)) {
+                    throw new Exception('Failed to upload image.');
+                }
+
+                $image_url = $newFileName;
+            }
+
+            $venue = new Venue(
+                $venue_id,
+                $_POST['name'],
+                $_POST['location'],
+                $_POST['capacity'],
+                $image_url
+            );
+
+            $this->venueService->updateVenue($venue, $venue_id);
+
+            $_SESSION['isError'] = 0;
+            $_SESSION['flash_message'] = "Venue updated successfully!";
+            header("Location: /venue");
+            exit();
+        } catch (Exception $e) {
+            header("Location: /error?message=" . urlencode($e->getMessage()));
+            exit();
+        }
+    }
+
+
+
 }
