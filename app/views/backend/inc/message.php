@@ -1,4 +1,4 @@
-<?php if (!$_SESSION['isError']) { ?>
+<?php if (isset($_SESSION['isError']) && !$_SESSION['isError']) { ?>
 
     <div>
         <?php if (isset($_SESSION['flash_message'])) : ?>           

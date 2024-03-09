@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 $(document).ready(function () {
-    $('#summernote').summernote({
+    $('.summernote').summernote({
         placeholder: 'Enter your content . . .',
         height: 200,
         fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana'],
@@ -31,7 +31,7 @@ $(document).ready(function () {
         ]
     });
 });
-// script.js
-// script.js
+
+
 
 

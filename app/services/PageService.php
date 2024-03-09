@@ -15,7 +15,7 @@ class PageService
         $this->pageRepository = new PageRepository();
     }
 
-    public function createPage(Page $page): bool
+    public function createPage(Page $page): int
     {
         try {
             return $this->pageRepository->create($page);
