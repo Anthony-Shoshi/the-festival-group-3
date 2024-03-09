@@ -5,11 +5,13 @@ namespace App\Services;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Exception;
-use PDOException;
+use PDO;
+require_once __DIR__ . '/../utils/const.php';
 
 class UserService
 {
     private UserRepository $userRepository;
+
     public function __construct()
     {
         $this->userRepository = new UserRepository();
@@ -23,6 +25,7 @@ class UserService
         }
         return null;
     }
+
     public function hashPassword($password): string
     {
         return password_hash($password, PASSWORD_BCRYPT);
@@ -52,17 +55,19 @@ class UserService
         $plainPassword = $newUser['password'];
         $newUser['password'] = $this->hashPassword($plainPassword);
         $image = $newUser['profile_picture'];
-        if(!empty($image['name'])){
+        if (!empty($image['name'])) {
             $newUser['profile_picture'] = $this->handleUserImage($image);
-        }else{
+        } else {
             $newUser['profile_picture'] = DEFAULT_PROFILE_PICTURE;
         }
         return $this->userRepository->registerUser($newUser);
     }
+
     public function checkIfUserExists($email)
     {
         return $this->userRepository->checkUserExistenceByEmail($email);
     }
+
     public function captchaVerification(&$systemMessage)
     {
         $secret = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe";
@@ -71,13 +76,14 @@ class UserService
         $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip";
         $data = file_get_contents($url);
         $row = json_decode($data);
-        if ($row->success== "true") {
+        if ($row->success == "true") {
             return true;
         } else {
             $systemMessage = "you are a robot";
             return false;
         }
     }
+
     public function getAllUsers()
     {
         try {
@@ -104,6 +110,7 @@ class UserService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
     public function getUserByEmail($email)
     {
         try {
@@ -112,6 +119,7 @@ class UserService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
     public function updateUser($user)
     {
         try {
@@ -129,7 +137,10 @@ class UserService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
+
     public function resetPassword($email, $password, $token)
+
     {
         if ($token !== $_SESSION['password_reset_token']) {
             throw new Exception("Invalid token.");
@@ -145,5 +156,17 @@ class UserService
         }
     }
 
+
+    public function isValidEmail($email): bool
+    {
+//        var_dump($email);
+//        die();
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
+    public function isStrongPassword($password)
+    {
+        $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/';
+        return preg_match($pattern, $password);
+    }
 
 }

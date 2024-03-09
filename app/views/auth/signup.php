@@ -13,7 +13,6 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 </head>
-
 <body class="bg-dark p-5 text-white">
     <div class="container pt-5">
         <div class="row d-flex justify-content-center align-items-center h-100">
