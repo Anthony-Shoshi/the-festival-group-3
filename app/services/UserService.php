@@ -5,7 +5,8 @@ namespace App\Services;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Exception;
-use PDO;
+use PDOException;
+
 require_once __DIR__ . '/../utils/const.php';
 
 class UserService
