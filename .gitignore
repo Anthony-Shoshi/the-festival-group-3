@@ -1,6 +1,6 @@
 # images
-app/public/backend/img
-app/public/frontend/img
+/app/public/backend/img
+/app/public/frontend/img
 
 # IntelliJ IDEA files
 .idea/

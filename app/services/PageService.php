@@ -15,7 +15,7 @@ class PageService
         $this->pageRepository = new PageRepository();
     }
 
-    public function createPage(Page $page): bool
+    public function createPage(Page $page): int
     {
         try {
             return $this->pageRepository->create($page);
@@ -23,6 +23,7 @@ class PageService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
 
     public function updatePage(Page $page, $page_id): bool
     {

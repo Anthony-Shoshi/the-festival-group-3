@@ -49,6 +49,7 @@ input[type="submit"] {
     color: white;
     border: none;
     cursor: pointer;
+    font-size: 18px;
 }
 
 input[type="submit"]:hover {
@@ -161,4 +162,16 @@ h1 {
 }
 .password-mismatch-message {
     color: red;
+}
+.back-to-login-pass {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid black; /* Set border to black */
+    color: black; /* Change text color to black */
+    text-decoration: none;
+    border-radius: 5px;
+}
+.back-to-login-pass:hover {
+    background-color: black;
+    color: white;
 }

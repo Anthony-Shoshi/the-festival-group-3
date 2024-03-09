@@ -31,7 +31,8 @@ class ForgotPasswordController
                 $_SESSION['email'] = $email;
 
                 $reset_link = "http://localhost/ForgotPassword/setNewPassword?token=$token";
-                $this->sendResetPasswordEmail($email, $reset_link);
+                $mailConfig = require_once __DIR__ . '/../config/mail.php';
+                $this->sendResetPasswordEmail($email, $reset_link, $mailConfig);
             } else {
                 require_once __DIR__ . '/../views/frontend/auth/reset-password-sent.php';
                 exit();
@@ -42,7 +43,7 @@ class ForgotPasswordController
         require_once __DIR__ . '/../views/frontend/auth/reset-password.php';
     }
 
-    private function sendResetPasswordEmail($email, $reset_link): bool
+    private function sendResetPasswordEmail($email, $reset_link, $mailConfig): bool
     {
         $user = $this->forgotPasswordService->getUserByEmail($email);
         $name = $user['name'];
@@ -52,15 +53,15 @@ class ForgotPasswordController
         try {
             // Server settings
             $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'thefestival918@gmail.com';
-            $mail->Password = 'nvopyclvyukcdzww';
-            $mail->SMTPSecure = 'ssl';
-            $mail->Port = 465;
+            $mail->Host = $mailConfig['host'];
+            $mail->SMTPAuth = $mailConfig['SMTPAuth'];
+            $mail->Username = $mailConfig['username'];
+            $mail->Password = $mailConfig['password'];
+            $mail->SMTPSecure = $mailConfig['SMTPSecure'];
+            $mail->Port = $mailConfig['port'];
 
             // Recipients
-            $mail->setFrom('thefestival918@gmail.com', 'The Festival');
+            $mail->setFrom($mailConfig['from_email'], $mailConfig['from_name']);
             $mail->addAddress($email, $name);
 
             $mail->isHTML(true);
@@ -69,7 +70,7 @@ class ForgotPasswordController
 
             $mail->send();
 
-            return true;    
+            return true;
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             return false;
@@ -95,5 +96,6 @@ class ForgotPasswordController
             }
         }
         require_once __DIR__ . '/../views/frontend/auth/set-new-password.php';
+
     }
 }
