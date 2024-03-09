@@ -6,8 +6,14 @@
 B
 docker-compose.yml,3/5/35b8c13cf2eb2a194eada000eb310d65aed53b2a
 D
-app/public/index.php,d/f/df187f96b153386aefda0ec4775d5524cf695467
+app/public/index.php,d\f\df187f96b153386aefda0ec4775d5524cf695467
 D
 app/views/index.html,c/c/ccff3d7628a78e56a3e3c947b9698f10f80f2cf8
 Q
 !app/views/backend/inc/sidebar.php,3\b\3ba110aa957d1e5c61303a9a5b9332e30932aba0
+S
+#app/views/backend/history/index.php,9\d\9dadc87a654a43258aabfa2b3b1d933b67d9a7b0
+_
+/app/views/frontend/auth/reset-password-sent.php,c\0\c010a67721ea05eee44a433d5a3cd79198dfd9e7
+Z
+*app/views/frontend/auth/reset-password.php,4\b\4b2d16389a25414187e0c5317de67313c0c295c5
