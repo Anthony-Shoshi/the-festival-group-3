@@ -1,5 +1,7 @@
 <?php
 namespace App\Repositories;
+use PDO;
+use PDOException;
 
 class HistoryRepository extends Repository
 {

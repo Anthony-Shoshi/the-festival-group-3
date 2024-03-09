@@ -19,20 +19,23 @@ include __DIR__ . '/../inc/header.php';
                 </tr>
                 </thead>
                 <tbody>
-                <?php if (count($pages) > 0) { ?>
-                    <?php foreach ($pages as $page) : ?>
+                <?php if (count($locations) > 0) { ?>
+                    <?php foreach ($locations as $location) : ?>
                         <tr>
-                            <td><?= $page['page_id'] ?></td>
-                            <td><?= $page['title'] ?></td>
-                            <td style="min-width: 300px; overflow-x: auto;"><?= $page['content'] ?></td>
+                            <td><?= $location['tour_location_id'] ?></td>
+                            <td><?= $location['location_name'] ?></td>
+                            <td><?= $location['description'] ?></td>
+                            <td><?= $location['address']?></td>
+                            <td><?= $location['contact_info']?></td>
+                            <td><img src="<?='/images/' . $location['images']?>" alt="<?= $location['location_name']?>" style="width: 100px"></td>
                             <td>
-                                <a href="/page/edit?id=<?= $page['page_id'] ?>" class="btn btn-primary btn-sm">Edit</a>
-                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $page['page_id'] ?>">Delete</button>
-                                <div class="modal fade" id="deleteModal<?= $page['page_id'] ?>" tabindex="-1" aria-labelledby="deleteModalLabel<?= $page['page_id'] ?>" aria-hidden="true">
+                                <a href="/history/edit?id=<?= $location['tour_location_id'] ?>" class="btn btn-primary btn-sm">Edit</a>
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $location['tour_location_id'] ?>">Delete</button>
+                                <div class="modal fade" id="deleteModal<?= $location['tour_location_id'] ?>" tabindex="-1" aria-labelledby="deleteModalLabel<?= $location['page_id'] ?>" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel<?= $page['page_id'] ?>">Confirm Deletion</h5>
+                                                <h5 class="modal-title" id="deleteModalLabel<?= $location['tour_location_id'] ?>">Confirm Deletion</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
@@ -40,7 +43,7 @@ include __DIR__ . '/../inc/header.php';
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                <a href="/page/delete?id=<?= $page['page_id'] ?>" class="btn btn-danger">Delete</a>
+                                                <a href="/page/delete?id=<?= $location['tour_location_id'] ?>" class="btn btn-danger">Delete</a>
                                             </div>
                                         </div>
                                     </div>

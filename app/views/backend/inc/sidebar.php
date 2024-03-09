@@ -20,7 +20,7 @@
     <h5 class="sidebar-heading">History Management</h5>
     <ul class="sidebar-menu">
         <a class="text-decoration-none" href="/history">
-            <li class="menu-item text-white menu-hover" data-url="/history"><i class="fas fa-history text-white"></i> History</li>
+            <li class="menu-item text-white menu-hover" data-url="/history"><i class="fas fa-history text-white"></i>Tour Location</li>
         </a>
     </ul>
 </div>
