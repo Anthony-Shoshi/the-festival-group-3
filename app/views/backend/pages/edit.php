@@ -13,10 +13,8 @@
                 <input type="text" class="form-control" id="title" value="<?= $page['title'] ?>" name="title" required>
             </div>
             <div class="mb-3">
-                <label for="content" class="form-label">Content</label>
-                <textarea class="form-control" id="summernote" name="content" required>
-                <?= $page['content'] ?>
-                </textarea>
+                <label for="page_url" class="form-label">Page Url</label>
+                <input type="text" class="form-control" id="page_url" value="<?= $page['page_url'] ?>" name="page_url" required>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>

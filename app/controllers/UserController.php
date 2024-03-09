@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Helpers\Helper;
 use App\Models\Role;
 use App\Models\User;
 use App\services\UserService;
@@ -35,20 +36,24 @@ class UserController
     {
         try {
             if (isset($_FILES['profile_picture'])) {
+                // $file = $_FILES['profile_picture'];
+
                 $file = $_FILES['profile_picture'];
-                $fileName = $file['name'];
-                $fileTmpName = $file['tmp_name'];
-                $fileError = $file['error'];
+                $imageUrl = Helper::uploadFile($file, __DIR__ . '/../public/backend/img');
 
-                if ($fileError === UPLOAD_ERR_OK) {
-                    $newFileName = uniqid('', true) . '_' . $fileName;
-                    $uploadPath = __DIR__ . '/../public/backend/img/' . $newFileName;
-                    move_uploaded_file($fileTmpName, $uploadPath);
+                // $fileName = $file['name'];
+                // $fileTmpName = $file['tmp_name'];
+                // $fileError = $file['error'];
 
-                    $imageUrl = '/backend/img/' . $newFileName;
-                } else {
-                    throw new Exception('Error uploading file: ' . $fileError);
-                }
+                // if ($fileError === UPLOAD_ERR_OK) {
+                //     $newFileName = uniqid('', true) . '_' . $fileName;
+                //     $uploadPath = __DIR__ . '/../public/backend/img/' . $newFileName;
+                //     move_uploaded_file($fileTmpName, $uploadPath);
+
+                //     $imageUrl = '/backend/img/' . $newFileName;
+                // } else {
+                //     throw new Exception('Error uploading file: ' . $fileError);
+                // }
             } else {
                 $imageUrl = '';
             }

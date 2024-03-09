@@ -9,7 +9,7 @@ class HomeController
         if (isset($_SESSION['role']) && $_SESSION['role'] == "Admin") {
             require __DIR__ . '/../views/backend/home.php';
         } else {
-            require __DIR__ . '/../views/auth/home.php';
+            require __DIR__ . '/../views/frontend/home.php';
         }
     }
     public function create()

@@ -9,16 +9,17 @@ use PDOException;
 
 class PageRepository extends Repository
 {
-    public function create(Page $page): bool
+    public function create(Page $page): int
     {
         try {
-            $stmt = $this->connection->prepare("INSERT INTO pages (title, content, slug) VALUES (:title, :content, :slug)");
+            $stmt = $this->connection->prepare("INSERT INTO pages (title, page_url, slug) VALUES (:title, :page_url, :slug)");
             $stmt->execute([
                 ':title' => $page->getTitle(),
-                ':content' => $page->getContent(),
+                ':page_url' => $page->getpageUrl(),
                 ':slug' => $page->getSlug()
             ]);
-            return true;
+            
+            return (int) $this->connection->lastInsertId();
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
@@ -27,11 +28,11 @@ class PageRepository extends Repository
     public function update(Page $page, $page_id): bool
     {
         try {
-            $stmt = $this->connection->prepare("UPDATE pages SET title = :title, content = :content WHERE page_id = :page_id");
+            $stmt = $this->connection->prepare("UPDATE pages SET title = :title, page_url = :page_url WHERE page_id = :page_id");
             $stmt->execute([
                 ':page_id' => $page_id,
                 ':title' => $page->getTitle(),
-                ':content' => $page->getContent()
+                ':page_url' => $page->getpageUrl()
             ]);
             return true;
         } catch (PDOException $e) {
@@ -59,7 +60,7 @@ class PageRepository extends Repository
             if ($pageData) {
                 return new Page(
                     $pageData['title'],
-                    $pageData['content'],
+                    $pageData['page_url'],
                     $pageData['slug'],
                     $pageData['page_id']
                 );
