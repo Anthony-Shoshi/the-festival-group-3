@@ -41,8 +41,10 @@ class VenueController
     public function store()
     {
         try {
-            if (isset($_FILES['image_url']) && $_FILES['image_url']['error'] === UPLOAD_ERR_OK) {
-                $file = $_FILES['image_url'];
+            $imageUrl = null;
+
+            if (isset($_FILES['venue_image']) && $_FILES['venue_image']['error'] === UPLOAD_ERR_OK) {
+                $file = $_FILES['venue_image'];
                 $fileName = $file['name'];
                 $newFileName = uniqid('', true) . '_' . $fileName;
                 $uploadFile = __DIR__ . '/../public/images/' . $newFileName;
@@ -61,9 +63,9 @@ class VenueController
                 $imageUrl = $newFileName;
             }
 
-            $venue = new Venue(null, $_POST['venue_name'], $_POST['venue_location'], $_POST['capacity'], $imageUrl);
-            $this->venueService->createVenue($venue);
-            header("Location: /venues");
+            $venue = new Venue(null, $_POST['name'], $_POST['location'], $_POST['capacity'], $imageUrl);
+            $this->venueService->storeVenue($venue);
+            header("Location: /venue");
             exit();
         } catch (Exception $e) {
             header("Location: /error?message=" . urlencode($e->getMessage()));
@@ -133,7 +135,17 @@ class VenueController
             exit();
         }
     }
-
-
-
+    public function delete()
+    {
+        $venueId = $_GET['id'];
+        if (isset($venueId) && $venueId > 0) {
+            $venue = $this->venueService->getVenuesById($venueId);
+            $this->venueService->deleteVenue($venueId);
+            header("Location: /venue");
+            exit();
+        } else {
+            header("Location: /error?message=something went wrong with this user data!");
+            exit();
+        }
+    }
 }

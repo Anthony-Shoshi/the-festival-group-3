@@ -54,11 +54,23 @@ class VenueRepository extends Repository{
         try {
             $stmt = $this->connection->prepare("INSERT INTO dance_venues (venue_name, venue_location, capacity, venue_image) VALUES (:venue_name, :venue_location, :capacity, :venue_image)");
             $stmt->execute([
-                ':venue_name' => $Venue->getname(),
-                ':venue_location' => $Venue->getemail(),
-                ':capacity' => $Venue->getpassword(),
-                ':venue_image' => $Venue->getrole(),
+                ':venue_name' => $Venue->getVenue_name(),
+                ':venue_location' => $Venue->getVenue_location(),
+                ':capacity' => $Venue->getCapacity(),
+                ':venue_image' => $Venue->getVenue_image(),
             ]);
+            return true;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
+    public function delete($venue_id)
+    {
+        try {
+            $stmt = $this->connection->prepare("DELETE FROM dance_venues WHERE venue_id = :venue_id");
+            $stmt->bindParam(':venue_id', $venue_id);
+            $stmt->execute();
             return true;
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());

@@ -44,4 +44,12 @@ class VenueService {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function deleteVenue($venue_id)
+    {
+        try {
+            return $this->venueRepository->delete($venue_id);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }
