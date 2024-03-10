@@ -21,6 +21,7 @@ class ArtistRepository extends Repository
         }
     }
 
+
     public function getArtistsById(int $artist_id)
     {
         try {
