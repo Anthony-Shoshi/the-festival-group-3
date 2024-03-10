@@ -25,3 +25,7 @@ L
 app/services/PageService.php,6\b\6b86d61f5e466baf6e591ef36523be2309146b09
 E
 .vscode/settings.json,8\9\89aa447020cdcb580cea0495694d46a55941edbe
+K
+app/views/frontend/home.php,d\c\dc5cb796a2b39bccf28b89bcc04ebcf9132c3644
+Z
+*app/views/frontend/auth/reset-password.php,4\b\4b2d16389a25414187e0c5317de67313c0c295c5
