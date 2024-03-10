@@ -19,8 +19,8 @@
     </ul>
     <h5 class="sidebar-heading">Dance Management</h5>
     <ul class="sidebar-menu">
-        <a class="text-decoration-none" href="/dancecrud">
-            <li class="menu-item text-white menu-hover" data-url="/dancecrud"> <i class="fas fa-music text-white"></i></i> Dance Event</li>
+        <a class="text-decoration-none" href="/dancemanagement">
+            <li class="menu-item text-white menu-hover" data-url="/dancemanagement"> <i class="fas fa-music text-white"></i></i> Dance Event</li>
         </a>
     </ul>
     <ul class="sidebar-menu">
