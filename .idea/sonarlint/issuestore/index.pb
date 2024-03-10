@@ -6,7 +6,7 @@
 B
 docker-compose.yml,3/5/35b8c13cf2eb2a194eada000eb310d65aed53b2a
 D
-app/public/index.php,d/f/df187f96b153386aefda0ec4775d5524cf695467
+app/public/index.php,d\f\df187f96b153386aefda0ec4775d5524cf695467
 D
 app/views/index.html,c\c\ccff3d7628a78e56a3e3c947b9698f10f80f2cf8
 Q
@@ -29,3 +29,25 @@ K
 app/views/frontend/home.php,d\c\dc5cb796a2b39bccf28b89bcc04ebcf9132c3644
 Z
 *app/views/frontend/auth/reset-password.php,4\b\4b2d16389a25414187e0c5317de67313c0c295c5
+T
+$app/repositories/VenueRepository.php,8\1\8149186a70931e1cc02e5c427be3c90c64897e8a
+T
+$app/repositories/DanceRepository.php,0\e\0e5ac3fddb8b7df143b9e1528d80914e478a5baa
+M
+app/services/DanceService.php,d\4\d47cee348d704b59ac1b8ea3f516f0fb30c64cce
+D
+app/models/Dance.php,b\a\ba764f5036fc732d9ec184fe1cbe271dc1b0a05d
+]
+-app/controllers/DanceManagementController.php,1\4\140a918e7fd0d8aa000de629b11e0466b843c63f
+[
++app/views/backend/danceManagement/index.php,e\1\e189f6bd089d1d2b97b5a3ea1b1037c2a4c34c5e
+R
+"app/views/backend/venues/index.php,0\f\0fbc1faf8ceab4a08245f1bf7ccfc15413c88ff7
+R
+"app/views/backend/errors/error.php,5\3\5355abb11afb439e46c8f7e4ff9892b30052ab45
+P
+ app/views/backend/inc/navbar.php,6\f\6f2b3cfbbee060b548d2b353375616637cc482fa
+Q
+!app/views/backend/inc/message.php,7\f\7f552fbec17ea6d37818d9f3640917b0b74b62c2
+S
+#app/controllers/ErrorController.php,f\e\fedb74c4229c813e6b1b7975df13600ec9207d4a
