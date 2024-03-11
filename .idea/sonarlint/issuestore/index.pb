@@ -95,3 +95,8 @@ R
 "app/views/backend/pages/create.php,0\5\0584311e870b9eff6d3eee550f96fcb9f6c8e312
 Q
 !app/views/backend/pages/index.php,9\2\920d68d9f792ac4105485d6a2cc7ce8b655fed7a
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+C
+app/config/mail.php,d\d\ddbfdfad450ff101f7211063d080129c41a1e8fb
