@@ -18,14 +18,17 @@ class DanceRepository extends Repository
                 mp.music_event_id,
                 me.event_price,
                 me.session_type,
-                me.event_date,
                 me.event_start_time,
                 me.event_duration,
-                a.artist_name,
+                GROUP_CONCAT(a.artist_name SEPARATOR ', ') AS artist_names,
                 a.genre,
                 a.about,
+                e.event_id,
                 e.title,
                 e.description,
+                e.start_date,
+                e.end_date,
+                e.image_url,
                 dv.venue_name,
                 dv.venue_location,
                 dv.capacity
@@ -39,6 +42,8 @@ class DanceRepository extends Repository
                 events AS e ON me.event_id = e.event_id
             JOIN 
                 dance_venues AS dv ON me.venue_id = dv.venue_id
+            GROUP BY
+                me.music_event_id
         ");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -47,6 +52,7 @@ class DanceRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
 
     public function getDanceById(int $dance_id)
     {

@@ -51,3 +51,13 @@ Q
 !app/views/backend/inc/message.php,7\f\7f552fbec17ea6d37818d9f3640917b0b74b62c2
 S
 #app/controllers/ErrorController.php,f\e\fedb74c4229c813e6b1b7975df13600ec9207d4a
+E
+app/models/Artist.php,3\f\3f4f128cc087cb5aee7dbb97950cc699a1f04718
+C
+app/models/Role.php,8\0\80416596d0641769b666eec126b9ff74d652a590
+C
+app/models/Page.php,f\8\f8fa041233f5271ec16c956065887617fb653a6b
+C
+app/models/User.php,a\f\af597125a98242ba3637328719fc60b1a07ea654
+S
+#app/repositories/UserRepository.php,9\3\93095e6fa25a2d3fb64a8d0030dc6426c9435ad4
