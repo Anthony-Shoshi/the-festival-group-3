@@ -18,7 +18,7 @@ class DanceManagementController{
     public function index()
     {
         try {
-            $venues = $this->danceService->getAllEvents();
+            $dancesManages = $this->danceService->getAllEvents();
             require __DIR__ . '/../views/backend/danceManagement/index.php';
         } catch (Exception $e) {
             header("Location: /error?message=" . urlencode($e->getMessage()));
