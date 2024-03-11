@@ -79,3 +79,19 @@ J
 app/models/SessionType.php,7\f\7f2d0c8c621bfdd487ff86fced8962273189fa28
 R
 "app/controllers/UserController.php,1\5\151f3a1e2f9163bc8ea58fae5e833b07c6b7d9d2
+U
+%app/controllers/SectionController.php,7\6\7617d307630c0de1bed72fb33e142cc8ee842c02
+R
+"app/controllers/PageController.php,3\0\3016803478afacc42ab5583358030ce9b1f427da
+T
+$app/views/backend/artists/create.php,9\d\9df411b3ad8034bc1a499242c0caace113757bda
+S
+#app/views/backend/artists/index.php,a\5\a5e01695259a03007d65c211a7fb618a6e7dfa1f
+P
+ app/views/backend/pages/edit.php,2\0\206adcbc6d4dc361d7faba68634bf69f5225a566
+R
+"app/views/backend/artists/edit.php,c\6\c67be66690cb640d29db9adc017fb8cad8afee4d
+R
+"app/views/backend/pages/create.php,0\5\0584311e870b9eff6d3eee550f96fcb9f6c8e312
+Q
+!app/views/backend/pages/index.php,9\2\920d68d9f792ac4105485d6a2cc7ce8b655fed7a

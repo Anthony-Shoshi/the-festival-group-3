@@ -3,6 +3,10 @@ include __DIR__ . '/../inc/header.php';
 ?>
 
     <div class="container">
+
+        <?php include __DIR__ . '/../inc/message.php'; ?>
+
+
         <div class="d-flex justify-content-between align-items-center">
             <h1>Artist List</h1>
             <a href="/artist/create" class="btn btn-success">Add Artist</a>

@@ -1,6 +1,10 @@
 <?php include __DIR__ . '/../inc/header.php'; ?>
 
 <div class="container mb-5">
+
+    <?php include __DIR__ . '/../inc/message.php'; ?>
+
+
     <h1>Edit Venue</h1>
     <div class="mt-4">
         <form action="/dancemanagement/update" method="post" autocomplete="off" enctype="multipart/form-data">
@@ -50,7 +54,7 @@
             </div>
             <div class="mb-3">
                 <label for="artist_id" class="form-label">Artist</label>
-                <select class="form-select" id="artist_id" name="artist_id"<?= ($multipleSelection) ? ' multiple' : '' ?>>
+                <select class="form-select" id="artist_id" name="artist_id" multiple>
                     <?php foreach ($artists as $artist) : ?>
                         <option value="<?= $artist['artist_id'] ?>" <?= ($artist['artist_id'] == $selectedArtistId) ? 'selected' : '' ?>>
                             <?= $artist['artist_name'] ?>
