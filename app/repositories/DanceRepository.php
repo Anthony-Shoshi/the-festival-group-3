@@ -54,21 +54,54 @@ class DanceRepository extends Repository
     }
 
 
-    public function getDanceById(int $dance_id)
+    public function getDanceEventById(int $music_performance_id)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM dances WHERE dance_id = :dance_id");
-            $stmt->bindParam(':dance_id', $dance_id);
+            $stmt = $this->connection->prepare("
+            SELECT 
+                mp.music_performance_id,
+                mp.music_event_id,
+                me.event_price,
+                me.session_type,
+                me.event_start_time,
+                me.event_duration,
+                GROUP_CONCAT(a.artist_name SEPARATOR ', ') AS artist_names,
+                a.genre,
+                a.about,
+                e.event_id,
+                e.title,
+                e.description,
+                e.start_date,
+                e.end_date,
+                e.image_url,
+                dv.venue_id,
+                dv.venue_name,
+                dv.venue_location,
+                dv.capacity
+            FROM 
+                music_performance AS mp
+            JOIN 
+                music_events AS me ON mp.music_event_id = me.music_event_id
+            JOIN 
+                artists AS a ON mp.artist_id = a.artist_id
+            JOIN 
+                events AS e ON me.event_id = e.event_id
+            JOIN 
+                dance_venues AS dv ON me.venue_id = dv.venue_id
+            WHERE 
+                mp.music_performance_id = :music_performance_id
+            GROUP BY
+                me.music_event_id
+        ");
+            $stmt->bindParam(':music_performance_id', $music_performance_id);
             $stmt->execute();
-            $pageRow = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($stmt->rowCount() > 0) {
-                return $pageRow;
-            }
-            return null;
+            $danceEvent = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $danceEvent;
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
 
     public function update(Dance $dance, $dance_id): bool
     {
