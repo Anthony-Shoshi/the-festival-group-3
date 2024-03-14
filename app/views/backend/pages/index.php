@@ -3,6 +3,9 @@ include __DIR__ . '/../inc/header.php';
 ?>
 
 <div class="container">
+
+    <?php include __DIR__ . '/../inc/message.php'; ?>
+
     <div class="d-flex justify-content-between align-items-center">
         <h1>Page List</h1>
         <a href="/page/create" class="btn btn-success">Add page</a>
@@ -14,7 +17,7 @@ include __DIR__ . '/../inc/header.php';
                 <tr>
                     <th>ID</th>
                     <th>Page Title</th>
-                    <th style="min-width: 300px;">Content</th>
+                    <th>Page URL</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -24,7 +27,7 @@ include __DIR__ . '/../inc/header.php';
                         <tr>
                             <td><?= $page['page_id'] ?></td>
                             <td><?= $page['title'] ?></td>
-                            <td style="min-width: 300px; overflow-x: auto;"><?= $page['content'] ?></td>
+                            <td><?= $page['page_url'] ?></td>
                             <td>
                                 <a href="/page/edit?id=<?= $page['page_id'] ?>" class="btn btn-primary btn-sm">Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $page['page_id'] ?>">Delete</button>

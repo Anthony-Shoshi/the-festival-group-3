@@ -6,7 +6,7 @@
     <title>Reset Password</title>
     <link rel="icon" type="image/x-icon" href="/backend/img/fav.png">
     <style>
-        <?php include __DIR__ . '/../../public/frontend/css/style.css'; ?>
+        <?php include __DIR__ . '/../../../public/frontend/css/style.css'; ?>
     </style>
 </head>
 <body class="reset-pass">
@@ -15,9 +15,10 @@
     <h1>Reset Password</h1>
     <form action="#" method="post">
         <input type="email" name="email" placeholder="Enter your email address" required>
-        <input type="submit" value="Reset Password">
+        <input type="submit" value="Send Email">
+        <a href="/login/login" class="back-to-login-pass">Back to Login Page</a>
+
     </form>
 </div>
 </body>
 </html>
-

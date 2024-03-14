@@ -1,6 +1,9 @@
 # images
-app/public/backend/img
-app/public/frontend/img
+/app/public/backend/img/
+/app/public/frontend/img/
+/app/public/music/
+/app/config/
+/app/public/assets/images/
 
 # IntelliJ IDEA files
 .idea/
@@ -10,3 +13,6 @@ app/public/frontend/img
 /.idea/
 /.idea/*
 .DS_Store
+
+# vscode files
+.vscode/
