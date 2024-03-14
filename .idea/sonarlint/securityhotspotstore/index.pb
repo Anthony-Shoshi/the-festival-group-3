@@ -9,3 +9,9 @@ D
 app/public/index.php,d/f/df187f96b153386aefda0ec4775d5524cf695467
 D
 app/views/index.html,c/c/ccff3d7628a78e56a3e3c947b9698f10f80f2cf8
+K
+app/views/frontend/home.php,d/c/dc5cb796a2b39bccf28b89bcc04ebcf9132c3644
+P
+ app/views/frontend/overview.html,c/4/c437786aa06f09606b94469012b9c4758b2c9d53
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e
