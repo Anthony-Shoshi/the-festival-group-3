@@ -1,6 +1,8 @@
 # images
 /app/public/backend/img
 /app/public/frontend/img
+/app/public/music
+/app/config
 
 # IntelliJ IDEA files
 .idea/

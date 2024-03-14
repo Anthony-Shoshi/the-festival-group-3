@@ -33,5 +33,10 @@
             <li class="menu-item text-white menu-hover" data-url="/venue"> <i class="fas fa-building text-white"></i></i> Venues</li>
         </a>
     </ul>
-
+    <h5 class="sidebar-heading">History Management</h5>
+    <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/history">
+            <li class="menu-item text-white menu-hover" data-url="/history"><i class="fas fa-pager text-white"></i> Pages</li>
+        </a>
+    </ul>
 </div>

@@ -3,6 +3,9 @@ include __DIR__ . '/../inc/header.php';
 ?>
 
 <div class="container">
+
+    <?php include __DIR__ . '/../inc/message.php'; ?>
+
     <div class="d-flex justify-content-between align-items-center">
         <h1>Page List</h1>
         <a href="/page/create" class="btn btn-success">Add page</a>
