@@ -18,17 +18,43 @@ body {
     font-size: 2vw;
 }
 
+.all-events_button {
+    display: block;
+    width: fit-content;
+    padding: 0.5vw 1vw;
+    margin: 1vw auto;
+    font-size: 2em;
+    background: #007589;
+    text-decoration: none;
+    font-family: "Baloo Bhaijaan 2", sans-serif;
+    color: #fff;
+    border-radius: 1vw;
+}
+
 .all-events {
     display: flex;
     flex-direction: column;
     gap: 0.5vw;
+    width: 100%;
+    font-family: "Jomhuria", serif;
 }
 
 .all-events_child {
     display: flex;
     padding: 1vw 3vw;
     align-items: center;
+    justify-content: space-between;
     gap: 2vw;
+    font-size: 3vw;
+}
+
+.all-events_child h2 {
+    font-size: 6vw;
+    text-align: center;
+}
+
+.all-events_child img {
+    height: 15vw;
 }
 
 #all-events_1 {
@@ -50,5 +76,6 @@ body {
 @media (max-width: 768px) {
     .white-space {
         height: 8vw;
+        max-height: none;
     }
 }
