@@ -6,10 +6,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
+                <li class="nav-item d-flex justify-content-center align-items-center">
 <!--                    <img src="--><?php //= $_SESSION['profile_picture']; ?><!--" alt="Profile Image" class="rounded-circle me-2" style="width: 32px; height: 32px;">-->
                     <?php if (empty($_SESSION['profile_picture'])) : ?>
-                        <img src="/backend/img/default.jpg" class="rounded-circle me-2" style="width: 32px; height: 32px;" alt="Default Profile Picture">
+                        <img src="/backend/img/default.jpg" class="rounded-circle" style="width: 32px; height: 32px;" alt="Default Profile Picture">
                     <?php else : ?>
                         <img src="<?= $_SESSION['profile_picture'] ?>" class="rounded-circle me-2" style="width: 32px; height: 32px;" alt="Profile Picture">
                     <?php endif; ?>

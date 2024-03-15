@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar" id="sidebar">
     <h5 class="sidebar-heading">General</h5>
     <ul class="sidebar-menu">
         <a class="text-decoration-none" href="/">
