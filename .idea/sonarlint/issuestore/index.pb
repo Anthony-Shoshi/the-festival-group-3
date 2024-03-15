@@ -150,3 +150,5 @@ M
 ,app/controllers/ForgotPasswordController.php,e/e/eee6248792f3c0caf1f5ff15258ed2c1f39444c9
 S
 #app/controllers/LoginController.php,d/5/d510a89867b4fd29ec2a71e986620ee680844556
+O
+app/public/assets/css/style.css,6/2/629859b7ca2aed20c16ffa6915cf0739e063bed7
