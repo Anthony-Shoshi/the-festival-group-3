@@ -14,7 +14,7 @@ include __DIR__ . '/../inc/header.php';
                 <tr>
                     <th>ID</th>
                     <th>Page Title</th>
-                    <th style="min-width: 300px;">Content</th>
+                    <th style="                                                                                     min-width: 300px;">Content</th>
                     <th>Actions</th>
                 </tr>
                 </thead>

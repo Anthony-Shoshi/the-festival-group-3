@@ -8,7 +8,7 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #742dd7, #fff);
+    background-color: #240B43;
     background-attachment: fixed;
 }
 
@@ -21,13 +21,81 @@ body {
     width: 100%;
     display: block;
 }
+
 .dance-image h1 {
     position: absolute;
-    top: 80%;
+    bottom: -2vw;
     left: 0.2em;
     font-family: "Jomhuria", serif;
     color: white;
     font-size: 10vw;
 }
 
+.artist-list {
 
+    font-size: 4vw;
+    /*position: absolute;*/
+    color: white;
+    width: fit-content;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.section-2{
+    width: 100%;
+}
+
+
+.artists-background {
+    position: absolute;
+    width: 100%;
+    height: 520px;
+    background: linear-gradient(180deg, rgba(217, 217, 217, 0) 25.52%, #016F96 41.67%, #016F96 66.84%, rgba(217, 217, 217, 0) 91.32%);
+}
+
+.artists-container {
+    width: 390px;
+    height: 434px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.artist {
+    margin-bottom: 20px;
+}
+
+.artist-image img {
+    border-radius: 100%;
+    width: 390px;
+    height: 366px;
+    justify-content: space-evenly;
+}
+
+.artist-name {
+    color: white;
+    font-size: 18px;
+}
+.section-3 {
+    padding: 20px; /* Add padding for spacing */
+    width: 100%;
+}
+
+.venues-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.venues {
+    flex: 1;
+    text-align: center;
+}
+
+.venue-image img {
+    max-width: 100%;
+}
+
+.venue-name {
+    color: white;
+    font-size: 18px;
+}
