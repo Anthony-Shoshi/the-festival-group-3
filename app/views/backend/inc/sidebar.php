@@ -17,6 +17,15 @@
             <li class="menu-item text-white menu-hover" data-url="/page"><i class="fas fa-pager text-white"></i> Pages</li>
         </a>
     </ul>
+    <h5 class="sidebar-heading">Yummy Management</h5>
+    <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/feature">
+            <li class="menu-item text-white menu-hover" data-url="/feature"><i class="fas fa-pager text-white"></i> Features</li>
+        </a>
+        <a class="text-decoration-none" href="/session">
+            <li class="menu-item text-white menu-hover" data-url="/session"><i class="fas fa-pager text-white"></i> Sessions</li>
+        </a>
+    </ul>
     <h5 class="sidebar-heading">Dance Management</h5>
     <ul class="sidebar-menu">
         <a class="text-decoration-none" href="/dancemanagement">
