@@ -39,7 +39,7 @@ class UserController
                 // $file = $_FILES['profile_picture'];
 
                 $file = $_FILES['profile_picture'];
-                $imageUrl = Helper::uploadFile($file, __DIR__ . '/../public/backend/img');
+                $imageUrl = Helper::uploadFile($file);
 
                 // $fileName = $file['name'];
                 // $fileTmpName = $file['tmp_name'];

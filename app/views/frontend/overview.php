@@ -5,7 +5,7 @@
 </head>
     <body> 
         <div class="white-space"></div>
-        <a href="" class="all-events">All Events</a>
+        <a href="" class="all-events_button">All Events</a>
         <div class="all-events">
             <div class="all-events_child" id="all-events_1">
                 <img src="/images/overview/overview-grote-markt.png" alt="Grote Markt" />
