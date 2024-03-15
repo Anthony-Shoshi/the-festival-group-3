@@ -65,7 +65,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-    <title>Home</title>
 </head>
 
 <body>
@@ -92,7 +91,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link" id="button" href="#">Home</a>
+                    <a class="nav-link" id="button" href="/">Home</a>
                     <div class="d-content">
                         <div class="column">
                             <a href="">Learn HTML</a>
@@ -102,7 +101,7 @@
                     </div>
                     <a class="nav-link" href="#">History</a>
                     <a class="nav-link" href="#">Yummy</a>
-                    <a class="nav-link" href="#">Dance</a>
+                    <a class="nav-link" href="/dance/index">Dance</a>
                     <a class="nav-link" href="/login/login">Login</a>
                 </div>
             </div>

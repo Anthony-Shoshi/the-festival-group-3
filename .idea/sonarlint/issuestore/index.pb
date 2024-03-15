@@ -110,3 +110,15 @@ F
 app/models/Section.php,2\5\257f50a39a0da63f41cc9db86be5681233257713
 V
 &app/repositories/HistoryRepository.php,e\4\e47a71a00da44f5f41b471a3fff61d7041062f3b
+D
+app/views/login.html,c\0\c0b1cad3b3a21b5a94ae65fa6055522057f2ff26
+R
+"app/views/frontend/dance/index.php,5\2\5229aef46a4f39ea47f36cf089cf7f2f47f8b4ea
+Q
+!app/views/frontend/inc/header.php,a\1\a13e690db494cb328f1033d09e1fa570264e2ce9
+Q
+!app/views/frontend/inc/footer.php,f\b\fbe603e976f25fda635f2e6396c01cad86da597e
+S
+#app/controllers/DanceController.php,a\d\ade156112b7651e8e734de2b6f90763ec34f327e
+O
+app/public/assets/css/style.css,6\2\629859b7ca2aed20c16ffa6915cf0739e063bed7

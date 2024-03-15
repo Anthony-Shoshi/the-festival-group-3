@@ -248,3 +248,18 @@ body {
     display: table;
     clear: both;
 }
+.dance-image img {
+    width: 100%;
+    display: block;
+}
+.dance-image h1 {
+    position: absolute;
+    top: 60%;
+    left: 0.8em;
+    font-family: "Jomhuria", serif;
+    color: white;
+    font-size: 10vw;
+}
+#section-dance {
+    position: relative;
+}

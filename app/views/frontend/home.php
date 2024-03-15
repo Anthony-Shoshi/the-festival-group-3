@@ -1,4 +1,5 @@
 <?php include __DIR__ . '/inc/header.php'; ?>
+    <head><title>Home</title></head>
 
     <div id="section-1">
         <div class="festival-image">
