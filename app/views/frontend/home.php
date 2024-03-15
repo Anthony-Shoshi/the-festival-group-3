@@ -1,5 +1,8 @@
 <?php include __DIR__ . '/inc/header.php'; ?>
-
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <title>Home</title>
+</head>
+<body>
     <div id="section-1">
         <div class="festival-image">
             <img src="/assets/images/image9.png" alt="" />
@@ -15,7 +18,7 @@
                     HAARLEM - The moment that many are eagerly awaiting: spring and summer are starting again and so event organizations can also go wild again. Which major
                     events can you expect in Haarlem in 2024? Here you will find an overview!
                 </p>
-                <button>Upcoming Events</button>
+                <a href="/overview">Upcoming Events</a>
             </div>
         </section>
     </div>
@@ -73,5 +76,7 @@
             <button class="event-section__button" id="event-section__button-yummy">26th till 30th July</button>
         </div>
     </div>
+</body>
+</html>
 
     <?php include __DIR__ . '/inc/footer.php'; ?>

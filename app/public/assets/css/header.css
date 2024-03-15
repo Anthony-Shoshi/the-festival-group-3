@@ -56,9 +56,11 @@
     display: block;
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
+@media (min-width: 769px) {
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
 }
 
 .nav-link:hover {

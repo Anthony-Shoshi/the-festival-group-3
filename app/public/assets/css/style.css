@@ -61,6 +61,20 @@ body {
     /* padding: 5vw; */
 }
 
+.p-button a {
+    text-decoration: none;
+    background-color: #ff7a68;
+    padding: 0.5em 1em;
+    border-radius: 0.2em;
+    font-size: 2vw;
+    border: 0;
+    color: white;
+}
+
+.p-button a:hover {
+    background-color: #ff9a8d;
+}
+
 @media (max-width: 768px) {
     .img-p {
         flex-direction: column;
@@ -71,22 +85,9 @@ body {
         text-align: center;
     }
 
-    .p-button button {
+    .p-button a {
         margin: auto;
     }
-}
-
-.p-button button {
-    background-color: #ff7a68;
-    padding: 0.5em 1em;
-    border-radius: 0.2em;
-    font-size: 2vw;
-    border: 0;
-    color: white;
-}
-
-.p-button button:hover {
-    background-color: #ff9a8d;
 }
 
 .section-heading h2 {
