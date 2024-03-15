@@ -24,10 +24,6 @@ body {
     font-weight: bold;
 }
 
-.dashboard-nav .navbar-nav {
-    /* margin-left: auto; */
-}
-
 .dashboard-nav .nav-item {
     padding: 0 10px;
 }
