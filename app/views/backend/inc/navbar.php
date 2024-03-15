@@ -11,7 +11,7 @@
                     <?php if (empty($_SESSION['profile_picture'])) : ?>
                         <img src="/backend/img/default.jpg" class="rounded-circle" style="width: 32px; height: 32px;" alt="Default Profile Picture">
                     <?php else : ?>
-                        <img src="<?= $_SESSION['profile_picture'] ?>" class="rounded-circle me-2" style="width: 32px; height: 32px;" alt="Profile Picture">
+                        <img src="<?= $_SESSION['profile_picture'] ?>" class="rounded-circle" style="width: 32px; height: 32px;" alt="Profile Picture">
                     <?php endif; ?>
                 </li>
                 <li class="nav-item">
