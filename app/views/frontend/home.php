@@ -1,5 +1,5 @@
 <?php include __DIR__ . '/inc/header.php'; ?>
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/frontend/css/home.css" />
     <title>Home</title>
 </head>
 <body>

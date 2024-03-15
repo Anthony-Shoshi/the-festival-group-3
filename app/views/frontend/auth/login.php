@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <style>
         body {
-            background-image: url("/app/public/assets/images/background.jpg");
+            background-image: url("/assets/images/background.jpg");
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -43,14 +43,12 @@
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="login-container">
                     <h3 class="text-center mb-4">Login</h3>
-
                     <div>
                         <?php if (isset($_SESSION['flash_message'])) : ?>
                             <div class="alert alert-danger" role="alert">
@@ -59,7 +57,6 @@
                             <?php unset($_SESSION['flash_message']); ?>
                         <?php endif; ?>
                     </div>
-
                     <form method="POST" autocomplete="off">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
@@ -70,7 +67,7 @@
                             <input type="password" class="form-control" id="password" name="password" required />
                         </div>
                         <div class="d-grid gap-2">
-                            <button type="submit" name="login-button" class="btn btn-primary">Login</button>
+                            <button type="submit"  name="login-button" class="btn btn-primary">Login</button>
                         </div>
                         <div class="d-flex justify-content-evenly mt-3">
                             <div>
@@ -90,7 +87,9 @@
             <p>&copy; 2024 Haarlem Festival. All rights reserved.</p>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    </body>
 </html>

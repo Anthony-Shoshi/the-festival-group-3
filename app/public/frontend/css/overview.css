@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jomhuria&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom, #742dd7, #fff);
+    background-attachment: fixed;
+}
+
+.white-space {
+    height: 10vw;
+    max-height: 3em;
+    font-size: 2vw;
+}
+
+.all-events {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw;
+}
+
+.all-events_child {
+    display: flex;
+    padding: 1vw 3vw;
+    align-items: center;
+    gap: 2vw;
+}
+
+#all-events_1 {
+    background: #bec3bd;
+}
+
+#all-events_2 {
+    background: #bda4a2;
+}
+
+#all-events_3 {
+    background: #cbd1d2;
+}
+
+#all-events_4 {
+    background: #edbc83;
+}
+
+@media (max-width: 768px) {
+    .white-space {
+        height: 8vw;
+    }
+}

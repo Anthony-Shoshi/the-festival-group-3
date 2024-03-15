@@ -19,4 +19,8 @@ class HomeController
         require '../views/backend/users/create.php';
     }
 
+    public function overview() {
+        require __DIR__ . '/../views/frontend/overview.php';
+    }
+
 }

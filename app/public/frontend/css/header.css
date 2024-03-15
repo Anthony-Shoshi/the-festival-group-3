@@ -1,6 +1,7 @@
 .navbar {
     background: white;
     display: flex;
+    top: 0;
     font-family: "Baloo Bhaijaan 2", sans-serif;
     font-size: 2vw;
     font-weight: 800;
@@ -40,7 +41,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #007589;
+    background-color: rgba(2, 85, 100, 0.8);
     width: 100%;
     left: 0;
     top: 100%;
@@ -50,7 +51,7 @@
 /* Links inside the dropdown */
 .dropdown-content a {
     color: white;
-    background: #007589;
+    /* background: #007589; */
     padding: 12px 0;
     text-decoration: none;
     display: block;
