@@ -65,11 +65,19 @@ body {
     margin-bottom: 20px;
 }
 
+.artist-image {
+    width: 390px;
+    height: 390px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .artist-image img {
     border-radius: 100%;
-    width: 390px;
-    height: 366px;
-    justify-content: space-evenly;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .artist-name {
