@@ -4,6 +4,7 @@
 /app/public/music/
 /app/config/
 /app/public/assets/images/
+/app/public/images/
 
 # IntelliJ IDEA files
 .idea/

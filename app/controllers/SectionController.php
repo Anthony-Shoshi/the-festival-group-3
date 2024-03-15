@@ -17,21 +17,7 @@ class SectionController
     public function create()
     {
         // Load the view for creating a new section
-    }
-
-    public function store()
-    {
-        try {
-            $data = $_POST; // Assuming form data is submitted via POST
-            if ($this->sectionService->createSection($data)) {
-                // Success message or redirect to a success page
-            } else {
-                // Error handling
-            }
-        } catch (Exception $e) {
-            // Redirect to error page with error message
-        }
-    }
+    }   
 
     public function edit($sectionId)
     {
