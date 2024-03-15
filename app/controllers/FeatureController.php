@@ -34,14 +34,9 @@ class FeatureController
     public function store()
     {
         try {
-            if (!isset($_POST['name']) || empty($_POST['name'])) {
-                $_SESSION['isError'] = 1;
-                $_SESSION['flash_message'] = "Please enter name";
-                header("Location: /feature");
-                exit();
-            }
+            $validatedData = Helper::validate($_POST);
 
-            $name = $_POST['name'];
+            $name = $validatedData['name'];
             $imageUrl = '';
 
             if (isset($_FILES['image_url']) && $_FILES['image_url']['error'] === UPLOAD_ERR_OK) {
@@ -51,6 +46,7 @@ class FeatureController
 
             $this->featureService->createFeature($imageUrl, $name);
 
+            Helper::setMessage(false, "Feature added successfully!");
             header("Location: /feature");
             exit();
         } catch (Exception $e) {
@@ -89,8 +85,7 @@ class FeatureController
                 Helper::unlinkImage($existingImageUrl);
 
                 $this->featureService->updateFeature($id, $imageUrl, $name);
-                echo 1;
-                exit;
+              
             } else {
                 $this->featureService->updateFeature($id, $existingImageUrl, $name);
             }
