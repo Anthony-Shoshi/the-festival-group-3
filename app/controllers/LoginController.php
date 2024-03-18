@@ -39,7 +39,11 @@ class LoginController
                 $_SESSION['username'] = $user['name'];
                 $_SESSION['role'] = $user['role'];
                 $_SESSION['profile_picture'] = $user['profile_picture'];
-                header("location: /");
+                if ($_SESSION['role'] == "Admin") {
+                    header("location: /home/dashboard");
+                } else {
+                    header("location: /");
+                }
                 exit();
             } else {
                 $_SESSION['flash_message'] = "Invalid username or password";

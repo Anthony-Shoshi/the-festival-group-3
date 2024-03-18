@@ -1,8 +1,11 @@
 <div class="sidebar" id="sidebar">
     <h5 class="sidebar-heading">General</h5>
     <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/home/dashboard">
+            <li class="menu-item text-white menu-hover" data-url="/home/dashboard"><i class="fas fa-home text-white"></i> Home</li>
+        </a>
         <a class="text-decoration-none" href="/">
-            <li class="menu-item text-white menu-hover" data-url="/"><i class="fas fa-home text-white"></i> Home</li>
+            <li class="menu-item text-white menu-hover"><i class="fa-regular fa-window-maximize"></i> View Website</li>
         </a>
     </ul>
     <h5 class="sidebar-heading">User Management</h5>
