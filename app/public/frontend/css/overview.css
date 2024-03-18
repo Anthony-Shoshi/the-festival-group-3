@@ -11,6 +11,7 @@ body {
     background: linear-gradient(to bottom, #742dd7, #fff);
     background-attachment: fixed;
     font-family: "Jomhuria", serif;
+    min-height: 100hv;
 }
 
 .white-space {
