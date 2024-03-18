@@ -13,8 +13,8 @@
                     <input type="file" class="form-control" id="image_url" name="image_url">
                 </div>
                 <div class="mb-3">
-                    <label for="event_types" class="form-label">Role</label>
-                    <select class="form-select" id="event_types" name="event_types" required>
+                    <label for="event_type" class="form-label">Role</label>
+                    <select class="form-select" id="event_type" name="event_type" required>
                         <?php foreach ($eventtypes as $eventtype) : ?>
                             <option value="<?= $eventtype ?>"><?= $eventtype ?></option>
                         <?php endforeach; ?>
@@ -33,12 +33,12 @@
                     <input type="date" class="form-control" id="end_date" name="end_date" required>
                 </div>
                 <div class="mb-3">
-                    <label for="primary_color" class="form-label">Primary color</label>
-                    <input type="text" class="form-control" id="primary_color" name="primary_color" required>
+                    <label for="primary_theme_color" class="form-label">Primary color</label>
+                    <input type="text" class="form-control" id="primary_theme_color" name="primary_theme_color" required>
                 </div>
                 <div class="mb-3">
-                    <label for="secondary_color" class="form-label">Secondary Color</label>
-                    <input type="text" class="form-control" id="secondary_color" name="secondary_color" required>
+                    <label for="secondary_theme_color" class="form-label">Secondary Color</label>
+                    <input type="text" class="form-control" id="secondary_theme_color" name="secondary_theme_color" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>

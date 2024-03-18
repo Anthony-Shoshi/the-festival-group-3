@@ -34,4 +34,36 @@ class EventRepository extends Repository{
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function storeEvent(Events $event)
+    {
+        try {
+            $stmt = $this->connection->prepare("INSERT INTO events (title, event_type, description, start_date, end_date, primary_theme_color, secondary_theme_color, image_url, status) VALUES (:title, :event_type, :description, :start_date, :end_date, :primary_theme_color, :secondary_theme_color, :image_url, :status)");
+            $stmt->execute([
+                ':event_type' => $event->getEventType(),
+                ':title' => $event->getEventTitle(),
+                ':image_url' => $event->getEventImage(),
+                ':description' => $event->getEventDescription(),
+                ':status' => 1,
+                ':start_date' => $event->getEventStartDate(),
+                ':end_date' => $event->getEventEndDate(),
+                ':primary_theme_color' => $event->getPrimaryThemeColor(),
+                ':secondary_theme_color' => $event->getSecondaryThemeColor(),
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function deleteEvent($event_id)
+    {
+        try {
+            $stmt = $this->connection->prepare("DELETE FROM events WHERE event_id = :event_id");
+            $stmt->bindParam(':event_id', $event_id);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
 }

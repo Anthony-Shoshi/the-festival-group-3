@@ -7,21 +7,19 @@ class Events{
     private int $event_id;
     private string $event_image;
     public string $event_type;
-    private string $event_name;
+    private string $title;
     private string $description;
     private string $event_status;
     private string $event_start_date;
     private string $event_end_date;
-    private string $event_primary_color;
-    private string $event_secondary_color;
+    private string $primary_theme_color;
+    private string $secondary_theme_color;
 
-    public function getEventId()
-    {
+    public function getEventId(){
         return $this->event_id;
     }
 
-    public function setEventId($event_id)
-    {
+    public function setEventId(int $event_id) {
         $this->event_id = $event_id;
     }
 
@@ -42,14 +40,14 @@ class Events{
     {
         $this->event_type = $event_type;
     }
-    public function getEventName()
+    public function getEventTitle()
     {
-        return $this->event_name;
+        return $this->title;
     }
 
-    public function setEventName($event_name)
+    public function setEventTitle($title)
     {
-        $this->event_name = $event_name;
+        $this->title = $title;
     }
 
     public function getEventDescription()
@@ -92,24 +90,24 @@ class Events{
         $this->event_end_date = $event_end_date;
     }
 
-    public function getEventPrimaryColor()
+    public function getPrimaryThemeColor()
     {
-        return $this->event_primary_color;
+        return $this->primary_theme_color;
     }
 
-    public function setEventPrimaryColor($event_primary_color)
+    public function setPrimaryThemeColor($primary_theme_color)
     {
-        $this->event_primary_color = $event_primary_color;
+        $this->primary_theme_color = $primary_theme_color;
     }
 
-    public function getEventSecondaryColor()
+    public function getSecondaryThemeColor()
     {
-        return $this->event_secondary_color;
+        return $this->secondary_theme_color;
     }
 
-    public function setEventSecondaryColor($event_secondary_color)
+    public function setSecondaryThemeColor($secondary_theme_color)
     {
-        $this->event_secondary_color = $event_secondary_color;
+        $this->secondary_theme_color = $secondary_theme_color;
     }
 
 }

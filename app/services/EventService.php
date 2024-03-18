@@ -31,4 +31,20 @@ class EventService{
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function storeEvent(Events $event)
+    {
+        try {
+            return $this->eventRepository->storeEvent($event);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function deleteEvent($event_id)
+    {
+        try {
+            return $this->eventRepository->deleteEvent($event_id);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }

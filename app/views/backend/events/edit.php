@@ -4,13 +4,14 @@
     <h1>Edit Venue</h1>
     <div class="mt-4">
         <form action="/events/update" method="POST" autocomplete="off" enctype="multipart/form-data">
+            <input type="hidden" name="event_id" value="<?= $event['event_id'] ?>">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title" value="<?= $event['title'] ?>" required>
             </div>
             <div class="mb-3">
-                <label for="event_types" class="form-label">Role</label>
-                <select class="form-select" id="event_types" name="event_types" required>
+                <label for="event_type" class="form-label">Event Type</label>
+                <select class="form-select" id="event_type" name="event_type" required>
                     <?php foreach ($eventtypes as $eventtype) : ?>
                         <option value="<?= $eventtype ?>" <?php if ($eventtype == $event['event_type']) echo "selected"; ?>>
                             <?= $eventtype ?>
@@ -32,12 +33,12 @@
                 <input type="date" class="form-control" id="end_date" name="end_date" value="<?= $event['end_date'] ?>"  required>
             </div>
             <div class="mb-3">
-                <label for="primary_color" class="form-label">Primary color</label>
-                <input type="text" class="form-control" id="primary_color" name="primary_color" value="<?= $event['primary_theme_color'] ?>" required>
+                <label for="primary_theme_color" class="form-label">Primary color</label>
+                <input type="text" class="form-control" id="primary_theme_color" name="primary_theme_color" value="<?= $event['primary_theme_color'] ?>" required>
             </div>
             <div class="mb-3">
-                <label for="secondary_color" class="form-label">Secondary Color</label>
-                <input type="text" class="form-control" id="secondary_color" name="secondary_color" value="<?= $event['secondary_theme_color'] ?>" required>
+                <label for="secondary_theme_color" class="form-label">Secondary Color</label>
+                <input type="text" class="form-control" id="secondary_theme_color" name="secondary_theme_color" value="<?= $event['secondary_theme_color'] ?>" required>
             </div>
             <div class="mb-5">
                 <label for="image-url" class="form-label">Event Image</label>
