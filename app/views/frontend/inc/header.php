@@ -96,7 +96,7 @@
                 <a class="nav-link" href="#">Yummy</a>
             </div>
             <div class="dropdown">
-                <a class="nav-link" href="#">Dance</a>
+                <a class="nav-link" href="/dance/index">Dance</a>
             </div>
             <a class="nav-link" href="/login/login">Login</a>
         </div>

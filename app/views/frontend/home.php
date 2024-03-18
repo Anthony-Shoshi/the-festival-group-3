@@ -18,7 +18,7 @@
                     HAARLEM - The moment that many are eagerly awaiting: spring and summer are starting again and so event organizations can also go wild again. Which major
                     events can you expect in Haarlem in 2024? Here you will find an overview!
                 </p>
-                <a href="/overview">Upcoming Events</a>
+                <a href="/home/overview">Upcoming Events</a>
             </div>
         </section>
     </div>

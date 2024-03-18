@@ -26,7 +26,7 @@ L
 E
 .vscode/settings.json,8\9\89aa447020cdcb580cea0495694d46a55941edbe
 K
-app/views/frontend/home.php,d/c/dc5cb796a2b39bccf28b89bcc04ebcf9132c3644
+app/views/frontend/home.php,d\c\dc5cb796a2b39bccf28b89bcc04ebcf9132c3644
 Z
 *app/views/frontend/auth/reset-password.php,4/b/4b2d16389a25414187e0c5317de67313c0c295c5
 T
@@ -111,9 +111,9 @@ F
 V
 &app/repositories/HistoryRepository.php,e/4/e47a71a00da44f5f41b471a3fff61d7041062f3b
 P
- app/views/frontend/overview.html,c/4/c437786aa06f09606b94469012b9c4758b2c9d53
+ app/views/frontend/overview.html,c\4\c437786aa06f09606b94469012b9c4758b2c9d53
 Q
-!app/views/frontend/inc/header.php,a/1/a13e690db494cb328f1033d09e1fa570264e2ce9
+!app/views/frontend/inc/header.php,a\1\a13e690db494cb328f1033d09e1fa570264e2ce9
 _
 /app/views/frontend/auth/reset-password-sent.php,c/0/c010a67721ea05eee44a433d5a3cd79198dfd9e7
 R
@@ -139,7 +139,7 @@ U
 I
 app/views/auth/signup.php,0/9/09f4709ee741751d4c29b68a16401e4691ff8c42
 Q
-!app/views/frontend/inc/footer.php,f/b/fbe603e976f25fda635f2e6396c01cad86da597e
+!app/views/frontend/inc/footer.php,f\b\fbe603e976f25fda635f2e6396c01cad86da597e
 O
 app/services/SectionService.php,d/7/d77ec6856441b79d04949b38fa50f91623e25488
 O
@@ -152,3 +152,9 @@ S
 #app/controllers/LoginController.php,d/5/d510a89867b4fd29ec2a71e986620ee680844556
 O
 app/public/assets/css/style.css,6/2/629859b7ca2aed20c16ffa6915cf0739e063bed7
+R
+"app/views/frontend/dance/index.php,5\2\5229aef46a4f39ea47f36cf089cf7f2f47f8b4ea
+P
+ app/public/frontend/css/home.css,8\e\8e2c1fb20d985c33711ae7b12ff606d984ef58f4
+Q
+!app/public/frontend/css/dance.php,6\7\67bb8598ae3d7374047191b235276595b9ad7a2c

@@ -12,15 +12,16 @@ class HomeController
             require __DIR__ . '/../views/frontend/home.php';
         }
     }
-    
+
+    public function overview() {
+        require __DIR__ . '/../views/frontend/overview.php';
+    }
+
     public function create()
     {
         $data = [12, 22, 14, 54, 92];
         require '../views/backend/users/create.php';
     }
-
-    public function overview() {
-        require __DIR__ . '/../views/frontend/overview.php';
-    }
+    
 
 }

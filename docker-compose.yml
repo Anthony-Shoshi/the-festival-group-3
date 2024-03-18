@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
     nginx:
@@ -22,10 +22,10 @@ services:
     mysql:
         image: mariadb:latest
         environment:
-            MYSQL_ROOT_PASSWORD: '!nerds1234'
+            MYSQL_ROOT_PASSWORD: "nerds!1234"
             MYSQL_DATABASE: festivaldb
             MYSQL_USER: prodevs
-            MYSQL_PASSWORD: '!nerds1234'
+            MYSQL_PASSWORD: "nerds!1234"
         volumes:
             - db_data:/var/lib/mysql
 
@@ -39,6 +39,6 @@ services:
             - "8080:80"
         depends_on:
             - mysql
-        
+
 volumes:
     db_data:
