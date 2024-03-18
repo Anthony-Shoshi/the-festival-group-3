@@ -20,7 +20,7 @@
                 <label for="profile_picture" class="form-label">Profile Picture</label>
                 <input type="file" class="form-control" id="profile_picture" name="profile_picture">
                 <?php if (empty($user['profile_picture'])) : ?>
-                    <img src="/backend/img/default.jpg" class="mt-2" width="100" height="100" alt="Default Profile Picture">
+                    <img src="/images/default.jpg" class="mt-2" width="100" height="100" alt="Default Profile Picture">
                 <?php else : ?>
                     <img src="<?= $user['profile_picture'] ?>" class="mt-2" width="100" height="100" alt="Profile Picture">
                 <?php endif; ?>

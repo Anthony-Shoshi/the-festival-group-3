@@ -23,6 +23,15 @@ class SessionService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    
+    public function getAllEvents()
+    {
+        try {
+            return $this->sessionRepository->getAllEvents();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 
     public function createSession($totalSessions, $duration, $firstSession)
     {

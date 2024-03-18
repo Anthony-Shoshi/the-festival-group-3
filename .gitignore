@@ -1,8 +1,6 @@
 # images
-/app/public/backend/img/
-/app/public/frontend/img/
-/app/public/music/
 /app/config/
+/app/public/music/
 /app/public/assets/images/
 /app/public/images/
 
@@ -17,3 +15,6 @@
 
 # vscode files
 .vscode/
+
+# Include specific image file
+!/app/public/images/default.jpg

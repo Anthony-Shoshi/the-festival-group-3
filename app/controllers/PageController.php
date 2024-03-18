@@ -63,11 +63,10 @@ class PageController
                     $sectionContent = isset($_POST['section_content'][$index]) ? $_POST['section_content'][$index] : "";
 
                     if (isset($_FILES['image_url']['name'][$index], $_FILES['image_url']['tmp_name'][$index]) && $_FILES['image_url']['name'][$index] != "" && $_FILES['image_url']['tmp_name'][$index]) {
-                        Helper::debug($_FILES['image_url']['name'][$index]);
                         $fileName = $_FILES['image_url']['name'][$index];
                         $tmpFilePath = $_FILES['image_url']['tmp_name'][$index];
 
-                        $uploadDir = __DIR__ . '/../public/backend/img/';
+                        $uploadDir = __DIR__ . '/../public/images/';
 
                         $newFileName = uniqid('', true) . '_' . $fileName;
 
@@ -80,7 +79,7 @@ class PageController
                             exit();
                         }
 
-                        $imageUrl = '/backend/img/' . $newFileName;
+                        $imageUrl = '/images/' . $newFileName;
                     } else {
                         $imageUrl = "";
                     }

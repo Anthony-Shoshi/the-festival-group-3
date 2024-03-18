@@ -1,8 +1,11 @@
 <div class="sidebar" id="sidebar">
     <h5 class="sidebar-heading">General</h5>
     <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/home/dashboard">
+            <li class="menu-item text-white menu-hover" data-url="/home/dashboard"><i class="fas fa-home text-white"></i> Home</li>
+        </a>
         <a class="text-decoration-none" href="/">
-            <li class="menu-item text-white menu-hover" data-url="/"><i class="fas fa-home text-white"></i> Home</li>
+            <li class="menu-item text-white menu-hover"><i class="fa-regular fa-window-maximize"></i> View Website</li>
         </a>
     </ul>
     <h5 class="sidebar-heading">User Management</h5>
@@ -26,10 +29,13 @@
     <h5 class="sidebar-heading">Yummy Management</h5>
     <ul class="sidebar-menu">
         <a class="text-decoration-none" href="/feature">
-            <li class="menu-item text-white menu-hover" data-url="/feature"><i class="fas fa-pager text-white"></i> Features</li>
+            <li class="menu-item text-white menu-hover" data-url="/feature"><i class="fa-solid fa-list"></i> Features</li>
         </a>
         <a class="text-decoration-none" href="/session">
-            <li class="menu-item text-white menu-hover" data-url="/session"><i class="fas fa-pager text-white"></i> Sessions</li>
+            <li class="menu-item text-white menu-hover" data-url="/session"><i class="fa-regular fa-clock"></i> Sessions</li>
+        </a>
+        <a class="text-decoration-none" href="/restaurant">
+            <li class="menu-item text-white menu-hover" data-url="/restaurant"><i class="fa-solid fa-utensils"></i> Restaurants</li>
         </a>
     </ul>
     <h5 class="sidebar-heading">Dance Management</h5>
