@@ -17,6 +17,12 @@
             <li class="menu-item text-white menu-hover" data-url="/page"><i class="fas fa-pager text-white"></i> Pages</li>
         </a>
     </ul>
+    <h5 class="sidebar-heading">Event Management</h5>
+    <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/events">
+            <li class="menu-item text-white menu-hover" data-url="/events"><i class="fas fa-calendar text-white"></i> Events</li>
+        </a>
+    </ul>
     <h5 class="sidebar-heading">Yummy Management</h5>
     <ul class="sidebar-menu">
         <a class="text-decoration-none" href="/feature">

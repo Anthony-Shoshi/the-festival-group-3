@@ -12,8 +12,7 @@ use App\Services\DanceService;
 
 use Exception;
 
-class DanceController
-{
+class DanceController{
     private DanceService $danceService;
     private ArtistService $artistService;
     private VenueService $venueService;
