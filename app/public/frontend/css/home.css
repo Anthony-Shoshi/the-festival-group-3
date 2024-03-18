@@ -14,6 +14,8 @@ html {
 body {
     background: linear-gradient(to bottom, #742dd7, #fff);
     background-attachment: fixed;
+    font-family: "Jomhuria", serif;
+    min-height: 100vh;
 }
 
 /*NAVIGATION END*/
@@ -30,7 +32,6 @@ body {
     position: absolute;
     top: 60%;
     left: 0.8em;
-    font-family: "Jomhuria", serif;
     color: white;
     font-size: 10vw;
 }
@@ -41,7 +42,6 @@ body {
     background-color: #780b1e;
     color: white;
     padding: 1em;
-    font-family: "Jomhuria", serif;
 }
 
 .section h2 {
@@ -95,7 +95,6 @@ body {
 }
 
 .section-heading h2 {
-    font-family: "Jomhuria", serif;
     font-size: 6vw;
     color: #ff7a68;
     margin-left: 2vw;
@@ -110,7 +109,6 @@ body {
 }
 
 .event-section {
-    font-family: "Jomhuria", serif;
     padding: 2vw 4vw 2vw 2vw;
     user-select: none;
 }
