@@ -63,7 +63,6 @@ class PageController
                     $sectionContent = isset($_POST['section_content'][$index]) ? $_POST['section_content'][$index] : "";
 
                     if (isset($_FILES['image_url']['name'][$index], $_FILES['image_url']['tmp_name'][$index]) && $_FILES['image_url']['name'][$index] != "" && $_FILES['image_url']['tmp_name'][$index]) {
-                        Helper::debug($_FILES['image_url']['name'][$index]);
                         $fileName = $_FILES['image_url']['name'][$index];
                         $tmpFilePath = $_FILES['image_url']['tmp_name'][$index];
 

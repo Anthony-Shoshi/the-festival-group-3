@@ -21,6 +21,18 @@ class SessionRepository extends Repository
             echo "Error: " . $e->getMessage();
         }
     }
+    
+    public function getAllEvents()
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM events");
+            $stmt->execute();
+            $Sessions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $Sessions;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 
     public function createSession(Session $session)
     {

@@ -20,10 +20,13 @@
     <h5 class="sidebar-heading">Yummy Management</h5>
     <ul class="sidebar-menu">
         <a class="text-decoration-none" href="/feature">
-            <li class="menu-item text-white menu-hover" data-url="/feature"><i class="fas fa-pager text-white"></i> Features</li>
+            <li class="menu-item text-white menu-hover" data-url="/feature"><i class="fa-solid fa-list"></i> Features</li>
         </a>
         <a class="text-decoration-none" href="/session">
-            <li class="menu-item text-white menu-hover" data-url="/session"><i class="fas fa-pager text-white"></i> Sessions</li>
+            <li class="menu-item text-white menu-hover" data-url="/session"><i class="fa-regular fa-clock"></i> Sessions</li>
+        </a>
+        <a class="text-decoration-none" href="/restaurant">
+            <li class="menu-item text-white menu-hover" data-url="/restaurant"><i class="fa-solid fa-utensils"></i> Restaurants</li>
         </a>
     </ul>
     <h5 class="sidebar-heading">Dance Management</h5>

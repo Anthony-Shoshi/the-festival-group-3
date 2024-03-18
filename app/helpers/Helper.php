@@ -64,6 +64,10 @@ class Helper
         unset($fields['id']);
 
         foreach ($fields as $key => $value) {
+            if (is_array($value)) {
+                continue;
+            }
+
             if (empty($value) || !isset($value)) {
                 $fieldName = str_replace('_', ' ', $key);
                 $fieldName = ucwords($fieldName);

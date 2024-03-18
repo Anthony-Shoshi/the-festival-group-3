@@ -15,6 +15,24 @@ class FeatureService
         $this->featureRepository = new FeatureRepository();
     }
 
+    public function getAllFeaturesByRestaurantId($restaurantId)
+    {
+        try {
+            return $this->featureRepository->getAllFeaturesByRestaurantId($restaurantId);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    
+    public function deleteFeatureByRestaurantId($restaurantId)
+    {
+        try {
+            return $this->featureRepository->deleteFeatureByRestaurantId($restaurantId);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    
     public function getAllFeatures()
     {
         try {

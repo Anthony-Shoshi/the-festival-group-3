@@ -21,6 +21,19 @@ class FeatureRepository extends Repository
             echo "Error: " . $e->getMessage();
         }
     }
+    
+    public function getAllFeaturesByRestaurantId($restaurantId)
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM restaurant_features WHERE restaurant_id = :restaurant_id");
+            $stmt->bindParam(':restaurant_id', $restaurantId);
+            $stmt->execute();
+            $features = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $features;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 
     public function createFeature(Feature $feature)
     {
@@ -76,6 +89,18 @@ class FeatureRepository extends Repository
             return true;
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
+    public function deleteFeatureByRestaurantId($restaurantId)
+    {
+        try {
+            $stmt = $this->connection->prepare("DELETE FROM restaurant_features WHERE restaurant_id = :restaurant_id");
+            $stmt->bindParam(':restaurant_id', $restaurantId);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
     }
 }
