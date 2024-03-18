@@ -1,8 +1,8 @@
-   
 <?php include __DIR__ . '/inc/header.php'; ?>  
-    <link rel="stylesheet" href="/frontend/css/overview.css" />
-    <title>Overview</title>
-</head>
+  
+        <link rel="stylesheet" href="/frontend/css/overview.css" />
+        <title>Overview</title>
+    </head>
     <body> 
         <div class="white-space"></div>
         <a href="" class="all-events_button">All Events</a>
@@ -117,5 +117,4 @@
             </div>
             <a class="book-button book-button-yummy" href="">Book Tickets</a>
         </div>
-    </body>
-</html>
+        <?php include __DIR__ . '/inc/footer.php'; ?>  
