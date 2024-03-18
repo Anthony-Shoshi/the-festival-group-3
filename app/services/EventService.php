@@ -47,4 +47,12 @@ class EventService{
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function updateEvent(Events $event, $event_id)
+    {
+        try {
+            return $this->eventRepository->updateEvent($event, $event_id);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }
