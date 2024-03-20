@@ -32,6 +32,18 @@ $(document).ready(function () {
     });
 });
 
+var button = document.getElementById("event-section__button-dj");
 
+    button.addEventListener("click", function() {
+    window.location.href = "http://localhost/dance/index";
+});
+var button = document.getElementById("event-section__button-history");
 
+button.addEventListener("click", function() {
+    window.location.href = "http://localhost/history/index";
+});
+var button = document.getElementById("event-section__button-yummy");
 
+button.addEventListener("click", function() {
+    window.location.href = "http://localhost/yummy/index";
+});

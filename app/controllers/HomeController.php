@@ -28,4 +28,8 @@ class HomeController
         $data = [12, 22, 14, 54, 92];
         require '../views/backend/users/create.php';
     }
+    public function footer()
+    {
+
+    }
 }
