@@ -1,6 +1,8 @@
 # images
-/app/public/backend/img
-/app/public/frontend/img
+/app/config/
+/app/public/music/
+/app/public/assets/images/
+/app/public/images/
 
 # IntelliJ IDEA files
 .idea/
@@ -10,3 +12,9 @@
 /.idea/
 /.idea/*
 .DS_Store
+
+# vscode files
+.vscode/
+
+# Include specific image file
+!/app/public/images/default.jpg

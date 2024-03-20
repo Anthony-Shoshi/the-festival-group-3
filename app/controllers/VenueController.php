@@ -76,8 +76,8 @@ class VenueController
     public function edit()
     {
         try {
-            $artist_id = $_GET['id'];
-            $venue = $this->venueService->getVenuesById($artist_id);
+            $venue_id = $_GET['id'];
+            $venue = $this->venueService->getVenuesById($venue_id);
             require_once __DIR__ . '/../views/backend/venues/edit.php';
         } catch (Exception $e) {
             header("Location: /error?message=" . urlencode($e->getMessage()));

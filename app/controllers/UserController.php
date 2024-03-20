@@ -36,24 +36,10 @@ class UserController
     {
         try {
             if (isset($_FILES['profile_picture'])) {
-                // $file = $_FILES['profile_picture'];
 
                 $file = $_FILES['profile_picture'];
-                $imageUrl = Helper::uploadFile($file, __DIR__ . '/../public/backend/img');
+                $imageUrl = Helper::uploadFile($file);
 
-                // $fileName = $file['name'];
-                // $fileTmpName = $file['tmp_name'];
-                // $fileError = $file['error'];
-
-                // if ($fileError === UPLOAD_ERR_OK) {
-                //     $newFileName = uniqid('', true) . '_' . $fileName;
-                //     $uploadPath = __DIR__ . '/../public/backend/img/' . $newFileName;
-                //     move_uploaded_file($fileTmpName, $uploadPath);
-
-                //     $imageUrl = '/backend/img/' . $newFileName;
-                // } else {
-                //     throw new Exception('Error uploading file: ' . $fileError);
-                // }
             } else {
                 $imageUrl = '';
             }
@@ -104,7 +90,7 @@ class UserController
         try {
             if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
                 $newFileName = uniqid('', true) . '_' . $_FILES['profile_picture']['name'];
-                $uploadFile = __DIR__ . '/../public/backend/img/' . $newFileName;
+                $uploadFile = __DIR__ . '/../public/images/' . $newFileName;
 
                 $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
                 $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
@@ -121,7 +107,7 @@ class UserController
                     'name' => $_POST['name'],
                     'email' => $_POST['email'],
                     'role' => $_POST['role'],
-                    'profile_picture' => '/backend/img/' . $newFileName,
+                    'profile_picture' => '/images/' . $newFileName,
                 ];
             } else {
                 $userData = [
@@ -129,7 +115,7 @@ class UserController
                     'name' => $_POST['name'],
                     'email' => $_POST['email'],
                     'role' => $_POST['role'],
-                    'profile_picture' => '/backend/img/default.jpg',
+                    'profile_picture' => '/images/default.jpg',
                 ];
             }
 

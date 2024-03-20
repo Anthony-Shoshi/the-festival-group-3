@@ -39,7 +39,7 @@ class Helper
         return $base_url;
     }
 
-    public static function uploadFile($file, $destinationDirectory)
+    public static function uploadFile($file)
     {
         $fileName = $file['name'];
         $fileTmpName = $file['tmp_name'];
@@ -47,14 +47,60 @@ class Helper
 
         if ($fileError === UPLOAD_ERR_OK) {
             $newFileName = uniqid('', true) . '_' . $fileName;
-            $uploadPath = $destinationDirectory . '/' . $newFileName;
+            $uploadPath =  __DIR__ . '/../public/images/' . $newFileName;
             if (move_uploaded_file($fileTmpName, $uploadPath)) {
-                return $uploadPath;
+                return '/images/' . $newFileName;
             } else {
                 throw new Exception('Error moving uploaded file');
             }
         } else {
             throw new Exception('Error uploading file: ' . $fileError);
         }
+    }
+
+    public static function validate($fields)
+    {
+        $errors = [];
+        unset($fields['id']);
+
+        foreach ($fields as $key => $value) {
+            if (is_array($value)) {
+                continue;
+            }
+
+            if (empty($value) || !isset($value)) {
+                $fieldName = str_replace('_', ' ', $key);
+                $fieldName = ucwords($fieldName);
+                $errors[$key] = "$fieldName is required.";
+            } else {
+                $fields[$key] = htmlspecialchars(trim($value), ENT_QUOTES, 'UTF-8');
+            }
+        }
+
+        if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+            return false;
+        }
+
+        return $fields;
+    }
+
+    public static function unlinkImage($imageUrl)
+    {
+        $unLinkImageUrl = ltrim($imageUrl, '/');
+        unlink($unLinkImageUrl);
+    }
+
+    /**
+     * Set error message in session.
+     *
+     * @param bool $isError True if it's an error message, false otherwise.
+     * @param string $message The message to be set in the session.
+     * @return void
+     */
+    public static function setMessage($isError, $message)
+    {
+        $_SESSION['isError'] = $isError;
+        $_SESSION['flash_message'] = $message;
     }
 }

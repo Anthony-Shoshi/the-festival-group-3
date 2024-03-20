@@ -22,10 +22,10 @@ class DanceService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
-    public function getDanceById(int $dance_id)
+    public function getDanceEventById(int $music_performance_id)
     {
         try {
-            return $this->danceRepository->getDanceById($dance_id);
+            return $this->danceRepository->getDanceEventById($music_performance_id);
         } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
