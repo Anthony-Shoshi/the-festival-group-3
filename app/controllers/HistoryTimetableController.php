@@ -1,7 +1,9 @@
 <?php
 namespace App\Controllers;
 use App\Services\HistoryService;
-class HistoryController
+use Exception;
+
+class HistoryTimetableController
 {
     private HistoryService $historyService;
     public function __construct()
@@ -12,7 +14,7 @@ class HistoryController
     {
         try{
             $locations = $this->historyService->getAllTourLocations();
-            require_once __DIR__ . '/../views/backend/history/index.php';
+            require_once __DIR__ . '/../views/backend/historylocations/index.php';
         }catch (Exception $e) {
             header("Location: /error?message=" . urlencode($e->getMessage()));
             exit();
@@ -20,7 +22,10 @@ class HistoryController
     }
     public function edit()
     {
-        require_once __DIR__ . '/../views/backend/history/edit.php';
+        require_once __DIR__ . '/../views/backend/historylocations/edit.php';
+    }
+    public function create()
+    {
+        require_once __DIR__ . '/../views/backend/historylocations/create.php';
     }
 }
-
