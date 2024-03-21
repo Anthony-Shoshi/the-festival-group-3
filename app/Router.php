@@ -34,7 +34,10 @@ class Router
             http_response_code(404);
             return;
         }
-
+        if ($explodedUri[0] === 'send-mail') {
+            include 'app/API/send-mail.php';
+            return;
+        }
         try {
             $controllerObj = new $controllerName();
             $controllerObj->$methodName();

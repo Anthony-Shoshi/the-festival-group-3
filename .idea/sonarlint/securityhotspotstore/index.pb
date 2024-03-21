@@ -7,8 +7,6 @@ B
 docker-compose.yml,3/5/35b8c13cf2eb2a194eada000eb310d65aed53b2a
 D
 app/public/index.php,d\f\df187f96b153386aefda0ec4775d5524cf695467
-D
-app/views/index.html,c\c\ccff3d7628a78e56a3e3c947b9698f10f80f2cf8
 Q
 !app/views/backend/inc/sidebar.php,3/b/3ba110aa957d1e5c61303a9a5b9332e30932aba0
 Q
@@ -150,11 +148,7 @@ M
 ,app/controllers/ForgotPasswordController.php,e/e/eee6248792f3c0caf1f5ff15258ed2c1f39444c9
 S
 #app/controllers/LoginController.php,d/5/d510a89867b4fd29ec2a71e986620ee680844556
-O
-app/public/assets/css/style.css,6/2/629859b7ca2aed20c16ffa6915cf0739e063bed7
 R
 "app/views/frontend/dance/index.php,5\2\5229aef46a4f39ea47f36cf089cf7f2f47f8b4ea
 P
  app/public/frontend/css/home.css,8\e\8e2c1fb20d985c33711ae7b12ff606d984ef58f4
-Q
-!app/public/frontend/css/dance.php,6\7\67bb8598ae3d7374047191b235276595b9ad7a2c

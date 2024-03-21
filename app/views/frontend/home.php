@@ -1,4 +1,7 @@
 <?php include __DIR__ . '/inc/header.php'; ?>
+    <script>
+        <?php include __DIR__ . '/../../public/backend/js/script.js'; ?>
+    </script>
     <link rel="stylesheet" href="/frontend/css/home.css" />
     <title>Home</title>
 </head>
@@ -43,7 +46,7 @@
                     buildings around. The tour is guided and available in English, Dutch, and Chinese, so everyone can join in on the fun!
                 </p>
             </div>
-            <button class="event-section__button">26th till 29th July</button>
+            <button class="event-section__button" id="event-section__button-history">26th till 29th July</button>
         </div>
     </div>
     <div class="event-section">
@@ -73,7 +76,7 @@
                     to tantalize your taste buds. Indulge in diverse culinary options, including halal, vegan, and gluten-free choices.
                 </p>
             </div>
-            <button class="event-section__button" id="event-section__button-yummy">26th till 30th July</button>
+            <button class="event-section__button"  id="event-section__button-yummy">26th till 30th July</button>
         </div>
     </div>
 </body>

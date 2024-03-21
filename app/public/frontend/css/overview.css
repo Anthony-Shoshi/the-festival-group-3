@@ -10,6 +10,8 @@
 body {
     background: linear-gradient(to bottom, #742dd7, #fff);
     background-attachment: fixed;
+    font-family: "Jomhuria", serif;
+    min-height: 100hv;
 }
 
 .white-space {
@@ -36,7 +38,6 @@ body {
     flex-direction: column;
     gap: 0.5vw;
     width: 100%;
-    font-family: "Jomhuria", serif;
 }
 
 .all-events_child {
@@ -71,6 +72,114 @@ body {
 
 #all-events_4 {
     background: #edbc83;
+}
+
+.event-tables {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4vw;
+    gap: 2vw;
+}
+
+.event-tables h2 {
+    font-size: 6vw;
+    color: #ff7a68;
+}
+
+.table-aside {
+    writing-mode: vertical-rl;
+    padding: 0.5vw;
+    font-size: 3vw;
+    text-align: center;
+}
+
+.history-tours-table .table-aside {
+    transform: rotate(180deg);
+    background: #fcebbd;
+    color: #780b1e;
+}
+
+.section {
+    display: flex;
+    width: 70%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: none;
+    text-align: center;
+    font-size: 2vw;
+}
+
+td {
+    padding: 0.5vw;
+}
+
+.history-tours-table table {
+    tr:nth-child(odd) {
+        color: #fcebbd;
+        background: #780b1e;
+    }
+    tr:nth-child(even) {
+        color: #780b1e;
+        background: #fcebbd;
+    }
+}
+
+.book-button {
+    text-decoration: none;
+    padding: 0.5vw 1vw;
+    border-radius: 0.5vw;
+    font-size: 2vw;
+}
+.book-button-history {
+    color: #fcebbd;
+    background: #780b1e;
+}
+
+.dance-table .table-aside {
+    background: #3a1d6a;
+    color: #5ca5b3;
+}
+
+.dance-table table {
+    tr:nth-child(odd) {
+        color: #3a1d6a;
+        background: #5ca5b3;
+    }
+    tr:nth-child(even) {
+        color: #5ca5b3;
+        background: #3a1d6a;
+    }
+}
+
+.book-button-dance {
+    color: #3a1d6a;
+    background: #5ca5b3;
+}
+
+.yummy-table table {
+    tr:nth-child(odd) {
+        color: #000000;
+        background: #ff7a68;
+    }
+    tr:nth-child(even) {
+        color: #ff7a68;
+        background: #000000;
+    }
+}
+
+.yummy-table .table-aside {
+    transform: rotate(180deg);
+    color: #ff7a68;
+    background: #000000;
+}
+
+.book-button-yummy {
+    color: #ff7a68;
+    background: #000000;
 }
 
 @media (max-width: 768px) {

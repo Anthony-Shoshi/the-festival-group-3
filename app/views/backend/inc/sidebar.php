@@ -20,6 +20,12 @@
             <li class="menu-item text-white menu-hover" data-url="/page"><i class="fas fa-pager text-white"></i> Pages</li>
         </a>
     </ul>
+    <h5 class="sidebar-heading">Event Management</h5>
+    <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/events">
+            <li class="menu-item text-white menu-hover" data-url="/events"><i class="fas fa-calendar text-white"></i> Events</li>
+        </a>
+    </ul>
     <h5 class="sidebar-heading">Yummy Management</h5>
     <ul class="sidebar-menu">
         <a class="text-decoration-none" href="/feature">
@@ -50,8 +56,24 @@
     </ul>
     <h5 class="sidebar-heading">History Management</h5>
     <ul class="sidebar-menu">
-        <a class="text-decoration-none" href="/history">
-            <li class="menu-item text-white menu-hover" data-url="/history"><i class="fas fa-pager text-white"></i> Pages</li>
+        <a class="text-decoration-none" href="/historylocation">
+            <li class="menu-item text-white menu-hover" data-url="/history"><i
+                        class="fas fa-history text-white"></i></i> History Locations
+            </li>
+        </a>
+    </ul>
+    <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/historytour">
+            <li class="menu-item text-white menu-hover" data-url="/historyTimeTable"><i
+                        class="fas fa-history text-white"></i></i> History Tour Timetable
+            </li>
+        </a>
+    </ul>
+    <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/historyinformation">
+            <li class="menu-item text-white menu-hover" data-url="/historyTourInfo"><i
+                        class="fas fa-history text-white"></i></i> History Tour Info
+            </li>
         </a>
     </ul>
 </div>

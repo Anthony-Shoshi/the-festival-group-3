@@ -11,6 +11,7 @@
       <sourceFolder url="file://$MODULE_DIR$/app/./services" isTestSource="false" packagePrefix="App\Services\" />
       <sourceFolder url="file://$MODULE_DIR$/app/./utils" isTestSource="false" packagePrefix="App\Utils\" />
       <sourceFolder url="file://$MODULE_DIR$/app/./views" isTestSource="false" packagePrefix="App\Views\" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/copilot/chatSessions" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
