@@ -26,7 +26,7 @@
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                <textarea class="form-control summernote" id="description" name="description" rows="3" required></textarea>
             </div>
             <div class="mb-3">
                 <label for="ratings" class="form-label">Ratings</label>

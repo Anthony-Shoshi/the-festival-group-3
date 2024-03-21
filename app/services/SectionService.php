@@ -16,13 +16,13 @@ class SectionService
 
     public function createSection(Section $data): bool
     {
-        $section = new Section($data->getSectionTitle(), $data->getContent(), $data->getImageUrl(), $data->getPageId());
+        $section = new Section($data->getSectionTitle(), $data->getSubSectionTitle(), $data->getContent(), $data->getImageUrl(), $data->getMapUrl(), $data->getSectionType(), $data->getPageId());
         return $this->sectionRepository->create($section);
     }
 
-    public function updateSection(array $data): bool
+    public function updateSection(Section $data): bool
     {
-        $section = new Section($data['section_title'], $data['content'], $data['image_url'], $data['page_id'], $data['section_id']);
+        $section = new Section($data->getSectionTitle(), $data->getSubSectionTitle(), $data->getContent(), $data->getImageUrl(), $data->getMapUrl(), $data->getSectionType(), $data->getPageId(), $data->getSectionId());
         return $this->sectionRepository->update($section);
     }
 
