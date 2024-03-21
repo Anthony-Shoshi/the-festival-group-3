@@ -5,7 +5,7 @@
                 </a>
                 <div class="sign-up">
                     <p>Sign up for our newsletter to read about all our events, exhibitions and other recommendations.</p>
-                    <form action="" method="POST">
+                    <form action="send-mail" method="POST">
                         <input type="email" id="email" name="email" placeholder="Enter your email" required>
                         <button type="submit">Send</button>
                     </form>

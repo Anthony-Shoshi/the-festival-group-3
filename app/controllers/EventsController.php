@@ -99,6 +99,53 @@ class EventsController{
 
     public function update()
     {
-        require __DIR__ . '/../views/backend/events/update.php';
+        try {
+            $event_id = $_POST['event_id'];
+            $status = 1;
+
+            if (isset($_FILES['image_url']) && $_FILES['image_url']['error'] === UPLOAD_ERR_OK) {
+
+                $newFileName = uniqid('', true) . '_' . $_FILES['image_url']['name'];
+                $uploadFile = __DIR__ . '/../public/images/' . $newFileName;
+
+                $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
+                $allowedExtensions = ['jpg', 'jpeg', 'png'];
+                if (!in_array($imageFileType, $allowedExtensions)) {
+                    throw new Exception('Invalid file format. Please upload a valid image file.');
+                }
+
+                if (!move_uploaded_file($_FILES['image_url']['tmp_name'], $uploadFile)) {
+                    throw new Exception('Failed to upload image.');
+                }
+
+                $image_url = $newFileName;
+            } else {
+                $event = $this->eventService->getEventById($event_id);
+                $image_url = $event['image_url'];
+            }
+
+            $event = new Events(
+                (int)$_POST['event_id'],
+                $_POST['event_type'],
+                $_POST['title'],
+                $_POST['description'],
+                $_POST['start_date'],
+                $_POST['end_date'],
+                $_POST['primary_theme_color'],
+                $_POST['secondary_theme_color'],
+                $status,
+                $image_url
+            );
+
+            $this->eventService->updateEvent($event, $event_id);
+
+            $_SESSION['isError'] = 0;
+            $_SESSION['flash_message'] = "Event updated successfully!";
+            header("Location: /events");
+            exit();
+        } catch (Exception $e) {
+            header("Location: /error?message=" . urlencode($e->getMessage()));
+            exit();
+        }
     }
 }

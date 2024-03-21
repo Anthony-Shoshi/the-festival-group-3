@@ -1,6 +1,9 @@
 <?php include __DIR__ . '/../inc/header.php'; ?>
 
     <div class="container mb-5">
+
+        <?php include __DIR__ . '/../inc/message.php'; ?>
+
         <h1>Add Event</h1>
         <div class="mt-4">
             <form action="/events/store" method="POST" autocomplete="off" enctype="multipart/form-data">

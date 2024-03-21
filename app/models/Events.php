@@ -15,6 +15,29 @@ class Events{
     private string $primary_theme_color;
     private string $secondary_theme_color;
 
+    public function __construct(
+        int $event_id,
+        string $event_image,
+        string $event_type,
+        string $title,
+        string $description,
+        string $event_status,
+        string $event_start_date,
+        string $event_end_date,
+        string $primary_theme_color,
+        string $secondary_theme_color
+    ) {
+        $this->event_id = $event_id;
+        $this->event_image = $event_image;
+        $this->event_type = $event_type;
+        $this->title = $title;
+        $this->description = $description;
+        $this->event_status = $event_status;
+        $this->event_start_date = $event_start_date;
+        $this->event_end_date = $event_end_date;
+        $this->primary_theme_color = $primary_theme_color;
+        $this->secondary_theme_color = $secondary_theme_color;
+    }
     public function getEventId(){
         return $this->event_id;
     }
@@ -32,11 +55,11 @@ class Events{
     {
         $this->event_image = $event_image;
     }
-    public function getEventType():string
+    public function getEventType()
     {
         return $this->event_type;
     }
-    public function setEventType(string $event_type):void
+    public function setEventType(string $event_type)
     {
         $this->event_type = $event_type;
     }

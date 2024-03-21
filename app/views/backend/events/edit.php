@@ -1,6 +1,9 @@
 <?php include __DIR__ . '/../inc/header.php'; ?>
 
 <div class="container mb-5">
+
+    <?php include __DIR__ . '/../inc/message.php'; ?>
+
     <h1>Edit Venue</h1>
     <div class="mt-4">
         <form action="/events/update" method="POST" autocomplete="off" enctype="multipart/form-data">
@@ -19,7 +22,6 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-
             <div class="mb-3">
                 <label for="about" class="form-label">Description</label>
                 <textarea class="form-control" id="description" name="description" rows="5" required><?= $event['description'] ?></textarea>
