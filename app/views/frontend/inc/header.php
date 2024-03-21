@@ -75,6 +75,10 @@
                 <img src="" alt="" />
             </a>
         </nav> -->
+
+    <?php
+    $pages = $this->pageService->getAllPages();
+    ?>
     <nav class="navbar">
         <a class="navbar-brand" href="/">
             <img src="/assets/images/Logo.png" alt="Logo" />
@@ -83,24 +87,30 @@
                 <span class="navbar-toggler-icon"></span>
             </button> -->
         <div class="navbar-nav" id="navbarLinks">
-            <a class="nav-link" href="/">Home</a>
-            <div class="dropdown">
-                <a class="nav-link" href="#">History</a>
-                <div class="dropdown-content">
-                    <a class="dropdown-link" href="#">Link 4</a>
-                    <a class="dropdown-link" href="#">Link 5</a>
-                    <a class="dropdown-link" href="#">Link 6</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <a class="nav-link" href="#">Yummy</a>
-            </div>
-            <div class="dropdown">
-                <a class="nav-link" href="/dance/index">Dance</a>
-            </div>
+
+            <?php
+            $pages = $this->pageService->getAllPages();
+
+            foreach ($pages as $page) {
+                $pageTitle = htmlspecialchars($page['title']);
+                $pageSlug = $page['slug'];
+
+                // Convert the page title to lowercase for comparison
+                $lowerPageTitle = strtolower($pageTitle);
+
+                // Check if the lowercase page title is "home" and set the URL accordingly
+                $pageUrl = ($lowerPageTitle === 'home') ? '/' : '/' . $pageSlug;
+
+                echo '<div class="dropdown">
+                          <a class="nav-link" href="' . $pageUrl . '">' . $pageTitle . '</a>
+                      </div>';
+            }
+
+            ?>
+
             <?php
             if (isset($_SESSION['user'])) {
-                if ($_SESSION['role'] == "Admin") {                    
+                if ($_SESSION['role'] == "Admin") {
                     echo '<a class="nav-link" href="/home/dashboard">' . $_SESSION['username'] . '</a>';
                 } else {
                     echo '<a class="nav-link" href="javascript:void()">' . $_SESSION['username'] . '</a>';

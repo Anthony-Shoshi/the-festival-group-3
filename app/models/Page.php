@@ -6,13 +6,13 @@ class Page
 {
     private ?int $page_id;
     private string $title;
-    private string $page_url;
+    private int $active;
     private ?string $slug;
 
-    public function __construct(string $title, string $page_url, ?string $slug = null, ?int $page_id = null)
+    public function __construct(string $title, ?int $active = 1, ?string $slug = null, ?int $page_id = null)
     {
         $this->title = $title;
-        $this->page_url = $page_url;
+        $this->active = $active !== null ? $active : 1;
         $this->slug = $slug;
         $this->page_id = $page_id;
     }
@@ -27,9 +27,9 @@ class Page
         return $this->title;
     }
 
-    public function getpageUrl(): string
+    public function getActive(): int
     {
-        return $this->page_url;
+        return $this->active;
     }
 
     public function getSlug(): ?string
