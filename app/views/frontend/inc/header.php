@@ -84,7 +84,7 @@
             </button> -->
         <div class="navbar-nav" id="navbarLinks">
             <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="#">History</a>
+                <a class="nav-link" href="/history/index">History</a>
                 <a class="nav-link" href="#">Yummy</a>
                 <a class="nav-link" href="/dance/index">Dance</a>
             <?php

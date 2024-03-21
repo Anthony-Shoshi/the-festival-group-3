@@ -86,4 +86,11 @@ class HistoryService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function getAllTours(){
+        try{
+            return $this->historyRepository->getAllTours();
+        }catch (Exception $e){
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }

@@ -83,18 +83,6 @@ class HistoryRepository extends Repository
         }
     }
 
-    public function getAllTimeSlots()
-    {
-        try {
-            $stmt = $this->connection->prepare("SELECT * FROM tour_timetable");
-            $stmt->execute();
-            $history = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $history;
-        } catch (PDOException $e) {
-            throw new Exception("Error: " . $e->getMessage());
-        }
-    }
-
     public function getAllContent()
     {
         try {
@@ -107,29 +95,34 @@ class HistoryRepository extends Repository
         }
 
     }
-    public function getContentById($id){
-        try{
+
+    public function getContentById($id)
+    {
+        try {
             $stmt = $this->connection->prepare("SELECT * FROM history_info WHERE content_id = :id");
             $stmt->execute([':id' => $id]);
             $content = $stmt->fetch(PDO::FETCH_ASSOC);
             return $content;
-        }catch (PDOException $e){
+        } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
     public function deleteContent($id)
     {
-        try{
+        try {
             $stmt = $this->connection->prepare("DELETE FROM history_info WHERE content_id = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             return true;
-        }catch (PDOException $e){
+        } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
-    public function addContent(HistoryContent $content){
-        try{
+
+    public function addContent(HistoryContent $content)
+    {
+        try {
             $stmt = $this->connection->prepare("INSERT INTO history_info (title, description, image, url) VALUES (:title, :description, :image, :url)");
             $stmt->execute([
                 ':title' => $content->getTitle(),
@@ -138,12 +131,14 @@ class HistoryRepository extends Repository
                 ':url' => $content->getUrl()
             ]);
             return true;
-        }catch (PDOException $e){
+        } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
-    public function updateContent(HistoryContent $content, $id){
-        try{
+
+    public function updateContent(HistoryContent $content, $id)
+    {
+        try {
             $stmt = $this->connection->prepare("UPDATE history_info SET title = :title, description = :description, image = :image, url = :url WHERE content_id = :id");
             $stmt->execute([
                 ':title' => $content->getTitle(),
@@ -153,7 +148,23 @@ class HistoryRepository extends Repository
                 ':id' => $id
             ]);
             return true;
-        }catch (PDOException $e){
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
+    public function getAllTours()
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT ht.date, ht.start_time, ht.end_time, tl.language_name, tl.flag_image, htour.available_guides, htour.tour_id
+                                                FROM history_timeslots ht
+                                                JOIN history_tours htour ON htour.timetable_id = ht.timetable_id
+                                                JOIN tour_languages tl ON tl.language_id = htour.language_id");
+            $stmt->execute();
+            $tour = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $tour;
+
+        } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }

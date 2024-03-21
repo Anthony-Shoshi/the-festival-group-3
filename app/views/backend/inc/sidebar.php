@@ -63,7 +63,7 @@
         </a>
     </ul>
     <ul class="sidebar-menu">
-        <a class="text-decoration-none" href="/historyTimeTable">
+        <a class="text-decoration-none" href="/historytour">
             <li class="menu-item text-white menu-hover" data-url="/historyTimeTable"><i
                         class="fas fa-history text-white"></i></i> History Tour Timetable
             </li>
