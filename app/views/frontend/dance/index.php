@@ -12,31 +12,19 @@
 </div>
 <div class="section-2">
     <h2 class="artist-list">Our Artists</h2>
-    <div class="artists-background">
-        <div class="artists-container">
-            <?php
-            $count = 0;
-            foreach ($artists as $artist) {
-                $count++;
-                ?>
-                <div class="artist">
-                    <div class="artist-image">
-                        <img src="<?= '/images/' . $artist['image_url'] ?>">
-                    </div>
-                    <div class="artist-name"><?= $artist['artist_name']; ?></div>
+    <div class="artists-container">
+        <?php foreach ($artists as $artist) :?>
+            <div class="artists">
+                <div class="artist-image">
+                    <img src="<?= '/images/' . $artist['image_url'] ?>">
                 </div>
-                <?php
-                // Check if the count is a multiple of 3 to start a new line
-                if ($count % 3 == 0) {
-                    echo '<div class="artist"></div>';
-                }
-            }
-            ?>
-        </div>
+                <div class="artist-name"><?= $artist['artist_name']; ?></div>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
 <div class="section-3">
-    <h2 class="venue-list">Our Locations</h2>
+    <h2 class="artist-list">Our Locations</h2>
     <div class="venues-container">
         <?php foreach ($venues as $venue) :?>
             <div class="venues">
@@ -48,5 +36,6 @@
         <?php endforeach; ?>
     </div>
 </div>
-</body>
 <?php include __DIR__ . '/../inc/footer.php'; ?>
+
+</body>

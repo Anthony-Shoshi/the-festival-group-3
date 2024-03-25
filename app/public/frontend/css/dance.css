@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jomhuria&display=swap");
-
+/* Common styles */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,6 @@ body {
     background-attachment: fixed;
     min-height: 100%;
 }
-
 
 #section-dance {
     position: relative;
@@ -32,50 +31,45 @@ body {
     font-size: 10vw;
 }
 
+/* Artist list styles */
 .artist-list {
-
     font-size: 4vw;
-    /*position: absolute;*/
     color: white;
     width: fit-content;
     padding: 10px;
     margin: 0 auto;
+    text-align: center;
 }
 
-.section-2{
+.section-2 {
     width: 100%;
-}
-
-
-.artists-background {
-    position: absolute;
-    width: 100%;
-    height: 520px;
-    background: linear-gradient(180deg, rgba(217, 217, 217, 0) 25.52%, #016F96 41.67%, #016F96 66.84%, rgba(217, 217, 217, 0) 91.32%);
 }
 
 .artists-container {
-    width: 390px;
-    height: 434px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .artist {
-    margin-bottom: 20px;
+    width: calc(33.33% - 20px); /* Adjust width and margin as needed */
+    max-width: 320px; /* Adjust maximum width as needed */
+    text-align: center;
+    margin-bottom: 20px; /* Adjust as needed */
 }
 
 .artist-image {
-    width: 390px;
-    height: 390px;
+    height: 200px; /* Adjust height as needed */
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .artist-image img {
-    border-radius: 100%;
+    border-radius: 50%;
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -84,10 +78,20 @@ body {
 .artist-name {
     color: white;
     font-size: 18px;
+    text-align: center;
 }
+
+/* Section 3 styles */
 .section-3 {
-    padding: 20px; /* Add padding for spacing */
     width: 100%;
+}
+
+.venue-list{
+    font-size: 4vw;
+    color: white;
+    width: fit-content;
+    padding: 10px;
+    margin: 0 auto;
 }
 
 .venues-container {
