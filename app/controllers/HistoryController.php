@@ -17,9 +17,15 @@ class HistoryController
     {
         try{
             $location = $this->historyService->getAllTourLocations();
-            $contents = $this->historyService->getAllContent();
             $tours = $this->historyService->getAllTours();
             $pages = $this->pageService->getAllPages();
+
+            $header = $this->pageService->getHeader();
+            $introduction = $this->pageService->getIntroduction();
+            $information = $this->pageService->getTourInformation();
+            $routes = $this->pageService->getRoutes();
+            $regularTicket = $this->pageService->getRegularTicketPrice();
+            $familyTicket = $this->pageService->getFamilyTicketPrice();
 
             require_once __DIR__ . '/../views/frontend/history/index.php';
         }catch (Exception $e) {
