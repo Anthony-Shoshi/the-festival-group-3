@@ -2,10 +2,20 @@
 
 namespace App\Controllers;
 
+use App\Services\PageService;
+
 class HomeController
 {
+    protected $pageService;
+
+    public function __construct()
+    {
+        $this->pageService = new PageService();
+    }
+
     public function index()
     {
+
         require __DIR__ . '/../views/frontend/home.php';
     }
 
@@ -25,7 +35,6 @@ class HomeController
 
     public function create()
     {
-        $data = [12, 22, 14, 54, 92];
         require '../views/backend/users/create.php';
     }
     public function footer()

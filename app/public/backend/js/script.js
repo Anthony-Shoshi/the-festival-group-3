@@ -34,6 +34,25 @@ $(document).ready(function () {
 
 var button = document.getElementById("event-section__button-dj");
 
+$('.page-switch').change(function() {
+    var pageId = $(this).data('id');
+    var isActive = $(this).is(':checked') ? 1 : 0;
+
+    $.ajax({
+        url: '/page/status?id=' + pageId,
+        type: 'POST',
+        data: {
+            active: isActive
+        },
+        success: function(response) {
+            console.log('Page status updated successfully.');
+        },
+        error: function(xhr, status, error) {
+            console.error('Error updating page status:', error);
+        }
+    });
+});
+
     button.addEventListener("click", function() {
     window.location.href = "http://localhost/dance/index";
 });

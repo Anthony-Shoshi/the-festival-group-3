@@ -17,7 +17,7 @@ include __DIR__ . '/../inc/header.php';
                 <tr>
                     <th>ID</th>
                     <th>Page Title</th>
-                    <th>Page URL</th>
+                    <th>Enable</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -27,7 +27,9 @@ include __DIR__ . '/../inc/header.php';
                         <tr>
                             <td><?= $page['page_id'] ?></td>
                             <td><?= $page['title'] ?></td>
-                            <td><?= $page['page_url'] ?></td>
+                            <td>
+                                <input type="checkbox" class="page-switch" data-id="<?php echo $page['page_id']; ?>" <?php echo $page['active'] ? 'checked' : ''; ?>>
+                            </td>
                             <td>
                                 <a href="/page/edit?id=<?= $page['page_id'] ?>" class="btn btn-primary btn-sm">Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $page['page_id'] ?>">Delete</button>

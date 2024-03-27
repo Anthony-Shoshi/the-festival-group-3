@@ -6,7 +6,7 @@ use Exception;
 
 class Helper
 {
-    public static function slug($text)
+    public static function slug($text, $time = false)
     {
         $text = preg_replace('~[^\pL\d]+~u', '-', $text);
         $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
@@ -19,7 +19,11 @@ class Helper
             return 'n-a';
         }
 
-        return $text . '-' . time();
+        if ($time) {
+            $text = $text . '-' . time();
+        }
+
+        return $text;
     }
 
     public static function debug($data)

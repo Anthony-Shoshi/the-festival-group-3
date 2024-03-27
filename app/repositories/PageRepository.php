@@ -12,10 +12,10 @@ class PageRepository extends Repository
     public function create(Page $page): int
     {
         try {
-            $stmt = $this->connection->prepare("INSERT INTO pages (title, page_url, slug) VALUES (:title, :page_url, :slug)");
+            $stmt = $this->connection->prepare("INSERT INTO pages (title, active, slug) VALUES (:title, :active, :slug)");
             $stmt->execute([
                 ':title' => $page->getTitle(),
-                ':page_url' => $page->getpageUrl(),
+                ':active' => $page->getActive(),
                 ':slug' => $page->getSlug()
             ]);
             
@@ -28,11 +28,12 @@ class PageRepository extends Repository
     public function update(Page $page, $page_id): bool
     {
         try {
-            $stmt = $this->connection->prepare("UPDATE pages SET title = :title, page_url = :page_url WHERE page_id = :page_id");
+            $stmt = $this->connection->prepare("UPDATE pages SET title = :title, slug = :slug, active = :active WHERE page_id = :page_id");
             $stmt->execute([
                 ':page_id' => $page_id,
                 ':title' => $page->getTitle(),
-                ':page_url' => $page->getpageUrl()
+                ':slug' => $page->getSlug(),
+                ':active' => $page->getActive()
             ]);
             return true;
         } catch (PDOException $e) {
@@ -90,7 +91,7 @@ class PageRepository extends Repository
     public function getAll()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM pages");
+            $stmt = $this->connection->prepare("SELECT * FROM pages where active = 1");
             $stmt->execute();
             $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $pages;

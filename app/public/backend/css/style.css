@@ -88,3 +88,12 @@ body {
 .active {
     background: #209f7a;
 }
+
+.btn-add {
+    height: 0%;
+}
+
+.btn-delete {
+    width: 3%;
+    height: 0%;
+}
