@@ -29,4 +29,10 @@ class DanceController{
         $venues = $this->venueService->getAllVenues();
         require __DIR__ . '/../views/frontend/dance/index.php';
     }
+    public function artists()
+    {
+        $artists = $this->artistService->getAllArtists();
+        require __DIR__ . '/../views/frontend/dance/artists.php';
+    }
 }
+// use models

@@ -38,6 +38,11 @@ class Router
             include 'app/API/send-mail.php';
             return;
         }
+        if ($explodedUri[0] === 'artists-details.php') {
+            include 'app/API/artists-details.php';
+            return;
+        }
+// postman
         try {
             $controllerObj = new $controllerName();
             $controllerObj->$methodName();

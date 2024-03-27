@@ -6,7 +6,9 @@
 <body>
 <div id="section-dance">
     <div class="dance-image">
-        <img src="/images/dance-head.jpg" alt=""/>
+        <a href="/dance/artists">
+            <img src="/images/dance-head.jpg" alt="DANCE!">
+        </a>
         <h1>DANCE!</h1>
     </div>
 </div>
@@ -15,12 +17,15 @@
     <div class="artists-container">
         <?php foreach ($artists as $artist) :?>
             <div class="artists">
-                <div class="artist-image">
-                    <img src="<?= '/images/' . $artist['image_url'] ?>">
-                </div>
-                <div class="artist-name"><?= $artist['artist_name']; ?></div>
+                <a href="/dance/artists?id=<?= $artist['artist_id']; ?>">
+                    <div class="artist-image">
+                        <img src="<?= '/images/' . $artist['image_url'] ?>" alt="<?= $artist['artist_name']; ?>">
+                    </div>
+                    <div class="artist-name"><?= $artist['artist_name']; ?></div>
+                </a>
             </div>
         <?php endforeach; ?>
+
     </div>
 </div>
 <div class="section-3">
@@ -29,7 +34,7 @@
         <?php foreach ($venues as $venue) :?>
             <div class="venues">
                 <div class="venue-image">
-                    <img src="<?= '/images/' . $venue['venue_image'] ?>">
+                    <img src="<?= '/images/' . $venue['venue_image'] ?>" alt="<?= $venue['venue_name']; ?>">
                 </div>
                 <div class="venue-name"><?= $venue['venue_name']; ?></div>
             </div>
