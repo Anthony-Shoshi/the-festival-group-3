@@ -9,19 +9,21 @@ use App\Models\Venue;
 use App\Services\VenueService;
 use App\Services\ArtistService;
 use App\Services\DanceService;
-
+use App\Services\PageService;
 use Exception;
 
 class DanceController{
     private DanceService $danceService;
     private ArtistService $artistService;
     private VenueService $venueService;
+    private pageService $pageService;
 
     public function __construct()
     {
         $this->danceService = new DanceService();
         $this->artistService = new ArtistService();
         $this->venueService = new VenueService();
+        $this->pageService = new PageService();
     }
     public function index()
     {
