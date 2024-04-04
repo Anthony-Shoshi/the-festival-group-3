@@ -9,7 +9,7 @@ use Exception;
 use PDO;
 use PDOException;
 
-class UserRepository extends Repository
+class   UserRepository extends Repository
 {
     private $db;
 

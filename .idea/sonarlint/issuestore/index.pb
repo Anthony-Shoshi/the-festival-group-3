@@ -24,7 +24,7 @@ L
 E
 .vscode/settings.json,8\9\89aa447020cdcb580cea0495694d46a55941edbe
 K
-app/views/frontend/home.php,d\c\dc5cb796a2b39bccf28b89bcc04ebcf9132c3644
+app/views/frontend/home.php,d/c/dc5cb796a2b39bccf28b89bcc04ebcf9132c3644
 Z
 *app/views/frontend/auth/reset-password.php,4/b/4b2d16389a25414187e0c5317de67313c0c295c5
 T
@@ -48,7 +48,7 @@ P
 Q
 !app/views/backend/inc/message.php,7/f/7f552fbec17ea6d37818d9f3640917b0b74b62c2
 S
-#app/controllers/ErrorController.php,f\e\fedb74c4229c813e6b1b7975df13600ec9207d4a
+#app/controllers/ErrorController.php,f/e/fedb74c4229c813e6b1b7975df13600ec9207d4a
 E
 app/models/Artist.php,3/f/3f4f128cc087cb5aee7dbb97950cc699a1f04718
 C
@@ -56,9 +56,9 @@ C
 C
 app/models/Page.php,f/8/f8fa041233f5271ec16c956065887617fb653a6b
 C
-app/models/User.php,a\f\af597125a98242ba3637328719fc60b1a07ea654
+app/models/User.php,a/f/af597125a98242ba3637328719fc60b1a07ea654
 S
-#app/repositories/UserRepository.php,9\3\93095e6fa25a2d3fb64a8d0030dc6426c9435ad4
+#app/repositories/UserRepository.php,9/3/93095e6fa25a2d3fb64a8d0030dc6426c9435ad4
 \
 ,app/views/backend/danceManagement/create.php,f/6/f689a5ac23b30b6fad7ccd7b0314b7201e48c03f
 Z
@@ -98,20 +98,12 @@ Q
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 C
 app/config/mail.php,d/d/ddbfdfad450ff101f7211063d080129c41a1e8fb
-R
-"app/views/backend/history/edit.php,0/d/0d0a42bf933e43149c07cd44f6827845513d7fc1
-T
-$app/views/backend/history/create.php,c/5/c5ca48a92f2451966f4660a39ae7b14f23430a6d
-S
-#app/views/backend/history/index.php,9/d/9dadc87a654a43258aabfa2b3b1d933b67d9a7b0
 F
 app/models/Section.php,2/5/257f50a39a0da63f41cc9db86be5681233257713
 V
 &app/repositories/HistoryRepository.php,e/4/e47a71a00da44f5f41b471a3fff61d7041062f3b
-P
- app/views/frontend/overview.html,c\4\c437786aa06f09606b94469012b9c4758b2c9d53
 Q
-!app/views/frontend/inc/header.php,a\1\a13e690db494cb328f1033d09e1fa570264e2ce9
+!app/views/frontend/inc/header.php,a/1/a13e690db494cb328f1033d09e1fa570264e2ce9
 _
 /app/views/frontend/auth/reset-password-sent.php,c/0/c010a67721ea05eee44a433d5a3cd79198dfd9e7
 R
@@ -137,7 +129,7 @@ U
 I
 app/views/auth/signup.php,0/9/09f4709ee741751d4c29b68a16401e4691ff8c42
 Q
-!app/views/frontend/inc/footer.php,f\b\fbe603e976f25fda635f2e6396c01cad86da597e
+!app/views/frontend/inc/footer.php,f/b/fbe603e976f25fda635f2e6396c01cad86da597e
 O
 app/services/SectionService.php,d/7/d77ec6856441b79d04949b38fa50f91623e25488
 O
@@ -152,3 +144,28 @@ R
 "app/views/frontend/dance/index.php,5\2\5229aef46a4f39ea47f36cf089cf7f2f47f8b4ea
 P
  app/public/frontend/css/home.css,8\e\8e2c1fb20d985c33711ae7b12ff606d984ef58f4
+:
+
+nginx.conf,e/d/ed8b45da44d73de79bd7c1c203a419d6ee7d6fde
+C
+app/utils/const.php,5/9/5968d7d0afa2c11de7a01f26a0692141227e0c7f
+U
+%app/controllers/SessionController.php,b/9/b901ef1dd2e2f047f5209eed5927d055cb28e13c
+O
+app/services/SessionService.php,6/6/66e0ed76a33fa27cc70d09f38c58f8de08bd432d
+O
+app/views/frontend/overview.php,4/1/410cca6836620091944f8d1d06c7e791183bc2f0
+>
+app/Router.php,a/5/a589b37f6bada5e63f6077ccab9d39764b932e66
+J
+app/views/backend/home.php,a/1/a1a4a3dd43a0543b72d0c3a87ab19d952c2dd49e
+S
+#app/controllers/DanceController.php,a/d/ade156112b7651e8e734de2b6f90763ec34f327e
+T
+$app/controllers/EventsController.php,1/1/117f6a4406e3eac3e7173659f498c411080ec507
+M
+app/views/frontend/yummy.html,7/8/785f7ffc56991618bfa8d6fd5a2a758e83bab1e0
+W
+'app/views/frontend/personalProgram.html,9/3/93df0d074a1d555aaca915131ecb0bf5b3edec1e
+T
+$app/views/frontend/yummy-detail.html,9/d/9d290264db4f7934ac22677622a906a916acbf1e

@@ -11,12 +11,11 @@
       <sourceFolder url="file://$MODULE_DIR$/app/./services" isTestSource="false" packagePrefix="App\Services\" />
       <sourceFolder url="file://$MODULE_DIR$/app/./utils" isTestSource="false" packagePrefix="App\Utils\" />
       <sourceFolder url="file://$MODULE_DIR$/app/./views" isTestSource="false" packagePrefix="App\Views\" />
-      <excludeFolder url="file://$MODULE_DIR$/.idea/copilot/chatSessions" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="9cbb27e2-3380-46c7-b058-9160edfee618" />
+    <option name="uniqueId" value="7b2154ae-5514-4f2c-8f7d-680e0eb73cfb" />
   </component>
 </module>
