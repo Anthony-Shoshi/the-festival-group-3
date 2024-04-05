@@ -29,8 +29,9 @@
         <h2>Event Location</h2>
     </div>
     <div class="map">
-        <img src="/assets/images/map.png" />
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2433.744888616002!2d4.6141989!3d52.3961483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5ef6c60e1e9fb%3A0x8ae15680b8a17e39!2sHaarlem%2C%20Netherlands!5e0!3m2!1sen!2sin!4v1649839892387!5m2!1sen!2sin" width="1500" height="550" allowfullscreen="" loading="lazy"></iframe>
     </div>
+
     <div class="section-heading">
         <h2>Upcoming Events</h2>
     </div>
