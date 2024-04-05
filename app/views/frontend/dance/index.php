@@ -50,9 +50,20 @@
     </div>
 </div>
 
-
 <div class="section-4">
     <h2 class="ticket-list">Tickets</h2>
+    <?php foreach ($passes as $pass): ?>
+        <div class="ticket-container">
+            <div class="top-section">
+                <p class="pass-name"><?= $pass['passName']; ?></p>
+            </div>
+            <div class="bottom-section">
+                <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
+                <button class="buy-button">BUY</button>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
 
 
 

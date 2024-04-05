@@ -195,12 +195,75 @@ body {
 
 /* Section 4 styles */
 .section-4 {
-    width: 100%;
+    position: relative;
+    text-align: center; /* Center align the ticket containers */
 }
-.ticket-list{
+
+.ticket-list {
     font-size: 8vw;
     width: fit-content;
     padding: 10px;
     margin: 0 auto;
     font-weight: 400;
+}
+
+.ticket-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 10px; /* Reduce padding inside the ticket container */
+    max-width: 30%; /* Set maximum width for the ticket container */
+    margin: 0 auto; /* Center the ticket container */
+
+}
+
+.top-section {
+    width: 100%;
+    height: 33%; /* Reduce the height of the top section */
+    background: #4A9BAA; /* Set background color */
+    opacity: 0.9; /* Set opacity */
+    border-radius: 8px 8px 0 0; /* Add border radius only to top corners */
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.bottom-section {
+    width: 100%;
+    height: 66%; /* Reduce the height of the bottom section */
+    background: #227195; /* Set background color */
+    border-radius: 0 0 8px 8px; /* Add border radius only to bottom corners */
+    padding: 10px; /* Add padding inside the bottom section */
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.pass-name {
+    color: #fff;
+    font-size: 40px;
+    margin: 0;
+    font-family: Calibri, sans-serif;
+
+}
+
+.pass-description-price {
+    color: #fff;
+    font-size: 30px;
+    margin: 5px 0;
+    font-family: Calibri, sans-serif;
+
+}
+
+.buy-button {
+    background-color: #FF7A68;
+    color: #000;
+    font-size: 24px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.buy-button:hover {
+    background-color: #ff3e29; /* Change background color on hover */
 }

@@ -39,4 +39,3 @@ class DanceController{
         require __DIR__ . '/../views/frontend/dance/artists.php';
     }
 }
-// use models
