@@ -15,8 +15,8 @@
 <div class="section-2">
     <h2 class="artist-list">Our Artists</h2>
     <div class="artists-container">
-        <?php foreach ($artists as $artist) :?>
-            <div class="artists">
+        <?php foreach ($artists as $artist): ?>
+            <div class="artist">
                 <a href="/dance/artists?id=<?= $artist['artist_id']; ?>">
                     <div class="artist-image">
                         <img src="<?= '/images/' . $artist['image_url'] ?>" alt="<?= $artist['artist_name']; ?>">
@@ -24,12 +24,16 @@
                     <div class="artist-name"><?= $artist['artist_name']; ?></div>
                 </a>
             </div>
-        <?php endforeach; ?>
 
+        <?php endforeach; ?>
     </div>
 </div>
+
+
+
+
 <div class="section-3">
-    <h2 class="artist-list">Our Locations</h2>
+    <h2 class="venue-list">Our Locations</h2>
     <div class="venues-container">
         <?php foreach ($venues as $venue) :?>
             <div class="venues">
@@ -41,6 +45,6 @@
         <?php endforeach; ?>
     </div>
 </div>
-<?php include __DIR__ . '/../inc/footer.php'; ?>
 
+<?php include __DIR__ . '/../inc/footer.php'; ?>
 </body>

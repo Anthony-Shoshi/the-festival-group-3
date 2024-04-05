@@ -61,7 +61,7 @@
                     shoes and prepare for an unforgettable clubbing experience!
                 </p>
             </div>
-            <a href="/dance/index" class="event-section__button" id="event-section__button-dj">27th till 29th July</a>
+            <a href="/dance" class="event-section__button" id="event-section__button-dj">27th till 29th July</a>
         </div>
     </div>
     <div class="event-section">
