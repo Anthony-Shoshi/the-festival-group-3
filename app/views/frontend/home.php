@@ -46,7 +46,7 @@
                     buildings around. The tour is guided and available in English, Dutch, and Chinese, so everyone can join in on the fun!
                 </p>
             </div>
-            <button class="event-section__button" id="event-section__button-history">26th till 29th July</button>
+            <a href="/history/index" class="event-section__button" id="event-section__button-history">26th till 29th July</a>
         </div>
     </div>
     <div class="event-section">
@@ -61,7 +61,7 @@
                     shoes and prepare for an unforgettable clubbing experience!
                 </p>
             </div>
-            <button class="event-section__button" id="event-section__button-dj">27th till 29th July</button>
+            <a href="/dance/index" class="event-section__button" id="event-section__button-dj">27th till 29th July</a>
         </div>
     </div>
     <div class="event-section">
@@ -76,7 +76,7 @@
                     to tantalize your taste buds. Indulge in diverse culinary options, including halal, vegan, and gluten-free choices.
                 </p>
             </div>
-            <button class="event-section__button"  id="event-section__button-yummy">26th till 30th July</button>
+            <a href="/yummy/index" class="event-section__button" id="event-section__button-yummy">26th till 30th July</a>
         </div>
     </div>
 </body>

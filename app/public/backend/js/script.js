@@ -53,22 +53,6 @@ $('.page-switch').change(function() {
     });
 });
 
-    button.addEventListener("click", function() {
-    window.location.href = "http://localhost/dance/index";
-});
-var button = document.getElementById("event-section__button-history");
-
-button.addEventListener("click", function() {
-    window.location.href = "http://localhost/history/index";
-});
-var button = document.getElementById("event-section__button-yummy");
-
-button.addEventListener("click", function() {
-    window.location.href = "http://localhost/yummy/index";
-});
-
-
-
 
 /// Function to fetch artist details from the backend
 function fetchArtistDetails(artistId) {
