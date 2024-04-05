@@ -39,18 +39,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script>
     document.getElementById('signupForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+        event.preventDefault(); // Prevent default form submission
+        sendEmail(); // Call sendEmail function to handle form submission
+    });
+
+    function sendEmail() {
         const email = document.getElementById('email').value;
         axios.post('/api/sendmail/sendemail', { email: email })
             .then(function (response) {
-                alert('Success: ' + response.data);
+                alert('Success! You have been registered to our newsletter successfully.');
                 window.location.reload(); // Reload the current page
             })
             .catch(function (error) {
                 alert('An error occurred while sending the email.');
                 console.error(error);
             });
-    });
+    }
 </script>
 </body>
 </html>

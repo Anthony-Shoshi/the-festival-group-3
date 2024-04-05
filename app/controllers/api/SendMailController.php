@@ -25,8 +25,18 @@ class SendMailController extends ApiBaseController
         }
     }
 
-    public function sendEmail($email)
+    public function sendEmail()
     {
+        // Retrieve email from request body
+        $postData = json_decode(file_get_contents('php://input'), true);
+        $email = $postData['email'] ?? null;
+
+        if ($email === null) {
+            http_response_code(400);
+            echo "Error: Email address not provided!";
+            exit;
+        }
+
         // Create a new PHPMailer instance
         $mail = new PHPMailer;
 
@@ -43,19 +53,14 @@ class SendMailController extends ApiBaseController
         $mail->setFrom($this->config['from_email'], $this->config['from_name']);
         $mail->addAddress($email);
 
-        // Add the company logo as an attachment (assuming you have the path to the logo)
-        $mail->addAttachment('/images/logo.png');
-
-        // Set email content
         $mail->isHTML(true);
         $mail->Subject = 'Thank You for Subscribing!';
-        $mail->Body = 'Thank you for subscribing to our newsletter! We are thrilled to have you join our community. 🎉
-
-        By subscribing, you will receive regular updates on our latest events, exhibitions, and exclusive offers. Stay tuned for exciting news and valuable insights delivered straight to your inbox.
-
-        If you ever have any questions or feedback, feel free to reach out to us. We are here to make your experience with us exceptional.
-
-        Once again, thank you for subscribing! We look forward to keeping in touch.';
+        $mail->Body = '
+            <p>Thank you for subscribing to our newsletter!</p>
+            <p>By subscribing, you will receive regular updates on our latest events, exhibitions, and exclusive offers. Stay tuned for exciting news and valuable insights delivered straight to your inbox.</p>
+            <p>If you ever have any questions or feedback, feel free to reach out to us. We are here to make your experience with us exceptional.</p>
+            <p>Once again, thank you for subscribing! We look forward to keeping in touch.</p>
+        ';
 
         // Send the email
         if (!$mail->send()) {
