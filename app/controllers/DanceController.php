@@ -6,6 +6,7 @@ use App\Helpers\Helper;
 use App\Models\Dance;
 use App\Models\Artist;
 use App\Models\Venue;
+use App\Models\TicketPass;
 use App\Services\VenueService;
 use App\Services\ArtistService;
 use App\Services\DanceService;
@@ -29,6 +30,7 @@ class DanceController{
     {
         $artists = $this->artistService->getAllArtists();
         $venues = $this->venueService->getAllVenues();
+        $passes = $this->danceService->getAllPasses();
         require __DIR__ . '/../views/frontend/dance/index.php';
     }
     public function artists()

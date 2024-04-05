@@ -51,5 +51,15 @@
 </div>
 
 
+<div class="section-4">
+    <h2 class="ticket-list">Tickets</h2>
+
+
+
+
+
+
+
+
 <?php include __DIR__ . '/../inc/footer.php'; ?>
 </body>

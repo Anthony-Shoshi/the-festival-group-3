@@ -133,4 +133,14 @@ class DanceRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function getAllPasses() {
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM ticket_pass");
+            $stmt->execute();
+            $passes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $passes;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }

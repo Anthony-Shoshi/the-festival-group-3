@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
-    <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/app/." isTestSource="false" packagePrefix="App\" />
-      <sourceFolder url="file://$MODULE_DIR$/app/./controllers" isTestSource="false" packagePrefix="App\Controllers\" />
-      <sourceFolder url="file://$MODULE_DIR$/app/./helpers" isTestSource="false" packagePrefix="App\Helpers\" />
-      <sourceFolder url="file://$MODULE_DIR$/app/./models" isTestSource="false" packagePrefix="App\Models\" />
-      <sourceFolder url="file://$MODULE_DIR$/app/./repositories" isTestSource="false" packagePrefix="App\Repositories\" />
-      <sourceFolder url="file://$MODULE_DIR$/app/./services" isTestSource="false" packagePrefix="App\Services\" />
-      <sourceFolder url="file://$MODULE_DIR$/app/./utils" isTestSource="false" packagePrefix="App\Utils\" />
-      <sourceFolder url="file://$MODULE_DIR$/app/./views" isTestSource="false" packagePrefix="App\Views\" />
-      <excludeFolder url="file://$MODULE_DIR$/.idea/copilot/chatSessions" />
-    </content>
-    <orderEntry type="inheritedJdk" />
-    <orderEntry type="sourceFolder" forTests="false" />
-  </component>
+<module version="4">
   <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="9cbb27e2-3380-46c7-b058-9160edfee618" />
+    <option name="uniqueId" value="2d7197d3-3292-4acb-a1d1-40d8e8c94bec" />
   </component>
 </module>
