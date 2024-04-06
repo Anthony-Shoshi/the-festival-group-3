@@ -16,14 +16,14 @@
                 <label for="event_type" class="form-label">Event Type</label>
                 <select class="form-select" id="event_type" name="event_type" required>
                     <?php foreach ($eventtypes as $eventtype) : ?>
-                        <option value="<?= $eventtype ?>" <?php if ($eventtype == $event['event_type']) echo "selected"; ?>>
-                            <?= $eventtype ?>
+                        <option value="<?= $eventtype ?>" <?php if ($eventtype == $event['event_type']) echo"selected";?>>
+                            <?=$eventtype?>
                         </option>
                     <?php endforeach; ?>
                 </select>
             </div>
             <div class="mb-3">
-                <label for="about" class="form-label">Description</label>
+                <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" id="description" name="description" rows="5" required><?= $event['description'] ?></textarea>
             </div>
             <div class="mb-3">
@@ -43,11 +43,11 @@
                 <input type="text" class="form-control" id="secondary_theme_color" name="secondary_theme_color" value="<?= $event['secondary_theme_color'] ?>" required>
             </div>
             <div class="mb-5">
-                <label for="image-url" class="form-label">Event Image</label>
-                <input type="file" class="form-control" id="image-url" name="image-url">
+                <label for="image_url" class="form-label">Event Image</label>
+                <input type="file" class="form-control" id="image_url" name="image_url">
                 <img src="<?= '/images/' . $event['image_url'] ?>" class="mt-2" width="100" height="100" alt="Event Image">
             </div>
-            <input type="hidden" name="venue_id" value="<?= $event['event_id'] ?>">
+            <input type="hidden" name="event_id" value="<?= $event['event_id'] ?>">
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
