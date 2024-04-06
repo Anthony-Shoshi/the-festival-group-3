@@ -15,6 +15,7 @@ class EventsController{
     {
         $this->eventService = new EventService();
     }
+
     public function index()
     {
         try {

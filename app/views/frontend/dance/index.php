@@ -6,13 +6,11 @@
 <body>
 <div id="section-dance">
     <div class="dance-image">
-        <a href="/dance/artists">
-            <img src="/images/dance-head.jpg" alt="DANCE!">
-        </a>
+        <img src="/images/dance-head.jpg" alt="DANCE!">
         <h1>DANCE!</h1>
     </div>
 </div>
-<!-- Artist section -->
+
 <div class="section-2">
     <h2 class="artist-list">Our Artists</h2>
     <div class="artists-container">
@@ -32,10 +30,6 @@
     </div>
 </div>
 
-
-
-
-
 <div class="section-3">
     <h2 class="venue-list">Our Locations</h2>
     <div class="venues-container">
@@ -52,7 +46,7 @@
 
 <div class="section-4">
     <h2 class="ticket-list">Tickets</h2>
-    <?php foreach ($passes as $pass): ?>
+    <?php foreach ($allAccessPass as $pass): ?>
         <div class="ticket-container">
             <div class="top-section">
                 <p class="pass-name"><?= $pass['passName']; ?></p>
@@ -64,12 +58,6 @@
         </div>
     <?php endforeach; ?>
 </div>
-
-
-
-
-
-
 
 
 <?php include __DIR__ . '/../inc/footer.php'; ?>

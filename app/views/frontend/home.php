@@ -37,47 +37,48 @@
     </div>
     <div class="event-section">
         <div class="event-section__body">
+            <?php foreach ($historyEvents as $historyEvent): ?>
             <div class="event-section__image">
-                <img src="/assets/images/map.png" alt="" />
+                <img src="<?= '/images/' .  $historyEvent['image_url']; ?> " alt="" />
             </div>
             <div class="event-section__text">
-                <h2>A stroll through History</h2>
-                <p>
-                    Welcome to our "A Stroll Through History" tour! Over the next hour, we'll dive into the history of our city, checking out some of the oldest and coolest
-                    buildings around. The tour is guided and available in English, Dutch, and Chinese, so everyone can join in on the fun!
-                </p>
+                    <h2><?= $historyEvent['title']; ?></h2>
+                    <p><?= $historyEvent['description']; ?></p>
             </div>
-            <a href="/history/index" class="event-section__button" id="event-section__button-history">26th till 29th July</a>
+            <a href="/history/index" class="event-section__button" id="event-section__button-history">
+                    <p><?= $historyEvent['start_date']; ?> till <?= $historyEvent['end_date']; ?></p>
+                <?php endforeach; ?></a>
         </div>
     </div>
     <div class="event-section">
         <div class="event-section__body" id="event-section__body-dj">
+            <?php foreach ($danceEvents as $danceEvent): ?>
             <div class="event-section__image">
-                <img src="/assets/images/Dj-event.png" alt="Dj event" />
+                <img src="<?= '/images/' .  $danceEvent['image_url']; ?> " alt="" />
             </div>
             <div class="event-section__text" id="event-section__text-dj">
-                <h2>Top DJ’s make an appearance</h2>
-                <p>
-                    Whether you enjoy house beats, techno vibes, or hip-hop rhythms, our diverse selection ensures there's something for everyone. So, lace up your dancing
-                    shoes and prepare for an unforgettable clubbing experience!
-                </p>
+                    <h2><?= $danceEvent['title']; ?></h2>
+                    <p><?= $danceEvent['description']; ?></p>
             </div>
-            <a href="/dance" class="event-section__button" id="event-section__button-dj">27th till 29th July</a>
+            <a href="/dance" class="event-section__button" id="event-section__button-dj">
+                    <p><?= $danceEvent['start_date']; ?> till <?= $danceEvent['end_date']; ?></p>
+                <?php endforeach; ?></a>
         </div>
     </div>
     <div class="event-section">
         <div class="event-section__body" id="event-section__body-yummy">
+            <?php foreach ($yummyEvents as $yummyEvent): ?>
             <div class="event-section__image">
-                <img src="/assets/images/yummy-event.png" alt="" />
+                <img src="<?= '/images/' .  $yummyEvent['image_url']; ?> " alt="" />
             </div>
             <div class="event-section__text" id="event-section__text-yummy">
-                <h2>Yummy! – a Food event</h2>
-                <p>
-                    Step into Yummie!, your gateway to a delightful culinary journey. Explore seven fantastic restaurants, each presenting a variety of international cuisines
-                    to tantalize your taste buds. Indulge in diverse culinary options, including halal, vegan, and gluten-free choices.
-                </p>
+                    <h2><?= $yummyEvent['title']; ?></h2>
+                    <p><?= $yummyEvent['description']; ?></p>
             </div>
-            <a href="/yummy/index" class="event-section__button" id="event-section__button-yummy">26th till 30th July</a>
+            <a href="/yummy/index" class="event-section__button"
+               id="event-section__button-yummy">
+                    <p><?= $yummyEvent['start_date']; ?> till <?= $yummyEvent['end_date']; ?></p>
+                <?php endforeach; ?></a>
         </div>
     </div>
 </body>
