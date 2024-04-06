@@ -169,3 +169,5 @@ W
 'app/views/frontend/personalProgram.html,9/3/93df0d074a1d555aaca915131ecb0bf5b3edec1e
 T
 $app/views/frontend/yummy-detail.html,9/d/9d290264db4f7934ac22677622a906a916acbf1e
+X
+(app/public/frontend/css/yummy-detail.css,d/1/d11395e5aab2a06128d29d1cde9fdf370d1f32df
