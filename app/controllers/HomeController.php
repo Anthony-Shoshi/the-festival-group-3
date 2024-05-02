@@ -2,20 +2,26 @@
 
 namespace App\Controllers;
 
+use App\Helpers\Helper;
 use App\Services\PageService;
+use App\Services\RestaurantService;
+use App\Services\SectionService;
 use App\Services\EventService;
-
+use Exception;
 
 class HomeController
 {
     protected $pageService;
+    protected $sectionService;
+    protected $restaurantService;
     protected $eventService;
 
     public function __construct()
     {
         $this->pageService = new PageService();
+        $this->sectionService = new SectionService();
+        $this->restaurantService = new RestaurantService();
         $this->eventService = new EventService();
-
     }
 
     public function index()
@@ -73,8 +79,23 @@ class HomeController
     {
         require '../views/backend/users/create.php';
     }
-    public function footer()
-    {
 
+    public function page()
+    {
+        $id = $_GET['id'];
+        $slug = $_GET['slug'];
+        $sections = $this->sectionService->getSectionByPageId($id);        
+        switch ($slug) {
+            case 'history':
+                require '../views/frontend/history/index.php';
+                break;
+            case 'yummy':
+                $restaurants = $this->restaurantService->getAllRestaurants();
+                require '../views/frontend/yummy/index.php';
+                break;
+            default:
+                require '../views/frontend/custom.php';
+                break;
+        }
     }
 }
