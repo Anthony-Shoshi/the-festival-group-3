@@ -19,9 +19,11 @@ $(document).ready(function () {
         placeholder: 'Enter your content . . .',
         height: 200,
         fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana'],
+        fontSizes: ['8', '9', '10', '11', '12', '14', '18', '20', '22', '24', '26', '28', '30'],
         toolbar: [
             ['style', ['style']],
             ['font', ['bold', 'underline', 'clear']],
+            ['fontsize', ['fontsize']],
             ['fontname', ['fontname']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],

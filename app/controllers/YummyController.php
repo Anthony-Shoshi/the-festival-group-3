@@ -13,10 +13,4 @@ class YummyController
     {
         $this->restaurantService = new RestaurantService();
     }
-
-    public function index() {
-        $restaurants = $this->restaurantService->getAllRestaurants();
-        // Helper::debug($restaurants);
-        require __DIR__ . '/../views/frontend/yummy.php';
-    }
 }

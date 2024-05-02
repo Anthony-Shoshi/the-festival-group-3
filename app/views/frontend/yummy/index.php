@@ -1,34 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include __DIR__ . '/../inc/header.php' ?>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/frontend/css/yummy.css" />
-    <title>Yummy</title>
-</head>
+<link rel="stylesheet" href="/frontend/css/yummy.css" />
 
-<body>
-    <div class="white-space"></div>
-    <div class="intro">
-        <div class="text">
-            <h1>YUMMY!</h1>
-            <p class="">27 July - 31 July</p>
-            <h2>
-                Food Festival <br />
-                Haarlem <br />
-                Culinary 2024
-            </h2>
-            <p class="">
-                Are you coming to the culinary event in Haarlem? It will take place from July 27 to July 31, 2024 on the Grote Markt in Haarlem. Make sure you're there! Enjoy
-                various tastings and bands. Gather your company.
-            </p>
-            <a class="intro-button" href="">Check out Restaurants</a>
+<div class="white-space"></div>
+<?php foreach ($sections as $section) : ?>
+    <?php if ($section->getSectionType() === 'header') : ?>
+        <div class="intro">
+            <div class="text">
+                <h1><?= $section->getSectionTitle() ?></h1>
+                <p class=""><?= $section->getSubSectionTitle() ?></p>
+                <?= $section->getContent() ?>
+                <br>
+                <a class="intro-button" href="">Check out Restaurants</a>
+            </div>
+            <div class="img-wrap">
+                <img src="<?= $section->getImageUrl() ?>" />
+            </div>
         </div>
-        <div class="img-wrap">
-            <img src="/images/yummy-intro.png" />
-        </div>
-    </div>
+    <?php endif; ?>
     <div class="restaurants-section">
         <div class="restaurant-top-line">
             <h2>Restaurants</h2>
@@ -63,6 +52,7 @@
                         <?php foreach ($restaurant['features'] as $feature) : ?>
                             <div class="feature">
                                 <img src="<?php echo $feature['image_url']; ?>" width="20" height="20" />
+                                <span><?= $feature['name'] ?></span>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -85,8 +75,7 @@
             <?php endforeach; ?>
         </div>
 
-
     </div>
-</body>
+<?php endforeach; ?>
 
-</html>
+<?php include __DIR__ . '/../inc/footer.php'; ?>
