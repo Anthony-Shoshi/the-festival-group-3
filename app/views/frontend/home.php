@@ -29,54 +29,56 @@
         <h2>Event Location</h2>
     </div>
     <div class="map">
-        <img src="/assets/images/map.png" />
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2433.744888616002!2d4.6141989!3d52.3961483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5ef6c60e1e9fb%3A0x8ae15680b8a17e39!2sHaarlem%2C%20Netherlands!5e0!3m2!1sen!2sin!4v1649839892387!5m2!1sen!2sin" width="1500" height="550" allowfullscreen="" loading="lazy"></iframe>
     </div>
+
     <div class="section-heading">
         <h2>Upcoming Events</h2>
     </div>
     <div class="event-section">
         <div class="event-section__body">
+            <?php foreach ($historyEvents as $historyEvent): ?>
             <div class="event-section__image">
-                <img src="/assets/images/map.png" alt="" />
+                <img src="<?= '/images/' .  $historyEvent['image_url']; ?> " alt="" />
             </div>
             <div class="event-section__text">
-                <h2>A stroll through History</h2>
-                <p>
-                    Welcome to our "A Stroll Through History" tour! Over the next hour, we'll dive into the history of our city, checking out some of the oldest and coolest
-                    buildings around. The tour is guided and available in English, Dutch, and Chinese, so everyone can join in on the fun!
-                </p>
+                    <h2><?= $historyEvent['title']; ?></h2>
+                    <p><?= $historyEvent['description']; ?></p>
             </div>
-            <button class="event-section__button" id="event-section__button-history">26th till 29th July</button>
+            <a href="/history/index" class="event-section__button" id="event-section__button-history">
+                    <p><?= $historyEvent['start_date']; ?> till <?= $historyEvent['end_date']; ?></p>
+                <?php endforeach; ?></a>
         </div>
     </div>
     <div class="event-section">
         <div class="event-section__body" id="event-section__body-dj">
+            <?php foreach ($danceEvents as $danceEvent): ?>
             <div class="event-section__image">
-                <img src="/assets/images/Dj-event.png" alt="Dj event" />
+                <img src="<?= '/images/' .  $danceEvent['image_url']; ?> " alt="" />
             </div>
             <div class="event-section__text" id="event-section__text-dj">
-                <h2>Top DJ’s make an appearance</h2>
-                <p>
-                    Whether you enjoy house beats, techno vibes, or hip-hop rhythms, our diverse selection ensures there's something for everyone. So, lace up your dancing
-                    shoes and prepare for an unforgettable clubbing experience!
-                </p>
+                    <h2><?= $danceEvent['title']; ?></h2>
+                    <p><?= $danceEvent['description']; ?></p>
             </div>
-            <button class="event-section__button" id="event-section__button-dj">27th till 29th July</button>
+            <a href="/dance" class="event-section__button" id="event-section__button-dj">
+                    <p><?= $danceEvent['start_date']; ?> till <?= $danceEvent['end_date']; ?></p>
+                <?php endforeach; ?></a>
         </div>
     </div>
     <div class="event-section">
         <div class="event-section__body" id="event-section__body-yummy">
+            <?php foreach ($yummyEvents as $yummyEvent): ?>
             <div class="event-section__image">
-                <img src="/assets/images/yummy-event.png" alt="" />
+                <img src="<?= '/images/' .  $yummyEvent['image_url']; ?> " alt="" />
             </div>
             <div class="event-section__text" id="event-section__text-yummy">
-                <h2>Yummy! – a Food event</h2>
-                <p>
-                    Step into Yummie!, your gateway to a delightful culinary journey. Explore seven fantastic restaurants, each presenting a variety of international cuisines
-                    to tantalize your taste buds. Indulge in diverse culinary options, including halal, vegan, and gluten-free choices.
-                </p>
+                    <h2><?= $yummyEvent['title']; ?></h2>
+                    <p><?= $yummyEvent['description']; ?></p>
             </div>
-            <button class="event-section__button"  id="event-section__button-yummy">26th till 30th July</button>
+            <a href="/yummy/index" class="event-section__button"
+               id="event-section__button-yummy">
+                    <p><?= $yummyEvent['start_date']; ?> till <?= $yummyEvent['end_date']; ?></p>
+                <?php endforeach; ?></a>
         </div>
     </div>
 </body>

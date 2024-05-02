@@ -54,4 +54,12 @@ class DanceService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function getAllPasses()
+    {
+        try {
+            return $this->danceRepository->getAllPasses();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }

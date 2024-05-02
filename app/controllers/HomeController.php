@@ -6,25 +6,60 @@ use App\Helpers\Helper;
 use App\Services\PageService;
 use App\Services\RestaurantService;
 use App\Services\SectionService;
+use App\Services\EventService;
+use Exception;
 
 class HomeController
 {
     protected $pageService;
     protected $sectionService;
     protected $restaurantService;
+    protected $eventService;
 
     public function __construct()
     {
         $this->pageService = new PageService();
         $this->sectionService = new SectionService();
         $this->restaurantService = new RestaurantService();
+        $this->eventService = new EventService();
     }
 
     public function index()
     {
+        try {
+            // Fetch all events
+            $eventsData = $this->eventService->getAll();
 
-        require __DIR__ . '/../views/frontend/home.php';
+            // Initialize arrays to store data for each enum
+            $danceEvents = [];
+            $historyEvents = [];
+            $yummyEvents = [];
+
+            // Iterate through the events data
+            foreach ($eventsData as $event) {
+                // Check the value of the 'event_type' enum
+                switch ($event['event_type']) {
+                    case 'Dance':
+                        $danceEvents[] = $event;
+                        break;
+                    case 'History':
+                        $historyEvents[] = $event;
+                        break;
+                    case 'Yummy':
+                        $yummyEvents[] = $event;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            require __DIR__ . '/../views/frontend/home.php';
+        } catch (Exception $e) {
+            // Handle exceptions
+            header("Location: /error?message=" . urlencode($e->getMessage()));
+            exit();
+        }
     }
+
 
     public function dashboard()
     {

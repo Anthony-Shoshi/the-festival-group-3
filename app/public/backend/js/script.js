@@ -55,16 +55,54 @@ $('.page-switch').change(function() {
     });
 });
 
-    button.addEventListener("click", function() {
-    window.location.href = "http://localhost/dance/index";
-});
-var button = document.getElementById("event-section__button-history");
 
-button.addEventListener("click", function() {
-    window.location.href = "http://localhost/history/index";
-});
-var button = document.getElementById("event-section__button-yummy");
+/// Function to fetch artist details from the backend
+function fetchArtistDetails(artistId) {
+    // Construct the URL of the backend PHP script
+    const url = `/artists-details?artist_id=${artistId}`; // Adjust the URL as needed
 
-button.addEventListener("click", function() {
-    window.location.href = "http://localhost/yummy/index";
+    // Fetch artist details from the backend
+    fetch(url)
+        .then(response => {
+            // Check if the response is successful
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // Parse the JSON response
+            return response.json();
+        })
+        .then(artistDetails => {
+            // Handle the artist details
+            displayArtistDetails(artistDetails);
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('Error fetching artist details:', error);
+        });
+}
+
+// Function to display artist details on the frontend
+function displayArtistDetails(artistDetails) {
+    // Check if artist details are available
+    if (artistDetails) {
+        // Display artist details on the frontend
+        const artistName = artistDetails.artist_name;
+        const artistImageUrl = `/images/${artistDetails.image_url}`; // Assuming image_url contains the filename of the image
+        // Update the HTML content to display the artist details
+        document.getElementById('artistName').textContent = artistName;
+        document.getElementById('artistImage').src = artistImageUrl;
+    } else {
+        // Display a message if artist details are not available
+        console.log('Artist details not found');
+    }
+}
+
+// Example usage: Fetch and display artist details when the page loads
+document.addEventListener('DOMContentLoaded', function () {
+    // Retrieve the artist ID from the URL query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const artistId = urlParams.get('artist_id');
+    // Fetch artist details using the artist ID
+    fetchArtistDetails(artistId);
 });
+
