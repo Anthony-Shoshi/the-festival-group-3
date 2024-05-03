@@ -16,19 +16,17 @@ class DanceRepository extends Repository
             SELECT 
                 mp.music_performance_id,
                 mp.music_event_id,
+                me.event_name,
                 me.event_price,
+                me.event_date,
                 me.session_type,
                 me.event_start_time,
                 me.event_duration,
+                me.music_event_image,
                 GROUP_CONCAT(a.artist_name SEPARATOR ', ') AS artist_names,
                 a.genre,
                 a.about,
-                e.event_id,
-                e.title,
-                e.description,
-                e.start_date,
-                e.end_date,
-                e.image_url,
+                e.event_id,              
                 dv.venue_name,
                 dv.venue_location,
                 dv.capacity
@@ -61,19 +59,18 @@ class DanceRepository extends Repository
             SELECT 
                 mp.music_performance_id,
                 mp.music_event_id,
+                me.event_name,
                 me.event_price,
+                me.event_date,
                 me.session_type,
                 me.event_start_time,
                 me.event_duration,
+                me.music_event_image,
                 GROUP_CONCAT(a.artist_name SEPARATOR ', ') AS artist_names,
+                GROUP_CONCAT(mp.artist_id SEPARATOR ', ') AS artist_id,
                 a.genre,
                 a.about,
                 e.event_id,
-                e.title,
-                e.description,
-                e.start_date,
-                e.end_date,
-                e.image_url,
                 dv.venue_id,
                 dv.venue_name,
                 dv.venue_location,
@@ -102,6 +99,22 @@ class DanceRepository extends Repository
         }
     }
 
+    public function getArtistIdsByEventId(int $music_event_id)
+    {
+        try {
+            $stmt = $this->connection->prepare("
+            SELECT `artist_id`
+            FROM `music_performance`
+            WHERE `music_event_id` = :music_event_id
+        ");
+            $stmt->bindParam(':music_event_id', $music_event_id);
+            $stmt->execute();
+            $artistIds = $stmt->fetchAll(PDO::FETCH_COLUMN);
+            return $artistIds;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 
     public function update(Dance $dance, $dance_id): bool
     {
