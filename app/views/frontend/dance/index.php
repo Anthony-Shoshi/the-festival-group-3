@@ -43,21 +43,62 @@
         <?php endforeach; ?>
     </div>
 </div>
-
 <div class="section-4">
     <h2 class="ticket-list">Tickets</h2>
-    <?php foreach ($allAccessPass as $pass): ?>
-        <div class="ticket-container">
-            <div class="top-section">
-                <p class="pass-name"><?= $pass['passName']; ?></p>
+    <div class="passes-container">
+        <?php foreach ($allAccessPass as $pass): ?>
+            <div class="ticket-container">
+                <div class="top-section">
+                    <p class="pass-name"><?= $pass['passName']; ?></p>
+                </div>
+                <div class="bottom-section">
+                    <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
+                    <button class="buy-button">BUY</button>
+                </div>
             </div>
-            <div class="bottom-section">
-                <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
-                <button class="buy-button">BUY</button>
+        <?php endforeach; ?>
+        <?php foreach ($fridayPass as $pass): ?>
+            <div class="ticket-container">
+                <div class="top-section">
+                    <p class="pass-name"><?= $pass['passName']; ?></p>
+                </div>
+                <div class="bottom-section">
+                    <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
+                    <button class="buy-button">BUY</button>
+                </div>
             </div>
-        </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
+    </div>
+    <div class="tickets-container">
+        <?php foreach ($fridayTickets as $ticket): ?>
+            <div class="ticket-container">
+                <div class="ticket">
+                    <div class="ticket-image">
+                        <img src="<?= '/images/' . $ticket['music_event_image'] ?>" alt="<?= $ticket['event_name']; ?>">
+                    </div>
+                    <div class="ticket-details">
+                        <h2><?= $ticket['event_name']; ?></h2>
+                        <div class="ticket-info">
+                            <p><strong>Location:</strong> <?= $ticket['venue_name']; ?></p>
+                            <p><strong>Duration:</strong> <?= $ticket['event_duration']; ?></p>
+                            <p><strong>Date & Time:</strong> <?= $ticket['event_date']; ?> <?= $ticket['event_start_time']; ?></p>
+                            <p><strong>Session:</strong> <?= $ticket['session_type']; ?></p>
+                            <p><strong>Price:</strong> <?= $ticket['event_price']; ?></p>
+                        </div>
+                        <div class="ticket-buttons">
+                            <button class="favorite-button"><img src="/images/heart.png" alt="Favorite"></button>
+                            <button class="buy-button">Buy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+
 </div>
+
+
 
 
 <?php include __DIR__ . '/../inc/footer.php'; ?>
