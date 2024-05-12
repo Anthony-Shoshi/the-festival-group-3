@@ -30,6 +30,11 @@ class DanceController{
         $artists = $this->artistService->getAllArtists();
         $venues = $this->venueService->getAllVenues();
         $passes = $this->danceService->getAllPasses();
+        $fridayTickets = $this->danceService->getfridayEvents();
+        $saturdayTickets = $this->danceService->getSaturdayEvents();
+        $SundayTickets = $this->danceService->getSundayEvents();
+
+
 
         $fridayPass = [];
         $saturdayPass = [];

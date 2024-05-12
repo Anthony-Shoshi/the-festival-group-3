@@ -4,7 +4,7 @@
 >
 PHP.Dockerfile,b/2/b237dce4c8a76d56b7cdfe507e61f82336214311
 B
-docker-compose.yml,3/5/35b8c13cf2eb2a194eada000eb310d65aed53b2a
+docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
 D
 app/public/index.php,d\f\df187f96b153386aefda0ec4775d5524cf695467
 Q
@@ -18,7 +18,7 @@ N
 S
 #app/controllers/VenueController.php,a/2/a28bafa84428e9cf2c8106effda64f4efe506e49
 T
-$app/controllers/ArtistController.php,3/6/36a3eb53ad7bb649709b118641090cb7fc8cb6e2
+$app/controllers/ArtistController.php,3\6\36a3eb53ad7bb649709b118641090cb7fc8cb6e2
 L
 app/services/PageService.php,6/b/6b86d61f5e466baf6e591ef36523be2309146b09
 E
@@ -30,15 +30,15 @@ Z
 T
 $app/repositories/VenueRepository.php,8/1/8149186a70931e1cc02e5c427be3c90c64897e8a
 T
-$app/repositories/DanceRepository.php,0/e/0e5ac3fddb8b7df143b9e1528d80914e478a5baa
+$app/repositories/DanceRepository.php,0\e\0e5ac3fddb8b7df143b9e1528d80914e478a5baa
 M
-app/services/DanceService.php,d/4/d47cee348d704b59ac1b8ea3f516f0fb30c64cce
+app/services/DanceService.php,d\4\d47cee348d704b59ac1b8ea3f516f0fb30c64cce
 D
 app/models/Dance.php,b/a/ba764f5036fc732d9ec184fe1cbe271dc1b0a05d
 ]
--app/controllers/DanceManagementController.php,1/4/140a918e7fd0d8aa000de629b11e0466b843c63f
+-app/controllers/DanceManagementController.php,1\4\140a918e7fd0d8aa000de629b11e0466b843c63f
 [
-+app/views/backend/danceManagement/index.php,e/1/e189f6bd089d1d2b97b5a3ea1b1037c2a4c34c5e
++app/views/backend/danceManagement/index.php,e\1\e189f6bd089d1d2b97b5a3ea1b1037c2a4c34c5e
 R
 "app/views/backend/venues/index.php,0/f/0fbc1faf8ceab4a08245f1bf7ccfc15413c88ff7
 R
@@ -62,7 +62,7 @@ S
 \
 ,app/views/backend/danceManagement/create.php,f/6/f689a5ac23b30b6fad7ccd7b0314b7201e48c03f
 Z
-*app/views/backend/danceManagement/edit.php,7/8/78df43387aea961caaec5367a0d0c29cf93b5814
+*app/views/backend/danceManagement/edit.php,7\8\78df43387aea961caaec5367a0d0c29cf93b5814
 S
 #app/views/backend/venues/create.php,a/1/a190c517f9f59a02b0cb239fb9e3502a26d73c7f
 Q
@@ -144,3 +144,23 @@ R
 "app/views/frontend/dance/index.php,5\2\5229aef46a4f39ea47f36cf089cf7f2f47f8b4ea
 P
  app/public/frontend/css/home.css,8\e\8e2c1fb20d985c33711ae7b12ff606d984ef58f4
+E
+app/models/Events.php,5\0\50c28c65fddd382d010ade00846fa19874f3f91b
+Q
+!app/views/backend/events/edit.php,d\e\de7c270561703c2310d81394b28fe7905f73bc88
+T
+$app/repositories/EventRepository.php,1\6\164f39df1f209f2c7bb77378fdc0ad342b4eba85
+T
+$app/controllers/EventsController.php,1\1\117f6a4406e3eac3e7173659f498c411080ec507
+S
+#app/controllers/DanceController.php,a\d\ade156112b7651e8e734de2b6f90763ec34f327e
+Q
+!app/public/frontend/css/dance.css,e\2\e237f330af887e912d6a17f82214c2fd85984ef9
+O
+app/views/frontend/overview.php,4\1\410cca6836620091944f8d1d06c7e791183bc2f0
+`
+0app/controllers/HistoryInformationController.php,3\7\3718a996a9990ff5bf90dff62aaf06e647c3e799
+T
+$app/views/frontend/dance/artists.php,5\1\51e951b2bc45186b4ec9a1056dba1f6f84be2aa6
+Y
+)app/repositories/RestaurantRepository.php,d\6\d6e02fa80402e31c9bba45b974de8c04123cf313
