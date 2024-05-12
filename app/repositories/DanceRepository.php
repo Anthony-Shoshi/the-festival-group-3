@@ -136,6 +136,82 @@ class DanceRepository extends Repository
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
+    }public function getSaturdayEvents()
+    {
+        try {
+            $stmt = $this->connection->prepare("
+            SELECT 
+                mp.music_performance_id,
+                mp.music_event_id,
+                me.event_name,
+                me.event_price,
+                me.event_date,
+                me.session_type,
+                me.event_start_time,
+                me.event_duration,
+                me.music_event_image,
+                GROUP_CONCAT(a.artist_name SEPARATOR ', ') AS artist_names,
+                e.event_id,              
+                dv.venue_name
+            FROM 
+                music_performance AS mp
+            JOIN 
+                music_events AS me ON mp.music_event_id = me.music_event_id
+            JOIN 
+                artists AS a ON mp.artist_id = a.artist_id
+            JOIN 
+                events AS e ON me.event_id = e.event_id
+            JOIN 
+                dance_venues AS dv ON me.venue_id = dv.venue_id
+            WHERE 
+                me.event_date = '2024-07-28'
+            GROUP BY
+                me.music_event_id
+        ");
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }public function getSundayEvents()
+    {
+        try {
+            $stmt = $this->connection->prepare("
+            SELECT 
+                mp.music_performance_id,
+                mp.music_event_id,
+                me.event_name,
+                me.event_price,
+                me.event_date,
+                me.session_type,
+                me.event_start_time,
+                me.event_duration,
+                me.music_event_image,
+                GROUP_CONCAT(a.artist_name SEPARATOR ', ') AS artist_names,
+                e.event_id,              
+                dv.venue_name
+            FROM 
+                music_performance AS mp
+            JOIN 
+                music_events AS me ON mp.music_event_id = me.music_event_id
+            JOIN 
+                artists AS a ON mp.artist_id = a.artist_id
+            JOIN 
+                events AS e ON me.event_id = e.event_id
+            JOIN 
+                dance_venues AS dv ON me.venue_id = dv.venue_id
+            WHERE 
+                me.event_date = '2024-07-29'
+            GROUP BY
+                me.music_event_id
+        ");
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
     }
 
     public function getArtistIdsByEventId(int $music_event_id)

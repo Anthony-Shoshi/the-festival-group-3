@@ -29,6 +29,20 @@ class DanceService
         } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
+    }   public function getSaturdayEvents()
+    {
+        try {
+            return $this->danceRepository->getSaturdayEvents();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }   public function getSundayEvents()
+    {
+        try {
+            return $this->danceRepository->getSundayEvents();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
     }
     public function getArtistIdsByEventId(int $music_event_id){
         try {
