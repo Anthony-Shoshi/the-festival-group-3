@@ -52,10 +52,14 @@ class DanceManagementController
         $venues = $this->venueService->getAllVenues();
         $venue_id = $dance['venue_id'];
 
-
         // Fetch artists
+
         $artists = $this->artistService->getAllArtists();
-        $selectedArtistId = $dance['artist_id'];
+
+        // Convert comma-separated string of artist IDs into an array
+        $selectedArtistIds = explode(',', $dance['artist_id']);
+var_dump($selectedArtistIds);
+exit();
 
         // Render the edit view with all necessary data
         require __DIR__ . '/../views/backend/danceManagement/edit.php';
@@ -70,14 +74,12 @@ class DanceManagementController
                 $_POST['music_event_id'],
                 $_POST['event_price'],
                 $_POST['session_type'],
-                $_POST['start_date'],
+                $_POST['event_date'],
                 $_POST['event_start_time'],
                 $_POST['event_duration'],
-                $_POST['title'],
-                $_POST['description'],
+                $_POST['event_name'],
                 $_POST['event_id'],
-                $_POST['end_date'],
-            );
+                );
             $this->danceService->updateEvent($dance, $id);
             header("Location: /dance-management");
             exit();

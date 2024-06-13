@@ -22,6 +22,36 @@ class DanceService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function getfridayEvents()
+    {
+        try {
+            return $this->danceRepository->getfridayEvents();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }   public function getSaturdayEvents()
+    {
+        try {
+            return $this->danceRepository->getSaturdayEvents();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }   public function getSundayEvents()
+    {
+        try {
+            return $this->danceRepository->getSundayEvents();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getArtistIdsByEventId(int $music_event_id){
+        try {
+            return $this->danceRepository->getArtistIdsByEventId($music_event_id);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
     public function getDanceEventById(int $music_performance_id)
     {
         try {
@@ -50,6 +80,14 @@ class DanceService
     {
         try {
             return $this->danceRepository->deleteDance($dance_id);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getAllPasses()
+    {
+        try {
+            return $this->danceRepository->getAllPasses();
         } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());
         }

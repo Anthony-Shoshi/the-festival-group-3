@@ -37,13 +37,13 @@ class EventRepository extends Repository{
     public function storeEvent(Events $event)
     {
         try {
-            $stmt = $this->connection->prepare("INSERT INTO events (title, event_type, description, start_date, end_date, primary_theme_color, secondary_theme_color, image_url, status) VALUES (:title, :event_type, :description, :start_date, :end_date, :primary_theme_color, :secondary_theme_color, :image_url, :status)");
+            $stmt = $this->connection->prepare("INSERT INTO events (event_type, title, image_url, description, status, start_date, end_date, primary_theme_color, secondary_theme_color) VALUES (:event_type, :title, :image_url, :description, :status, :start_date, :end_date, :primary_theme_color, :secondary_theme_color)");
             $stmt->execute([
                 ':event_type' => $event->getEventType(),
                 ':title' => $event->getEventTitle(),
                 ':image_url' => $event->getEventImage(),
                 ':description' => $event->getEventDescription(),
-                ':status' => 1,
+                ':status' => 1, 
                 ':start_date' => $event->getEventStartDate(),
                 ':end_date' => $event->getEventEndDate(),
                 ':primary_theme_color' => $event->getPrimaryThemeColor(),
@@ -55,26 +55,32 @@ class EventRepository extends Repository{
         }
     }
 
+
     public function updateEvent(Events $event, $event_id)
     {
         try {
-            $stmt = $this->connection->prepare("UPDATE events SET title = :title, event_type = :event_type, description = :description, start_date = :start_date, end_date = :end_date, primary_theme_color = :primary_theme_color, secondary_theme_color = :secondary_theme_color, image_url = :image_url WHERE event_id = :event_id");
+
+            $stmt = $this->connection->prepare("UPDATE events SET event_type = :event_type, title = :title,  image_url = :image_url, description = :description, status = :status,  start_date = :start_date, end_date = :end_date, primary_theme_color = :primary_theme_color, secondary_theme_color = :secondary_theme_color WHERE event_id = :event_id");
             $stmt->execute([
                 ':event_id' => $event_id,
                 ':event_type' => $event->getEventType(),
                 ':title' => $event->getEventTitle(),
                 ':image_url' => $event->getEventImage(),
                 ':description' => $event->getEventDescription(),
+                ':status' => $event->getEventStatus(),
                 ':start_date' => $event->getEventStartDate(),
                 ':end_date' => $event->getEventEndDate(),
                 ':primary_theme_color' => $event->getPrimaryThemeColor(),
                 ':secondary_theme_color' => $event->getSecondaryThemeColor(),
             ]);
+
             return true;
         } catch (PDOException $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
+
     public function deleteEvent($event_id)
     {
         try {

@@ -4,10 +4,10 @@ namespace App\Models;
 
 class Events{
 
-    private int $event_id;
-    private string $event_image;
-    public string $event_type;
+    private ?int $event_id;
     private string $title;
+    private string $event_type;
+    private string $event_image;
     private string $description;
     private string $event_status;
     private string $event_start_date;
@@ -16,10 +16,10 @@ class Events{
     private string $secondary_theme_color;
 
     public function __construct(
-        int $event_id,
-        string $event_image,
+        ?int $event_id,
         string $event_type,
         string $title,
+        string $event_image,
         string $description,
         string $event_status,
         string $event_start_date,
@@ -28,9 +28,9 @@ class Events{
         string $secondary_theme_color
     ) {
         $this->event_id = $event_id;
-        $this->event_image = $event_image;
         $this->event_type = $event_type;
         $this->title = $title;
+        $this->event_image = $event_image;
         $this->description = $description;
         $this->event_status = $event_status;
         $this->event_start_date = $event_start_date;
@@ -38,6 +38,7 @@ class Events{
         $this->primary_theme_color = $primary_theme_color;
         $this->secondary_theme_color = $secondary_theme_color;
     }
+
     public function getEventId(){
         return $this->event_id;
     }
