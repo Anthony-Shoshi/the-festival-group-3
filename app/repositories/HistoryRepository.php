@@ -168,4 +168,69 @@ class HistoryRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function getPageHeader()
+    {
+        try{
+            $stmt = $this->connection->prepare("SELECT * FROM history_info WHERE content_id = 1");
+            $stmt->execute();
+            $header = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $header;
+        }catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getPageIntroduction()
+    {
+        try{
+            $stmt = $this->connection->prepare("SELECT * FROM history_info WHERE content_id = 2");
+            $stmt->execute();
+            $introduction = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $introduction;
+        }catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getTourInformation()
+    {
+        try{
+            $stmt = $this->connection->prepare("SELECT * FROM history_info WHERE content_id = 3");
+            $stmt->execute();
+            $tour = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $tour;
+        }catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getTourRoute(){
+        try{
+            $stmt = $this->connection->prepare("SELECT * FROM history_info WHERE content_id = 6");
+            $stmt->execute();
+            $route = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $route;
+        }catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getRegularTicketPrice()
+    {
+        try{
+            $stmt = $this->connection->prepare("SELECT * FROM history_info WHERE content_id = 4");
+            $stmt->execute();
+            $price = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $price;
+        }catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getFamilyTicketPrice()
+    {
+        try{
+            $stmt = $this->connection->prepare("SELECT * FROM history_info WHERE content_id = 5");
+            $stmt->execute();
+            $price = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $price;
+        }catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }

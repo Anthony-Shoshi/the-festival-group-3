@@ -2,3 +2,6 @@ body{
     background-color: #FCEBBD;
     background-attachment: fixed;
 }
+.section-history-header{
+    position: relative;
+}
