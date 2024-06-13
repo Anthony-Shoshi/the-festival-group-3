@@ -20,12 +20,12 @@ class HistoryController
             $tours = $this->historyService->getAllTours();
             $pages = $this->pageService->getAllPages();
 
-            $header = $this->pageService->getHeader();
-            $introduction = $this->pageService->getIntroduction();
-            $information = $this->pageService->getTourInformation();
-            $routes = $this->pageService->getRoutes();
-            $regularTicket = $this->pageService->getRegularTicketPrice();
-            $familyTicket = $this->pageService->getFamilyTicketPrice();
+            $header = $this->historyService->getHeader();
+            $introduction = $this->historyService->getIntroduction();
+            $information = $this->historyService->getTourInfo();
+            $routes = $this->historyService->getRoute();
+            $regularTicket = $this->historyService->getRegularTicketPrice();
+            $familyTicket = $this->historyService->getFamilyTicketPrice();
 
             require_once __DIR__ . '/../views/frontend/history/index.php';
         }catch (Exception $e) {
