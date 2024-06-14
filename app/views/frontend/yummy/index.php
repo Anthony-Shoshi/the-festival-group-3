@@ -35,7 +35,9 @@
         <div class="restaurants-list">
             <?php foreach ($restaurants as $restaurant) : ?>
                 <div class="restaurants-list-item">
-                    <div class="image" style="background-image: url('<?php echo $restaurant['image_url']; ?>');"></div>
+                    <a href="/restaurant/details?id=<?= $restaurant['restaurant_id'] ?>">
+                        <div class="image" style="background-image: url('<?php echo $restaurant['image_url']; ?>');"></div>
+                    </a>
                     <p><?php echo htmlspecialchars($restaurant['title']); ?></p>
                     <div class="review"></div>
                     <span class="line"></span>
@@ -68,7 +70,14 @@
                         </div>
                         <div class="info-item">
                             <img src="/images/time.png" />
-                            <p><?php echo $restaurant['first_session']; ?> - <?php echo $restaurant['duration']; ?></p>
+                            <p>
+                                <?php
+                                $start_time = new DateTime($restaurant['sessions'][0]['start_time']);
+                                $end_time = clone $start_time;
+                                $end_time->add(new DateInterval('PT' . ($restaurant['sessions'][0]['duration'] * 60) . 'M'));
+                                echo $start_time->format('H:i') . ' - ' . $end_time->format('H:i');
+                                ?>
+                            </p>
                         </div>
                     </div>
                 </div>

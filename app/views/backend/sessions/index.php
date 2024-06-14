@@ -1,6 +1,4 @@
-<?php
-include __DIR__ . '/../inc/header.php';
-?>
+<?php include __DIR__ . '/../inc/header.php'; ?>
 
 <div class="container">
     <div class="d-flex justify-content-between align-items-center">
@@ -15,9 +13,10 @@ include __DIR__ . '/../inc/header.php';
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Number of Sessions</th>
-                    <th>First Session</th>
-                    <th>Duration (hour)</th>
+                    <th>Restaurant</th>
+                    <th>Start Time</th>
+                    <th>Duration (hours)</th>
+                    <th>Sessions Per Day</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -25,10 +24,11 @@ include __DIR__ . '/../inc/header.php';
                 <?php if (count($sessions) > 0) { ?>
                     <?php foreach ($sessions as $session) : ?>
                         <tr>
-                            <td><?= $session['session_id'] ?></td>                           
-                            <td><?= $session['total_session'] ?><?= ($session['total_session'] == 1) ? ' session' : ' sessions' ?></td>
-                            <td>at <?= $session['first_session'] ?></td>
+                            <td><?= $session['session_id'] ?></td>
+                            <td><?= $session['restaurant_title'] ?></td>
+                            <td><?= $session['start_time'] ?></td>
                             <td><?= $session['duration'] ?> hours</td>
+                            <td><?= $session['sessions_per_day'] ?><?= ($session['sessions_per_day'] == 1) ? ' session' : ' sessions' ?></td>
                             <td>
                                 <a href="/session/edit?id=<?= $session['session_id'] ?>" class="btn btn-primary btn-sm">Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $session['session_id'] ?>">Delete</button>
@@ -54,7 +54,7 @@ include __DIR__ . '/../inc/header.php';
                     <?php endforeach; ?>
                 <?php } else { ?>
                     <tr>
-                        <td class="text-center" colspan="5">No Content</td>
+                        <td class="text-center" colspan="6">No Content</td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -62,6 +62,4 @@ include __DIR__ . '/../inc/header.php';
     </div>
 </div>
 
-<?php
-include __DIR__ . '/../inc/footer.php';
-?>
+<?php include __DIR__ . '/../inc/footer.php'; ?>

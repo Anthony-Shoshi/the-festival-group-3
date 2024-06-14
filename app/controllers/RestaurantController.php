@@ -34,7 +34,6 @@ class RestaurantController
 
     public function create()
     {
-        $sessions = $this->sessionService->getAllSessions();
         $events = $this->sessionService->getAllEvents();
         $features = $this->featureService->getAllFeatures();
         require __DIR__ . '/../views/backend/restaurants/create.php';
@@ -58,7 +57,6 @@ class RestaurantController
             $description = $validateData['description'];
             $ratings = $validateData['ratings'];
             $cuisines = $validateData['cuisines'];
-            $session_id = $validateData['session_id'];
             $event_id = $validateData['event_id'];
             $location = $validateData['location'];
             $number_of_seats = $validateData['number_of_seats'];
@@ -95,7 +93,7 @@ class RestaurantController
 
             $galleryImagesJson = json_encode($galleryImages);
 
-            $restaurantId = $this->restaurantService->createRestaurant($title, $imageUrl, $description, $ratings, $cuisines, $session_id, $event_id, $location, $number_of_seats, $contact_email, $contact_phone, $galleryImagesJson);
+            $restaurantId = $this->restaurantService->createRestaurant($title, $imageUrl, $description, $ratings, $cuisines, $event_id, $location, $number_of_seats, $contact_email, $contact_phone, $galleryImagesJson);
 
             $this->restaurantService->associateFeaturesWithRestaurant($restaurantId, $selectedFeatures);
 
@@ -113,6 +111,7 @@ class RestaurantController
         $id = $_GET['id'];
         if (isset($id) && $id > 0) {
             $restaurant = $this->restaurantService->getRestaurant($id);
+            $sessions = $this->sessionService->getSessionsByRestaurantId($id);
             require __DIR__ . '/../views/backend/restaurants/view.php';
         } else {
             header("Location: /error?message=Something went wrong with this restaurant data!");
@@ -125,7 +124,6 @@ class RestaurantController
         $id = $_GET['id'];
         if (isset($id) && $id > 0) {
             $events = $this->sessionService->getAllEvents();
-            $sessions = $this->sessionService->getAllSessions();
             $features = $this->featureService->getAllFeatures();
             $selectedFeatures = $this->featureService->getAllFeaturesByRestaurantId($id);
             $restaurant = $this->restaurantService->getRestaurant($id);
@@ -163,7 +161,6 @@ class RestaurantController
             $description = $validateData['description'];
             $ratings = $validateData['ratings'];
             $cuisines = $validateData['cuisines'];
-            $session_id = $validateData['session_id'];
             $event_id = $validateData['event_id'];
             $location = $validateData['location'];
             $number_of_seats = $validateData['number_of_seats'];
@@ -203,7 +200,7 @@ class RestaurantController
 
             $galleryImagesJson = json_encode($galleryImages);
 
-            $this->restaurantService->updateRestaurant($id, $title, $imageUrl, $description, $ratings, $cuisines, $session_id, $event_id, $location, $number_of_seats, $contact_email, $contact_phone, $galleryImagesJson);
+            $this->restaurantService->updateRestaurant($id, $title, $imageUrl, $description, $ratings, $cuisines, $event_id, $location, $number_of_seats, $contact_email, $contact_phone, $galleryImagesJson);
 
             $this->featureService->deleteFeatureByRestaurantId($id);
             $this->restaurantService->associateFeaturesWithRestaurant($id, $selectedFeatures);
@@ -238,5 +235,14 @@ class RestaurantController
             header("Location: /error?message=Something went wrong with this restaurant data!");
             exit();
         }
+    }
+
+    public function details()
+    {
+        $id = $_GET['id'];
+        $restaurant = $this->restaurantService->getRestaurant($id);
+        $sessions = $this->sessionService->getSessionsByRestaurantId($id);
+        require '../views/frontend/yummy/details.php';
+        exit();
     }
 }
