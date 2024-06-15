@@ -86,4 +86,38 @@ class ArtistRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function getArtistsAlbum($artist_id){
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM albums WHERE artist_id = :artist_id");
+            $stmt->bindParam(':artist_id', $artist_id);
+            $stmt->execute();
+            $albums = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $albums;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getArtistMusic($artist_id){
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM artist_musics WHERE artist_id = :artist_id");
+            $stmt->bindParam(':artist_id', $artist_id);
+            $stmt->execute();
+            $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $songs;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
+    public function getArtistAwards($artist_id){
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM artist_awards WHERE artist_id = :artist_id");
+            $stmt->bindParam(':artist_id', $artist_id);
+            $stmt->execute();
+            $awards = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $awards;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }

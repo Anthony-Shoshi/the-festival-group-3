@@ -117,7 +117,7 @@
                             <p><strong>Duration:</strong> <?= $ticket['event_duration']; ?></p>
                             <p><strong>Date & Time:</strong> <?= $ticket['event_date']; ?> <?= $ticket['event_start_time']; ?></p>
                             <p><strong>Session:</strong> <?= $ticket['session_type']; ?></p>
-                            <p><strong>Price:</strong> <?= $ticket['event_price']; ?></p>
+                            <p><strong>Price:</strong> €<?= $ticket['event_price']; ?></p>
                         </div>
                     </div>
                     <div class="ticket-buttons">
@@ -170,7 +170,7 @@
                             <p><strong>Duration:</strong> <?= $ticket['event_duration']; ?></p>
                             <p><strong>Date & Time:</strong> <?= $ticket['event_date']; ?> <?= $ticket['event_start_time']; ?></p>
                             <p><strong>Session:</strong> <?= $ticket['session_type']; ?></p>
-                            <p><strong>Price:</strong> <?= $ticket['event_price']; ?></p>
+                            <p><strong>Price:</strong> €<?= $ticket['event_price']; ?></p>
                         </div>
                     </div>
                     <div class="ticket-buttons">
@@ -223,7 +223,7 @@
                             <p><strong>Duration:</strong> <?= $ticket['event_duration']; ?></p>
                             <p><strong>Date & Time:</strong> <?= $ticket['event_date']; ?> <?= $ticket['event_start_time']; ?></p>
                             <p><strong>Session:</strong> <?= $ticket['session_type']; ?></p>
-                            <p><strong>Price:</strong> <?= $ticket['event_price']; ?></p>
+                            <p><strong>Price:</strong> €<?= $ticket['event_price']; ?></p>
                         </div>
                     </div>
                     <div class="ticket-buttons">
