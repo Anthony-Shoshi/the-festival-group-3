@@ -56,14 +56,6 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="session" class="form-label">Session</label>
-                <select class="form-select" id="session" name="session_id" required>
-                    <?php foreach ($sessions as $key => $session) : ?>
-                        <option value="<?= $session['session_id'] ?>" <?= $restaurant['session_id'] == $session['session_id'] ? 'selected' : '' ?>><?= $session['total_session'] ?> Sessions</option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
                 <input type="text" class="form-control" id="location" name="location" value="<?= $restaurant['location'] ?>" required>
             </div>

@@ -10,7 +10,6 @@ class Restaurant
     private string $description;
     private float $ratings;
     private string $cuisines;
-    private int $sessionId;
     private int $eventId;
     private string $location;
     private int $numberOfSeats;
@@ -76,16 +75,6 @@ class Restaurant
     public function setCuisines(string $cuisines): void
     {
         $this->cuisines = $cuisines;
-    }
-
-    public function getSessionId(): int
-    {
-        return $this->sessionId;
-    }
-
-    public function setSessionId(int $sessionId): void
-    {
-        $this->sessionId = $sessionId;
     }
 
     public function getEventId(): int

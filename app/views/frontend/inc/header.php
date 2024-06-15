@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-        <?php echo isset($pageTitle) ? htmlspecialchars($pageTitle) : "The Festival"; ?>
+        <?php
+
+
+echo isset($pageTitle) ? htmlspecialchars($pageTitle) : "The Festival"; ?>
     </title>
     <link rel="icon" type="image/x-icon" href="/images/fav.png">
     <link rel="stylesheet" href="/frontend/css/header.css" />
@@ -14,7 +17,9 @@
 
 <body>
     <?php
-        $pages = $this->pageService->getAllPages();
+        use App\Services\PageService;
+        $pageService = new PageService();
+        $pages = $pageService->getAllPages();
     ?>
     <nav class="navbar">
         <a class="navbar-brand" href="/">
@@ -24,7 +29,7 @@
         <div class="navbar-nav" id="navbarLinks">
 
             <?php
-            $pages = $this->pageService->getAllPages();
+            $pages = $pageService->getAllPages();
 
             foreach ($pages as $page) {
                 $pageTitle = htmlspecialchars($page['title']);
