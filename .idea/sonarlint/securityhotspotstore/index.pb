@@ -70,7 +70,7 @@ Q
 S
 #app/repositories/PageRepository.php,e/2/e203e77515dc24317cf66a0ab776b4958e7e2775
 R
-"app/controllers/HomeController.php,9/b/9bb6e8444935035f8d62e909e1eab3f721034864
+"app/controllers/HomeController.php,9\b\9bb6e8444935035f8d62e909e1eab3f721034864
 L
 app/services/UserService.php,c/1/c17fcdcb02bafda2f47f605dacff4e66dd878533
 J
@@ -164,3 +164,5 @@ T
 $app/views/frontend/dance/artists.php,5\1\51e951b2bc45186b4ec9a1056dba1f6f84be2aa6
 Y
 )app/repositories/RestaurantRepository.php,d\6\d6e02fa80402e31c9bba45b974de8c04123cf313
+R
+"app/public/frontend/css/footer.css,e\9\e9773be68989210c21729ee4271db7cc3a997359
