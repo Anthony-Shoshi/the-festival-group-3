@@ -164,5 +164,10 @@ T
 $app/views/frontend/dance/artists.php,5\1\51e951b2bc45186b4ec9a1056dba1f6f84be2aa6
 Y
 )app/repositories/RestaurantRepository.php,d\6\d6e02fa80402e31c9bba45b974de8c04123cf313
+<<<<<<< HEAD
 R
 "app/public/frontend/css/footer.css,e\9\e9773be68989210c21729ee4271db7cc3a997359
+=======
+M
+app/views/frontend/custom.php,a\a\aa435e11f7116e9ecaa2ad561b04bdff7fbc4986
+>>>>>>> develop
