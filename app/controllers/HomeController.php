@@ -4,6 +4,9 @@ namespace App\Controllers;
 
 use App\Helpers\Helper;
 use App\Services\RestaurantService;
+use App\Services\ArtistService;
+use App\Services\VenueService;
+use App\Services\DanceService;
 use App\Services\SectionService;
 use App\Services\EventService;
 use App\Services\SessionService;
@@ -17,12 +20,19 @@ class HomeController
     protected $sessionService;
     protected $eventService;
 
+    protected $artistService;
+    protected $venueService;
+    protected $danceService;
+
     public function __construct()
     {
         $this->sectionService = new SectionService();
         $this->restaurantService = new RestaurantService();
         $this->sessionService = new SessionService();
         $this->eventService = new EventService();
+        $this->artistService = new ArtistService();
+        $this->venueService = new VenueService();
+        $this->danceService = new DanceService();
     }
 
     public function index()
@@ -96,6 +106,40 @@ class HomeController
                     $restaurant['sessions'] = $this->sessionService->getSessionsByRestaurantId($restaurant['restaurant_id']);
                 }
                 require '../views/frontend/yummy/index.php';
+                break;
+            case 'dance':
+                $artists = $this->artistService->getAllArtists();
+                $venues = $this->venueService->getAllVenues();
+                $passes = $this->danceService->getAllPasses();
+                $fridayTickets = $this->danceService->getfridayEvents();
+                $saturdayTickets = $this->danceService->getSaturdayEvents();
+                $SundayTickets = $this->danceService->getSundayEvents();
+
+
+                $fridayPass = [];
+                $saturdayPass = [];
+                $sundayPass = [];
+                $allAccessPass = [];
+
+                foreach ($passes as $pass) {
+                    switch ($pass['passType']) {
+                        case 'One-Day Pass (Friday)':
+                            $fridayPass[] = $pass;
+                            break;
+                        case 'One-Day Pass (Saturday)':
+                            $saturdayPass[] = $pass;
+                            break;
+                        case 'One-Day Pass (Sunday)':
+                            $sundayPass[] = $pass;
+                            break;
+                        case 'All-Access Pass':
+                            $allAccessPass[] = $pass;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                require __DIR__ . '/../views/frontend/dance/index.php';
                 break;
             default:
                 require '../views/frontend/custom.php';

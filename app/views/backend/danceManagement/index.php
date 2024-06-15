@@ -16,9 +16,7 @@ include __DIR__ . '/../inc/header.php';
                 <th>ID</th>
                 <th>Image</th>
                 <th>Title</th>
-                <th>Description</th>
-                <th>Start Date</th>
-                <th>End Date</th>
+                <th>Event Date</th>
                 <th>Start Time</th>
                 <th>Price</th>
                 <th>Duration</th>
@@ -32,12 +30,10 @@ include __DIR__ . '/../inc/header.php';
 
             <?php foreach ($dancesManages as $dance) : ?>
                 <tr>
-                    <td><?= $dance['music_performance_id'] ?></td>
-                    <td><img src="<?= '/images/' . $dance['image_url'] ?>" alt="<?= $dance['image_url'] ?>" style="width: 100px;"></td>
-                    <td><?= $dance['title'] ?></td>
-                    <td><?= $dance['description'] ?></td>
-                    <td><?= $dance['start_date'] ?></td>
-                    <td><?= $dance['end_date'] ?></td>
+                    <td><?= $dance['music_event_id'] ?></td>
+                    <td><img src="<?= '/images/' . $dance['music_event_image'] ?>" alt="<?= $dance['music_event_image'] ?>" style="width: 100px;"></td>
+                    <td><?= $dance['event_name'] ?></td>
+                    <td><?= $dance['event_date'] ?></td>
                     <td><?= $dance['event_start_time'] ?></td>
                     <td>&euro;<?= $dance['event_price'] ?></td>
                     <td><?= $dance['event_duration'] ?> minutes</td>

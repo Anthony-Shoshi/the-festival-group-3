@@ -123,7 +123,6 @@ body {
     }
 }
 
-
 /* Section 3 styles */
 .section-3 {
     width: 100%;
@@ -192,11 +191,10 @@ body {
     }
 }
 
-
 /* Section 4 styles */
-.section-4 {
+.section-4a, .section-4b, .section-4c {
     position: relative;
-    text-align: center; /* Center align the ticket containers */
+    text-align: center;
 }
 
 .ticket-list {
@@ -206,34 +204,41 @@ body {
     margin: 0 auto;
     font-weight: 400;
 }
-
-.ticket-container {
+.passes-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: wrap;
-    position: relative;
-    padding: 10px; /* Reduce padding inside the ticket container */
-    max-width: 30%; /* Set maximum width for the ticket container */
-    margin: 0 auto; /* Center the ticket container */
-
 }
 
+.pass-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+    padding: 10px;
+    width: 40%;
+    max-width: 45%;
+    margin: 10px;
+}
+
+
 .top-section {
-    width: 100%;
-    height: 33%; /* Reduce the height of the top section */
-    background: #4A9BAA; /* Set background color */
-    opacity: 0.9; /* Set opacity */
-    border-radius: 8px 8px 0 0; /* Add border radius only to top corners */
-    box-sizing: border-box; /* Ensure padding is included in width */
+    width: 70%;
+    height: 40%;
+    background: #4A9BAA;
+    opacity: 0.9;
+    border-radius: 8px 8px 0 0;
+    box-sizing: border-box;
 }
 
 .bottom-section {
-    width: 100%;
-    height: 66%; /* Reduce the height of the bottom section */
-    background: #227195; /* Set background color */
-    border-radius: 0 0 8px 8px; /* Add border radius only to bottom corners */
-    padding: 10px; /* Add padding inside the bottom section */
-    box-sizing: border-box; /* Ensure padding is included in width */
+    width: 70%;
+    height: 100%;
+    background: #227195;
+    border-radius: 0 0 8px 8px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .pass-name {
@@ -265,5 +270,107 @@ body {
 }
 
 .buy-button:hover {
-    background-color: #ff3e29; /* Change background color on hover */
+    background-color: #ff3e29;
+}
+
+@media (max-width: 768px) {
+    .pass-container {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+@media (max-width: 1200px) {
+    .pass-container {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+.tickets-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ticket-container {
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.ticket {
+    width: 90%;
+    background-color: #FFFFFF;
+    border: 4px solid #FF415C;
+    color: #000000;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    font-size: 18px;
+    font-family: Calibri, serif;
+}
+
+.ticket-image {
+    width: 100px; 
+    height: 100px; 
+    overflow: hidden;
+    position: absolute;
+    top: 0; 
+    left: 0;
+    z-index: 1; 
+    border-radius: 50%; 
+}
+
+.ticket-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.ticket-details {
+    padding: 20px 20px 20px 100px;
+    text-align: left; 
+}
+
+.ticket-details h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.ticket-info p {
+    margin: 5px 0;
+}
+
+.ticket-buttons {
+    position: absolute; 
+    bottom: 10px; 
+    right: 10px; 
+}
+
+.favorite-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.buy-button {
+    background-color: #FF7A68;
+    border: none;
+    border-radius: 10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.favorite-button img {
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 768px) {
+    .ticket-container {
+        width: 80%; 
+        max-width: 80%;
+
+    }
 }
