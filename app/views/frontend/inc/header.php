@@ -146,3 +146,4 @@ echo isset($pageTitle) ? htmlspecialchars($pageTitle) : "The Festival"; ?>
             navMenu.classList.toggle("active");
         })
     </script>
+

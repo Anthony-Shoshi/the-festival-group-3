@@ -4,10 +4,12 @@
 
 <link rel="stylesheet" href="/frontend/css/dance.css"/>
 
+<title>Dance</title>
+<link rel="stylesheet" href="/frontend/css/dance.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<title>Dance</title>
+
 
 </head>
 <body>
@@ -42,42 +44,38 @@
     <div class="venues-container">
         <?php foreach ($venues as $venue) :?>
             <div class="venue" data-toggle="modal" data-target="#venueModal"
-                 data-name="<?= $venue['venue_name']; ?>"
-                 data-location="<?= $venue['venue_location']; ?>"
-                 data-map="https://www.google.com/maps/embed?pb=<?= $venue['map_url']; ?>">
+                 data-name="<?= htmlspecialchars($venue['venue_name']); ?>"
+                 data-location="<?= htmlspecialchars($venue['venue_location']); ?>"
+                 data-map="<?= htmlspecialchars($venue['map_url']); ?>">
                 <div class="venue-image">
-                    <img src="<?= '/images/' . $venue['venue_image'] ?>" alt="<?= $venue['venue_name']; ?>">
+                    <img src="<?= '/images/' . htmlspecialchars($venue['venue_image']) ?>" alt="<?= htmlspecialchars($venue['venue_name']); ?>">
                 </div>
-                <div class="venue-name"><?= $venue['venue_name']; ?></div>
+                <div class="venue-name"><?= htmlspecialchars($venue['venue_name']); ?></div>
             </div>
         <?php endforeach; ?>
     </div>
 </div>
 
-<!-- Modal -->
 <div class="modal fade" id="venueModal" tabindex="-1" role="dialog" aria-labelledby="venueModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="venueModalLabel">Venue Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title details-venue" id="venueModalLabel">Venue Details</h5>
+                <!-- Removed the close button from here -->
             </div>
             <div class="modal-body">
-                <h2 id="venue-name"></h2>
-                <p id="venue-location"></p>
+                <h2 id="venue-detail-name"></h2>
+                <p id="venue-detail-location"></p>
                 <div class="map">
                     <iframe id="venue-map" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
-
 <div class="section-4a">
     <h2 class="ticket-list">Tickets</h2>
     <h2 class="ticket-list">DANCE! - DAY 1</h2>
@@ -247,12 +245,14 @@
             var mapUrl = button.data('map');
 
             var modal = $(this);
-            modal.find('#venue-name').text(name);
-            modal.find('#venue-location').text(location);
+            modal.find('#venue-detail-name').text(name);
+            modal.find('#venue-detail-location').text(location);
             modal.find('#venue-map').attr('src', mapUrl);
         });
     });
 </script>
+
+
 
 <?php include __DIR__ . '/../inc/footer.php'; ?>
 </body>
