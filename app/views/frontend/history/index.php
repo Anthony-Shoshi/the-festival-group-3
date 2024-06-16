@@ -41,15 +41,15 @@
 <div id="section-history-tickets">
     <div class="tickets">
         <div class="regular-ticket">
-            <?php foreach ($regularTicket as $ticket): ?>
-            <h2><?= $ticket['title']?></h2>
-            <p><?= $ticket['description']?></p>
+            <?php foreach ($regularTickets as $regularTicket): ?>
+            <h2><?= $regularTicket['title']?></h2>
+            <p><?= $regularTicket['description']?></p>
             <?php endforeach; ?>
         </div>
         <div class="family-ticket">
-            <?php foreach ($familyTicket as $ticket): ?>
-            <h2><?= $ticket['title']?></h2>
-            <p><?= $ticket['description']?></p>
+            <?php foreach ($familyTickets as $familyTicket): ?>
+            <h2><?= $familyTicket['title']?></h2>
+            <p><?= $familyTicket['description']?></p>
             <?php endforeach; ?>
         </div>
     </div>

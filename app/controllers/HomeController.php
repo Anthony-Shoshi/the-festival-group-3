@@ -94,6 +94,9 @@ class HomeController
         require '../views/backend/users/create.php';
     }
 
+    /**
+     * @throws Exception
+     */
     public function page()
     {
         $id = $_GET['id'];
@@ -101,7 +104,7 @@ class HomeController
         $sections = $this->sectionService->getSectionByPageId($id);        
         switch ($slug) {
             case 'history':
-                $header = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Header);
+                $headers = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Header);
                 $introduction = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Introduction);
                 $information = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Information);
                 $regularTickets = $this->historyService->getHistoryPageInfoBySectionType(SectionType::RegularTicket);

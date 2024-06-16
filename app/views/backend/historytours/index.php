@@ -5,7 +5,7 @@ include __DIR__ . '/../inc/header.php';
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
             <h1>Tours</h1>
-            <a href="/historytour/create" class="btn btn-success">Add Location</a>
+            <a href="/historytour/create" class="btn btn-success">Add Tour</a>
         </div>
         <?php include __DIR__ . '/../inc/message.php'; ?>
         <div class="table-responsive mt-4">
