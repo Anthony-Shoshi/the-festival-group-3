@@ -20,6 +20,11 @@ class ReservationService
         return $this->reservationRepository->createReservation($reservation);
     }
 
+    public function updateReservationStatus($reservation_id, $status)
+    {
+        return $this->reservationRepository->updateReservationStatus($reservation_id, $status);
+    }
+
     public function updateReservation($reservation_id)
     {
         return $this->reservationRepository->updateReservation($reservation_id);

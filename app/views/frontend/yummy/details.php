@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             <label for="reservation_date">Reservation Date:</label>
-            <input type="date" id="reservation_date" name="reservation_date" required>
+            <input type="date" id="reservation_date" name="reservation_date" value="2024-07-27" min="2024-07-27" max="2024-07-31" required>
         </div>
         <div class="form-group">
             <label for="total_adult">Total Adults:</label>
@@ -49,6 +49,10 @@
                     </option>
                 <?php endforeach; ?>
             </select>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="<?php echo (isset($_SESSION['user'])) ? $_SESSION['user']['email'] : '' ?>" required>
         </div>
         <div class="form-group">
             <label for="phone">Phone:</label>

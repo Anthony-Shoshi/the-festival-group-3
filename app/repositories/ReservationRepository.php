@@ -15,15 +15,16 @@ class ReservationRepository extends Repository
         try {
             $stmt = $this->connection->prepare(
                 "INSERT INTO reservations 
-                (name, reservation_date, total_adult, total_children, phone, user_id, session_id, restaurant_id, remarks, total_cost, payment_status, confirmation_code) 
+                (name, reservation_date, total_adult, total_children, email, phone, user_id, session_id, restaurant_id, remarks, total_cost, payment_status, confirmation_code) 
                 VALUES 
-                (:name, :reservation_date, :total_adult, :total_children, :phone, :user_id, :session_id, :restaurant_id, :remarks, :total_cost, :payment_status, :confirmation_code)"
+                (:name, :reservation_date, :total_adult, :total_children, :email, :phone, :user_id, :session_id, :restaurant_id, :remarks, :total_cost, :payment_status, :confirmation_code)"
             );
             $stmt->execute([
                 ':name' => $reservation->getName(),
                 ':reservation_date' => $reservation->getReservationDate(),
                 ':total_adult' => $reservation->getTotalAdult(),
                 ':total_children' => $reservation->getTotalChildren(),
+                ':email' => $reservation->getEmail(),
                 ':phone' => $reservation->getPhone(),
                 ':user_id' => $reservation->getUserId(),
                 ':session_id' => $reservation->getSessionId(),
@@ -40,15 +41,53 @@ class ReservationRepository extends Repository
         }
     }
 
-    public function updateReservation($reservation_id)
+    public function updateReservationStatus($reservation_id, $status)
     {
         try {
-            $stmt = $this->connection->prepare("UPDATE reservations SET is_active = 0 WHERE reservation_id = :reservation_id");
-            $stmt->bindParam(':reservation_id', $reservation_id);
-            $stmt->execute();
+            $stmt = $this->connection->prepare("UPDATE reservations SET is_active = :status WHERE reservation_id = :reservation_id");
+            $stmt->execute([
+                ':status' => $status,
+                ':reservation_id' => $reservation_id
+            ]);
             return true;
         } catch (PDOException $e) {
-            throw new Exception("Error updating reservation is_active to 0: " . $e->getMessage());
+            throw new Exception("Error updating reservation status: " . $e->getMessage());
+        }
+    }
+
+    public function updateReservation(Reservation $reservation)
+    {
+        try {
+            $stmt = $this->connection->prepare(
+                "UPDATE reservations SET 
+            name = :name, 
+            reservation_date = :reservation_date, 
+            total_adult = :total_adult, 
+            total_children = :total_children, 
+            email = :email, 
+            phone = :phone, 
+            session_id = :session_id, 
+            restaurant_id = :restaurant_id, 
+            remarks = :remarks, 
+            total_cost = :total_cost 
+            WHERE reservation_id = :reservation_id"
+            );
+            $stmt->execute([
+                ':name' => $reservation->getName(),
+                ':reservation_date' => $reservation->getReservationDate(),
+                ':total_adult' => $reservation->getTotalAdult(),
+                ':total_children' => $reservation->getTotalChildren(),
+                ':email' => $reservation->getEmail(),
+                ':phone' => $reservation->getPhone(),
+                ':session_id' => $reservation->getSessionId(),
+                ':restaurant_id' => $reservation->getRestaurantId(),
+                ':remarks' => $reservation->getRemarks(),
+                ':total_cost' => $reservation->getCost(),
+                ':reservation_id' => $reservation->getReservationId()
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            throw new Exception("Error updating reservation: " . $e->getMessage());
         }
     }
 
@@ -99,4 +138,3 @@ class ReservationRepository extends Repository
         }
     }
 }
-

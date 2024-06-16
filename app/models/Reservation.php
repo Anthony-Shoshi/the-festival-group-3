@@ -11,6 +11,7 @@ class Reservation implements BasketItemInterface
     private $reservation_date;
     private $total_adult;
     private $total_children;
+    private $email;
     private $phone;
     private $user_id;
     private $session_id;
@@ -24,12 +25,13 @@ class Reservation implements BasketItemInterface
     private $payment_status;
     private $confirmation_code;
 
-    public function __construct($name, $reservation_date, $total_adult, $total_children, $phone, $user_id, $session_id, $restaurant_id, $remarks, $cost_per_person)
+    public function __construct($name, $reservation_date, $total_adult, $total_children, $email, $phone, $user_id, $session_id, $restaurant_id, $remarks, $cost_per_person)
     {
         $this->name = $name;
         $this->reservation_date = $reservation_date;
         $this->total_adult = $total_adult;
         $this->total_children = $total_children;
+        $this->email = $email;
         $this->phone = $phone;
         $this->user_id = $user_id;
         $this->session_id = $session_id;
@@ -45,6 +47,11 @@ class Reservation implements BasketItemInterface
     public function getReservationId()
     {
         return $this->reservation_id;
+    }
+    
+    public function setReservationId($reservation_id)
+    {
+        $this->reservation_id = $reservation_id;
     }
 
     public function getUserId()
@@ -72,6 +79,11 @@ class Reservation implements BasketItemInterface
         return $this->total_children;
     }
 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    
     public function getPhone()
     {
         return $this->phone;
