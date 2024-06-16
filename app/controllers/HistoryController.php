@@ -3,7 +3,7 @@ namespace App\Controllers;
 use App\Services\HistoryService;
 use App\Services\PageService;
 use Exception;
-
+use App\Models\SectionType;
 class HistoryController
 {
     private HistoryService $historyService;
@@ -20,13 +20,12 @@ class HistoryController
             $tours = $this->historyService->getAllTours();
             $pages = $this->pageService->getAllPages();
 
-            $header = $this->historyService->getHeader();
-            $introduction = $this->historyService->getIntroduction();
-            $information = $this->historyService->getTourInfo();
-            $routes = $this->historyService->getRoute();
-            $regularTicket = $this->historyService->getRegularTicketPrice();
-            $familyTicket = $this->historyService->getFamilyTicketPrice();
-
+            $headers = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Header);
+            $introduction = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Introduction);
+            $information = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Information);
+            $regularTickets = $this->historyService->getHistoryPageInfoBySectionType(SectionType::RegularTicket);
+            $familyTickets = $this->historyService->getHistoryPageInfoBySectionType(SectionType::FamilyTicket);
+            $routes = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Routes);
             require_once __DIR__ . '/../views/frontend/history/index.php';
         }catch (Exception $e) {
             header("Location: /error?message=" . urlencode($e->getMessage()));
