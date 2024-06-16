@@ -68,6 +68,11 @@ class Helper
         unset($fields['id']);
 
         foreach ($fields as $key => $value) {
+
+            if ($key === 'remarks') {
+                continue;
+            }
+
             if (is_array($value)) {
                 continue;
             }

@@ -2,9 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\SectionType;
 use App\Services\EventService;
-use App\Services\HistoryService;
 use App\Services\PageService;
 use App\Services\RestaurantService;
 use App\Services\ArtistService;
@@ -23,7 +21,6 @@ class HomeController
     protected $artistService;
     protected $venueService;
     protected $danceService;
-    protected $historyService;
 
     public function __construct()
     {
@@ -34,7 +31,6 @@ class HomeController
         $this->artistService = new ArtistService();
         $this->venueService = new VenueService();
         $this->danceService = new DanceService();
-        $this->historyService = new HistoryService();
     }
 
     public function index()
@@ -97,15 +93,9 @@ class HomeController
     {
         $id = $_GET['id'];
         $slug = $_GET['slug'];
-        $sections = $this->sectionService->getSectionByPageId($id);
+        $sections = $this->sectionService->getSectionByPageId($id);        
         switch ($slug) {
             case 'history':
-                $headers = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Header);
-                $introduction = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Introduction);
-                $information = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Information);
-                $routes = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Routes);
-                $regularTicket = $this->historyService->getHistoryPageInfoBySectionType(SectionType::RegularTicket);
-                $familyTicket = $this->historyService->getHistoryPageInfoBySectionType(SectionType::FamilyTicket);
                 require '../views/frontend/history/index.php';
                 break;
             case 'yummy':

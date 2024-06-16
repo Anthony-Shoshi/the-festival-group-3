@@ -4,28 +4,53 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
-                <h1><?= $restaurant['title'] ?></h1>
+                <h1><?= htmlspecialchars($restaurant['title']) ?></h1>
                 <a href="/restaurant" class="btn btn-success">Back</a>
             </div>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="<?= $restaurant['image_url'] ?>" class="img-fluid" alt="Restaurant Image">
+                    <img src="<?= htmlspecialchars($restaurant['image_url']) ?>" class="img-fluid" alt="Restaurant Image">
                 </div>
                 <div class="col-md-6">
                     <h5>Description</h5>
-                    <p><?= $restaurant['description'] ?></p>
-                    <p><strong>Ratings:</strong> <?= $restaurant['ratings'] ?> star</p>
-                    <p><strong>Cuisines:</strong> <?= $restaurant['cuisines'] ?></p>
-                    <p><strong>Location:</strong> <?= $restaurant['location'] ?></p>
-                    <p><strong>Number of Seats:</strong> <?= $restaurant['number_of_seats'] ?></p>
-                    <p><strong>Contact Email:</strong> <?= $restaurant['contact_email'] ?></p>
-                    <p><strong>Contact Phone:</strong> <?= $restaurant['contact_phone'] ?></p>
+                    <div><?= html_entity_decode($restaurant['description']) ?></div>
+                    <p><strong>Ratings:</strong> <?= htmlspecialchars($restaurant['ratings']) ?> star</p>
+                    <p><strong>Cuisines:</strong> <?= htmlspecialchars($restaurant['cuisines']) ?></p>
+                    <p><strong>Location:</strong> <?= htmlspecialchars($restaurant['location']) ?></p>
+                    <p><strong>Number of Seats:</strong> <?= htmlspecialchars($restaurant['number_of_seats']) ?></p>
+                    <p><strong>Contact Email:</strong> <?= htmlspecialchars($restaurant['contact_email']) ?></p>
+                    <p><strong>Contact Phone:</strong> <?= htmlspecialchars($restaurant['contact_phone']) ?></p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
                     <h5>Session Information</h5>
-                    <p><strong>Total Sessions:</strong> <?= $restaurant['total_session'] ?></p>
-                    <p><strong>Duration per Session:</strong> <?= $restaurant['duration'] ?> hours</p>
-                    <p><strong>First Session Time:</strong> <?= $restaurant['first_session'] ?></p>
+                    <?php if (count($sessions) > 0) { ?>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Start Time</th>
+                                    <th>Duration (hours)</th>
+                                    <th>Sessions Per Day</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($sessions as $session) : ?>
+                                    <tr>
+                                        <td><?= htmlspecialchars($session['session_id']) ?></td>
+                                        <td><?= htmlspecialchars($session['start_time']) ?></td>
+                                        <td><?= htmlspecialchars($session['duration']) ?> hours</td>
+                                        <td><?= htmlspecialchars($session['sessions_per_day']) ?><?= ($session['sessions_per_day'] == 1) ? ' session' : ' sessions' ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    <?php } else { ?>
+                        <p>No sessions available for this restaurant.</p>
+                    <?php } ?>
                 </div>
             </div>
             <div class="row mt-4">
@@ -35,8 +60,8 @@
                         <ul>
                             <?php foreach ($restaurant['features'] as $feature) : ?>
                                 <li>
-                                    <img src="<?= $feature['image_url'] ?>" alt="<?= $feature['name'] ?>" style="width: 20px; height: 20px;">
-                                    <?= $feature['name'] ?>
+                                    <img src="<?= htmlspecialchars($feature['image_url']) ?>" alt="<?= htmlspecialchars($feature['name']) ?>" style="width: 20px; height: 20px;">
+                                    <?= htmlspecialchars($feature['name']) ?>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
@@ -53,7 +78,7 @@
                         <div class="row">
                             <?php foreach ($galleryImages as $image) : ?>
                                 <div class="col-md-3 mb-2">
-                                    <img src="<?= $image ?>" alt="Gallery Image" class="img-fluid">
+                                    <img src="<?= htmlspecialchars($image) ?>" alt="Gallery Image" class="img-fluid">
                                 </div>
                             <?php endforeach; ?>
                         </div>

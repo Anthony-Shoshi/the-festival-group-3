@@ -63,7 +63,14 @@ class DanceController{
     }
     public function artists()
     {
-        $artists = $this->artistService->getAllArtists();
+        $artistID = $_GET['id'];
+        $artists = $this->artistService->getArtistsById($artistID);
+        $artistEvents = $this->danceService->getEventsByArtistId($artistID);
+        $artistAlbums = $this->artistService->getArtistsAlbum($artistID);
+        $artistMusic = $this->artistService->getArtistMusic($artistID);
+        $artistAwards = $this->artistService->getArtistAwards($artistID);
+
+
         require __DIR__ . '/../views/frontend/dance/artists.php';
     }
 }

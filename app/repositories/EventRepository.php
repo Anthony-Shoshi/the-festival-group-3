@@ -93,4 +93,17 @@ class EventRepository extends Repository{
         }
     }
 
+    public function getEventByArtist($artistID)
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT mua FROM music_perfromance WHERE event_type = :event_type");
+            $stmt->bindParam(':event_type', $event_type);
+            $stmt->execute();
+            $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $events;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
 }
