@@ -92,4 +92,12 @@ class DanceService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function getEventsByArtistId(int $artistId)
+    {
+        try {
+            return $this->danceRepository->getEventsByArtistId($artistId);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }

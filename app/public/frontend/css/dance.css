@@ -243,7 +243,7 @@ body {
 
 .pass-name {
     color: #fff;
-    font-size: 40px;
+    font-size: 30px;
     margin: 0;
     font-family: Calibri, sans-serif;
 
@@ -373,4 +373,26 @@ body {
         max-width: 80%;
 
     }
+}
+
+/* venue modal */
+#venueModalLabel{
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    font-size: 40px;
+}
+#venue-detail-name, #venue-detail-location{
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    font-size: 20px;
+}
+.btn-close{
+    background-color: #FF7A68;
+    color: #000;
+    font-size: 20px;
+    padding: 5px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-close:hover {
+    background-color: #ff3e29;
 }

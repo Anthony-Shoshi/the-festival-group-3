@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Services\PageService;
 use App\Helpers\Helper;
 use App\Services\RestaurantService;
 use App\Services\ArtistService;
@@ -19,13 +20,13 @@ class HomeController
     protected $restaurantService;
     protected $sessionService;
     protected $eventService;
-
     protected $artistService;
     protected $venueService;
     protected $danceService;
 
     public function __construct()
     {
+        $this->pageService = new PageService();
         $this->sectionService = new SectionService();
         $this->restaurantService = new RestaurantService();
         $this->sessionService = new SessionService();
@@ -90,8 +91,7 @@ class HomeController
     {
         require '../views/backend/users/create.php';
     }
-
-    public function page()
+    public function footer()
     {
         $id = $_GET['id'];
         $slug = $_GET['slug'];
