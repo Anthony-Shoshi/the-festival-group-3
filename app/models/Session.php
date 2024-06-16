@@ -4,29 +4,38 @@ namespace App\Models;
 
 class Session
 {
-    private int $sessionId;
-    private int $totalSessions;
-    private string $duration;
-    private string $firstSession;
+    private $session_id;
+    private $restaurant_id;
+    private $start_time;
+    private $duration;
+    private $sessions_per_day;
+
+    public function __construct($restaurant_id, $start_time, $duration, $sessions_per_day)
+    {
+        $this->restaurant_id = $restaurant_id;
+        $this->start_time = $start_time;
+        $this->duration = $duration;
+        $this->sessions_per_day = $sessions_per_day;
+    }
 
     public function getSessionId()
     {
-        return $this->sessionId;
+        return $this->session_id;
     }
 
-    public function setSessionId($sessionId)
+    public function setSessionId($session_id)
     {
-        $this->sessionId = $sessionId;
+        $this->session_id = $session_id;
     }
 
-    public function getTotalSessions()
+    public function getRestaurantId()
     {
-        return $this->totalSessions;
+        return $this->restaurant_id;
     }
 
-    public function setTotalSessions($totalSessions)
+    public function getStartTime()
     {
-        $this->totalSessions = $totalSessions;
+        return $this->start_time;
     }
 
     public function getDuration()
@@ -34,18 +43,19 @@ class Session
         return $this->duration;
     }
 
-    public function setDuration($duration)
+    public function getSessionsPerDay()
     {
-        $this->duration = $duration;
+        return $this->sessions_per_day;
     }
 
-    public function getFirstSession()
+    public function toArray()
     {
-        return $this->firstSession;
-    }
-
-    public function setFirstSession($firstSession)
-    {
-        $this->firstSession = $firstSession;
+        return [
+            'session_id' => $this->session_id,
+            'restaurant_id' => $this->restaurant_id,
+            'start_time' => $this->start_time,
+            'duration' => $this->duration,
+            'sessions_per_day' => $this->sessions_per_day,
+        ];
     }
 }

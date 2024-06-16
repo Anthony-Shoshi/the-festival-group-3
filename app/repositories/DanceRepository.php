@@ -213,6 +213,37 @@ class DanceRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function getEventsByArtistId(int $artistId)
+    {
+        try {
+            $stmt = $this->connection->prepare("
+            SELECT 
+                mp.music_performance_id,
+                mp.music_event_id,
+                me.event_price,
+                me.event_date,
+                me.event_start_time,
+                me.venue_id,
+                dv.venue_name
+            FROM 
+                music_performance AS mp
+            JOIN 
+                music_events AS me ON mp.music_event_id = me.music_event_id
+            JOIN 
+                dance_venues AS dv ON me.venue_id = dv.venue_id
+            WHERE 
+                mp.artist_id = :artist_id
+        ");
+
+            $stmt->bindParam(':artist_id', $artistId, PDO::PARAM_INT);
+            $stmt->execute();
+            $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $events;
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 
     public function getArtistIdsByEventId(int $music_event_id)
     {
@@ -271,4 +302,6 @@ class DanceRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
+
 }

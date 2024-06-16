@@ -4,15 +4,18 @@ namespace App\Controllers;
 
 use App\Helpers\Helper;
 use App\Services\SessionService;
+use App\Services\RestaurantService;
 use Exception;
 
 class SessionController
 {
     private $sessionService;
+    private $restaurantService;
 
     public function __construct()
     {
         $this->sessionService = new SessionService();
+        $this->restaurantService = new RestaurantService();
     }
 
     public function index()
@@ -28,23 +31,29 @@ class SessionController
 
     public function create()
     {
-        require __DIR__ . '/../views/backend/sessions/create.php';
+        try {
+            $restaurants = $this->restaurantService->getAllRestaurants();
+            require __DIR__ . '/../views/backend/sessions/create.php';
+        } catch (Exception $e) {
+            header("Location: /error?message=" . urlencode($e->getMessage()));
+            exit();
+        }
     }
 
     public function store()
     {
         try {
-
             $validatedData = Helper::validate($_POST);
 
-            $total_session = $_POST['total_session'];
-            $duration = $_POST['duration'];
-            $first_session = $_POST['first_session'];
+            $restaurant_id = $validatedData['restaurant_id'];
+            $start_time = $validatedData['start_time'];
+            $duration = $validatedData['duration'];
+            $sessions_per_day = $validatedData['sessions_per_day'];
 
-            $this->sessionService->createSession($total_session, $duration, $first_session);
-            
+            $this->sessionService->createSession($restaurant_id, $start_time, $duration, $sessions_per_day);
+
             Helper::setMessage(false, "Session added successfully!");
-            header("Location: /Session");
+            header("Location: /session");
             exit();
         } catch (Exception $e) {
             header("Location: /error?message=" . urlencode($e->getMessage()));
@@ -54,12 +63,18 @@ class SessionController
 
     public function edit()
     {
-        $id = $_GET['id'];
-        if (isset($id) && $id > 0) {
-            $session = $this->sessionService->getSession($id);
-            require __DIR__ . '/../views/backend/sessions/edit.php';
-        } else {
-            header("Location: /error?message=something went wrong with this Session data!");
+        try {
+            $id = $_GET['id'];
+            if (isset($id) && $id > 0) {
+                $session = $this->sessionService->getSession($id);
+                $restaurants = $this->restaurantService->getAllRestaurants();
+                require __DIR__ . '/../views/backend/sessions/edit.php';
+            } else {
+                header("Location: /error?message=something went wrong with this session data!");
+                exit();
+            }
+        } catch (Exception $e) {
+            header("Location: /error?message=" . urlencode($e->getMessage()));
             exit();
         }
     }
@@ -68,13 +83,15 @@ class SessionController
     {
         try {
             $validatedData = Helper::validate($_POST);
-            
-            $sessionId = $_POST['id'];
-            $total_session = $validatedData['total_session'];
-            $duration = $validatedData['duration'];
-            $first_session = $validatedData['first_session'];
 
-            $this->sessionService->updateSession($sessionId, $total_session, $duration, $first_session);
+            $sessionId = $_POST['id'];
+            
+            $restaurant_id = $validatedData['restaurant_id'];
+            $start_time = $validatedData['start_time'];
+            $duration = $validatedData['duration'];
+            $sessions_per_day = $validatedData['sessions_per_day'];
+
+            $this->sessionService->updateSession($sessionId, $restaurant_id, $start_time, $duration, $sessions_per_day);
 
             Helper::setMessage(false, "Session updated successfully!");
             header("Location: /session");
@@ -87,13 +104,19 @@ class SessionController
 
     public function delete()
     {
-        $id = $_GET['id'];
-        if (isset($id) && $id > 0) {            
-            Helper::setMessage(false, "Session deleted successfully!");
-            header("Location: /session");
-            exit();
-        } else {
-            header("Location: /error?message=something went wrong with this Session data!");
+        try {
+            $id = $_GET['id'];
+            if (isset($id) && $id > 0) {
+                $this->sessionService->deleteSession($id);
+                Helper::setMessage(false, "Session deleted successfully!");
+                header("Location: /session");
+                exit();
+            } else {
+                header("Location: /error?message=something went wrong with this session data!");
+                exit();
+            }
+        } catch (Exception $e) {
+            header("Location: /error?message=" . urlencode($e->getMessage()));
             exit();
         }
     }

@@ -16,7 +16,6 @@
                     <th>Image</th>
                     <th>Rating</th>
                     <th>Cuisines</th>
-                    <th>First Session</th>
                     <th>Location</th>
                     <th>Actions</th>
                 </tr>
@@ -29,7 +28,6 @@
                             <td><img src="<?= $restaurant['image_url'] ?>" alt="Restaurant Image" style="width: 100px;"></td>
                             <td><?= $restaurant['ratings'] ?> star</td>
                             <td><?= $restaurant['cuisines'] ?></td>
-                            <td>at <?= $restaurant['first_session'] ?></td>
                             <td><?= $restaurant['location'] ?></td>
                             <td>
                                 <a href="/restaurant/view?id=<?= $restaurant['restaurant_id'] ?>" class="btn btn-info btn-sm">View</a>

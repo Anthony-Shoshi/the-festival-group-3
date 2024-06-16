@@ -24,7 +24,7 @@ class RestaurantService
         }
     }
 
-    public function createRestaurant($title, $image_url, $description, $ratings, $cuisines, $session_id, $event_id, $location, $number_of_seats, $contact_email, $contact_phone, $galleryImagesJson)
+    public function createRestaurant($title, $image_url, $description, $ratings, $cuisines, $event_id, $location, $number_of_seats, $contact_email, $contact_phone, $galleryImagesJson)
     {
         try {
             $restaurant = new Restaurant();
@@ -33,7 +33,6 @@ class RestaurantService
             $restaurant->setDescription($description);
             $restaurant->setRatings($ratings);
             $restaurant->setCuisines($cuisines);
-            $restaurant->setSessionId($session_id);
             $restaurant->setEventId($event_id);
             $restaurant->setLocation($location);
             $restaurant->setNumberOfSeats($number_of_seats);
@@ -60,7 +59,7 @@ class RestaurantService
         }
     }
 
-    public function updateRestaurant($restaurantId, $title, $image_url, $description, $ratings, $cuisines, $session_id, $event_id, $location, $number_of_seats, $contact_email, $contact_phone, $galleryImagesJson)
+    public function updateRestaurant($restaurantId, $title, $image_url, $description, $ratings, $cuisines, $event_id, $location, $number_of_seats, $contact_email, $contact_phone, $galleryImagesJson)
     {
         try {
             $restaurant = new Restaurant();
@@ -70,7 +69,6 @@ class RestaurantService
             $restaurant->setDescription($description);
             $restaurant->setRatings($ratings);
             $restaurant->setCuisines($cuisines);
-            $restaurant->setSessionId($session_id);
             $restaurant->setEventId($event_id);
             $restaurant->setLocation($location);
             $restaurant->setNumberOfSeats($number_of_seats);

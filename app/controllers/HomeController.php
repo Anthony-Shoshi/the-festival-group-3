@@ -2,13 +2,15 @@
 
 namespace App\Controllers;
 
-use App\Services\EventService;
 use App\Services\PageService;
+use App\Helpers\Helper;
 use App\Services\RestaurantService;
 use App\Services\ArtistService;
 use App\Services\VenueService;
 use App\Services\DanceService;
 use App\Services\SectionService;
+use App\Services\EventService;
+use App\Services\SessionService;
 use Exception;
 
 class HomeController
@@ -16,8 +18,8 @@ class HomeController
     protected $pageService;
     protected $sectionService;
     protected $restaurantService;
+    protected $sessionService;
     protected $eventService;
-
     protected $artistService;
     protected $venueService;
     protected $danceService;
@@ -27,6 +29,7 @@ class HomeController
         $this->pageService = new PageService();
         $this->sectionService = new SectionService();
         $this->restaurantService = new RestaurantService();
+        $this->sessionService = new SessionService();
         $this->eventService = new EventService();
         $this->artistService = new ArtistService();
         $this->venueService = new VenueService();
@@ -88,8 +91,7 @@ class HomeController
     {
         require '../views/backend/users/create.php';
     }
-
-    public function page()
+    public function footer()
     {
         $id = $_GET['id'];
         $slug = $_GET['slug'];
@@ -100,6 +102,9 @@ class HomeController
                 break;
             case 'yummy':
                 $restaurants = $this->restaurantService->getAllRestaurants();
+                foreach ($restaurants as &$restaurant) {
+                    $restaurant['sessions'] = $this->sessionService->getSessionsByRestaurantId($restaurant['restaurant_id']);
+                }
                 require '../views/frontend/yummy/index.php';
                 break;
             case 'dance':
