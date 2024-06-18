@@ -1,15 +1,12 @@
-
-
 <?php include __DIR__ . '/../inc/header.php'; ?>
 
 <link rel="stylesheet" href="/frontend/css/dance.css"/>
 
 <title>Dance</title>
 <link rel="stylesheet" href="/frontend/css/dance.css">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
 
 </head>
 <body>
@@ -87,7 +84,7 @@
                 </div>
                 <div class="bottom-section">
                     <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
-                    <button class="buy-button">BUY</button>
+                    <button class="buy-button" onclick="addToCart('pass', '<?= $pass['passName']; ?>', '', '<?= $pass['passPrice']; ?>')">BUY</button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -98,7 +95,7 @@
                 </div>
                 <div class="bottom-section">
                     <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
-                    <button class="buy-button">BUY</button>
+                    <button class="buy-button" onclick="addToCart('pass', '<?= $pass['passName']; ?>', '', '<?= $pass['passPrice']; ?>')">BUY</button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -122,7 +119,7 @@
                     </div>
                     <div class="ticket-buttons">
                         <button class="favorite-button"><img src="/images/heart.png" alt="Favorite"></button>
-                        <button class="buy-button">Buy</button>
+                        <button class="buy-button" onclick="addToCart('ticket', '<?= $ticket['event_name']; ?>', '<?= $ticket['venue_name']; ?>', '<?= $ticket['event_price']; ?>', '<?= $ticket['event_date']; ?>', '<?= $ticket['event_start_time']; ?>')">Buy</button>
                     </div>
                 </div>
             </div>
@@ -140,7 +137,7 @@
                 </div>
                 <div class="bottom-section">
                     <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
-                    <button class="buy-button">BUY</button>
+                    <button class="buy-button" onclick="addToCart('pass', '<?= $pass['passName']; ?>', '', '<?= $pass['passPrice']; ?>')">BUY</button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -151,7 +148,7 @@
                 </div>
                 <div class="bottom-section">
                     <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
-                    <button class="buy-button">BUY</button>
+                    <button class="buy-button" onclick="addToCart('pass', '<?= $pass['passName']; ?>', '', '<?= $pass['passPrice']; ?>')">BUY</button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -175,7 +172,7 @@
                     </div>
                     <div class="ticket-buttons">
                         <button class="favorite-button"><img src="/images/heart.png" alt="Favorite"></button>
-                        <button class="buy-button">Buy</button>
+                        <button class="buy-button" onclick="addToCart('ticket', '<?= $ticket['event_name']; ?>', '<?= $ticket['venue_name']; ?>', '<?= $ticket['event_price']; ?>', '<?= $ticket['event_date']; ?>', '<?= $ticket['event_start_time']; ?>')">Buy</button>
                     </div>
                 </div>
             </div>
@@ -193,7 +190,7 @@
                 </div>
                 <div class="bottom-section">
                     <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
-                    <button class="buy-button">BUY</button>
+                    <button class="buy-button" onclick="addToCart('pass', '<?= $pass['passName']; ?>', '', '<?= $pass['passPrice']; ?>')">BUY</button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -204,7 +201,7 @@
                 </div>
                 <div class="bottom-section">
                     <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
-                    <button class="buy-button">BUY</button>
+                    <button class="buy-button" onclick="addToCart('pass', '<?= $pass['passName']; ?>', '', '<?= $pass['passPrice']; ?>')">BUY</button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -228,7 +225,7 @@
                     </div>
                     <div class="ticket-buttons">
                         <button class="favorite-button"><img src="/images/heart.png" alt="Favorite"></button>
-                        <button class="buy-button">Buy</button>
+                        <button class="buy-button" onclick="addToCart('ticket', '<?= $ticket['event_name']; ?>', '<?= $ticket['venue_name']; ?>', '<?= $ticket['event_price']; ?>', '<?= $ticket['event_date']; ?>', '<?= $ticket['event_start_time']; ?>')">Buy</button>
                     </div>
                 </div>
             </div>
@@ -250,9 +247,36 @@
             modal.find('#venue-map').attr('src', mapUrl);
         });
     });
+
+    function addToCart(type, name, venue, price, date = '', time = '') {
+        $.ajax({
+            type: 'POST',
+            url: '/api/addToCart/addToCart',
+            dataType: 'json',  // Specify dataType as JSON to parse response automatically
+            data: {
+                action: 'addToCart',  // Send the action parameter
+                type: type,
+                name: name,
+                venue: venue,
+                price: price,
+                date: date,
+                time: time
+            },
+            success: function(response) {
+                if (response.success) {
+                    window.location.href = '/personalprogram/basket'; // Redirect to basket page
+                } else {
+                    alert('Failed to add item to cart: ' + response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX error: ', status, error);
+                alert('Failed to add item to cart. Please try again later.');
+            }
+        });
+    }
 </script>
-
-
 
 <?php include __DIR__ . '/../inc/footer.php'; ?>
 </body>
+</html>
