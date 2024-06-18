@@ -32,7 +32,7 @@ class PersonalProgramController
             $index = $_POST['index'];
 
             // Implement your logic to remove item from session or database
-            unset($_SESSION['cart'][$index]); 
+            unset($_SESSION['cart'][$index]);
 
             // Respond with JSON success message
             header('Content-Type: application/json');
