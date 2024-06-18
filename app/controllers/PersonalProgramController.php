@@ -43,6 +43,7 @@ class PersonalProgramController
                     $reservationData['reservation_date'],
                     $reservationData['total_adult'],
                     $reservationData['total_children'],
+                    $reservationData['email'],
                     $reservationData['phone'],
                     $reservationData['user_id'],
                     $reservationData['session_id'],
