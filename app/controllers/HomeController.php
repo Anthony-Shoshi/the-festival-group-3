@@ -91,11 +91,68 @@ class HomeController
     {
         require '../views/backend/users/create.php';
     }
+
+    public function page()
+    {
+        $id = $_GET['id'];
+        $slug = $_GET['slug'];
+        $sections = $this->sectionService->getSectionByPageId($id);
+        switch ($slug) {
+            case 'history':
+                require '../views/frontend/history/index.php';
+                break;
+            case 'yummy':
+                $restaurants = $this->restaurantService->getAllRestaurants();
+                foreach ($restaurants as &$restaurant) {
+                    $restaurant['sessions'] = $this->sessionService->getSessionsByRestaurantId($restaurant['restaurant_id']);
+                }
+                require '../views/frontend/yummy/index.php';
+                break;
+            case 'dance':
+                $artists = $this->artistService->getAllArtists();
+                $venues = $this->venueService->getAllVenues();
+                $passes = $this->danceService->getAllPasses();
+                $fridayTickets = $this->danceService->getfridayEvents();
+                $saturdayTickets = $this->danceService->getSaturdayEvents();
+                $SundayTickets = $this->danceService->getSundayEvents();
+
+
+                $fridayPass = [];
+                $saturdayPass = [];
+                $sundayPass = [];
+                $allAccessPass = [];
+
+                foreach ($passes as $pass) {
+                    switch ($pass['passType']) {
+                        case 'One-Day Pass (Friday)':
+                            $fridayPass[] = $pass;
+                            break;
+                        case 'One-Day Pass (Saturday)':
+                            $saturdayPass[] = $pass;
+                            break;
+                        case 'One-Day Pass (Sunday)':
+                            $sundayPass[] = $pass;
+                            break;
+                        case 'All-Access Pass':
+                            $allAccessPass[] = $pass;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                require __DIR__ . '/../views/frontend/dance/index.php';
+                break;
+            default:
+                require '../views/frontend/custom.php';
+                break;
+        }
+    }
+
     public function footer()
     {
         $id = $_GET['id'];
         $slug = $_GET['slug'];
-        $sections = $this->sectionService->getSectionByPageId($id);        
+        $sections = $this->sectionService->getSectionByPageId($id);
         switch ($slug) {
             case 'history':
                 require '../views/frontend/history/index.php';

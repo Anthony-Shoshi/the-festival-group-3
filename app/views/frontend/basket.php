@@ -33,12 +33,12 @@ include __DIR__ . '/inc/message.php';
                         </td>
                         <td><?php echo isset($item['total_adult']) ? htmlspecialchars($item['total_adult'] + $item['total_children']) : htmlspecialchars($item['quantity']); ?></td>
                         <td><?php echo htmlspecialchars($item['cost']); ?> EUR</td>
-                        <td><a href="/reservation/removeItem?index=<?php echo $index; ?>">Remove</a></td>
+                        <td><a href="/personalprogram/removeItem?index=<?php echo $index; ?>">Remove</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <a href="/reservation/checkout" class="btn btn-primary">Checkout</a>
+        <a href="/personalprogram/checkout" class="btn btn-primary">Checkout</a>
     <?php else : ?>
         <p>Your basket is empty.</p>
     <?php endif; ?>
