@@ -144,10 +144,10 @@ class DanceController{
                 $event['music_event_id'],
                 $event['event_price'],
                 $event['session_type'],
-                $event['start_date'],
+                $event['event_date'],
                 $event['event_start_time'],
                 $event['event_duration'],
-                $event['title'],
+                $event['event_name'],
                 $event['event_id'],
                 1
             );

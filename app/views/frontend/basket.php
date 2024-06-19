@@ -40,7 +40,7 @@
                             } elseif (isset($item['ticketType'])) {
                                 echo htmlspecialchars($item['start_location']) . ' - ' . htmlspecialchars($item['timeslot']);
                             } elseif (isset($item['music_performance_id'])) {
-                                echo htmlspecialchars($item['title']) . ' - ' . htmlspecialchars($item['start_date']);
+                                echo htmlspecialchars($item['event_name']) . ' - ' . htmlspecialchars($item['event_date']);
                             }elseif (isset($item['passType'])) {
                                 echo htmlspecialchars($item['passName']) . ' - ' . htmlspecialchars($item['passDescription']);
                             }

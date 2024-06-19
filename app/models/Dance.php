@@ -132,11 +132,11 @@ private int $quantity;
             'music_event_id' => $this->music_event_id,
             'event_price' => $this->event_price,
             'session_type' => $this->session_type,
-            'start_date' => $this->start_date,
+            'event_date' => $this->start_date,
             'event_start_time' => $this->event_start_time,
             'event_duration' => $this->event_duration,
             'event_id' => $this->event_id,
-            'title' => $this->title,
+            'event_name' => $this->title,
             'quantity' => $this->quantity,
         ];
     }
