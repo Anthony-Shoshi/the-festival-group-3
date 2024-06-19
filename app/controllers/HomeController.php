@@ -110,8 +110,9 @@ class HomeController
                 $regularTickets = $this->historyService->getHistoryPageInfoBySectionType(SectionType::RegularTicket);
                 $familyTickets = $this->historyService->getHistoryPageInfoBySectionType(SectionType::FamilyTicket);
                 $routes = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Routes);
-
+                $tours = $this->historyService->getAllTours();
                 require '../views/frontend/history/index.php';
+                require '../views/frontend/history/historyTicket.php';
                 break;
             case 'yummy':
                 $restaurants = $this->restaurantService->getAllRestaurants();

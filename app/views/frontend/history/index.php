@@ -54,6 +54,9 @@
         </div>
     </div>
 </div>
+<div>
+    <a href="/history/addTicket" class="btn btn-primary btn-sm">Add Ticket</a>
+</div>
 
 </body>
 <br>
