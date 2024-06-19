@@ -41,7 +41,9 @@ class LoginController
                 $_SESSION['profile_picture'] = $user['profile_picture'];
                 if ($_SESSION['role'] == "Admin") {
                     header("location: /home/dashboard");
-                } else {
+                } elseif ($_SESSION['role'] == "Employee") {
+                    header("location: /ScanTicket/scanTicket");
+                }else {
                     header("location: /");
                 }
                 exit();

@@ -52,7 +52,7 @@ class DanceService
         }
     }
 
-    public function getDanceEventById(int $music_performance_id)
+    public function getEventById(int $music_performance_id)
     {
         try {
             return $this->danceRepository->getDanceEventById($music_performance_id);
@@ -96,6 +96,15 @@ class DanceService
     {
         try {
             return $this->danceRepository->getEventsByArtistId($artistId);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+
+    }
+    public function getPassDetailsByType(string $passType)
+    {
+        try {
+            return $this->danceRepository->getPassDetailsByType($passType);
         } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());
         }

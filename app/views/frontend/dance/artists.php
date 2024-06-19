@@ -6,62 +6,71 @@
 <body>
 <?php
 ?>
-
-<div class="section-1">
-    <div class="artist">
-        <div class="artist-image">
-            <img src="<?= '/images/' . $artists['image_url'] ?>" alt="<?= $artists['artist_name']; ?>">
+<div id="section-artist">
+    <div class="artist-header">
+        <div class="artist-header-image">
+            <img src="<?= '/images/' . $artists['detail_image'] ?>" alt="<?= $artists['artist_name']; ?>">
         </div>
-        <p><?= $artists['artist_name']; ?></p>
-        <p><strong>Name:</strong> <?= $artists['artist_real_name']; ?></p>
-        <p><strong>Age:</strong> <?= $artists['age']; ?></p>
-        <p><strong>Nationality:</strong> <?= $artists['nationality']; ?></p>
-        <p><strong>Genre:</strong> <?= $artists['genre']; ?></p>
-
+        <h1><?= $artists['artist_name']; ?></h1>
     </div>
 </div>
 
-
-<div class="section-2">
-    <div class="artist-aboutMe">
-        <h2 class="artist-abm">About Me</h2>
-        <p><?= $artists['about']; ?></p>
-    </div>
-</div>
-
-
-<div class="section-3">
-    <div class="artist-Conterts">
-        <h2 class="artist-cons">Concerts</h2>
-        <?php foreach ($artistEvents as $events): ?>
-        <div class="container">
-            <p class="event-date"><?= $events['event_date']; ?> - <?= $events['event_start_time']; ?> @ <?= $events['venue_name']; ?> - €<?= $events['event_price']; ?></p>
-            <button class="favorite-button"><img src="/images/heart.png" alt="Favorite"></button>
-            <button class="buyTicket-button">Buy Ticket</button>
+<div class="grid-container">
+    <div class="section-1">
+        <div class="artist">
+            <div class="artist-image">
+                <img src="<?= '/images/' . $artists['image_url'] ?>" alt="<?= $artists['artist_name']; ?>">
+            </div>
+            <ul>
+                <li class="name"><?= $artists['artist_name']; ?></li>
+                <li><strong>Name:</strong> <?= $artists['artist_real_name']; ?></li>
+                <li><strong>Age:</strong> <?= $artists['age']; ?></li>
+                <li><strong>Nationality:</strong> <?= $artists['nationality']; ?></li>
+                <li><strong>Genre:</strong> <?= $artists['genre']; ?></li>
+            </ul>
         </div>
-        <?php endforeach; ?>
+    </div>
+
+    <div class="section-2">
+        <div class="artist-aboutMe">
+            <h2 class="artist-heading">About Me</h2>
+            <p><?= $artists['about']; ?></p>
+        </div>
+    </div>
+
+    <div class="section-3">
+        <div class="artist-Conterts">
+            <h2 class="artist-heading">Concerts</h2>
+            <?php foreach ($artistEvents as $events): ?>
+                <div class="container">
+                    <p class="event-date"><?= $events['event_date']; ?> - <?= $events['event_start_time']; ?> @ <?= $events['venue_name']; ?> - €<?= $events['event_price']; ?></p>
+                    <button class="favorite-button"><img src="/images/heart.png" alt="Favorite"></button>
+                    <button class="buyTicket-button">Buy Ticket</button>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 </div>
 
 
 <div class="section-4">
+    <h2 class="artist-heading">Best Albums</h2>
     <div class="artist-albums">
-        <h2 class="artist-cons">Best Albums</h2>
         <?php foreach ($artistAlbums as $album): ?>
-            <div class="venue-image">
-                <img src="<?= '/images/' . ($album['image_url']) ?>" alt="<?= ($album['album_name']); ?>">
+            <div class="album-container">
+                <div class="album-image">
+                    <img src="<?= '/images/' . ($album['image_url']) ?>" alt="<?= ($album['album_name']); ?>">
+                </div>
+                <div class="album-info"><?= ($album['album_name']); ?> "<?= ($album['year']); ?>"</div>
             </div>
-            <div class="album-name"><?= ($album['album_name']); ?></div>
-            <div class="album-year">"<?= ($album['year']); ?>"</div>
-    </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
     </div>
 </div>
 
 
 <div class="section-5">
     <div class="artist-songs">
-        <h2 class="artist-cons"><?= htmlspecialchars($artists['artist_name']); ?>'s Music</h2>
+        <h2 class="artist-heading"><?= htmlspecialchars($artists['artist_name']); ?>'s Music</h2>
         <?php foreach ($artistMusic as $music): ?>
             <div class="song-container">
                 <div class="song-info">
@@ -82,17 +91,19 @@
 </div>
 
 <div class="section-6">
-    <div class="artist-albums">
-        <h2 class="artist-cons">Awards</h2>
+    <h2 class="artist-heading">Awards</h2>
+    <div class="artist-awards">
         <?php foreach ($artistAwards as $awards): ?>
-        <div class="venue-image">
-            <img src="<?= '/images/' . ($awards['image_url']) ?>" alt="<?= ($awards['title']); ?>">
-        </div>
-        <div class="album-name"><?= ($awards['title']); ?></div>
+            <div class="award-container">
+                <div class="awards-image">
+                    <img src="<?= '/images/' . ($awards['image_url']) ?>" alt="<?= ($awards['title']); ?>">
+                </div>
+                <div class="award-title"><?= ($awards['title']); ?></div>
+            </div>
+        <?php endforeach; ?>
     </div>
-    <?php endforeach; ?>
 </div>
-</div>
+
 
 
 <a href="/dance" class="backButton">Back to Tickets Page</a>

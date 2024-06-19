@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\SectionType;
 use App\Repositories\HistoryRepository;
 use Exception;
 
@@ -137,6 +138,23 @@ class HistoryService
     {
         try {
             return $this->historyRepository->getFamilyTicketPrice();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getHistoryPageInfoBySectionType(SectionType $sectionType): array
+    {
+        $section = SectionType::getSectionType($sectionType);
+        try {
+            return $this->historyRepository->getHistoryPageInfoBySectionType($section);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getFilteredTours($language_name, $availableGuides)
+    {
+        try {
+            return $this->historyRepository->getFilteredTours($language_name, $availableGuides);
         } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());
         }

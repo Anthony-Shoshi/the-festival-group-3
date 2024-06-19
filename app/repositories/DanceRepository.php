@@ -303,5 +303,26 @@ class DanceRepository extends Repository
         }
     }
 
-
+    public function getPassDetailsByType(string $passType)
+    {
+        try {
+            $stmt = $this->connection->prepare("
+                SELECT 
+                    pass_id,
+                    passName,
+                    passDescription,
+                    passPrice,
+                    passType
+                FROM 
+                    ticket_pass
+                WHERE 
+                    passType = :passType
+            ");
+            $stmt->bindParam(':passType', $passType);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }
