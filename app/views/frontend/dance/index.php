@@ -84,7 +84,7 @@
                 </div>
                 <div class="bottom-section">
                     <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
-                    <button class="buy-button" onclick="addToCart('pass', '<?= $pass['passName']; ?>', '', '<?= $pass['passPrice']; ?>')">BUY</button>
+                    <button class="buy-pass-button" data-passType="<?= $pass['passType']; ?>">Buy</button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -95,11 +95,12 @@
                 </div>
                 <div class="bottom-section">
                     <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
-                    <button class="buy-button" onclick="addToCart('pass', '<?= $pass['passName']; ?>', '', '<?= $pass['passPrice']; ?>')">BUY</button>
+                    <button class="buy-pass-button" data-passType="<?= $pass['passType']; ?>">Buy</button>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
+
     <div class="tickets-container">
         <?php foreach ($fridayTickets as $ticket): ?>
             <div class="ticket-container">
@@ -117,9 +118,10 @@
                             <p><strong>Price:</strong> €<?= $ticket['event_price']; ?></p>
                         </div>
                     </div>
+                    <input type="hidden" class="music-performance-id" value="<?= $ticket['music_performance_id']; ?>">
                     <div class="ticket-buttons">
                         <button class="favorite-button"><img src="/images/heart.png" alt="Favorite"></button>
-                        <button class="buy-button" onclick="addToCart('ticket', '<?= $ticket['event_name']; ?>', '<?= $ticket['venue_name']; ?>', '<?= $ticket['event_price']; ?>', '<?= $ticket['event_date']; ?>', '<?= $ticket['event_start_time']; ?>')">Buy</button>
+                        <button class="buy-button">Buy</button>
                     </div>
                 </div>
             </div>
@@ -137,7 +139,7 @@
                 </div>
                 <div class="bottom-section">
                     <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
-                    <button class="buy-button" onclick="addToCart('pass', '<?= $pass['passName']; ?>', '', '<?= $pass['passPrice']; ?>')">BUY</button>
+                    <button class="buy-pass-button" data-passType="<?= $pass['passType']; ?>">Buy</button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -148,11 +150,12 @@
                 </div>
                 <div class="bottom-section">
                     <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
-                    <button class="buy-button" onclick="addToCart('pass', '<?= $pass['passName']; ?>', '', '<?= $pass['passPrice']; ?>')">BUY</button>
+                    <button class="buy-pass-button" data-passType="<?= $pass['passType']; ?>">Buy</button>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
+
     <div class="tickets-container">
         <?php foreach ($saturdayTickets as $ticket): ?>
             <div class="ticket-container">
@@ -170,9 +173,10 @@
                             <p><strong>Price:</strong> €<?= $ticket['event_price']; ?></p>
                         </div>
                     </div>
+                    <input type="hidden" class="music-performance-id" value="<?= $ticket['music_performance_id']; ?>">
                     <div class="ticket-buttons">
                         <button class="favorite-button"><img src="/images/heart.png" alt="Favorite"></button>
-                        <button class="buy-button" onclick="addToCart('ticket', '<?= $ticket['event_name']; ?>', '<?= $ticket['venue_name']; ?>', '<?= $ticket['event_price']; ?>', '<?= $ticket['event_date']; ?>', '<?= $ticket['event_start_time']; ?>')">Buy</button>
+                        <button class="buy-button">Buy</button>
                     </div>
                 </div>
             </div>
@@ -190,7 +194,7 @@
                 </div>
                 <div class="bottom-section">
                     <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
-                    <button class="buy-button" onclick="addToCart('pass', '<?= $pass['passName']; ?>', '', '<?= $pass['passPrice']; ?>')">BUY</button>
+                    <button class="buy-pass-button" data-passType="<?= $pass['passType']; ?>">Buy</button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -201,7 +205,7 @@
                 </div>
                 <div class="bottom-section">
                     <p class="pass-description-price"><?= $pass['passDescription']; ?> - €<?= $pass['passPrice']; ?></p>
-                    <button class="buy-button" onclick="addToCart('pass', '<?= $pass['passName']; ?>', '', '<?= $pass['passPrice']; ?>')">BUY</button>
+                    <button class="buy-pass-button" data-passType="<?= $pass['passType']; ?>">Buy</button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -223,9 +227,10 @@
                             <p><strong>Price:</strong> €<?= $ticket['event_price']; ?></p>
                         </div>
                     </div>
+                    <input type="hidden" class="music-performance-id" value="<?= $ticket['music_performance_id']; ?>">
                     <div class="ticket-buttons">
                         <button class="favorite-button"><img src="/images/heart.png" alt="Favorite"></button>
-                        <button class="buy-button" onclick="addToCart('ticket', '<?= $ticket['event_name']; ?>', '<?= $ticket['venue_name']; ?>', '<?= $ticket['event_price']; ?>', '<?= $ticket['event_date']; ?>', '<?= $ticket['event_start_time']; ?>')">Buy</button>
+                        <button class="buy-button">Buy</button>
                     </div>
                 </div>
             </div>
@@ -248,34 +253,52 @@
         });
     });
 
-    function addToCart(type, name, venue, price, date = '', time = '') {
-        $.ajax({
-            type: 'POST',
-            url: '/api/addToCart/addToCart',
-            dataType: 'json',  // Specify dataType as JSON to parse response automatically
-            data: {
-                action: 'addToCart',  // Send the action parameter
-                type: type,
-                name: name,
-                venue: venue,
-                price: price,
-                date: date,
-                time: time
-            },
-            success: function(response) {
-                if (response.success) {
-                    window.location.href = '/personalprogram/basket'; // Redirect to basket page
-                } else {
-                    alert('Failed to add item to cart: ' + response.message);
+    $(document).ready(function() {
+        // Handle click on event ticket buy buttons
+        $('.buy-button').click(function(event) {
+            event.preventDefault();
+            var ticketContainer = $(this).closest('.ticket-container');
+            var musicPerformanceId = ticketContainer.find('.music-performance-id').val();
+
+            $.ajax({
+                url: '/dance/create',
+                method: 'POST',
+                data: {
+                    music_performance_id: musicPerformanceId
+                },
+                success: function(response) {
+                    alert('Item added to basket successfully!');
+                },
+                error: function(xhr, status, error) {
+                    alert('Failed to add item to basket. Please try again later.');
                 }
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX error: ', status, error);
-                alert('Failed to add item to cart. Please try again later.');
-            }
+            });
         });
-    }
+
+        // Handle click on pass buy buttons
+        $('.buy-pass-button').click(function(event) {
+            event.preventDefault();
+            var passType = $(this).data('passtype'); // Correct attribute name to 'data-passtype'
+
+            $.ajax({
+                url: '/dance/addpasstobasket',
+                method: 'POST',
+                data: {
+                    pass_type: passType
+                },
+                success: function(response) {
+                    alert('Pass added to basket successfully!');
+                },
+                error: function(xhr, status, error) {
+                    alert('Failed to add pass to basket. Please try again later.');
+                }
+            });
+        });
+    });
+
+
 </script>
+
 
 <?php include __DIR__ . '/../inc/footer.php'; ?>
 </body>

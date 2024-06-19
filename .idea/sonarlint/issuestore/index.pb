@@ -34,7 +34,7 @@ $app/repositories/DanceRepository.php,0\e\0e5ac3fddb8b7df143b9e1528d80914e478a5
 M
 app/services/DanceService.php,d\4\d47cee348d704b59ac1b8ea3f516f0fb30c64cce
 D
-app/models/Dance.php,b/a/ba764f5036fc732d9ec184fe1cbe271dc1b0a05d
+app/models/Dance.php,b\a\ba764f5036fc732d9ec184fe1cbe271dc1b0a05d
 ]
 -app/controllers/DanceManagementController.php,1\4\140a918e7fd0d8aa000de629b11e0466b843c63f
 [
@@ -50,7 +50,7 @@ Q
 S
 #app/controllers/ErrorController.php,f\e\fedb74c4229c813e6b1b7975df13600ec9207d4a
 E
-app/models/Artist.php,3/f/3f4f128cc087cb5aee7dbb97950cc699a1f04718
+app/models/Artist.php,3\f\3f4f128cc087cb5aee7dbb97950cc699a1f04718
 C
 app/models/Role.php,8\0\80416596d0641769b666eec126b9ff74d652a590
 C
@@ -111,7 +111,7 @@ R
 \
 ,app/views/frontend/auth/set-new-password.php,0/5/056531258778c79c15858227be943bb72c5f732c
 F
-app/helpers/Helper.php,1/b/1baf4f26dfb6c46ea2d2f13d61d2cce42604cd25
+app/helpers/Helper.php,1\b\1baf4f26dfb6c46ea2d2f13d61d2cce42604cd25
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e
 S
@@ -137,7 +137,7 @@ O
 M
 app/services/VenueService.php,c\5\c5eef34c1619214add84a26ef85677e0fb1702ea
 \
-,app/controllers/ForgotPasswordController.php,e/e/eee6248792f3c0caf1f5ff15258ed2c1f39444c9
+,app/controllers/ForgotPasswordController.php,e\e\eee6248792f3c0caf1f5ff15258ed2c1f39444c9
 S
 #app/controllers/LoginController.php,d/5/d510a89867b4fd29ec2a71e986620ee680844556
 R
@@ -202,3 +202,15 @@ R
 ,app/controllers/api/RemoveItemController.php,0\5\05e9b4e7853a47819538de722b7213643c43306c
 G
 app/services/Basket.php,6\7\67ebbfaf5f8f954d2756042718c06fd47be4a52e
+V
+&app/interfaces/BasketItemInterface.php,1\e\1e2229739998844689359839913335f38c0aa1a8
+J
+app/models/Reservation.php,f\d\fd548fcd346f2b5e4de87f8000b7736181a66354
+I
+app/models/Restaurant.php,0\1\015a681cf09cadaf922dbdfdb5e2a8804194c54e
+S
+#app/services/ReservationService.php,b\8\b8d849227ee13c755535f9fcb49523c1d09eda85
+I
+app/models/TicketPass.php,3\c\3cef42d89bacb1be55d5437066aac92893684865
+X
+(app/controllers/RestaurantController.php,8\1\81472eeb3663659fe78bb29833b3ac88eb20f474
