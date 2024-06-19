@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-class TicketPass
+use App\Interfaces\BasketItemInterface;
+
+class TicketPass implements BasketItemInterface
 {
 
     private int $pass_id;
@@ -10,6 +12,8 @@ class TicketPass
     private string $passDescription;
     private int $passPrice;
     private string $passType;
+    private $total_cost;
+
 
 
     public function __construct(
@@ -17,7 +21,8 @@ class TicketPass
         string $passName,
         string $passDescription,
         int    $passPrice,
-        string $passType
+        string $passType,
+        $total_cost
     )
     {
         $this->pass_id = $pass_id;
@@ -25,6 +30,7 @@ class TicketPass
         $this->passDescription = $passDescription;
         $this->passPrice = $passPrice;
         $this->passType = $passType;
+        $this->total_cost = $total_cost;
     }
 
     public function getPassId()
@@ -79,4 +85,17 @@ class TicketPass
     }
 
 
+    public function toArray()
+    {
+        return [
+            'passName' => $this->passName,
+            'passDescription' => $this->passDescription,
+            'passPrice' => $this->passPrice,
+        ];
+    }
+
+    public function getCost()
+    {
+        return $this->total_cost;
+    }
 }
