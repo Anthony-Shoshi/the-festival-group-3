@@ -159,4 +159,11 @@ class HistoryService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function getOrderedTours(){
+        try {
+            return $this->historyRepository->getOrderedTours();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }

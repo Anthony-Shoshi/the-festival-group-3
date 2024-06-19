@@ -212,5 +212,34 @@ class HistoryRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function getOrderedTours(){
+        try {
+            $stmt = $this->connection->prepare("SELECT ht.date, ht.start_time, ht.end_time, tl.language_name, tl.flag_image, htour.available_guides
+                                            FROM history_timeslots ht
+                                            JOIN history_tours htour ON htour.timetable_id = ht.timetable_id
+                                            JOIN tour_languages tl ON tl.language_id = htour.language_id
+                                            ORDER BY ht.date, ht.start_time");
+            $stmt->execute();
+            $tours = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            // Group by date
+            $groupedTours = [];
+            foreach ($tours as $tour) {
+                $date = $tour['date'];
+                if (!isset($groupedTours[$date])) {
+                    $groupedTours[$date] = [
+                        'date' => $date,
+                        'day' => date('l', strtotime($date)),
+                        'timeslots' => []
+                    ];
+                }
+                $groupedTours[$date]['timeslots'][] = $tour;
+            }
+            return $groupedTours;
+
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+
+    }
 }
