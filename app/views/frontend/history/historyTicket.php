@@ -148,10 +148,49 @@
         </div>
     </div>
     <script>
+        let selectedLanguage = null;
+        let selectedDate = null;
+        let selectedTimeSlot = null;
+        let regularParticipants = 0;
+        let familyParticipants = 0;
+
         document.addEventListener('DOMContentLoaded', function () {
             populateLanguages();
-            // fetchTours(); // Fetch all tours when the page loads
+            attachEventListeners();
         });
+
+        function attachEventListeners() {
+            document.getElementById('regularParticipants').addEventListener('input', handleParticipantChange);
+            document.getElementById('familyParticipants').addEventListener('input', handleParticipantChange);
+            document.getElementById('regular').addEventListener('change', handleTicketTypeChange);
+            document.getElementById('family').addEventListener('change', handleTicketTypeChange);
+        }
+
+        function handleTicketTypeChange(event) {
+            calculateTotal();
+        }
+
+        function handleParticipantChange(event) {
+            if (event.target.id === 'regularParticipants') {
+                regularParticipants = parseInt(event.target.value);
+                if (regularParticipants >= 4) {
+                    alert('Buy a family ticket and save 10 euros');
+                }
+            } else if (event.target.id === 'familyParticipants') {
+                familyParticipants = parseInt(event.target.value);
+            }
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            if (document.getElementById('regular').checked) {
+                total = regularParticipants * 17.50;
+            } else if (document.getElementById('family').checked) {
+                total = familyParticipants > 0 ? 60 : 0;
+            }
+            document.getElementById('total').textContent = total.toFixed(2);
+        }
 
         function populateLanguages() {
             const languagesDiv = document.getElementById('languages');
@@ -163,11 +202,15 @@
                     languages.push(tour.language_name);
                     const button = document.createElement('button');
                     button.innerHTML = `<img src="${tour.flag_image}" alt="${tour.language_name}">`;
-                    button.onclick = () => filterByLanguage(tour.language_name);
+                    button.onclick = () => {
+                        selectedLanguage = tour.language_name;
+                        filterByLanguage(tour.language_name);
+                    };
                     languagesDiv.appendChild(button);
                 }
             });
         }
+
         function fetchTours(language = null) {
             let url = '/history/getToursByLanguage';
             if (language) {
@@ -175,20 +218,20 @@
             }
 
             fetch(url)
-                .then(response => response.json())  // Parse the JSON response
+                .then(response => response.json())
                 .then(data => {
                     if (data.error) {
                         console.error('Error fetching tours:', data.error);
                     } else {
-                        console.log('Fetched tours:', data);
-                        populateTimetable(data);  // Use the data directly
+                        populateTimetable(data);
                     }
                 })
                 .catch(error => console.error('Error fetching tours:', error));
         }
+
         function populateTimetable(tours) {
             const timetableDiv = document.getElementById('timetable');
-            timetableDiv.innerHTML = ''; // Clear previous content
+            timetableDiv.innerHTML = '';
 
             const dates = new Set(tours.map(tour => tour.date));
 
@@ -198,12 +241,14 @@
                 dateDiv.textContent = date;
 
                 tours.filter(tour => tour.date === date).forEach(tour => {
-                    // Check if the available guides are greater than 0
                     if (tour.available_guides > 0) {
                         const timeBtn = document.createElement('button');
                         timeBtn.classList.add('timeslot');
                         timeBtn.textContent = `${tour.start_time}-${tour.end_time}`;
-                        timeBtn.onclick = () => selectTimeslot(tour.tour_id);
+                        timeBtn.onclick = () => {
+                            selectedDate = date;
+                            selectedTimeSlot = `${tour.start_time}-${tour.end_time}`;
+                        };
                         dateDiv.appendChild(timeBtn);
                     }
                 });
@@ -212,10 +257,42 @@
             });
         }
 
-
-
         function filterByLanguage(language) {
             fetchTours(language);
+        }
+
+        function addToCart() {
+            const ticketType = document.querySelector('input[name="ticketType"]:checked');
+
+            if (!ticketType) {
+                alert('Please select a ticket type (Regular or Family) before adding to cart.');
+                return;
+            }
+
+            const payload = {
+                ticketType: ticketType.value,
+                price: ticketType.value === 'regular' ? regularParticipants * 17.50 : 60,
+                start_location: selectedLanguage,
+                timeslot: selectedDate + ' ' + selectedTimeSlot,
+                participants: ticketType.value === 'regular' ? regularParticipants : familyParticipants
+            };
+            console.log('Adding to cart:', payload);
+            fetch('/historyTicket/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Ticket added to basket successfully!');
+                    } else {
+                        alert('Error adding ticket to basket.');
+                    }
+                })
+                .catch(error => console.error('Error adding to cart:', error));
         }
     </script>
     </body>
