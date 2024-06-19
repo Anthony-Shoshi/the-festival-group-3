@@ -27,23 +27,10 @@ class PersonalProgramController
 
     public function removeItem()
     {
-        // Check if the request method is POST and 'index' is set
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['index'])) {
-            $index = $_POST['index'];
-
-            // Implement your logic to remove item from session or database
-            unset($_SESSION['cart'][$index]);
-
-            // Respond with JSON success message
-            header('Content-Type: application/json');
-            echo json_encode(['success' => true]);
-            exit;
-        } else {
-            http_response_code(400);
-            header('Content-Type: application/json');
-            echo json_encode(['success' => false, 'message' => 'Invalid request']);
-            exit;
-        }
+        $index = $_GET['index'];
+        $this->basket->removeItem($index);
+        header("Location: /personalprogram/basket");
+        exit();
     }
 
     public function checkout()
