@@ -53,3 +53,5 @@ S
 #app/public/frontend/css/history.css,d\d\dd2134f0a68490c81469751a54924959f3cb0486
 M
 app/views/frontend/basket.php,6\7\674d3bf77a52f58f545b82a261fd04db0f9f3768
+B
+docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
