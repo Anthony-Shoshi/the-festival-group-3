@@ -113,6 +113,11 @@ class Reservation implements BasketItemInterface
     {
         return $this->payment_status;
     }
+    
+    public function setPaymentStatus($payment_status)
+    {
+        $this->payment_status = $payment_status;
+    }
 
     public function getConfirmationCode()
     {

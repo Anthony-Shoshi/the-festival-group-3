@@ -9,8 +9,7 @@
         }
     ],
     "require": {
-      "ext-pdo": "*",
-        "ext-mysql_xdevapi": "*"
+        "stripe/stripe-php": "*"
     },
     "autoload": {
         "psr-4": {

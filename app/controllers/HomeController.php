@@ -11,12 +11,14 @@ use App\Services\ArtistService;
 use App\Services\VenueService;
 use App\Services\DanceService;
 use App\Services\SectionService;
+use App\Services\SessionService;
 use Exception;
 
 class HomeController
 {
     protected $pageService;
     protected $sectionService;
+    protected $sessionService;
     protected $restaurantService;
     protected $eventService;
 
@@ -30,6 +32,7 @@ class HomeController
     {
         $this->pageService = new PageService();
         $this->sectionService = new SectionService();
+        $this->sessionService = new SessionService();
         $this->restaurantService = new RestaurantService();
         $this->eventService = new EventService();
         $this->artistService = new ArtistService();
@@ -101,7 +104,7 @@ class HomeController
     {
         $id = $_GET['id'];
         $slug = $_GET['slug'];
-        $sections = $this->sectionService->getSectionByPageId($id);        
+        $sections = $this->sectionService->getSectionByPageId($id);
         switch ($slug) {
             case 'history':
                 $headers = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Header);
@@ -116,6 +119,9 @@ class HomeController
                 break;
             case 'yummy':
                 $restaurants = $this->restaurantService->getAllRestaurants();
+                foreach ($restaurants as &$restaurant) {
+                    $restaurant['sessions'] = $this->sessionService->getSessionsByRestaurantId($restaurant['restaurant_id']);
+                }
                 require '../views/frontend/yummy/index.php';
                 break;
             case 'dance':

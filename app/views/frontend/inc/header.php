@@ -108,7 +108,8 @@ echo isset($pageTitle) ? htmlspecialchars($pageTitle) : "The Festival"; ?>
                 $lowerPageTitle = strtolower($pageTitle);
 
                 // Check if the lowercase page title is "home" and set the URL accordingly
-                $pageUrl = ($lowerPageTitle === 'home') ? '/' : '/' . $pageSlug;
+                $pageUrl = ($lowerPageTitle === 'home') ? '/' : '/home/page?slug=' . $pageSlug . '&id=' . $page['page_id'];
+
 
                 echo '<div class="dropdown">
                           <a class="nav-link" href="' . $pageUrl . '">' . $pageTitle . '</a>
