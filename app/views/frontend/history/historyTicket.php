@@ -1,4 +1,4 @@
-
+<?php include __DIR__ . '/../inc/header.php'; ?>
     <title>History Ticket</title>
     </head>
     <style>
@@ -276,7 +276,9 @@
                 timeslot: selectedDate + ' ' + selectedTimeSlot,
                 participants: ticketType.value === 'regular' ? regularParticipants : familyParticipants
             };
-            console.log('Adding to cart:', payload);
+
+            console.log('Adding to cart:', payload); // Debugging line
+
             fetch('/historyTicket/create', {
                 method: 'POST',
                 headers: {
@@ -297,4 +299,3 @@
     </script>
     </body>
     <br>
-<?php //include __DIR__ . '/../inc/footer.php'; ?>

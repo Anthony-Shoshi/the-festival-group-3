@@ -11,14 +11,14 @@ class HistoryTicket implements BasketItemInterface
     private TicketType $ticketType;
     private float $price;
     private string $start_location;
-    private DateTime $timeslot;
+    private string $timeslot;
     private int $participants;
 
     public function __construct(
         TicketType $ticketType,
         float $price,
         string $start_location,
-        DateTime $timeslot,
+        string $timeslot,
         int $participants
     )
     {
@@ -60,11 +60,11 @@ class HistoryTicket implements BasketItemInterface
     {
         $this->start_location = $start_location;
     }
-    public function getTimeslot(): DateTime
+    public function getTimeslot(): string
     {
         return $this->timeslot;
     }
-    public function setTimeslot(DateTime $timeslot): void
+    public function setTimeslot(string $timeslot): void
     {
         $this->timeslot = $timeslot;
     }
@@ -75,7 +75,7 @@ class HistoryTicket implements BasketItemInterface
             'ticketType' => $this->ticketType->toArray(),
             'price' => $this->price,
             'start_location' => $this->start_location,
-            'timeslot' => $this->timeslot->format('Y-m-d H:i:s')
+            'timeslot' => $this->timeslot
         ];
     }
 
