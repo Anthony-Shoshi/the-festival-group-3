@@ -151,4 +151,12 @@ class HistoryService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function getFilteredTours($language_name, $availableGuides)
+    {
+        try {
+            return $this->historyRepository->getFilteredTours($language_name, $availableGuides);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }
