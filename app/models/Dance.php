@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-class Dance
+use App\Interfaces\BasketItemInterface;
+
+class Dance implements BasketItemInterface
 {
     private int $music_performance_id;
     private int $music_event_id;
@@ -10,11 +12,10 @@ class Dance
     private int $event_price;
     private string $session_type;
     private string $start_date;
-    private string $end_date;
     private string $event_start_time;
     private int $event_duration;
     private string $title;
-    private string $description;
+private int $quantity;
 
     public function __construct(
         int $music_performance_id,
@@ -25,9 +26,8 @@ class Dance
         string $event_start_time,
         int $event_duration,
         string $title,
-        string $description,
         int $event_id,
-        string $end_date,
+        int $quantity,
     ) {
         $this->music_performance_id = $music_performance_id;
         $this->music_event_id = $music_event_id;
@@ -37,9 +37,8 @@ class Dance
         $this->event_start_time = $event_start_time;
         $this->event_duration = $event_duration;
         $this->title = $title;
-        $this->description = $description;
         $this->event_id = $event_id;
-        $this->end_date = $end_date;
+        $this->quantity = $quantity;
     }
 
     public function getMusicPerformanceId(): int
@@ -74,19 +73,16 @@ class Dance
     {
         return $this->title;
     }
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
+
     public function getEventId(): int
     {
         return $this->event_id;
     }
-    public function getEndDate(): string
-    {
-        return $this->end_date;
-    }
 
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
 
     public function setMusicPerformanceId(int $music_performance_id): void
     {
@@ -120,16 +116,33 @@ class Dance
     {
         $this->title = $title;
     }
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
-    }
     public function setEventId(int $event_id): void
     {
         $this->event_id = $event_id;
     }
-    public function setEndDate(string $end_date): void
+    public function setQuantity(int $quantity): void
     {
-        $this->end_date = $end_date;
+        $this->quantity = $quantity;
+    }
+
+    public function toArray()
+    {
+        return [
+            'music_performance_id' => $this->music_performance_id,
+            'music_event_id' => $this->music_event_id,
+            'event_price' => $this->event_price,
+            'session_type' => $this->session_type,
+            'event_date' => $this->start_date,
+            'event_start_time' => $this->event_start_time,
+            'event_duration' => $this->event_duration,
+            'event_id' => $this->event_id,
+            'event_name' => $this->title,
+            'quantity' => $this->quantity,
+        ];
+    }
+
+    public function getCost()
+    {
+        return $this->event_price;
     }
 }

@@ -37,6 +37,9 @@
         <a class="text-decoration-none" href="/restaurant">
             <li class="menu-item text-white menu-hover" data-url="/restaurant"><i class="fa-solid fa-utensils"></i> Restaurants</li>
         </a>
+        <a class="text-decoration-none" href="/reservation">
+            <li class="menu-item text-white menu-hover" data-url="/reservation"><i class="fa-solid fa-utensils"></i> Reservations</li>
+        </a>
     </ul>
     <h5 class="sidebar-heading">Dance Management</h5>
     <ul class="sidebar-menu">

@@ -23,6 +23,15 @@ class SessionService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+
+    public function getSessionsByRestaurantId($restaurantId)
+    {
+        try {
+            return $this->sessionRepository->getSessionsByRestaurantId($restaurantId);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
     
     public function getAllEvents()
     {
@@ -33,13 +42,10 @@ class SessionService
         }
     }
 
-    public function createSession($totalSessions, $duration, $firstSession)
+    public function createSession($restaurantId, $startTime, $duration, $sessionsPerDay)
     {
         try {
-            $session = new Session();
-            $session->setTotalSessions($totalSessions);
-            $session->setDuration($duration);
-            $session->setFirstSession($firstSession);
+            $session = new Session($restaurantId, $startTime, $duration, $sessionsPerDay);
             return $this->sessionRepository->createSession($session);
         } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());
@@ -55,14 +61,11 @@ class SessionService
         }
     }
 
-    public function updateSession($sessionId, $totalSessions, $duration, $firstSession)
+    public function updateSession($sessionId, $restaurantId, $startTime, $duration, $sessionsPerDay)
     {
         try {
-            $session = new Session();
+            $session = new Session($restaurantId, $startTime, $duration, $sessionsPerDay);
             $session->setSessionId($sessionId);
-            $session->setTotalSessions($totalSessions);
-            $session->setDuration($duration);
-            $session->setFirstSession($firstSession);
             return $this->sessionRepository->updateSession($session);
         } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());

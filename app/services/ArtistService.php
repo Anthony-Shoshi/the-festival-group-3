@@ -53,4 +53,29 @@ class ArtistService
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function getArtistsAlbum($artistID)
+    {
+        try {
+            return $this->artistRepository->getArtistsAlbum($artistID);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getArtistMusic($artistID)
+    {
+        try {
+            return $this->artistRepository->getArtistMusic($artistID);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
+    public function getArtistAwards($artistID)
+    {
+        try {
+            return $this->artistRepository->getArtistAwards($artistID);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
 }

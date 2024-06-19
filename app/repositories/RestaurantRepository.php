@@ -12,9 +12,8 @@ class RestaurantRepository extends Repository
     public function getAllRestaurants()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT r.*, s.* 
-                                                FROM restaurants r 
-                                                LEFT JOIN sessions s ON r.session_id = s.session_id");
+            $stmt = $this->connection->prepare("SELECT * 
+                                                FROM restaurants");
             $stmt->execute();
             $restaurants = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -47,14 +46,13 @@ class RestaurantRepository extends Repository
     public function createRestaurant(Restaurant $restaurant)
     {
         try {
-            $stmt = $this->connection->prepare("INSERT INTO restaurants (title, image_url, description, ratings, cuisines, session_id, event_id, location, number_of_seats, contact_email, contact_phone, gallery_images) VALUES (:title, :image_url, :description, :ratings, :cuisines, :session_id, :event_id, :location, :number_of_seats, :contact_email, :contact_phone, :gallery_image_url)");
+            $stmt = $this->connection->prepare("INSERT INTO restaurants (title, image_url, description, ratings, cuisines, event_id, location, number_of_seats, contact_email, contact_phone, gallery_images) VALUES (:title, :image_url, :description, :ratings, :cuisines, :event_id, :location, :number_of_seats, :contact_email, :contact_phone, :gallery_image_url)");
             $stmt->execute([
                 ':title' => $restaurant->getTitle(),
                 ':image_url' => $restaurant->getImageUrl(),
                 ':description' => $restaurant->getDescription(),
                 ':ratings' => $restaurant->getRatings(),
                 ':cuisines' => $restaurant->getCuisines(),
-                ':session_id' => $restaurant->getSessionId(),
                 ':event_id' => $restaurant->getEventId(),
                 ':location' => $restaurant->getLocation(),
                 ':number_of_seats' => $restaurant->getNumberOfSeats(),
@@ -88,10 +86,9 @@ class RestaurantRepository extends Repository
     public function getRestaurant($restaurantId)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT r.*, s.* 
-                                                FROM restaurants r
-                                                LEFT JOIN sessions s ON r.session_id = s.session_id
-                                                WHERE r.restaurant_id = :restaurant_id");
+            $stmt = $this->connection->prepare("SELECT * 
+                                                FROM restaurants
+                                                WHERE restaurant_id = :restaurant_id");
             $stmt->bindParam(':restaurant_id', $restaurantId);
             $stmt->execute();
             $restaurantRow = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -111,7 +108,7 @@ class RestaurantRepository extends Repository
     public function updateRestaurant(Restaurant $restaurant)
     {
         try {
-            $stmt = $this->connection->prepare("UPDATE restaurants SET title = :title, image_url = :image_url, description = :description, ratings = :ratings, cuisines = :cuisines, session_id = :session_id, event_id = :event_id, location = :location, number_of_seats = :number_of_seats, contact_email = :contact_email, contact_phone = :contact_phone, gallery_images = :gallery_image_url WHERE restaurant_id = :restaurant_id");
+            $stmt = $this->connection->prepare("UPDATE restaurants SET title = :title, image_url = :image_url, description = :description, ratings = :ratings, cuisines = :cuisines, event_id = :event_id, location = :location, number_of_seats = :number_of_seats, contact_email = :contact_email, contact_phone = :contact_phone, gallery_images = :gallery_image_url WHERE restaurant_id = :restaurant_id");
             $stmt->execute([
                 ':restaurant_id' => $restaurant->getRestaurantId(),
                 ':title' => $restaurant->getTitle(),
@@ -119,7 +116,6 @@ class RestaurantRepository extends Repository
                 ':description' => $restaurant->getDescription(),
                 ':ratings' => $restaurant->getRatings(),
                 ':cuisines' => $restaurant->getCuisines(),
-                ':session_id' => $restaurant->getSessionId(),
                 ':event_id' => $restaurant->getEventId(),
                 ':location' => $restaurant->getLocation(),
                 ':number_of_seats' => $restaurant->getNumberOfSeats(),

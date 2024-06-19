@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\SectionType;
 use App\Repositories\HistoryRepository;
 use Exception;
 
@@ -90,6 +91,71 @@ class HistoryService
         try{
             return $this->historyRepository->getAllTours();
         }catch (Exception $e){
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getHeader()
+    {
+        try{
+            return $this->historyRepository->getPageHeader();
+        }catch (Exception $e){
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getIntroduction()
+    {
+        try{
+            return $this->historyRepository->getPageIntroduction();
+        }catch (Exception $e){
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getTourInfo()
+    {
+        try{
+            return $this->historyRepository->getTourInformation();
+        }catch (Exception $e){
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getRoute()
+    {
+        try {
+            return $this->historyRepository->getTourRoute();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getRegularTicketPrice()
+    {
+        try {
+            return $this->historyRepository->getRegularTicketPrice();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getFamilyTicketPrice()
+    {
+        try {
+            return $this->historyRepository->getFamilyTicketPrice();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getHistoryPageInfoBySectionType(SectionType $sectionType): array
+    {
+        $section = SectionType::getSectionType($sectionType);
+        try {
+            return $this->historyRepository->getHistoryPageInfoBySectionType($section);
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getFilteredTours($language_name, $availableGuides)
+    {
+        try {
+            return $this->historyRepository->getFilteredTours($language_name, $availableGuides);
+        } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }

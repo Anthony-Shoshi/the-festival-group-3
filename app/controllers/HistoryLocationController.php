@@ -71,7 +71,7 @@ class HistoryLocationController
             );
             $this->historyService->updateLocation($location, $location_id);
             $_SESSION['isError'] = 0;
-            $_SESSION['flash_message'] = "Artist updated successfully!";
+            $_SESSION['flash_message'] = "Location updated successfully!";
             header("Location: /historylocation");
             exit();
         }catch (Exception $e) {
@@ -114,7 +114,7 @@ class HistoryLocationController
             );
             $this->historyService->addLocation($location);
             $_SESSION['isError'] = 0;
-            $_SESSION['flash_message'] = "Artist updated successfully!";
+            $_SESSION['flash_message'] = "Location added successfully!";
             header("Location: /historylocation");
             exit();
         } catch (Exception $e) {
@@ -140,4 +140,3 @@ class HistoryLocationController
         }
     }
 }
-

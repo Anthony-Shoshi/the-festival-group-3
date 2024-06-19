@@ -168,4 +168,49 @@ class HistoryRepository extends Repository
             throw new Exception("Error: " . $e->getMessage());
         }
     }
+    public function getHistoryPageInfoBySectionType(string $sectionType): array
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM history_info WHERE section_type = :section_type");
+            $stmt->execute([':section_type' => $sectionType]);
+            $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            error_log("Database query result: " . print_r($info, true));
+            return $info;
+        } catch (PDOException $e) {
+            error_log("Database error: " . $e->getMessage());
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    public function getFilteredTours($language = null, $availableGuides = false)
+    {
+        try {
+            $sql = "SELECT ht.date, ht.start_time, ht.end_time, tl.language_name, tl.flag_image, htour.available_guides, htour.tour_id
+                FROM history_timeslots ht
+                JOIN history_tours htour ON htour.timetable_id = ht.timetable_id
+                JOIN tour_languages tl ON tl.language_id = htour.language_id
+                WHERE 1 = 1"; // Start building the SQL query
+
+            $params = array();
+
+            if ($language) {
+                $sql .= " AND tl.language_name = :language";
+                $params[':language'] = $language;
+            }
+
+            if ($availableGuides) {
+                $sql .= " AND htour.available_guides > 0";
+            }
+
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute($params);
+            $tours = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $tours;
+
+        } catch (PDOException $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+
 }
