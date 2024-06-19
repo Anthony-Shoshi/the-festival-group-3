@@ -5,36 +5,39 @@
 </head>
 <body>
 <div id="section-history-header">
-        <div class="header-image">
-            <?php foreach ($headers as $header): ?>
-            <img src="<?='/images/' . $header['image']?>" alt="header image">
+    <div class="header-image">
+        <?php foreach ($headers as $header): ?>
+            <img src="<?= '/images/' . $header['image'] ?>" alt="header image">
             <div class="header-text">
-                <h1><?= $header['description']?></h1>
+                <h1><?= $header['description'] ?></h1>
             </div>
-            <?php endforeach; ?>
-        </div>
+        <?php endforeach; ?>
+    </div>
 </div>
 <div id="section-history-introduction">
     <div class="introduction">
         <?php foreach ($introduction as $intro): ?>
-        <h2><?= $intro['title']?></h2>
-        <p><?= $intro['description']?></p>
+            <h2><?= $intro['title'] ?></h2>
+            <p><?= $intro['description'] ?></p>
         <?php endforeach; ?>
     </div>
 </div>
 <div id="section-history-information">
     <div class="information">
         <?php foreach ($information as $info): ?>
-        <h2><?= $info['title']?></h2>
-        <p><?= $info['description']?></p>
+            <h2><?= $info['title'] ?></h2>
+            <p><?= $info['description'] ?></p>
         <?php endforeach; ?>
     </div>
+</div>
+<div id="section-history-locations">
+    <?php include __DIR__ . '/locationCarousel.php' ?>
 </div>
 <div id="section-history-routes">
     <div class="routes">
         <?php foreach ($routes as $route): ?>
-        <h2><?= $route['title']?></h2>
-        <p><?= $route['description']?></p>
+            <h2><?= $route['title'] ?></h2>
+            <p><?= $route['description'] ?></p>
         <?php endforeach; ?>
     </div>
 </div>
@@ -42,23 +45,29 @@
     <div class="tickets">
         <div class="regular-ticket">
             <?php foreach ($regularTickets as $regularTicket): ?>
-            <h2><?= $regularTicket['title']?></h2>
-            <p><?= $regularTicket['description']?></p>
+                <h2><?= $regularTicket['title'] ?></h2>
+                <p><?= $regularTicket['description'] ?></p>
             <?php endforeach; ?>
         </div>
         <div class="family-ticket">
             <?php foreach ($familyTickets as $familyTicket): ?>
-            <h2><?= $familyTicket['title']?></h2>
-            <p><?= $familyTicket['description']?></p>
+                <h2><?= $familyTicket['title'] ?></h2>
+                <p><?= $familyTicket['description'] ?></p>
             <?php endforeach; ?>
         </div>
     </div>
 </div>
 <div>
-    <a href="/history/addTicket" class="btn btn-primary btn-sm">Add Ticket</a>
-    <a href="/history/getTourLocations" class="btn btn-primary btn-sm">Get Tour Locations</a>
+    <div id="section-history-timeslots">
+        <?php foreach ($tours as $timeslot): ?>
+            <p><?= $timeslot['date'] ?></p>
+            <p><?= $timeslot['start_time'] ?></p>
+            <p><?= $timeslot['end_time'] ?></p>
+            <p><?= $timeslot['flag_image'] ?></p>
+            <p><?= $timeslot['available_guides'] ?></p>
+        <?php endforeach; ?>
+    </div>
 </div>
 
 </body>
-<br>
 <?php include __DIR__ . '/../inc/footer.php'; ?>
