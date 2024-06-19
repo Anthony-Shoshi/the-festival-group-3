@@ -63,11 +63,12 @@
                         <td><a href="/personalprogram/removeItem?index=<?php echo $index; ?>">Remove</a></td>
                     </tr>
                 <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php else : ?>
-            <p>Your basket is empty.</p>
-        <?php endif; ?>
-    </div>
+            </tbody>
+        </table>
+        <a href="/personalprogram/checkout" class="btn btn-primary">Checkout</a>
+    <?php else : ?>
+        <p>Your basket is empty.</p>
+    <?php endif; ?>
+</div>
 
     <?php include __DIR__ . '/inc/footer.php'; ?>
