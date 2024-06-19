@@ -56,6 +56,7 @@
 </div>
 <div>
     <a href="/history/addTicket" class="btn btn-primary btn-sm">Add Ticket</a>
+    <a href="/history/getTourLocations" class="btn btn-primary btn-sm">Get Tour Locations</a>
 </div>
 
 </body>

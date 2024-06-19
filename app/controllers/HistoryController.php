@@ -53,7 +53,7 @@ class HistoryController
     public function getTourLocations(){
         try{
             $locations = $this->historyService->getAllTourLocations();
-            echo json_encode($locations);
+//            echo json_encode($locations);
             require_once __DIR__ . '/../views/frontend/history/locationCarousel.php';
         }catch (Exception $e) {
             echo json_encode(['error' => $e->getMessage()]);
