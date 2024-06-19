@@ -24,6 +24,8 @@ class HistoryController
             $regularTickets = $this->historyService->getHistoryPageInfoBySectionType(SectionType::RegularTicket);
             $familyTickets = $this->historyService->getHistoryPageInfoBySectionType(SectionType::FamilyTicket);
             $routes = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Routes);
+            $locations = $this->historyService->getAllTourLocations();
+            $tours = $this->historyService->getOrderedTours();
             require_once __DIR__ . '/../views/frontend/history/index.php';
         }catch (Exception $e) {
             header("Location: /error?message=" . urlencode($e->getMessage()));
