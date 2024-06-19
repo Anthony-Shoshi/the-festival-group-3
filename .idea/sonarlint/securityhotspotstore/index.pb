@@ -141,3 +141,15 @@ S
 #app/repositories/PageRepository.php,e\2\e203e77515dc24317cf66a0ab776b4958e7e2775
 O
 app/repositories/Repository.php,7\1\71fd6e7ac4fbf91ae0809f5720740e19086158e7
+[
++app/controllers/HistoryTicketController.php,2\a\2a37afd326e3e534a96d1fb729e22adc76203e7c
+S
+#app/controllers/ErrorController.php,f\e\fedb74c4229c813e6b1b7975df13600ec9207d4a
+I
+app/models/TicketType.php,5\f\5f786305a7d029b78d990f7b076622e11ed2cb78
+T
+$app/views/frontend/history/index.php,3\7\3721e69f40cbf55531f41a478fe5de63c43cc251
+\
+,app/views/frontend/history/historyTicket.php,8\1\81ca43c9468804e2aadebc612af892f16d1d00aa
+U
+%app/controllers/FeatureController.php,8\9\89ef208873c6aa4b3269b6cc333f0a9b5542b411

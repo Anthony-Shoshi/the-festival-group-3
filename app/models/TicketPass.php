@@ -12,7 +12,7 @@ class TicketPass implements BasketItemInterface
     private string $passDescription;
     private int $passPrice;
     private string $passType;
-    private $total_cost;
+    private string $quantity;
 
 
 
@@ -22,7 +22,7 @@ class TicketPass implements BasketItemInterface
         string $passDescription,
         int    $passPrice,
         string $passType,
-        $total_cost
+        int   $quantity
     )
     {
         $this->pass_id = $pass_id;
@@ -30,7 +30,7 @@ class TicketPass implements BasketItemInterface
         $this->passDescription = $passDescription;
         $this->passPrice = $passPrice;
         $this->passType = $passType;
-        $this->total_cost = $total_cost;
+        $this->quantity = $quantity;
     }
 
     public function getPassId()
@@ -84,6 +84,16 @@ class TicketPass implements BasketItemInterface
         $this->passType = $passType;
     }
 
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    }
+
 
     public function toArray()
     {
@@ -91,11 +101,13 @@ class TicketPass implements BasketItemInterface
             'passName' => $this->passName,
             'passDescription' => $this->passDescription,
             'passPrice' => $this->passPrice,
+            'passType' => $this->passType,
+            'quantity' => $this->quantity
         ];
     }
 
     public function getCost()
     {
-        return $this->total_cost;
+        return $this->passPrice;
     }
 }

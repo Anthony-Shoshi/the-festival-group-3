@@ -15,8 +15,7 @@ class Dance implements BasketItemInterface
     private string $event_start_time;
     private int $event_duration;
     private string $title;
-    private $total_cost;
-
+private int $quantity;
 
     public function __construct(
         int $music_performance_id,
@@ -28,7 +27,7 @@ class Dance implements BasketItemInterface
         int $event_duration,
         string $title,
         int $event_id,
-        $total_cost,
+        int $quantity,
     ) {
         $this->music_performance_id = $music_performance_id;
         $this->music_event_id = $music_event_id;
@@ -39,7 +38,7 @@ class Dance implements BasketItemInterface
         $this->event_duration = $event_duration;
         $this->title = $title;
         $this->event_id = $event_id;
-        $this->total_cost = $total_cost;
+        $this->quantity = $quantity;
     }
 
     public function getMusicPerformanceId(): int
@@ -80,7 +79,10 @@ class Dance implements BasketItemInterface
         return $this->event_id;
     }
 
-
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
 
     public function setMusicPerformanceId(int $music_performance_id): void
     {
@@ -118,6 +120,10 @@ class Dance implements BasketItemInterface
     {
         $this->event_id = $event_id;
     }
+    public function setQuantity(int $quantity): void
+    {
+        $this->quantity = $quantity;
+    }
 
     public function toArray()
     {
@@ -129,14 +135,14 @@ class Dance implements BasketItemInterface
             'start_date' => $this->start_date,
             'event_start_time' => $this->event_start_time,
             'event_duration' => $this->event_duration,
-            'title' => $this->title,
             'event_id' => $this->event_id,
-            'total_cost' => $this->total_cost,
+            'title' => $this->title,
+            'quantity' => $this->quantity,
         ];
     }
 
     public function getCost()
     {
-        return $this->total_cost;
+        return $this->event_price;
     }
 }

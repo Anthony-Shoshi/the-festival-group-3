@@ -238,3 +238,13 @@ O
 app/views/frontend/checkout.php,b\f\bfd7b68195cf5bba07d50992d30dc2ae542948cc
 O
 app/repositories/Repository.php,7\1\71fd6e7ac4fbf91ae0809f5720740e19086158e7
+[
++app/controllers/HistoryTicketController.php,2\a\2a37afd326e3e534a96d1fb729e22adc76203e7c
+I
+app/models/TicketType.php,5\f\5f786305a7d029b78d990f7b076622e11ed2cb78
+T
+$app/views/frontend/history/index.php,3\7\3721e69f40cbf55531f41a478fe5de63c43cc251
+\
+,app/views/frontend/history/historyTicket.php,8\1\81ca43c9468804e2aadebc612af892f16d1d00aa
+U
+%app/controllers/FeatureController.php,8\9\89ef208873c6aa4b3269b6cc333f0a9b5542b411
