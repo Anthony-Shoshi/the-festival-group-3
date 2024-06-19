@@ -79,4 +79,8 @@ class PersonalProgramController
             exit();
         }
     }
+    public function checkoutCart()
+    {
+        require __DIR__ . '/../views/frontend/checkout.php';
+    }
 }

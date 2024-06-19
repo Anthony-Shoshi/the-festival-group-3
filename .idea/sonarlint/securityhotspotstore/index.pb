@@ -135,3 +135,5 @@ Z
 -app/controllers/HistoryLocationController.php,f\c\fcdb1c7f8abc937b4e596da3ff3353bfa1dad16a
 T
 $app/repositories/OrderRepository.php,9\7\9724592dbed5805578e4f559de2077d47c8ecbbc
+O
+app/views/frontend/checkout.php,b\f\bfd7b68195cf5bba07d50992d30dc2ae542948cc
