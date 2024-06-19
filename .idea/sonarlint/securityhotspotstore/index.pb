@@ -137,3 +137,7 @@ T
 $app/repositories/OrderRepository.php,9\7\9724592dbed5805578e4f559de2077d47c8ecbbc
 O
 app/views/frontend/checkout.php,b\f\bfd7b68195cf5bba07d50992d30dc2ae542948cc
+S
+#app/repositories/PageRepository.php,e\2\e203e77515dc24317cf66a0ab776b4958e7e2775
+O
+app/repositories/Repository.php,7\1\71fd6e7ac4fbf91ae0809f5720740e19086158e7

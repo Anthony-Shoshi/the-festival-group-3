@@ -22,9 +22,7 @@ class ScanTicketController
     public function verifyTicket(): void
     {
         try {
-            // Get the raw POST data
             $postData = file_get_contents('php://input');
-            // Decode the JSON data
             $postDataArray = json_decode($postData, true);
 
             if (isset($postDataArray['code'])) {

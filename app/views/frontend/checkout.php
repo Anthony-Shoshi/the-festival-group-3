@@ -1,11 +1,8 @@
 <?php
-// Include the header
 include __DIR__ . '/inc/header.php';
 
-// Start the session
 session_start();
 
-// Example user login status (for demonstration purposes, you should replace this with your actual login logic)
 $isLoggedIn = isset($_SESSION['username']);
 ?>
 
@@ -145,7 +142,6 @@ include __DIR__ . '/inc/message.php';
 </div>
 
 <script>
-    // Function to toggle guest form
     function showGuestForm() {
         document.getElementById('guest-form').style.display = 'block';
         document.getElementById('logged-in').style.display = 'none';
