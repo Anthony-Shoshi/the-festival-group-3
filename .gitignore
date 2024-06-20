@@ -1,0 +1,20 @@
+# images
+/app/config/
+/app/public/music/
+/app/public/assets/images/
+/app/public/images/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.ipr
+*.iws
+/.idea/
+/.idea/*
+.DS_Store
+
+# vscode files
+.vscode/
+
+# Include specific image file
+!/app/public/images/default.jpg

@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jomhuria&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #373737;
+}
+
+body {
+    background: linear-gradient(to bottom, #742dd7, #fff);
+    background-attachment: fixed;
+    font-family: "Jomhuria", serif;
+    min-height: 100vh;
+}
+
+/*NAVIGATION END*/
+
+#section-1 {
+    position: relative;
+}
+
+.festival-image img {
+    width: 100%;
+    display: block;
+}
+.festival-image h1 {
+    position: absolute;
+    top: 60%;
+    left: 0.8em;
+    color: white;
+    font-size: 10vw;
+}
+
+.section {
+    margin-top: 5vw;
+    text-align: center;
+    background-color: #780b1e;
+    color: white;
+    padding: 1em;
+}
+
+.section h2 {
+    font-size: 6vw;
+}
+.img-p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 3vw;
+}
+
+.img-p img {
+    width: 40vw;
+}
+
+.p-button {
+    text-align: left;
+    max-width: 50%;
+    line-height: 0.9;
+    /* padding: 5vw; */
+}
+
+.p-button a {
+    text-decoration: none;
+    background-color: #ff7a68;
+    padding: 0.5em 1em;
+    border-radius: 0.2em;
+    font-size: 2vw;
+    border: 0;
+    color: white;
+}
+
+.p-button a:hover {
+    background-color: #ff9a8d;
+}
+
+@media (max-width: 768px) {
+    .img-p {
+        flex-direction: column;
+    }
+
+    .p-button {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .p-button a {
+        margin: auto;
+    }
+}
+
+.section-heading h2 {
+    font-size: 6vw;
+    color: #ff7a68;
+    margin-left: 2vw;
+}
+
+.map {
+    padding: 2vw;
+    display: flex;
+    justify-content: center;
+}
+
+
+.event-section {
+    padding: 2vw 4vw 2vw 2vw;
+    user-select: none;
+}
+
+.event-section__body {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4vw;
+    gap: 4vw;
+    background-color: #fcebbd;
+    border-radius: 1vw;
+}
+
+.event-section__image {
+    width: 40vw;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 1vw;
+}
+
+.event-section__image img {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.event-section__text h2 {
+    color: #780b1e;
+    font-size: 4vw;
+}
+
+.event-section__text p {
+    font-size: 2.5vw;
+}
+
+.event-section__button {
+    position: absolute;
+    right: -1.5vw;
+    bottom: -1.5vw;
+    background: #780b1e;
+    color: white;
+    border: none;
+    border-radius: 0.5vw;
+    padding: 1vw;
+    font-size: 2vw;
+    box-shadow: 0.5vw 0.5vw 1vw #373737;
+}
+
+
+/* DJ */
+
+#event-section__body-dj {
+    background-color: #3a1d6a;
+    flex-direction: row-reverse;
+}
+
+#event-section__text-dj h2 {
+    color: #5ca5b3;
+}
+
+#event-section__text-dj p {
+    color: white;
+}
+
+#event-section__button-dj {
+    background-color: #5ca5b3;
+}
+
+/* YUMMY */
+
+#event-section__body-yummy {
+    background-color: black;
+}
+
+#event-section__text-yummy h2 {
+    color: #ff7a68;
+}
+
+#event-section__text-yummy p {
+    color: white;
+}
+
+#event-section__button-yummy {
+    background-color: #ff7a68;
+}
