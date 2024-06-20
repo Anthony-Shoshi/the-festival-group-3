@@ -4,10 +4,7 @@ include __DIR__ . '/inc/header.php';
 session_start();
 
 $isLoggedIn = isset($_SESSION['username']);
-?>
 
-<?php
-// Include message file
 include __DIR__ . '/inc/message.php';
 ?>
 

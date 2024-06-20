@@ -12,6 +12,7 @@ use Endroid\QrCode\ErrorCorrectionLevel;
 use Endroid\QrCode\RoundBlockSizeMode;
 use Endroid\QrCode\Writer\PngWriter;
 use Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 
@@ -104,6 +105,10 @@ class PersonalProgramController
 
                     $reservation->setPaymentStatus('completed');
                     $this->reservationService->createReservation($reservation);
+
+                    $subject = 'Reservation Confirmation';
+                    $body = 'Your reservation has been confirmed. Details: ' . json_encode($reservation->toArray());
+                    $this->sendConfirmationEmail($reservationData['email'], $reservationData['name'], $subject, $body);
                 }
 
                 $this->basket->clearBasket();
@@ -156,4 +161,44 @@ class PersonalProgramController
         header('Content-Type: ' . $qrCodeImage->getMimeType());
         echo $qrCodeImage->getString();
     }
+
+
+    function sendConfirmationEmail($toEmail, $toName, $subject, $body)
+    {
+        $mailConfig = require_once __DIR__ . '/../config/mail.php';
+
+        $mail = new PHPMailer(true);
+
+        try {
+            //Server settings
+            $mail->isSMTP();
+            $mail->Host       = $mailConfig['host'];
+            $mail->SMTPAuth   = $mailConfig['SMTPAuth'];
+            $mail->Username   = $mailConfig['username'];
+            $mail->Password   = $mailConfig['password'];
+            $mail->SMTPSecure = $mailConfig['SMTPSecure'];
+            $mail->Port       = $mailConfig['port'];
+
+            //Recipients
+            $mail->setFrom($mailConfig['from_email'], $mailConfig['from_name']);
+            $mail->addAddress($toEmail, $toName);
+
+            //Content
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body    = $body;
+
+            $mail->send();
+        } catch (Exception $e) {
+            error_log("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+        }
+    }
+
+    public function personalprogram()
+    {
+        $reservations = $this->basket->getAllItems();
+        //var_dump($reservations);
+        require __DIR__ . '/../views/frontend/PersonalProgram.php';
+    }
+
 }

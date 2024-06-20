@@ -1,10 +1,19 @@
-    <?php include __DIR__ . '/inc/header.php'; ?>
-    <?php include __DIR__ . '/inc/message.php'; ?>
+<?php
+include __DIR__ . '/inc/header.php';
+include __DIR__ . '/inc/message.php';
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+$isLoggedIn = isset($_SESSION['username']);
+$reservations = $_SESSION['basket'] ?? [];
 
-    <div class="basket" style="margin-top: 15%;">
-        <h2>Your Basket</h2>
+?>
+
+<link rel="stylesheet" href="/frontend/css/basket.css"/>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div class="basket-container" style="background-color: #8A8E95;">
+    <div class="basket">
+        <h2>Shopping Cart</h2>
 
         <?php if (!empty($reservations)) : ?>
             <table>
@@ -20,7 +29,7 @@
                 <tbody>
                 <?php foreach ($reservations as $index => $item) : ?>
                     <tr>
-                        <td>
+                        <td class="item-box">
                             <?php
                             if (isset($item['reservation_date'])) {
                                 echo 'Reservation';
@@ -28,12 +37,12 @@
                                 echo 'History Ticket';
                             } elseif (isset($item['music_performance_id'])) {
                                 echo 'Dance Ticket';
-                            }elseif (isset($item['passType'])) {
+                            } elseif (isset($item['passType'])) {
                                 echo 'Dance Pass';
                             }
                             ?>
                         </td>
-                        <td>
+                        <td class="item-box">
                             <?php
                             if (isset($item['reservation_date'])) {
                                 echo htmlspecialchars($item['name']) . ' - ' . htmlspecialchars($item['reservation_date']);
@@ -41,12 +50,12 @@
                                 echo htmlspecialchars($item['start_location']) . ' - ' . htmlspecialchars($item['timeslot']);
                             } elseif (isset($item['music_performance_id'])) {
                                 echo htmlspecialchars($item['event_name']) . ' - ' . htmlspecialchars($item['event_date']);
-                            }elseif (isset($item['passType'])) {
+                            } elseif (isset($item['passType'])) {
                                 echo htmlspecialchars($item['passName']) . ' - ' . htmlspecialchars($item['passDescription']);
                             }
                             ?>
                         </td>
-                        <td>
+                        <td class="item-box">
                             <?php
                             if (isset($item['total_adult'])) {
                                 echo htmlspecialchars($item['total_adult'] + $item['total_children']) . htmlspecialchars($item['quantity']);
@@ -54,13 +63,13 @@
                                 echo htmlspecialchars($item['participants']);
                             } elseif (isset($item['music_performance_id'])) {
                                 echo htmlspecialchars($item['quantity']);
-                            }elseif (isset($item['passType'])) {
+                            } elseif (isset($item['passType'])) {
                                 echo htmlspecialchars($item['quantity']);
                             }
                             ?>
                         </td>
-                        <td><?php echo htmlspecialchars($item['cost']); ?> EUR</td>
-                        <td><a href="/personalprogram/removeItem?index=<?php echo $index; ?>">Remove</a></td>
+                        <td class="item-box"><?php echo htmlspecialchars($item['cost']); ?> EUR</td>
+                        <td class="item-box"><button class="remove-btn" data-index="<?php echo $index; ?>">Remove</button></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -72,4 +81,55 @@
     <?php endif; ?>
 </div>
 
-    <?php include __DIR__ . '/inc/footer.php'; ?>
+    <div class="summary">
+        <?php if (!empty($reservations)) : ?>
+            <div class="total-box">
+                <?php
+                $subTotal = array_sum(array_column($reservations, 'cost'));
+                $vat = $subTotal * 0.09;
+                $total = $subTotal + $vat;
+                ?>
+                <p id="header-total">Total</p>
+                <br>
+                <p>Sub-total:  €<?php echo number_format($subTotal, 2); ?> </p>
+                <p>9% VAT:  €<?php echo number_format($vat, 2); ?> </p>
+                <p>Total:  <strong>€<?php echo number_format($total, 2); ?> </strong></p>
+                <button class="checkout-btn">Check Out</button>
+                <div class="accepted-payments">
+                    <p>We accept:</p>
+                    <img src="/images/ideal.png" alt="iDEAL">
+                    <img src="/images/visa.png" alt="Visa">
+                    <img src="/images/master.png" alt="MasterCard">
+                    <img src="/images/paypal.png" alt="PayPal">
+                </div>
+            </div>
+
+            <?php if (!$isLoggedIn) : ?>
+                <div class="create-account-box">
+                    <button class="create-account-btn">Create an Account</button>
+                    <p>Create an account so you can <strong>save your personal program</strong> for later.</p>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
+</div>
+
+<?php include __DIR__ . '/inc/footer.php'; ?>
+
+<script>
+    const basket = <?php echo json_encode($reservations); ?>;
+
+    $(document).ready(function() {
+        $('.remove-btn').on('click', function() {
+            const index = $(this).data('index');
+            window.location.href = '/personalprogram/removeItem?index=' + index;
+        });
+        $('.checkout-btn').on('click', function() {
+            window.location.href = '/personalprogram/checkout';
+        });
+        $('.create-account-btn').on('click', function() {
+            window.location.href = '/login/signup';
+        });
+    });
+
+</script>

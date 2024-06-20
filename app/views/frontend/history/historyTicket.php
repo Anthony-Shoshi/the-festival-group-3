@@ -201,7 +201,7 @@
                 if (!languages.includes(tour.language_name)) {
                     languages.push(tour.language_name);
                     const button = document.createElement('button');
-                    button.innerHTML = `<img src="${tour.flag_image}" alt="${tour.language_name}">`;
+                    button.innerHTML = `<img src="/images/ ${tour.flag_image}" alt="${tour.language_name}">`;
                     button.onclick = () => {
                         selectedLanguage = tour.language_name;
                         filterByLanguage(tour.language_name);
