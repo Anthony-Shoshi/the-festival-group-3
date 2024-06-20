@@ -172,3 +172,5 @@ M
 app/services/EventService.php,c\2\c29b3b18239e8fb3bd75945616e043809b74e26c
 O
 app/services/HistoryService.php,e\e\eecfe54be2f122fb6e50ad3451b618e996c866e4
+R
+"app/public/frontend/css/basket.css,7\1\713f3a8e45e2cb00fb14782e6060ae9993ee68c7

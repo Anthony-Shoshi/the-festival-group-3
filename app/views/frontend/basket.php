@@ -119,10 +119,10 @@ $reservations = $_SESSION['basket'] ?? [];
     const basket = <?php echo json_encode($reservations); ?>;
 
     $(document).ready(function() {
-        $('.remove-btn').on('click', function() {
-            const index = $(this).data('index');
-            window.location.href = '/personalprogram/removeItem?index=' + index;
-        });
+            $('.remove-btn').on('click', function() {
+                const index = $(this).data('index');
+                window.location.href = '/personalprogram/removeItem?index=' + index;
+            });
         $('.checkout-btn').on('click', function() {
             window.location.href = '/personalprogram/checkout';
         });

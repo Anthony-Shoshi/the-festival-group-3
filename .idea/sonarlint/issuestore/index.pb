@@ -257,3 +257,5 @@ A
 nginx.conf,e\d\ed8b45da44d73de79bd7c1c203a419d6ee7d6fde
 M
 app/services/EventService.php,c\2\c29b3b18239e8fb3bd75945616e043809b74e26c
+R
+"app/public/frontend/css/basket.css,7\1\713f3a8e45e2cb00fb14782e6060ae9993ee68c7
