@@ -74,7 +74,9 @@ $reservations = $_SESSION['basket'] ?? [];
                 <?php endforeach; ?>
             </tbody>
         </table>
-    <?php else : ?>
+        <a href="/personalprogram/checkout" class="btn btn-primary">Checkout</a>
+            <a href="/personalprogram/getQR" class="btn btn-primary">Get QR</a>
+        <?php else : ?>
         <p>Your basket is empty.</p>
     <?php endif; ?>
 </div>
