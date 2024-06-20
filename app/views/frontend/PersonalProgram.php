@@ -10,8 +10,9 @@ $reservations_json = json_encode($reservations);
 <link rel="stylesheet" href="/frontend/css/PersonalProgram.css"/>
 </head>
 <body>
-
 <div class="container">
+    <P class="checkoutText">Do you want to Checkout? Go to  your Shopping Cart ➡️</P>
+    <a class="checkout-btn" href="/personalprogram/basket">Shopping Cart</a>
     <div class="view-container">
         <button id="list-view-btn">List View</button>
     </div>
@@ -119,6 +120,11 @@ $reservations_json = json_encode($reservations);
     $(document).ready(function() {
         populateListView(reservations);
     });
+
+    $(document).ready(function() {
+        $('.checkout-btn').on('click', function() {
+            window.location.href = '/personalprogram/basket';
+        });
 
 </script>
 

@@ -123,7 +123,7 @@ O
 V
 &app/repositories/SectionRepository.php,6/1/61a49a5557e7f6f9a74b979d699de2481fb495b8
 Q
-!app/public/frontend/css/style.css,7/3/73fb6970e163320dd6e83ec88e664781756737d1
+!app/public/frontend/css/style.css,7\3\73fb6970e163320dd6e83ec88e664781756737d1
 U
 %app/controllers/HistoryController.php,1/3/13c86693b2a227988221510c8293413c7d0da885
 I

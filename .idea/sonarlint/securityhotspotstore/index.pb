@@ -174,3 +174,5 @@ O
 app/services/HistoryService.php,e\e\eecfe54be2f122fb6e50ad3451b618e996c866e4
 R
 "app/public/frontend/css/basket.css,7\1\713f3a8e45e2cb00fb14782e6060ae9993ee68c7
+Q
+!app/public/frontend/css/style.css,7\3\73fb6970e163320dd6e83ec88e664781756737d1
