@@ -189,7 +189,9 @@
     </div>
     <a id="book-button" href="#">Book a Ticket</a>
 </div>
-
-
+<div>
+    <a href="/history/addTicket" class="btn btn-primary btn-sm">Add Ticket</a>
+    <a href="/history/getTourLocations" class="btn btn-primary btn-sm">Get Tour Locations</a>
+</div>
 </body>
 <?php include __DIR__ . '/../inc/footer.php'; ?>
