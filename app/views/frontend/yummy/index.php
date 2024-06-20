@@ -11,24 +11,24 @@
                 <p class=""><?= $section->getSubSectionTitle() ?></p>
                 <?= $section->getContent() ?>
                 <br>
-                <a class="intro-button" href="">Check out Restaurants</a>
+                <a class="intro-button" href="#restaurants-section">Check out Restaurants</a>
             </div>
             <div class="img-wrap">
                 <img src="<?= $section->getImageUrl() ?>" />
             </div>
         </div>
     <?php endif; ?>
-    <div class="restaurants-section">
+    <div id="restaurants-section" class="restaurants-section">
         <div class="restaurant-top-line">
             <h2>Restaurants</h2>
-            <div class="filter">
+            <!-- <div class="filter">
                 <p>Filter by</p>
                 <a id="active" href="">All restaurants</a>
                 <a href="">French</a>
                 <a href="">Dutch</a>
                 <a href="">European</a>
                 <a href="">International</a>
-            </div>
+            </div> -->
         </div>
         <p class="description">Check out the awesome restaurants joining the fun below! Pick your favorites and get ready for a tasty adventure!</p>
 
@@ -88,3 +88,16 @@
 <?php endforeach; ?>
 
 <?php include __DIR__ . '/../inc/footer.php'; ?>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    });
+</script>
