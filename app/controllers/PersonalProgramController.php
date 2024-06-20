@@ -70,4 +70,12 @@ class PersonalProgramController
     {
         require __DIR__ . '/../views/frontend/checkout.php';
     }
+
+    public function personalprogram()
+    {
+        $reservations = $this->basket->getAllItems();
+        //var_dump($reservations);
+        require __DIR__ . '/../views/frontend/PersonalProgram.php';
+    }
+
 }
