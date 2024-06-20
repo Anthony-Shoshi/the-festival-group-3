@@ -6,6 +6,11 @@ use App\Helpers\Helper;
 use App\Models\Reservation;
 use App\Services\Basket;
 use App\Services\ReservationService;
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel;
+use Endroid\QrCode\RoundBlockSizeMode;
+use Endroid\QrCode\Writer\PngWriter;
 use Exception;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
@@ -120,5 +125,35 @@ class PersonalProgramController
         Helper::setMessage(true, "Payment was canceled.");
         header("Location: /personalprogram/basket");
         exit();
+    }
+    public function getQR(){
+        // Get all items from the basket
+        $items = $this->basket->getAllItems();
+
+        // Convert items to JSON
+        $itemsJson = json_encode($items);
+
+        // Generate a hash for verification
+        $secretKey = 'your_secret_key'; // Replace with your actual secret key
+        $hash = hash('sha256', $itemsJson . $secretKey);
+
+        // Include the hash in the QR code data
+        $qrCodeBuilder = Builder::create()
+            ->writer(new PngWriter())
+            ->data($itemsJson . '|' . $hash) // Concatenate items JSON and hash
+            ->encoding(new Encoding('UTF-8'))
+            ->errorCorrectionLevel(ErrorCorrectionLevel::High)
+            ->size(300)
+            ->margin(10)
+            ->roundBlockSizeMode(RoundBlockSizeMode::Margin);
+
+        // Generate QR code image in PNG format
+        $qrCodeImage = $qrCodeBuilder->build();
+
+        $qrCodeImagePath = '../qrCodes/' . uniqid() . '.png';
+        file_put_contents($qrCodeImagePath, $qrCodeImage->getString());
+        // Output the QR code directly to the browser
+        header('Content-Type: ' . $qrCodeImage->getMimeType());
+        echo $qrCodeImage->getString();
     }
 }

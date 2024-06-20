@@ -66,7 +66,8 @@
             </tbody>
         </table>
         <a href="/personalprogram/checkout" class="btn btn-primary">Checkout</a>
-    <?php else : ?>
+            <a href="/personalprogram/getQR" class="btn btn-primary">Get QR</a>
+        <?php else : ?>
         <p>Your basket is empty.</p>
     <?php endif; ?>
 </div>
