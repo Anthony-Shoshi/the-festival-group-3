@@ -72,12 +72,13 @@ $reservations = $_SESSION['basket'] ?? [];
                         <td class="item-box"><button class="remove-btn" data-index="<?php echo $index; ?>">Remove</button></td>
                     </tr>
                 <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php else : ?>
-            <p>Your basket is empty.</p>
-        <?php endif; ?>
-    </div>
+            </tbody>
+        </table>
+        <a href="/personalprogram/checkout" class="btn btn-primary">Checkout</a>
+    <?php else : ?>
+        <p>Your basket is empty.</p>
+    <?php endif; ?>
+</div>
 
     <div class="summary">
         <?php if (!empty($reservations)) : ?>

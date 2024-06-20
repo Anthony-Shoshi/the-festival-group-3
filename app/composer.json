@@ -9,8 +9,8 @@
         }
     ],
     "require": {
-      "ext-pdo": "*",
-        "ext-mysql_xdevapi": "*"
+        "stripe/stripe-php": "*",
+        "endroid/qr-code": "^5.0"
     },
     "autoload": {
         "psr-4": {
