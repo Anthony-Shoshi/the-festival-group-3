@@ -10,8 +10,15 @@ FROM php:fpm
 RUN apt-get update && apt-get install -y \
     unzip \
     libzip-dev \
+    zlib1g-dev \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
     && docker-php-ext-install zip pdo pdo_mysql \
-    && apt-get clean
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy Composer from the Composer image
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

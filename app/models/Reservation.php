@@ -141,6 +141,7 @@ class Reservation implements BasketItemInterface
             'reservation_date' => $this->reservation_date,
             'total_adult' => $this->total_adult,
             'total_children' => $this->total_children,
+            'email' => $this->email,
             'phone' => $this->phone,
             'session_id' => $this->session_id,
             'user_id' => $this->user_id,

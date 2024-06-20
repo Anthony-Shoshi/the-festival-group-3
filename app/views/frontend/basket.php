@@ -15,9 +15,9 @@ $reservations = $_SESSION['basket'] ?? [];
     <div class="basket">
         <h2>Shopping Cart</h2>
 
-        <?php if (!empty($reservations)) : ?>
-            <table>
-                <thead>
+    <?php if (!empty($cartItems)) : ?>
+        <table>
+            <thead>
                 <tr>
                     <th>Type</th>
                     <th>Details</th>
@@ -25,9 +25,9 @@ $reservations = $_SESSION['basket'] ?? [];
                     <th>Total Cost</th>
                     <th>Actions</th>
                 </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($reservations as $index => $item) : ?>
+            </thead>
+            <tbody>
+                <?php foreach ($cartItems as $index => $item) : ?>
                     <tr>
                         <td class="item-box">
                             <?php
@@ -58,7 +58,7 @@ $reservations = $_SESSION['basket'] ?? [];
                         <td class="item-box">
                             <?php
                             if (isset($item['total_adult'])) {
-                                echo htmlspecialchars($item['total_adult'] + $item['total_children']) . htmlspecialchars($item['quantity']);
+                                echo htmlspecialchars($item['total_adult'] + $item['total_children']);
                             } elseif (isset($item['ticketType'])) {
                                 echo htmlspecialchars($item['participants']);
                             } elseif (isset($item['music_performance_id'])) {
@@ -74,7 +74,6 @@ $reservations = $_SESSION['basket'] ?? [];
                 <?php endforeach; ?>
             </tbody>
         </table>
-            <a href="/personalprogram/getQR" class="btn btn-primary">Get QR</a>
         <?php else : ?>
         <p>Your basket is empty.</p>
     <?php endif; ?>
