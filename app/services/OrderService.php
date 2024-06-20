@@ -1,8 +1,12 @@
 <?php
+
 namespace App\Services;
+
+use App\Models\Ticket;
 use App\Repositories\OrderRepository;
 
-class OrderService{
+class OrderService
+{
 
     private $orderRepository;
 
@@ -16,8 +20,28 @@ class OrderService{
         return $this->orderRepository->getTicketWithQRCode($qrCode);
     }
 
-    public function updateTicketStatus(int $ticketId, string $status): void
+    public function updateTicketStatus($qrCode)
     {
-        $this->orderRepository->updateTicketStatus($ticketId, $status);
+        return $this->orderRepository->updateTicketStatus($qrCode);
+    }
+    
+    public function createOrder($userId, $totalAmount)
+    {
+        return $this->orderRepository->createOrder($userId, $totalAmount);
+    }
+    
+    public function addOrderItem($orderId, $itemType, $itemId): void
+    {
+        $this->orderRepository->addOrderItem($orderId, $itemType, $itemId);
+    }
+    
+    public function createTicket(Ticket $ticket)
+    {
+        return $this->orderRepository->createTicket($ticket);
+    }
+    
+    public function getTicketsByOrderId(int $orderId)
+    {
+        return $this->orderRepository->getTicketsByOrderId($orderId);
     }
 }
