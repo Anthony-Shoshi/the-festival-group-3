@@ -8,6 +8,7 @@ use App\Services\HistoryService;
 use App\Services\PageService;
 use App\Services\RestaurantService;
 use App\Services\ArtistService;
+use App\Services\UserService;
 use App\Services\VenueService;
 use App\Services\DanceService;
 use App\Services\SectionService;
@@ -27,6 +28,7 @@ class HomeController
     protected $danceService;
 
     protected $historyService;
+    private $userService;
 
     public function __construct()
     {
@@ -39,7 +41,9 @@ class HomeController
         $this->venueService = new VenueService();
         $this->danceService = new DanceService();
         $this->historyService = new HistoryService();
+        $this->userService = new UserService();
     }
+
 
     public function index()
     {
@@ -81,6 +85,33 @@ class HomeController
     public function dashboard()
     {
         if (isset($_SESSION['role']) && $_SESSION['role'] == "Admin") {
+
+            $users = $this->userService->getAllUsers();
+            $userCount = count($users);
+
+            $pages = $this->pageService->getAllPages();
+            $pageCount = count($pages);
+
+            $events = $this->eventService->getAll();
+            $eventCount = count($events);
+
+            $restaurants = $this->restaurantService->getAllRestaurants();
+            $restaurantCount = count($restaurants);
+
+            $danceEvents = $this->danceService->getAllEvents();
+            $danceEventCount = count($danceEvents);
+
+            $artists = $this->artistService->getAllArtists();
+            $artistCount = count($artists);
+
+            $venues = $this->venueService->getAllVenues();
+            $venueCount = count($venues);
+
+            $historyLocations = $this->historyService->getAllTourLocations();
+            $historyLocationCount = count($historyLocations);
+
+            $historytimetable = $this->historyService->getAllTours();
+            $historytimetableCount = count($historytimetable);
             require __DIR__ . '/../views/backend/home.php';
         } else {
             require __DIR__ . '/../views/frontend/home.php';

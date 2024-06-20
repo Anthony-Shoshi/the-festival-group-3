@@ -14,29 +14,17 @@ $reservations_json = json_encode($reservations);
 <div class="container">
     <div class="view-container">
         <button id="list-view-btn">List View</button>
-        <button id="agenda-view-btn">Agenda View</button>
     </div>
 
     <div class="list-view active" id="list-view"></div>
-
-    <div class="agenda-view" id="agenda-view">
-        <div class="calendar">
-            <div class="timeline">
-                <?php
-                for ($hour = 0; $hour < 24; $hour++) {
-                    echo "<div>{$hour}:00</div>";
-                }
-                ?>
-            </div>
-            <div class="days">
-            </div>
-        </div>
-    </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+    // Ensure reservations JSON is correctly populated
     const reservations = <?php echo $reservations_json; ?>;
 
-    function createListItem(item) {
+    function createListItem(item, index) {
         const listItem = document.createElement('div');
         listItem.className = 'list-view__item';
 
@@ -69,15 +57,16 @@ $reservations_json = json_encode($reservations);
         }
 
         listItem.innerHTML = `
-        <div class="list-view__item__left">
-            <div class="list-view__item__title">${itemTitle}</div>
-            <div class="list-view__item__subheading">${itemDetails}</div>
-            <div class="list-view__item__info">${itemQuantity}</div>
-        </div>
-        <div class="list-view__item__right">
-            <div class="list-view__item__price">${itemCost}</div>
-        </div>
-    `;
+            <div class="list-view__item__left">
+                <div class="list-view__item__title">${itemTitle}</div>
+                <div class="list-view__item__subheading">${itemDetails}</div>
+                <div class="list-view__item__info">${itemQuantity}</div>
+            </div>
+            <div class="list-view__item__right">
+                <div class="list-view__item__price">${itemCost}</div>
+                <button class="delete-btn" data-index="${index}">Delete</button>
+            </div>
+        `;
 
         if (item.ticketType) {
             listItem.setAttribute('data-type', 'History Ticket');
@@ -86,7 +75,6 @@ $reservations_json = json_encode($reservations);
         } else if (item.passType) {
             listItem.setAttribute('data-type', 'Dance Pass');
         }
-
         return listItem;
     }
 
@@ -94,84 +82,32 @@ $reservations_json = json_encode($reservations);
         const listView = document.getElementById('list-view');
         listView.innerHTML = '';
 
-        reservations.forEach(item => {
-            const listItem = createListItem(item);
+        reservations.forEach((item, index) => {
+            const listItem = createListItem(item, index);
             listView.appendChild(listItem);
         });
+
+        // Attach event listeners after items are created
+        $('.delete-btn').on('click', deleteItem);
     }
 
+    function deleteItem(event) {
+        const button = $(this);
+        const index = button.data('index');
 
-    // Function to populate Agenda View
-    function populateAgendaView(reservations) {
-        const daysContainer = document.querySelector('.days');
-        daysContainer.innerHTML = ''; // Clear existing content
-
-        const datesToDisplay = ['2024-07-26', '2024-07-27', '2024-07-28', '2024-07-29', '2024-07-30']; // Example dates to display
-
-        datesToDisplay.forEach(date => {
-            const dayDiv = document.createElement('div');
-            dayDiv.className = 'date';
-
-            // Display date and day name
-            const dayName = new Date(date).toLocaleDateString('en-US', {weekday: 'long'});
-            dayDiv.innerHTML = `
-            <span class="date-num">${date}</span>
-            <span class="date-day">${dayName}</span>
-        `;
-
-            const eventsDiv = document.createElement('div');
-            eventsDiv.className = 'events';
-
-            const eventsOnDate = reservations.filter(item => {
-                if (item.music_event_id !== undefined) {
-                    return item.event_date === date;
-                } else if (item.timeslot) {
-                    const eventDate = item.timeslot.split(' ')[0];
-                    return eventDate === date;
-                }
-                return false;
-            });
-
-            // Populate events for this date
-            eventsOnDate.forEach(item => {
-                const eventDiv = document.createElement('div');
-                eventDiv.className = 'event';
-
-                if (item.music_event_id !== undefined) {
-                    // Music event
-                    eventDiv.innerHTML = `
-                    <div class="title">${item.event_name}</div>
-                    <p>${item.session_type}</p>
-                    <p>${item.event_start_time} - ${calculateEndTime(item.event_start_time, item.event_duration)}</p>
-                    <p>Price: €${item.event_price}</p>
-                    <p>Quantity: ${item.quantity}</p>
-                `;
-                } else {
-                    // Other event
-                    const startTime = item.timeslot.split(' ')[1].substring(0, 5);
-                    const endTime = item.timeslot.split(' ')[2].substring(0, 5);
-                    eventDiv.innerHTML = `
-                    <div class="title">${item.start_location}</div>
-                    <p>${item.ticketType.ticket_type}</p>
-                    <p>${startTime} - ${endTime}</p>
-                    <p>Price: €${item.price}</p>
-                    <p>Participants: ${item.participants}</p>
-                `;
-                }
-
-                eventsDiv.appendChild(eventDiv);
-            });
-
-            dayDiv.appendChild(eventsDiv);
-            daysContainer.appendChild(dayDiv);
+        $.ajax({
+            url: '/personalprogram/removeItem',
+            type: 'GET',
+            data: { index: index },
+            success: function(response) {
+                console.log('Item deleted successfully');
+                reservations.splice(index, 1);
+                populateListView(reservations);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error deleting item:', error);
+            }
         });
-    }
-
-    function addTypeContent(element, type) {
-        const beforeContent = document.createElement('div');
-        beforeContent.className = 'before-content';
-        beforeContent.innerText = type;
-        element.insertBefore(beforeContent, element.firstChild);
     }
 
     function calculateEndTime(startTime, duration) {
@@ -180,8 +116,9 @@ $reservations_json = json_encode($reservations);
         return end.toLocaleTimeString('en-US', {hour12: false});
     }
 
-    populateListView(reservations);
-    populateAgendaView(reservations);
+    $(document).ready(function() {
+        populateListView(reservations);
+    });
 
 </script>
 
@@ -189,4 +126,3 @@ $reservations_json = json_encode($reservations);
 
 </body>
 </html>
-

@@ -9,7 +9,7 @@
         <?php
 
 
-echo isset($pageTitle) ? htmlspecialchars($pageTitle) : "The Festival"; ?>
+        echo isset($pageTitle) ? htmlspecialchars($pageTitle) : "The Festival"; ?>
     </title>
     <link rel="icon" type="image/x-icon" href="/images/fav.png">
     <link rel="stylesheet" href="/frontend/css/header.css" />
@@ -84,9 +84,11 @@ echo isset($pageTitle) ? htmlspecialchars($pageTitle) : "The Festival"; ?>
         </nav> -->
 
     <?php
-        use App\Services\PageService;
-        $pageService = new PageService();
-        $pages = $pageService->getAllPages();
+
+    use App\Services\PageService;
+
+    $pageService = new PageService();
+    $pages = $pageService->getAllPages();
     ?>
     <nav class="navbar">
         <a class="navbar-brand" href="/">
@@ -130,6 +132,8 @@ echo isset($pageTitle) ? htmlspecialchars($pageTitle) : "The Festival"; ?>
                 echo '<a class="nav-link" href="/login/login">Login</a>';
             }
             ?>
+
+            <a class="nav-link" href="/personalprogram/basket">Personal Program</a>
         </div>
 
         <div class="hamburger">
@@ -147,4 +151,3 @@ echo isset($pageTitle) ? htmlspecialchars($pageTitle) : "The Festival"; ?>
             navMenu.classList.toggle("active");
         })
     </script>
-

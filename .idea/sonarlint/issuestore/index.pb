@@ -72,11 +72,11 @@ S
 R
 "app/controllers/HomeController.php,9\b\9bb6e8444935035f8d62e909e1eab3f721034864
 L
-app/services/UserService.php,c/1/c17fcdcb02bafda2f47f605dacff4e66dd878533
+app/services/UserService.php,c\1\c17fcdcb02bafda2f47f605dacff4e66dd878533
 J
 app/models/SessionType.php,7/f/7f2d0c8c621bfdd487ff86fced8962273189fa28
 R
-"app/controllers/UserController.php,1/5/151f3a1e2f9163bc8ea58fae5e833b07c6b7d9d2
+"app/controllers/UserController.php,1\5\151f3a1e2f9163bc8ea58fae5e833b07c6b7d9d2
 U
 %app/controllers/SectionController.php,7\6\7617d307630c0de1bed72fb33e142cc8ee842c02
 R
@@ -133,7 +133,7 @@ Q
 O
 app/services/SectionService.php,d/7/d77ec6856441b79d04949b38fa50f91623e25488
 O
-app/services/HistoryService.php,e/e/eecfe54be2f122fb6e50ad3451b618e996c866e4
+app/services/HistoryService.php,e\e\eecfe54be2f122fb6e50ad3451b618e996c866e4
 M
 app/services/VenueService.php,c\5\c5eef34c1619214add84a26ef85677e0fb1702ea
 \
@@ -255,3 +255,7 @@ A
 :
 
 nginx.conf,e\d\ed8b45da44d73de79bd7c1c203a419d6ee7d6fde
+M
+app/services/EventService.php,c\2\c29b3b18239e8fb3bd75945616e043809b74e26c
+R
+"app/public/frontend/css/basket.css,7\1\713f3a8e45e2cb00fb14782e6060ae9993ee68c7
