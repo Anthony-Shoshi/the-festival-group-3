@@ -180,3 +180,5 @@ A
 app/composer.lock,c\3\c32263212f3e16c13caa4452876f2f6df8d19104
 D
 app/public/index.php,d\f\df187f96b153386aefda0ec4775d5524cf695467
+E
+app/views/singup.html,f\5\f5f2376128748e79a969d4cd79e9d14fa4027467

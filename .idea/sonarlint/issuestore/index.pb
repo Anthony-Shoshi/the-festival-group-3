@@ -261,3 +261,5 @@ R
 "app/public/frontend/css/basket.css,7\1\713f3a8e45e2cb00fb14782e6060ae9993ee68c7
 A
 app/composer.lock,c\3\c32263212f3e16c13caa4452876f2f6df8d19104
+E
+app/views/singup.html,f\5\f5f2376128748e79a969d4cd79e9d14fa4027467
