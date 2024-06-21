@@ -496,4 +496,10 @@ class PersonalProgramController
             exit();
         }
     }
+    public function personalprogram()
+    {
+        $reservations = $this->basket->getAllItems();
+        require __DIR__ . '/../views/frontend/PersonalProgram.php';
+    }
+
 }
