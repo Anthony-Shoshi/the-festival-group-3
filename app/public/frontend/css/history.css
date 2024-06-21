@@ -11,6 +11,8 @@
 
 body {
     background-color: #fcebbd;
+    min-height: 100vh;
+    background-attachment: fixed;
 }
 
 .white-space {
@@ -68,11 +70,12 @@ section {
     gap: 10%;
 }
 
-.tour-info .prices {
+.tour-info .tickets {
     display: flex;
     flex: 1;
     flex-direction: column;
     justify-content: space-evenly;
+    gap: 1rem;
 }
 
 .tour-info .details {
@@ -82,14 +85,26 @@ section {
     gap: 1rem;
 }
 
-.tour-info .prices p {
+.tour-info .tickets .ticket {
     background-color: #fcebbd;
     color: #780b1e;
     font-family: "Jomhuria", serif;
-    font-size: calc(2rem + 0.77vw);
+    font-size: calc(1rem + 0.77vw);
     padding: 1rem;
     border-radius: 1rem;
     text-align: center;
+}
+
+#buy-button {
+    text-decoration: none;
+    color: #780b1e;
+    background-color: #fcebbd;
+    text-align: center;
+    padding: 1rem;
+    display: inline;
+    font-size: calc(1rem + 3.77vw);
+    font-family: "Jomhuria", serif;
+    border-radius: 1rem;
 }
 main {
     padding: 3em;
@@ -102,12 +117,13 @@ main {
     gap: 1rem;
 }
 
-.tour-route ol {
+.tour-route ul {
     margin-left: 2rem;
     flex: 1;
+    list-style-type: none;
 }
 
-.tour-route ol li {
+.tour-route ul li {
     font-family: "Jomhuria", serif;
     font-size: calc(1.5rem + 0.77vw);
 }
@@ -201,7 +217,7 @@ main {
         gap: 1rem;
     }
 
-    .tour-info .prices {
+    .tour-info .tickets {
         flex-direction: row;
         gap: 1rem;
     }

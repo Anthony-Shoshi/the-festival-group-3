@@ -79,4 +79,10 @@
             </li>
         </a>
     </ul>
+    <h5 class="sidebar-heading">Order Management</h5>
+    <ul class="sidebar-menu">
+        <a class="text-decoration-none" href="/manageorders">
+            <li class="menu-item text-white menu-hover" data-url="/order">
+                <i class="fas fa-shopping-cart text-white"></i> Orders</li>
+        </a>
 </div>
