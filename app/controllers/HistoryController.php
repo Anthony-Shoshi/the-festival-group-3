@@ -16,7 +16,7 @@ class HistoryController
     public function index()
     {
         try{
-            $pages = $this->pageService->getAllPages();
+            $pages = $this->pageService->getAllActive();
 
             $headers = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Header);
             $introduction = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Introduction);

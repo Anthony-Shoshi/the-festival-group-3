@@ -1,6 +1,9 @@
 <?php include __DIR__ . '/../inc/header.php'; ?>
 
 <div class="container mb-5">
+
+    <?php include __DIR__ . '/../inc/message.php'; ?>
+
     <h1>Edit User</h1>
     <div class="mt-4">
         <form action="/user/update" method="post" autocomplete="off" enctype="multipart/form-data">
