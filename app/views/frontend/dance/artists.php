@@ -1,17 +1,18 @@
 <?php include __DIR__ . '/../inc/header.php'; ?>
 
-<title><?= $artists['artist_name']; ?></title>
+<title><?= htmlspecialchars($artists['artist_name']); ?></title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 <link rel="stylesheet" href="/frontend/css/artist.css">
 </head>
 <body>
-<?php
-?>
+
 <div id="section-artist">
     <div class="artist-header">
         <div class="artist-header-image">
-            <img src="<?= '/images/' . $artists['detail_image'] ?>" alt="<?= $artists['artist_name']; ?>">
+            <img src="<?= '/images/' . htmlspecialchars($artists['detail_image']) ?>" alt="<?= htmlspecialchars($artists['artist_name']); ?>">
         </div>
-        <h1><?= $artists['artist_name']; ?></h1>
+        <h1><?= htmlspecialchars($artists['artist_name']); ?></h1>
     </div>
 </div>
 
@@ -19,14 +20,14 @@
     <div class="section-1">
         <div class="artist">
             <div class="artist-image">
-                <img src="<?= '/images/' . $artists['image_url'] ?>" alt="<?= $artists['artist_name']; ?>">
+                <img src="<?= '/images/' . htmlspecialchars($artists['image_url']) ?>" alt="<?= htmlspecialchars($artists['artist_name']); ?>">
             </div>
             <ul>
-                <li class="name"><?= $artists['artist_name']; ?></li>
-                <li><strong>Name:</strong> <?= $artists['artist_real_name']; ?></li>
-                <li><strong>Age:</strong> <?= $artists['age']; ?></li>
-                <li><strong>Nationality:</strong> <?= $artists['nationality']; ?></li>
-                <li><strong>Genre:</strong> <?= $artists['genre']; ?></li>
+                <li class="name"><?= htmlspecialchars($artists['artist_name']); ?></li>
+                <li><strong>Name:</strong> <?= htmlspecialchars($artists['artist_real_name']); ?></li>
+                <li><strong>Age:</strong> <?= htmlspecialchars($artists['age']); ?></li>
+                <li><strong>Nationality:</strong> <?= htmlspecialchars($artists['nationality']); ?></li>
+                <li><strong>Genre:</strong> <?= htmlspecialchars($artists['genre']); ?></li>
             </ul>
         </div>
     </div>
@@ -34,7 +35,7 @@
     <div class="section-2">
         <div class="artist-aboutMe">
             <h2 class="artist-heading">About Me</h2>
-            <p><?= $artists['about']; ?></p>
+            <p><?= htmlspecialchars($artists['about']); ?></p>
         </div>
     </div>
 
@@ -43,7 +44,8 @@
             <h2 class="artist-heading">Concerts</h2>
             <?php foreach ($artistEvents as $events): ?>
                 <div class="container">
-                    <p class="event-date"><?= $events['event_date']; ?> - <?= $events['event_start_time']; ?> @ <?= $events['venue_name']; ?> - €<?= $events['event_price']; ?></p>
+                    <p class="event-date"><?= htmlspecialchars($events['event_date']); ?> - <?= htmlspecialchars($events['event_start_time']); ?> @ <?= htmlspecialchars($events['venue_name']); ?> - €<?= htmlspecialchars($events['event_price']); ?></p>
+                    <input type="hidden" class="music-performance-id" value="<?= htmlspecialchars($events['music_performance_id']); ?>">
                     <button class="favorite-button"><img src="/images/heart.png" alt="Favorite"></button>
                     <button class="buyTicket-button">Buy Ticket</button>
                 </div>
@@ -52,21 +54,19 @@
     </div>
 </div>
 
-
 <div class="section-4">
     <h2 class="artist-heading">Best Albums</h2>
     <div class="artist-albums">
         <?php foreach ($artistAlbums as $album): ?>
             <div class="album-container">
                 <div class="album-image">
-                    <img src="<?= '/images/' . ($album['image_url']) ?>" alt="<?= ($album['album_name']); ?>">
+                    <img src="<?= '/images/' . htmlspecialchars($album['image_url']) ?>" alt="<?= htmlspecialchars($album['album_name']); ?>">
                 </div>
-                <div class="album-info"><?= ($album['album_name']); ?> "<?= ($album['year']); ?>"</div>
+                <div class="album-info"><?= htmlspecialchars($album['album_name']); ?> "<?= htmlspecialchars($album['year']); ?>"</div>
             </div>
         <?php endforeach; ?>
     </div>
 </div>
-
 
 <div class="section-5">
     <div class="artist-songs">
@@ -96,18 +96,40 @@
         <?php foreach ($artistAwards as $awards): ?>
             <div class="award-container">
                 <div class="awards-image">
-                    <img src="<?= '/images/' . ($awards['image_url']) ?>" alt="<?= ($awards['title']); ?>">
+                    <img src="<?= '/images/' . htmlspecialchars($awards['image_url']) ?>" alt="<?= htmlspecialchars($awards['title']); ?>">
                 </div>
-                <div class="award-title"><?= ($awards['title']); ?></div>
+                <div class="award-title"><?= htmlspecialchars($awards['title']); ?></div>
             </div>
         <?php endforeach; ?>
     </div>
 </div>
 
-
-
 <a href="/dance" class="backButton">Back to Tickets Page</a>
 
+<script>
+    $(document).ready(function() {
+        // Handle click on event ticket buy buttons
+        $('.buyTicket-button').click(function(event) {
+            event.preventDefault();
+            var ticketContainer = $(this).closest('.container');
+            var musicPerformanceId = ticketContainer.find('.music-performance-id').val();
+
+            $.ajax({
+                url: '/dance/create',
+                method: 'POST',
+                data: {
+                    music_performance_id: musicPerformanceId
+                },
+                success: function(response) {
+                    alert('Item added to basket successfully!');
+                },
+                error: function(xhr, status, error) {
+                    alert('Failed to add item to basket. Please try again later.');
+                }
+            });
+        });
+    });
+</script>
 
 <?php include __DIR__ . '/../inc/footer.php'; ?>
 </body>
