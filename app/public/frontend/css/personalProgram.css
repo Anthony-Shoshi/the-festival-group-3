@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap");
+
 body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background: #8b8c93; /* Set background color for body */
-    font-family: "Caladea", serif;
+    background: #8b8c93;
 }
 
 .container {
@@ -11,15 +12,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
-    padding: 20px; /* Add padding to center content within the container */
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .view-container {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    margin-top: 20px; /* Adjust top margin for better spacing */
+    margin-top: 20px;
 }
 
 .view-container button {
@@ -40,18 +41,18 @@ body {
 
 .list-view {
     width: 100%;
-    max-width: 800px; /* Limit the width of the list view for better readability */
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px; /* Add padding inside the list view */
-    margin-top: 10px; /* Add margin to separate from view container */
+    padding: 20px;
+    margin-top: 10px;
 }
 
 .list-view__item {
     display: flex;
     justify-content: space-between;
-    gap: 20px; /* Increase gap between elements */
+    gap: 20px;
     background-color: #007589;
     border: 3px solid #ff786a;
     border-radius: 0.5em;
@@ -94,11 +95,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex: 1; /* Ensure left section takes up available space */
+    flex: 1;
 }
 
 .list-view__item__left > * {
-    margin-bottom: 0.5em; /* Adjust spacing between elements */
+    margin-bottom: 0.5em;
 }
 
 .list-view__item__title {
@@ -121,13 +122,13 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    flex: 0; /* Ensure right section doesn't grow */
+    flex: 0;
 }
 
 .list-view__item__price {
     font-size: 1.2em;
     font-weight: bold;
-    margin-bottom: 0.5em; /* Adjust margin */
+    margin-bottom: 0.5em;
 }
 
 .list-view__item__ticket-type {

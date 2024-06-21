@@ -136,8 +136,6 @@
                 echo '<a class="nav-link" href="/login/login" style="font-size: 22px;">Login</a>';
             }
             ?>
-
-            <a class="nav-link" href="/personalprogram/personalprogram">Personal Program</a>
         </div>
 
         <div class="hamburger">

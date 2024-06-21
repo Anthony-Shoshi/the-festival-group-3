@@ -3,7 +3,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.0.9/html5-qrcode.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
+<link rel="stylesheet" href="/frontend/css/scanticket.css" />
 
+<h1>Scan Ticket</h1>
 <div>
     <video id="camera-feed" width="500" autoplay style="margin-top: 10%;"></video>
     <div id="alert-message" class="hidden"></div>
