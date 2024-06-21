@@ -133,7 +133,7 @@
             }
             ?>
 
-            <a class="nav-link" href="/personalprogram/basket">Personal Program</a>
+            <a class="nav-link" href="/personalprogram/personalprogram">Personal Program</a>
         </div>
 
         <div class="hamburger">

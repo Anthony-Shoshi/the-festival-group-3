@@ -3,7 +3,7 @@
         'name' => 'the-festival/group-three',
         'pretty_version' => '1.0.0+no-version-set',
         'version' => '1.0.0.0',
-        'reference' => null,
+        'reference' => NULL,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -67,7 +67,7 @@
         'the-festival/group-three' => array(
             'pretty_version' => '1.0.0+no-version-set',
             'version' => '1.0.0.0',
-            'reference' => null,
+            'reference' => NULL,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

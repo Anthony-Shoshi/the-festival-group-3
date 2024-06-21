@@ -72,6 +72,7 @@ class PersonalProgramController
                 ];
 
                 $totalAmount += $unitAmount * $quantity;
+
             }
 
             Stripe::setApiKey("sk_test_51PS8HHF7UbSXoXFVQFRcOjx7b6nffHvGpqbNQngGmuaiOmyqxRA3IywweJclE1X0bTwFEkDBXUEwvkj0haSUPPfP00JhIdhACj");
@@ -495,5 +496,10 @@ class PersonalProgramController
             header('Location: /error?message=' . urlencode($e->getMessage()));
             exit();
         }
+    }
+    public function personalprogram()
+    {
+        $reservations = $this->basket->getAllItems();
+        require __DIR__ . '/../views/frontend/PersonalProgram.php';
     }
 }

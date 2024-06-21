@@ -176,3 +176,7 @@ R
 "app/public/frontend/css/basket.css,7\1\713f3a8e45e2cb00fb14782e6060ae9993ee68c7
 Q
 !app/public/frontend/css/style.css,7\3\73fb6970e163320dd6e83ec88e664781756737d1
+A
+app/composer.lock,c\3\c32263212f3e16c13caa4452876f2f6df8d19104
+D
+app/public/index.php,d\f\df187f96b153386aefda0ec4775d5524cf695467

@@ -36,22 +36,22 @@ $reservations_json = json_encode($reservations);
 
         if (item.reservation_date) {
             itemTitle = `${item.name} - ${item.reservation_date}`;
-            itemQuantity = `${item.total_adult + item.total_children} ${item.quantity}`;
-            itemCost = `€${item.cost}.00`;
+            itemQuantity = `${item.total_adult} adults & ` + `${item.total_children} childrens`;
+            itemCost = `€${item.cost}`;
         } else if (item.ticketType) {
             itemTitle = `${item.start_location} - ${item.timeslot}`;
             itemDetails = `Ticket Type: ${item.ticketType.ticket_type}`;
             itemQuantity = `Participants: ${item.participants}`;
-            itemCost = `€${item.price}.00`;
+            itemCost = `€${item.price}`;
         } else if (item.music_performance_id !== undefined) {
             itemTitle = `${item.event_name} - ${item.event_date} - ${item.event_start_time}-${calculateEndTime(item.event_start_time, item.event_duration)}`;
             itemDetails = `Session Type: ${item.session_type}`;
             itemQuantity = `Quantity: ${item.quantity}`;
-            itemCost = `€${item.event_price}.00`;
+            itemCost = `€${item.event_price}`;
         } else if (item.passType) {
             itemTitle = `${item.passName} - ${item.passDescription}`;
             itemQuantity = `Quantity: ${item.quantity}`;
-            itemCost = `€${item.cost}.00`;
+            itemCost = `€${item.cost}`;
         } else {
             listItem.innerText = 'Event information missing or invalid.';
             return listItem;
@@ -75,6 +75,8 @@ $reservations_json = json_encode($reservations);
             listItem.setAttribute('data-type', 'Dance Ticket');
         } else if (item.passType) {
             listItem.setAttribute('data-type', 'Dance Pass');
+        }else if (item.reservation_date) {
+            listItem.setAttribute('data-type', 'Reservation');
         }
         return listItem;
     }
@@ -120,11 +122,6 @@ $reservations_json = json_encode($reservations);
     $(document).ready(function() {
         populateListView(reservations);
     });
-
-    $(document).ready(function() {
-        $('.checkout-btn').on('click', function() {
-            window.location.href = '/personalprogram/basket';
-        });
 
 </script>
 

@@ -85,6 +85,9 @@ body {
 .list-view__item[data-type="Dance Pass"]::before {
     content: "Dance Pass";
 }
+.list-view__item[data-type="Reservation"]::before {
+    content: "Reservation";
+}
 
 .list-view__item__left {
     display: flex;
