@@ -53,6 +53,7 @@ class UserController
 
             $this->userService->storeUser($user);
 
+            Helper::setMessage(false, "User added successfully!");
             header("Location: /user");
             exit();
         } catch (Exception $e) {
@@ -120,6 +121,7 @@ class UserController
             }
 
             $this->userService->updateUser($userData);
+            Helper::setMessage(false, "User updated successfully!");
             header("Location: /user");
             exit();
         } catch (Exception $e) {
@@ -134,6 +136,7 @@ class UserController
         if (isset($userId) && $userId > 0) {
             $user = $this->userService->getUserById($userId);
             $this->userService->deleteUser($userId);
+            Helper::setMessage(false, "User deleted successfully!");
             header("Location: /user");
             exit();
         } else {

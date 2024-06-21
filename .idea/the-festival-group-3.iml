@@ -11,7 +11,22 @@
       <sourceFolder url="file://$MODULE_DIR$/app/./services" isTestSource="false" packagePrefix="App\Services\" />
       <sourceFolder url="file://$MODULE_DIR$/app/./utils" isTestSource="false" packagePrefix="App\Utils\" />
       <sourceFolder url="file://$MODULE_DIR$/app/./views" isTestSource="false" packagePrefix="App\Views\" />
+<<<<<<< HEAD
       <sourceFolder url="file://$MODULE_DIR$/app/tests" isTestSource="true" />
+=======
+      <sourceFolder url="file://$MODULE_DIR$/." isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/./controllers" isTestSource="false" packagePrefix="App\Controllers\" />
+      <sourceFolder url="file://$MODULE_DIR$/./helpers" isTestSource="false" packagePrefix="App\Helpers\" />
+      <sourceFolder url="file://$MODULE_DIR$/./models" isTestSource="false" packagePrefix="App\Models\" />
+      <sourceFolder url="file://$MODULE_DIR$/./repositories" isTestSource="false" packagePrefix="App\Repositories\" />
+      <sourceFolder url="file://$MODULE_DIR$/./services" isTestSource="false" packagePrefix="App\Services\" />
+      <sourceFolder url="file://$MODULE_DIR$/./utils" isTestSource="false" packagePrefix="App\Utils\" />
+      <sourceFolder url="file://$MODULE_DIR$/./views" isTestSource="false" packagePrefix="App\Views\" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/PHPMailer-master/language" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/PHPMailer-master/src" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/stripe/stripe-php" />
+>>>>>>> develop
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

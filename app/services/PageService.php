@@ -61,10 +61,19 @@ class PageService
         }
     }
 
+    public function getAllActive()
+    {
+        try {
+            return $this->pageRepository->getAllActive();
+        } catch (Exception $e) {
+            throw new Exception("Error: " . $e->getMessage());
+        }
+    }
+    
     public function getAllPages()
     {
         try {
-            return $this->pageRepository->getAll();
+            return $this->pageRepository->getAllPages();
         } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());
         }

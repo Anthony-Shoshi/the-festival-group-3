@@ -53,8 +53,6 @@ class PersonalProgramController
             $lineItems = [];
             $totalAmount = 0;
 
-            // Helper::debug($cartItems);
-
             foreach ($cartItems as $cartItem) {
                 $unitAmount = isset($cartItem['cost_per_person']) ? $cartItem['cost_per_person'] : $cartItem['cost'];
                 $quantity = isset($cartItem['total_adult']) ? $cartItem['total_adult'] + $cartItem['total_children'] : (isset($cartItem['quantity']) ? $cartItem['quantity'] : $cartItem['participants']);
@@ -74,6 +72,22 @@ class PersonalProgramController
                 $totalAmount += $unitAmount * $quantity;
 
             }
+
+            // Calculate the tax amount
+            $taxAmount = $totalAmount * 0.09;
+            $totalAmountWithTax = $totalAmount + $taxAmount;
+
+            // Add the tax as a separate line item
+            $lineItems[] = [
+                'price_data' => [
+                    'currency' => 'eur',
+                    'product_data' => [
+                        'name' => 'Tax (9%)',
+                    ],
+                    'unit_amount' => $taxAmount * 100, // Amount in cents
+                ],
+                'quantity' => 1,
+            ];
 
             Stripe::setApiKey("sk_test_51PS8HHF7UbSXoXFVQFRcOjx7b6nffHvGpqbNQngGmuaiOmyqxRA3IywweJclE1X0bTwFEkDBXUEwvkj0haSUPPfP00JhIdhACj");
 

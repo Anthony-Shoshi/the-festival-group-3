@@ -28,11 +28,13 @@ body {
     cursor: pointer;
 }
 
-.list-view, .agenda-view {
+.list-view,
+.agenda-view {
     display: none;
 }
 
-.list-view.active, .agenda-view.active {
+.list-view.active,
+.agenda-view.active {
     display: block;
 }
 
@@ -51,7 +53,7 @@ body {
     justify-content: space-between;
     gap: 20px; /* Increase gap between elements */
     background-color: #007589;
-    border: 3px solid #FF786A;
+    border: 3px solid #ff786a;
     border-radius: 0.5em;
     padding: 1em;
     width: 100%;
@@ -88,7 +90,6 @@ body {
 .list-view__item[data-type="Reservation"]::before {
     content: "Reservation";
 }
-
 .list-view__item__left {
     display: flex;
     flex-direction: column;
@@ -134,7 +135,7 @@ body {
 }
 
 .delete-btn {
-    background-color: #FF7A68;
+    background-color: #ff7a68;
     border: 2px solid #000;
     color: black;
     padding: 5px 10px;
@@ -145,10 +146,9 @@ body {
 }
 
 #list-view-btn {
-    background-color: #FF7A68;
+    background-color: #ff7a68;
     color: black;
     padding: 10px 20px;
-    cursor: pointer;
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: 24px;
@@ -159,8 +159,9 @@ body {
 #delete-btn:hover {
     background-color: #ff3e29;
 }
-.checkout-btn{
-    background-color: #FF7A68;
+
+.checkout-btn {
+    background-color: #ff7a68;
     color: black;
     padding: 10px 20px;
     cursor: pointer;
@@ -170,7 +171,7 @@ body {
     border: 2px solid #000;
     font-weight: bold;
 }
-.checkoutText{
+.checkoutText {
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 10px;

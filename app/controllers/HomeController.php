@@ -89,7 +89,7 @@ class HomeController
             $users = $this->userService->getAllUsers();
             $userCount = count($users);
 
-            $pages = $this->pageService->getAllPages();
+            $pages = $this->pageService->getAllActive();
             $pageCount = count($pages);
 
             $events = $this->eventService->getAll();
