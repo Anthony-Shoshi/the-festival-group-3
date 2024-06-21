@@ -2,6 +2,100 @@
 
 <link rel="stylesheet" href="/frontend/css/yummy.css" />
 
+<style>
+    .restaurants-list-item {
+        width: 32%;
+        margin: 1vw 0.5vw;
+        padding: 1vw;
+        background-color: #222;
+        border-radius: 1em;
+        color: #ff7a68;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease;
+    }
+
+    .restaurants-list-item:hover {
+        transform: scale(1.05);
+    }
+
+    .restaurants-list-item .image {
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 1em;
+        margin-bottom: 1vw;
+    }
+
+    .restaurants-list-item p {
+        font-size: 2vw;
+        font-weight: bold;
+        margin: 0.5vw 0;
+        color: #fff;
+    }
+
+    .review {
+        color: #ff7a68;
+        font-size: 1.5vw;
+        margin: 0.5vw 0;
+    }
+
+    .line {
+        height: 2px;
+        background-color: #ff7a68;
+        margin: 1vw 0;
+    }
+
+    .restaurant-feature {
+        display: flex;
+        align-items: center;
+        margin: 0.5vw 0;
+        color: #fff;
+        font-size: 1.5vw;
+    }
+
+    .restaurant-feature img {
+        margin-right: 0.5vw;
+    }
+
+    .features-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 1vw 0;
+    }
+
+    .feature {
+        display: flex;
+        align-items: center;
+        margin: 0.5vw 1vw 0.5vw 0;
+        color: #fff;
+        font-size: 1.5vw;
+    }
+
+    .feature img {
+        margin-right: 0.5vw;
+    }
+
+    .restaurant-information {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 1vw 0;
+        gap: 1vw;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        margin: 0.5vw 0;
+        color: #fff;
+        font-size: 1.5vw;
+    }
+
+    .info-item img {
+        margin-right: 0.5vw;
+    }
+</style>
+
 <div class="white-space"></div>
 <?php foreach ($sections as $section) : ?>
     <?php if ($section->getSectionType() === 'header') : ?>
@@ -34,19 +128,28 @@
 
         <div class="restaurants-list">
             <?php foreach ($restaurants as $restaurant) : ?>
+                <p><?= $restaurant['restaurant_id'] ?></p>
                 <div class="restaurants-list-item">
                     <a href="/restaurant/details?id=<?= $restaurant['restaurant_id'] ?>">
                         <div class="image" style="background-image: url('<?php echo $restaurant['image_url']; ?>');"></div>
                     </a>
                     <p><?php echo htmlspecialchars($restaurant['title']); ?></p>
-                    <div class="review"></div>
+                    <div class="review">
+                        <?php for ($i = 0; $i < 5; $i++): ?>
+                            <?php if ($i < $restaurant['ratings']): ?>
+                                ★
+                            <?php else: ?>
+                                ☆
+                            <?php endif; ?>
+                        <?php endfor; ?>
+                    </div>
                     <span class="line"></span>
                     <div class="restaurant-feature">
-                        <img src="/images/food-type.png" alt="" />
+                        <img src="/images/food-type.png" alt="" height="20" width="20"/>
                         <p>Food Type: <?php echo htmlspecialchars($restaurant['cuisines']); ?></p>
                     </div>
                     <div class="restaurant-feature">
-                        <img src="/images/seats.png" alt="" />
+                        <img src="/images/seats.png" alt="" height="20" width="20"/>
                         <p>Available Seats: <?php echo $restaurant['number_of_seats']; ?></p>
                     </div>
                     <span class="line"></span>

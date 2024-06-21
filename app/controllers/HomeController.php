@@ -157,9 +157,11 @@ class HomeController
                 break;
             case 'yummy':
                 $restaurants = $this->restaurantService->getAllRestaurants();
-                foreach ($restaurants as &$restaurant) {
-                    $restaurant['sessions'] = $this->sessionService->getSessionsByRestaurantId($restaurant['restaurant_id']);
-                }
+//                foreach ($restaurants as &$restaurant) {
+//                    $restaurant['sessions'] = $this->sessionService->getSessionsByRestaurantId($restaurant['restaurant_id']);
+//                }
+//                unset($restaurant);
+//                Helper::debug($restaurants);
                 require '../views/frontend/yummy/index.php';
                 break;
             case 'dance':
