@@ -67,7 +67,7 @@
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 <label for="map_url" class="form-label">Map URL</label>
-                                <input type="text" class="form-control" id="map_url" name="map_url[]">
+                                <input type="text" class="form-control" id="map_url" name="map_url[]" value="<?= $section->getMapUrl() ?>">
                             </div>
                         </div>
                         <div class="row mb-3">

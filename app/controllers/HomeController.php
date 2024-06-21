@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Helpers\Helper;
 use App\Models\SectionType;
 use App\Services\EventService;
 use App\Services\HistoryService;
@@ -135,7 +136,7 @@ class HomeController
     {
         $id = $_GET['id'];
         $slug = $_GET['slug'];
-        $sections = $this->sectionService->getSectionByPageId($id);
+        $sections = $this->sectionService->getSectionByPageId($id);        
         switch ($slug) {
             case 'history':
                 $headers = $this->historyService->getHistoryPageInfoBySectionType(SectionType::Header);
