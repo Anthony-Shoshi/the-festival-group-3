@@ -14,7 +14,7 @@ $reservations_json = json_encode($reservations);
     <P class="checkoutText">Do you want to Checkout? Go to  your Shopping Cart ➡️</P>
     <a class="checkout-btn" href="/personalprogram/basket">Shopping Cart</a>
     <div class="view-container">
-        <button id="list-view-btn">List View</button>
+        <p id="list-view-btn">List View</p>
     </div>
 
     <div class="list-view active" id="list-view"></div>

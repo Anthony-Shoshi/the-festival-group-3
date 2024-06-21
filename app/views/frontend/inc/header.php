@@ -88,7 +88,7 @@
     use App\Services\PageService;
 
     $pageService = new PageService();
-    $pages = $pageService->getAllPages();
+    $pages = $pageService->getAllActive();
     ?>
     <nav class="navbar">
         <a class="navbar-brand" href="/">
@@ -100,7 +100,7 @@
         <div class="navbar-nav" id="navbarLinks">
 
             <?php
-            $pages = $pageService->getAllPages();
+            $pages = $pageService->getAllActive();
 
             foreach ($pages as $page) {
                 $pageTitle = htmlspecialchars($page['title']);
@@ -129,9 +129,10 @@
                 } else {
                     echo '<a class="nav-link" href="javascript:void()" style="font-size: 22px;">' . $_SESSION['username'] . '</a>';
                 }
-                echo '<a class="nav-link" href="/personalprogram/basket" style="font-size: 22px;">Personal Program</a>';
+                echo '<a class="nav-link" href="/personalprogram/personalprogram" style="font-size: 22px;">Personal Program</a>';
                 echo '<a class="nav-link" href="/login/logout" style="font-size: 22px;">Logout</a>';
             } else {
+                echo '<a class="nav-link" href="/personalprogram/personalprogram" style="font-size: 22px;">Personal Program</a>';
                 echo '<a class="nav-link" href="/login/login" style="font-size: 22px;">Login</a>';
             }
             ?>

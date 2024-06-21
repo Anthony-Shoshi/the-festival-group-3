@@ -10,8 +10,6 @@
     <br>
 </div>
 
-<?php include __DIR__ . '/../frontend/inc/footer.php'; ?>
-
 <script>
     const videoElement = document.getElementById('camera-feed');
     const alertMessage = document.getElementById('alert-message');
