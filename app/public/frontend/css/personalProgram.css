@@ -146,13 +146,13 @@ body {
     font-size: 14px;
 }
 
-#list-view-btn {
-    background-color: #ff7a68;
+.listViewText {
+    background-color: #fff;
     color: black;
     padding: 10px 20px;
     border-radius: 5px;
     margin-bottom: 10px;
-    font-size: 24px;
+    font-size: 30px;
     border: 2px solid #000;
     font-weight: bold;
 }
