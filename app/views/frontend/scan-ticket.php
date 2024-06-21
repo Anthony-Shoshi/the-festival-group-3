@@ -1,29 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scan Ticket</title>
-    <link rel="stylesheet" href="/frontend/css/scanticket.css">
-    <link rel="icon" type="image/x-icon" href="/images/fav.png">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.0.9/html5-qrcode.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
-</head>
-<body>
+<?php include __DIR__ . '/../frontend/inc/header.php'; ?>
 
-<div class="container">
-    <h1>Welcome, <?= htmlspecialchars($_SESSION['username']); ?></h1>
-    <h1>Scan Ticket</h1>
-    <video id="camera-feed" autoplay></video>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.0.9/html5-qrcode.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
+
+<div>
+    <video id="camera-feed" width="500" autoplay style="margin-top: 10%;"></video>
     <div id="alert-message" class="hidden"></div>
+    <br>
 </div>
+
+<?php include __DIR__ . '/../frontend/inc/footer.php'; ?>
 
 <script>
     const videoElement = document.getElementById('camera-feed');
     const alertMessage = document.getElementById('alert-message');
 
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment'}})
+    navigator.mediaDevices.getUserMedia({
+            video: {
+                facingMode: 'environment'
+            }
+        })
         .then(stream => {
             videoElement.srcObject = stream;
             videoElement.onloadedmetadata = () => {
@@ -45,16 +42,20 @@
 
         if (code) {
             console.log('QR Code detected:', code.data);
-            console.log('Request body:', JSON.stringify({ code: code.data }));
+            console.log('Request body:', JSON.stringify({
+                code: code.data
+            }));
             video.srcObject.getTracks().forEach(track => track.stop());
 
             fetch('/scanticket/verifyTicket', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ code: code.data })
-            })
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        code: code.data
+                    })
+                })
                 .then(response => response.text())
                 .then(text => {
                     console.log('Response text:', text);
@@ -85,7 +86,11 @@
     function restartScan() {
         setTimeout(() => {
             const videoElement = document.getElementById('camera-feed');
-            navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }})
+            navigator.mediaDevices.getUserMedia({
+                    video: {
+                        facingMode: 'environment'
+                    }
+                })
                 .then(stream => {
                     videoElement.srcObject = stream;
                     videoElement.onloadedmetadata = () => {
@@ -110,6 +115,3 @@
         }, 3000); // Hide alert after 3 seconds
     }
 </script>
-
-</body>
-</html>
