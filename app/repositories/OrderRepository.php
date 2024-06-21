@@ -7,10 +7,10 @@ use PDO;
 
 class OrderRepository extends Repository
 {
-    public function getTicketWithQRCode(string $qrCode)
+    public function getTicketWithQRCode($qrCode)
     {
         $stmt = $this->connection->prepare("SELECT * FROM tickets WHERE qr_code = :qrCode");
-        $stmt->bindParam(':qr_code', $qrCode);
+        $stmt->bindParam(':qrCode', $qrCode);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
@@ -70,5 +70,6 @@ class OrderRepository extends Repository
             "UPDATE tickets SET status = 'used' WHERE qr_code = :qr_code"
         );
         $stmt->execute(['qr_code' => $qrCode]);
+        return true;
     }
 }

@@ -114,7 +114,7 @@
 
 
                 echo '<div class="dropdown">
-                          <a class="nav-link" href="' . $pageUrl . '">' . $pageTitle . '</a>
+                          <a class="nav-link" style="font-size: 22px;" href="' . $pageUrl . '">' . $pageTitle . '</a>
                       </div>';
             }
 
@@ -123,17 +123,19 @@
             <?php
             if (isset($_SESSION['user'])) {
                 if ($_SESSION['role'] == "Admin") {
-                    echo '<a class="nav-link" href="/home/dashboard">' . $_SESSION['username'] . '</a>';
+                    echo '<a class="nav-link" href="/home/dashboard" style="font-size: 22px;">' . $_SESSION['username'] . '</a>';
+                } elseif ($_SESSION['role'] == "Employee") {
+                    echo '<a class="nav-link" href="/scanticket/scanticket" style="font-size: 22px;">' . $_SESSION['username'] . '</a>';
                 } else {
-                    echo '<a class="nav-link" href="javascript:void()">' . $_SESSION['username'] . '</a>';
+                    echo '<a class="nav-link" href="javascript:void()" style="font-size: 22px;">' . $_SESSION['username'] . '</a>';
                 }
-                echo '<a class="nav-link" href="/login/logout">Logout</a>';
+                echo '<a class="nav-link" href="/personalprogram/basket" style="font-size: 22px;">Personal Program</a>';
+                echo '<a class="nav-link" href="/login/logout" style="font-size: 22px;">Logout</a>';
             } else {
-                echo '<a class="nav-link" href="/login/login">Login</a>';
+                echo '<a class="nav-link" href="/login/login" style="font-size: 22px;">Login</a>';
             }
             ?>
-
-            <a class="nav-link" href="/personalprogram/personalprogram">Personal Program</a>
+                        
         </div>
 
         <div class="hamburger">
