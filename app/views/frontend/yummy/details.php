@@ -212,7 +212,7 @@
                 </div>
             </form>
 
-            <img src="/images/reservation.png" alt="Reservation Image" class="reservation-image" />
+                <img src="/images/reservation.png" alt="Reservation Image" class="reservation-image" />
         </div>
     </div>
 

@@ -2,6 +2,8 @@
 <title>History Ticket</title>
 </head>
 <style>
+    @import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap");
+
     body {
         font-family: Arial, sans-serif;
         background-color: #780B1E;

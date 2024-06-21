@@ -57,7 +57,7 @@
                 </ul>
             </div>
             <div class="img-wrapper">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d77933.06515108632!2d4.5549343!3d52.3811485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5ef6bc1e32bc7%3A0x9b4f9d18ffe7688!2sSt.-Bavokerk%2C%20Grote%20Markt%2022%2C%202011%20RD%20Haarlem!5e0!3m2!1sen!2snl!4v1718933853173!5m2!1sen!2snl" width="1000" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d77933.06515108632!2d4.5549343!3d52.3811485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5ef6bc1e32bc7%3A0x9b4f9d18ffe7688!2sSt.-Bavokerk%2C%20Grote%20Markt%2022%2C%202011%20RD%20Haarlem!5e0!3m2!1sen!2snl!4v1718933853173!5m2!1sen!2snl" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </section>
     <?php endforeach; ?>
