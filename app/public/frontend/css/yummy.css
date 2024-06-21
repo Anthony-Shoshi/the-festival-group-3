@@ -2,19 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Jomhuria&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 
 body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
     background-color: #000;
     background-attachment: fixed;
     font-family: "Jomhuria", serif;
-    min-height: 100hv;
-    padding: 1vw;
-    /* overflow: hidden; */
 }
 
 .white-space {

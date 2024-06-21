@@ -20,6 +20,10 @@
                     <label for="capacity" class="form-label">Capacity</label>
                     <input type="text" class="form-control" id="capacity" name="capacity" required>
                 </div>
+                <div class="mb-3">
+                    <label for="map_url" class="form-label">Map URL</label>
+                    <input type="text" class="form-control" id="map_url" name="map_url" required>
+                </div>
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>
         </div>

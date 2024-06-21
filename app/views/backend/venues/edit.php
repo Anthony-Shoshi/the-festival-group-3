@@ -19,6 +19,11 @@
                 <input type="text" class="form-control" id="capacity" name="capacity" value="<?= $venue['capacity'] ?>"
                        required>
             </div>
+            <div class="mb-3">
+                <label for="map_url" class="form-label">Map URL</label>
+                <input type="text" class="form-control" id="map_url" name="map_url" value="<?= $venue['map_url'] ?>"
+                       required>
+            </div>
             <div class="mb-5">
                 <label for="venue_image" class="form-label">Venue Image</label>
                 <input type="file" class="form-control" id="venue_image" name="venue_image">
