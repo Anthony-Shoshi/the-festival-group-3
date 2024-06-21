@@ -75,7 +75,10 @@ $reservations = $_SESSION['basket'] ?? [];
             </tbody>
         </table>
         <?php else : ?>
-        <p>Your basket is empty.</p>
+        <div class="cart">
+            <p class="cartText">Your Shopping Cart is empty!</p>
+            <a class="buy-btn" href="/home">Buy Now</a>
+        </div>
     <?php endif; ?>
 </div>
 
