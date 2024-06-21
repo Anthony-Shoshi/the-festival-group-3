@@ -259,3 +259,5 @@ M
 app/services/EventService.php,c\2\c29b3b18239e8fb3bd75945616e043809b74e26c
 R
 "app/public/frontend/css/basket.css,7\1\713f3a8e45e2cb00fb14782e6060ae9993ee68c7
+A
+app/composer.lock,c\3\c32263212f3e16c13caa4452876f2f6df8d19104
