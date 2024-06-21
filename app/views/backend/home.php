@@ -15,6 +15,10 @@
         color: white;
     }
 
+    .card-gradient-orders {
+        background: linear-gradient(135deg, #7e5588, #7841a6);
+        color: white;
+    }
     .card-gradient-restaurants {
         background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
         color: white;
@@ -86,6 +90,16 @@
         <div class="row">
             <div class="col-md-4">
                 <a href="/restaurant" class="text-decoration-none">
+                    <div class="card card-gradient-orders mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Number of Orders</h5>
+                            <p class="card-text" style="font-size: 24px;"><?php echo $orderCount; ?></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/manageorders" class="text-decoration-none">
                     <div class="card card-gradient-restaurants mb-3">
                         <div class="card-body">
                             <h5 class="card-title">Number of Restaurants</h5>
@@ -114,9 +128,7 @@
                     </div>
                 </a>
             </div>
-        </div>
 
-        <div class="row">
             <div class="col-md-4">
                 <a href="/venue" class="text-decoration-none">
                     <div class="card card-gradient-venues mb-3">
@@ -149,5 +161,4 @@
             </div>
         </div>
     </div>
-
 <?php include __DIR__ . '/inc/footer.php'; ?>

@@ -10,6 +10,7 @@ use App\Services\PageService;
 use App\Services\RestaurantService;
 use App\Services\ArtistService;
 use App\Services\UserService;
+use App\Services\OrderService;
 use App\Services\VenueService;
 use App\Services\DanceService;
 use App\Services\SectionService;
@@ -27,9 +28,9 @@ class HomeController
     protected $artistService;
     protected $venueService;
     protected $danceService;
-
     protected $historyService;
     private $userService;
+    private $orderService;
 
     public function __construct()
     {
@@ -43,6 +44,7 @@ class HomeController
         $this->danceService = new DanceService();
         $this->historyService = new HistoryService();
         $this->userService = new UserService();
+        $this->orderService = new OrderService();
     }
 
 
@@ -113,6 +115,10 @@ class HomeController
 
             $historytimetable = $this->historyService->getAllTours();
             $historytimetableCount = count($historytimetable);
+
+            $orders = $this->orderService->getAllOrders();
+            $orderCount = count($orders);
+
             require __DIR__ . '/../views/backend/home.php';
         } else {
             require __DIR__ . '/../views/frontend/home.php';
