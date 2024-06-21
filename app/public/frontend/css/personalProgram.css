@@ -85,7 +85,9 @@ body {
 .list-view__item[data-type="Dance Pass"]::before {
     content: "Dance Pass";
 }
-
+.list-view__item[data-type="Reservation"]::before {
+    content: "Reservation";
+}
 .list-view__item__left {
     display: flex;
     flex-direction: column;
@@ -145,7 +147,6 @@ body {
     background-color: #FF7A68;
     color: black;
     padding: 10px 20px;
-    cursor: pointer;
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: 24px;
@@ -155,4 +156,16 @@ body {
 
 #delete-btn:hover {
     background-color: #ff3e29;
+}
+
+.checkout-btn {
+    background-color: #FF7A68;
+    color: black;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    border: 2px solid #000;
+    font-weight: bold;
 }

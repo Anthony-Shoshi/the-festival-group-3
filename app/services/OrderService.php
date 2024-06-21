@@ -17,7 +17,7 @@ class OrderService
         $this->orderRepository = new OrderRepository();
     }
 
-    public function getTicketWithQRCode(string $qrCode)
+    public function getTicketWithQRCode($qrCode)
     {
         return $this->orderRepository->getTicketWithQRCode($qrCode);
     }

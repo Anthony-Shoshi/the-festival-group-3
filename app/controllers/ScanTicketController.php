@@ -24,14 +24,14 @@ class ScanTicketController
         try {
             $postData = file_get_contents('php://input');
             $postDataArray = json_decode($postData, true);
-
+            
             if (isset($postDataArray['code'])) {
                 $qrCode = $postDataArray['code'];
                 $ticket = $this->orderService->getTicketWithQRCode($qrCode);
 
-                if ($ticket && $ticket['status'] === 'paid') {
+                if ($ticket && $ticket['status'] === 'new') {
                     // Check if ticket is already scanned
-                    if ($ticket['status'] === 'Scanned') {
+                    if ($ticket['status'] === 'used') {
                         $response = [
                             'success' => false,
                             'message' => 'This ticket has already been scanned.'
@@ -41,7 +41,7 @@ class ScanTicketController
                     }
 
                     // Update ticket status to 'scanned'
-                    $success = $this->orderService->updateTicketStatus($qrCode, 'Scanned');
+                    $success = $this->orderService->updateTicketStatus($qrCode);
                     if ($success) {
                         $response = [
                             'success' => true,
