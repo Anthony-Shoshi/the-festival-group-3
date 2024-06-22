@@ -172,15 +172,12 @@
                             <p><?php echo htmlspecialchars($restaurant['contact_phone']); ?></p>
                         </div>
                         <div class="info-item">
+                            <?php if (!empty($restaurant['sessions'])): ?>
                             <img src="/images/time.png" />
-                            <p>
-                                <?php
-                                $start_time = new DateTime($restaurant['sessions'][0]['start_time']);
-                                $end_time = clone $start_time;
-                                $end_time->add(new DateInterval('PT' . ($restaurant['sessions'][0]['duration'] * 60) . 'M'));
-                                echo $start_time->format('H:i') . ' - ' . $end_time->format('H:i');
-                                ?>
-                            </p>
+                                <p>
+                                    <?php echo $restaurant['start_time']; ?> - <?php echo $restaurant['end_time']; ?>
+                                </p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

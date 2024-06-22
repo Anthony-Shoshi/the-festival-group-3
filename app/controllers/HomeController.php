@@ -157,10 +157,31 @@ class HomeController
                 break;
             case 'yummy':
                 $restaurants = $this->restaurantService->getAllRestaurants();
-//                foreach ($restaurants as &$restaurant) {
-//                    $restaurant['sessions'] = $this->sessionService->getSessionsByRestaurantId($restaurant['restaurant_id']);
-//                }
-//                unset($restaurant);
+                foreach ($restaurants as &$restaurant) {
+                    if (!empty($restaurant['sessions'])) {
+                        $latestStartTime = null;
+                        $latestSession = null;
+
+                        foreach ($restaurant['sessions'] as $session) {
+                            $sessionStartTime = new \DateTime($session['start_time']);
+                            if ($latestStartTime === null || $sessionStartTime > $latestStartTime) {
+                                $latestStartTime = $sessionStartTime;
+                                $latestSession = $session;
+                            }
+                        }
+
+                        if ($latestSession !== null) {
+                            $end_time = clone $latestStartTime;
+                            $end_time->add(new \DateInterval('PT' . ($latestSession['duration'] * 60) . 'M'));
+                            $restaurant['start_time'] = $latestStartTime->format('H:i');
+                            $restaurant['end_time'] = $end_time->format('H:i');
+                        }
+                    } else {
+                        $restaurant['start_time'] = null;
+                        $restaurant['end_time'] = null;
+                    }
+                }
+                unset($restaurant);
 //                Helper::debug($restaurants);
                 require '../views/frontend/yummy/index.php';
                 break;
